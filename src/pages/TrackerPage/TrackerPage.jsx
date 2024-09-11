@@ -62,7 +62,13 @@ const TrackerPage = () => {
           waterModalState={waterModalState}
           openWaterModal={openWaterModal}
         />
-        <WaterDetailedInfo />
+        <WaterDetailedInfo
+          waterModalState={waterModalState}
+          openWaterModal={openWaterModal}
+          setSettingsModal={setSettingsModal}
+          setLogoutModal={setLogoutModal}
+          setDeleteWaterModal={setDeleteWaterModal}
+        />
       </div>
       <Modal isOpen={waterModalState.isOpen} setState={closeWaterModal}>
         <WaterModal
