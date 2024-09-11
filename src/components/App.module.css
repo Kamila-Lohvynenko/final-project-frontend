@@ -1,0 +1,7 @@
+.app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #010101;
+  font-size: 40px;
+}
