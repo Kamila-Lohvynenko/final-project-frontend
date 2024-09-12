@@ -1,7 +1,41 @@
-a {
-  text-decoration: inherit;
+@font-face {
+  font-family: 'Poppins';
+  src: url('./fonts/Poppins-Regular.ttf');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('./fonts/Poppins-Bold.ttf');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url('./fonts/Gilroy-Regular.ttf');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url('./fonts/Gilroy-Bold.ttf');
+  font-weight: 700;
+}
+
+:root {
+  --black: #2f2f2f;
+  --light-black: #323f47;
+  --lime: #9be1a0;
+  --darker-lime: #87d28d;
+  --grey: #f0eff4;
+  --white: #ffffff;
+
+  --error: #ef5050;
 }
 
 body {
-  margin: 0;
+  font-family: 'Poppins', system-ui;
+  font-weight: 400;
+
+  color: var(--black);
 }
