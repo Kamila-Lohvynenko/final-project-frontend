@@ -4,7 +4,15 @@ const WaterProgressBar =()=>{
     return(
         <div className={css.progressBarContainer}>
             <h2 className={css.progressBarTitle}>today</h2>
-            <div className={css.progressBar}></div>
+            <div className={css.progressBar}>
+                <div className={css.progressBarFill}></div>
+                <p className={css.percentNumber}></p>
+            </div>
+            <div className={css.percentContainer}>
+                <p className={css.percent}>0%</p>
+                <p className={css.percent}>50%</p>
+                <p className={css.percent}>100%</p>
+            </div>
         </div>
     );
 };

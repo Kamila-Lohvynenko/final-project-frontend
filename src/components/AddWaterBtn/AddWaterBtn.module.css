@@ -1,0 +1,43 @@
+.btnAdd {
+    border-radius: 30px;
+    padding: 14px 20px;
+    min-width: 140px;
+    height: 46px;
+    border: none;
+    position: absolute;
+    bottom: 32px;
+    right: 16px;
+    background-color: #323f47;
+    display: flex;
+  }
+  
+  .btnAdd:hover .btnText,
+  .btnAdd:hover .plus {
+    color: #9be1a0;
+    stroke: #9be1a0;
+  }
+  
+  .btnText {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 129%;
+    letter-spacing: -0.01em;
+    text-align: center;
+    color: #fff;
+    transition: color 0.3s ease;
+  }
+
+  @media screen and (min-width: 768px) {
+    .btnAdd {
+      padding: 18px 30px;
+      min-width: 178px;
+      height: 60px;
+      bottom: 64px;
+      right: 32px;
+    }
+  
+    .btnText {
+      font-size: 16px;
+      line-height: 150%;
+    }
+  }
