@@ -1,0 +1,7 @@
+/* Container */
+/* Mobile */
+.container {
+  max-width: 320px;
+  padding: 40px 20px;
+  margin: 80px 16px;
+}

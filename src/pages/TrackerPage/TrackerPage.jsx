@@ -16,7 +16,7 @@ const TrackerPage = () => {
     operation: null,
   });
 
-  const [isSettingsModalOpen, setSettingsModal] = useState(false);
+  const [isSettingsModalOpen, setSettingsModal] = useState(true);
   const [isDeleteWaterModalOpen, setDeleteWaterModal] = useState(false);
   const [isLogoutModalOpen, setLogoutModal] = useState(false);
 
