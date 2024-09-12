@@ -9,11 +9,11 @@ import {
 } from 'redux-persist';
 import { configureStore } from '@reduxjs/toolkit';
 
-import userSlice from './user/slice';
+import authReducer from './user/slice';
 
 export const store = configureStore({
   reducer: {
-    user: userSlice,
+    auth: authReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

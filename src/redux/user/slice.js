@@ -4,22 +4,23 @@ import storage from 'redux-persist/lib/storage'; // defaults to localStorage for
 
 import { login, logout, refresh, update } from './operations';
 
-const userSlice = createSlice({
-  name: 'user',
-  initialState: {
-    user: {
-      name: null,
-      email: null,
-      avatarUrl: null,
-      sex: null,
-      weight: null,
-      timeForSports: null,
-      litersADay: 0,
-    },
-    token: null,
-    isLoggedIn: false,
-    error: null,
+const initialState = {
+  user: {
+    name: null,
+    email: null,
+    avatarUrl: null,
+    gender: null,
+    weight: null,
+    timeForSports: null,
+    dailyIntake: 0,
   },
+  token: null,
+  isLoggedIn: false,
+};
+
+const authSlice = createSlice({
+  name: 'auth',
+  initialState,
   reducers: {},
   extraReducers: (builder) =>
     builder
@@ -41,10 +42,10 @@ const userSlice = createSlice({
 });
 
 const persistConfig = {
-  key: 'user',
+  key: 'auth',
   storage,
 };
 
-const userReducer = persistReducer(persistConfig, userSlice.reducer);
+const authReducer = persistReducer(persistConfig, authSlice.reducer);
 
-export default userReducer;
+export default authReducer;
