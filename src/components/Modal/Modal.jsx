@@ -1,7 +1,8 @@
 import css from "./Modal.module.css";
 import ReactModal from "react-modal";
 
-import sprite from "../images/sprite.svg";
+import sprite from "../../images/sprite.svg";
+
 const Modal = ({ children, isOpen, setState }) => {
   return (
     <ReactModal
