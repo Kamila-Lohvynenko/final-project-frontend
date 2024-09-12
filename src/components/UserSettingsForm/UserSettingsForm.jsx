@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import sprite from "../../images/sprite.svg";
 
 const VALIDATION_SCHEMA = Yup.object().shape({
   avatar: Yup.mixed()
@@ -34,13 +35,64 @@ const UserSettingsForm = () => {
     //send data to the server
   };
 
-  return <form></form>;
+  const handleAvatarChange = (e) => {
+    if (e.target.files && e.target.files[0]) {
+      const file = e.target.files[0];
+      setAvatarPreview(URL.createObjectURL(file));
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      {avatarPreview && (
+        <img
+          className={css.avatar}
+          src={avatarPreview}
+          alt="Avatar preview"
+          width="75"
+          height="75"
+          loading="lazy"
+        />
+      )}
+      <div className={css.inputWrapper}>
+        <label className={css.inputLabel} htmlFor="avatar">
+          Upload a photo
+        </label>
+        <svg className={css.uploadPhotoIcon}>
+          <use href={`${sprite}#icon-upload`}></use>
+        </svg>
+        <input
+          className={css.hiddenInput}
+          type="file"
+          id="avatar"
+          accept="image/*"
+          {...register("avatar")}
+          onChange={handleAvatarChange}
+        />
+        {errors.avatar && <p className={css.errors}>{errors.avatar.message}</p>}
+      </div>
+
+      <div>
+        <p>Your gender identity</p>
+        <div>
+          <input
+            type="radio"
+            id="woman"
+            value="woman"
+            {...register("gender")}
+          />
+          <label htmlFor="woman">Woman</label>
+          <input type="radio" id="man" value="man" {...register("gender")} />
+          <label htmlFor="man">Man</label>
+          {errors.gender && (
+            <p className={css.errors}>{errors.gender.message}</p>
+          )}
+        </div>
+      </div>
+
+      <div></div>
+    </form>
+  );
 };
 
 export default UserSettingsForm;
-
-{
-  /* <svg>
-      <use href={${sprite}#icon-id} />
-    </svg> */
-}
