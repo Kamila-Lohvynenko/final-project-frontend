@@ -11,7 +11,8 @@
 //   );
 // };
 
-import Logo from '../Logo/Logo.jsx';
+
+import WaterDailyNorma from '../WaterDailyNorma/WaterDailyNorma.jsx';
 import WaterProgressBar from '../WaterProgressBar/WaterProgressBar.jsx';
 import AddWaterBtn from '../AddWaterBtn/AddWaterBtn.jsx';
 import css from '../WaterMainInfo/WaterMainInfo.module.css';
@@ -19,13 +20,17 @@ import css from '../WaterMainInfo/WaterMainInfo.module.css';
 
 const WaterMainInfo =()=>{
   return(
-    <div className={css.waterContainer}>
-      <Logo />
-      <WaterProgressBar />
-      <AddWaterBtn />
+    <div>
+      <div className={css.waterContainer}>             
+        <WaterDailyNorma />
+        <WaterProgressBar />
+        <AddWaterBtn />
+      </div>      
     </div>
-  )
+  );
 };
 
+
 export default WaterMainInfo;
+
 

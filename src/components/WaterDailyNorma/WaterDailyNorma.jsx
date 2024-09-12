@@ -6,7 +6,7 @@ const WaterDailyNorma =()=>{
             <p className={css.value}>2L</p>
             <p className={css.text}>My daily norma</p>
         </div>
-    )
+    );
 };
 
 export default WaterDailyNorma;
