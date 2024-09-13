@@ -1,4 +1,5 @@
 .wrapperSignIn {
+  padding: 116px;
   display: flex;
   flex-direction: column;
   align-items: left;
@@ -6,9 +7,9 @@
 .title {
   padding-bottom: 32px;
 
-  font-size: 36px;
+  font-size: 32px;
   font-weight: 700;
-  line-height: 1.06;
+  line-height: 1;
   letter-spacing: -0.01em;
 
   color: var(--light-black);
@@ -22,8 +23,9 @@
 }
 
 .label {
+  font-size: 14px;
   font-weight: 700;
-  line-height: 1.5;
+  line-height: 1.28;
   letter-spacing: -0.01em;
 }
 
@@ -32,7 +34,8 @@
   padding: 16px;
   width: 436px;
 
-  line-height: 1.5;
+  font-size: 14px;
+  line-height: 1.28;
   letter-spacing: -0.01em;
 
   color: var(--black);
@@ -51,8 +54,9 @@ input:focus {
   width: 436px;
   padding: 18px 191px;
 
+  font-size: 14px;
   font-weight: 700;
-  line-height: 1.5;
+  line-height: 1.28;
   letter-spacing: -0.01em;
 
   color: var(--light-black);
@@ -72,7 +76,8 @@ input:focus {
   align-items: center;
   justify-content: center;
 
-  line-height: 1.5;
+  font-size: 14px;
+  line-height: 1.28;
   letter-spacing: -0.01em;
 
   color: rgba(47, 47, 47, 0.5);
@@ -98,4 +103,21 @@ input:focus {
 
   stroke: currentColor;
   fill: transparent;
+}
+
+@media only screen and (min-width: 768px) {
+  .title {
+    font-size: 36px;
+    line-height: 1.5;
+  }
+  .label,
+  .input,
+  .btn,
+  .auth {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
 }

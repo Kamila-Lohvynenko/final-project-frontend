@@ -17,6 +17,7 @@ const SignInForm = () => {
   return (
     <>
       {/* <Logo/> */}
+      <p>Logo</p>
       <div className={styles.wrapperSignIn}>
         <h2 className={styles.title}>Sign In</h2>
         <form>
