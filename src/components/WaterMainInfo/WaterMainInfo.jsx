@@ -11,26 +11,39 @@
 //   );
 // };
 
-
 import WaterDailyNorma from '../WaterDailyNorma/WaterDailyNorma.jsx';
 import WaterProgressBar from '../WaterProgressBar/WaterProgressBar.jsx';
 import AddWaterBtn from '../AddWaterBtn/AddWaterBtn.jsx';
 import css from '../WaterMainInfo/WaterMainInfo.module.css';
+import { useState } from 'react';
+import WaterModal from '../WaterModal/WaterModal.jsx';
+import Modal from '../Modal/Modal.jsx';
 
 
 const WaterMainInfo =()=>{
+  const [isWaterModalOpen, setIsWaterModalOpen]=useState(false);
+
+  const handleAddWaterClick =()=>{
+    setIsWaterModalOpen(true);
+  }
+
+  const handleCloseModal=()=>{
+    setIsWaterModalOpen(false);
+  }
+
   return(
     <div>
       <div className={css.waterContainer}>             
         <WaterDailyNorma />
         <WaterProgressBar />
-        <AddWaterBtn />
-      </div>      
+        <AddWaterBtn onClick={handleAddWaterClick} />
+      </div>
+      <Modal isOpen={isWaterModalOpen} setState={setIsWaterModalOpen}>  
+        <WaterModal onClose={handleCloseModal}/>
+      </Modal>
     </div>
   );
 };
 
 
 export default WaterMainInfo;
-
-

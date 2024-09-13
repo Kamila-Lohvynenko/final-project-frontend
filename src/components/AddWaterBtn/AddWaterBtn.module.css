@@ -9,6 +9,8 @@
     right: 16px;
     background-color: #323f47;
     display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
   .btnAdd:hover .btnText,
