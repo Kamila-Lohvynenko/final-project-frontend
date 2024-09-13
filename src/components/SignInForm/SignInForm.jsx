@@ -1,6 +1,7 @@
 import { useId } from "react";
 import { NavLink } from "react-router-dom";
 import * as Yup from "yup";
+import styles from "./SignInForm.module.css";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().email("Must be a valid email").required("Required"),
@@ -13,24 +14,41 @@ const SignInForm = () => {
   return (
     <>
       {/* <Logo/> */}
-      <h2>Sign In</h2>
-      <form>
-        <label htmlFor={emailId}>Email</label>
-        <input type="email" id={emailId} placeholder="Enter your email" />
+      <div className={styles.wrapperSignIn}>
+        <h2 className={styles.title}>Sign In</h2>
+        <form>
+          <div className={styles.field}>
+            <label htmlFor={emailId} className={styles.label}>
+              Email
+            </label>
+            <input
+              type="email"
+              id={emailId}
+              placeholder="Enter your email"
+              className={styles.input}
+            />
+          </div>
 
-        <label htmlFor={passwordId}>Password</label>
-        <input
-          type="password"
-          id={passwordId}
-          placeholder="Enter your password"
-        />
-
-        <button type="submit"></button>
-      </form>
-      <p>
-        Don’t have an account?
-        <NavLink to="/signup">Sign Up</NavLink>
-      </p>
+          <div className={styles.field}>
+            <label htmlFor={passwordId} className={styles.label}>
+              Password
+            </label>
+            <input
+              type="password"
+              id={passwordId}
+              placeholder="Enter your password"
+              className={styles.input}
+            />
+          </div>
+          <button type="submit" className={styles.btn}>
+            Sign In
+          </button>
+        </form>
+        <p>
+          Don’t have an account?
+          <NavLink to="/signup">Sign Up</NavLink>
+        </p>
+      </div>
     </>
   );
 };
