@@ -73,7 +73,7 @@ import { useParams } from "react-router-dom";
 import { parseDateTime } from "../CalendarPagination/helpme/parseDateTim.js";
 import css from "./CalendarItem.module.css";
 import { useNavigate } from "react-router-dom";
-
+import clsx from "clsx";
 const isFutureDate = (date) => {
     const dateNow = new Date();
     const currentDate = new Date(date);
@@ -115,11 +115,18 @@ const CalendarItem = ({ calendarDate }) => {
 
     return (
         <button
-            className={`${css.day} ${isDisabled ? css.disabled : ""}`}
-            disabled={isDisabled}
-            onClick={() => handleClick(calendarDate)}
+        className={clsx(css.day, {
+            [css.disabled]: isDisabled,
+          })}
+          disabled={isDisabled}
+          onClick={() => handleClick(calendarDate)}
         >
-            <div className={`${css.date} ${isActive ? css.active : ""}`}>
+            <div
+              className={clsx(css.date, {
+                [css.perc_filled]: isDisabled,
+                [css.active]: isActive,
+              })}
+              >
                 {date}
             </div>
         </button>
