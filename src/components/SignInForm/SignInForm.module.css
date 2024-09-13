@@ -1,0 +1,79 @@
+.wrapperSignIn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+.title {
+  text-align: left;
+
+  font-family: inherit;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.06;
+  letter-spacing: -0.01em;
+
+  color: var(--light-black);
+}
+
+.field {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.label {
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 16px;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+
+  color: var(--black);
+}
+
+.input {
+  padding: 16px;
+  width: 436px;
+
+  font-family: inherit;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+
+  color: rgba(47, 47, 47, 0.6);
+  background-color: transparent;
+  outline: none;
+
+  border-radius: 15px;
+  border: 1px solid rgba(47, 47, 47, 0.2);
+}
+
+.btn {
+  font-family: inherit;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+
+  width: 436px;
+  padding: 18px 191px;
+
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+
+  color: var(--light-black);
+  border-radius: 30px;
+  background: var(--lime);
+  border: none;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
