@@ -63,7 +63,6 @@ const TrackerPage = () => {
           openWaterModal={openWaterModal}
         />
         <WaterDetailedInfo
-          waterModalState={waterModalState}
           openWaterModal={openWaterModal}
           setSettingsModal={setSettingsModal}
           setLogoutModal={setLogoutModal}

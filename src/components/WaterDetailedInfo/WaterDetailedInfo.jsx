@@ -1,13 +1,24 @@
-import DailyInfo from "./../DailyInfo/DailyInfo";
-import MonthInfo from "./../MonthInfo/MonthInfo";
-import UserPanel from "./../UserPanel/UserPanel";
+import DailyInfo from './../DailyInfo/DailyInfo';
+import MonthInfo from './../MonthInfo/MonthInfo';
+import UserPanel from './../UserPanel/UserPanel';
 
-const WaterDetailedInfo = () => {
+const WaterDetailedInfo = ({
+  setSettingsModal,
+  setLogoutModal,
+  openWaterModal,
+  setDeleteWaterModal,
+}) => {
   return (
     <div>
       WaterDetailedInfo
-      <UserPanel />
-      <DailyInfo />
+      <UserPanel
+        setSettingsModal={setSettingsModal}
+        setLogoutModal={setLogoutModal}
+      />
+      <DailyInfo
+        openWaterModal={openWaterModal}
+        setDeleteWaterModal={setDeleteWaterModal}
+      />
       <MonthInfo />
     </div>
   );
