@@ -5,6 +5,8 @@
   gap: 32px;
 }
 .title {
+  text-align: left;
+
   font-family: inherit;
   font-size: 36px;
   font-weight: 700;
@@ -68,10 +70,10 @@
   justify-content: center;
   align-items: center; */
 
-  text-align: center;
-
   color: var(--light-black);
   border-radius: 30px;
   background: var(--lime);
-  outline: none;
+  border: none;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
 }
