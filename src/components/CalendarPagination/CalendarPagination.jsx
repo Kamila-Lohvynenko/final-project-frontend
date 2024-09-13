@@ -84,7 +84,7 @@
 
 
 // export default CalendarPagination;
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { parseDateTime } from "./helpme/parseDateTim.js";
 import { useState } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
@@ -92,6 +92,7 @@ import css from "./CalendarPagination.module.css";
 import sprite from "../../images/sprite.svg";
 import { monthsName } from "../CalendarPagination/helpme/constants.js";
 import { Title } from "../CalendarItem/Title/Title.jsx";
+import clsx from "clsx";
 
 const CalendarPagination = ({ onDateChange }) => {
     const { date: dateUrl } = useParams();
@@ -151,10 +152,28 @@ const CalendarPagination = ({ onDateChange }) => {
                 >
                     <IoIosArrowForward className={css.svg_arrow_right} />
                 </button>
+                <NavLink
+          to="calendar"
+          className={({ isActive }) => {
+            return clsx(css.statistic_btn, {
+              [css.isHidden]: isActive,
+            });
+          }}
+        >
                 <svg className={css.svg_chart}>
                     <use href={`${sprite}#icon-pie-chart-02`} />
                 </svg>
-                
+                </NavLink>
+        <NavLink
+          to="schedule"
+          className={({ isActive }) => {
+            return clsx(css.statistic_btn, {
+              [css.isHidden]: isActive,
+            });
+          }}
+          >
+            
+          </NavLink>
             </div>
         </div>
     );
