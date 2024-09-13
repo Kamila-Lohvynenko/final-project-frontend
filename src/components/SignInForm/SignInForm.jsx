@@ -1,7 +1,8 @@
-import { useId } from "react";
+import { useId, useState } from "react";
 import { NavLink } from "react-router-dom";
 import * as Yup from "yup";
 import styles from "./SignInForm.module.css";
+import sprite from "../../images/sprite.svg";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().email("Must be a valid email").required("Required"),
@@ -11,6 +12,8 @@ const validationSchema = Yup.object().shape({
 const SignInForm = () => {
   const emailId = useId();
   const passwordId = useId();
+  const [visiblePassword, setVisiblePassword] = useState(false);
+
   return (
     <>
       {/* <Logo/> */}
@@ -33,12 +36,26 @@ const SignInForm = () => {
             <label htmlFor={passwordId} className={styles.label}>
               Password
             </label>
-            <input
-              type="password"
-              id={passwordId}
-              placeholder="Enter your password"
-              className={styles.input}
-            />
+            <div className={styles.wrapper_icon}>
+              <input
+                type={visiblePassword ? "text" : "password"}
+                id={passwordId}
+                placeholder="Enter your password"
+                className={styles.input}
+              />
+              <svg
+                className={styles.icon_eye}
+                width={20}
+                height={20}
+                onClick={() => setVisiblePassword(!visiblePassword)}
+              >
+                <use
+                  href={`${sprite}#${
+                    visiblePassword ? "icon-eye" : "icon-eye-off"
+                  }`}
+                />
+              </svg>
+            </div>
           </div>
           <button type="submit" className={styles.btn}>
             Sign In

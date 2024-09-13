@@ -15,8 +15,6 @@
 }
 
 .field {
-  position: relative;
-
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -30,18 +28,23 @@
 }
 
 .input {
+  position: relative;
   padding: 16px;
   width: 436px;
 
   line-height: 1.5;
   letter-spacing: -0.01em;
 
-  color: rgba(47, 47, 47, 0.6);
+  color: var(--black);
   background-color: transparent;
   outline: none;
 
   border-radius: 15px;
   border: 1px solid rgba(47, 47, 47, 0.2);
+}
+
+input:focus {
+  border: 1px solid rgba(47, 47, 47, 0.4);
 }
 
 .btn {
@@ -82,4 +85,17 @@
   text-decoration: underline;
 
   color: var(--black);
+}
+.wrapper_icon {
+  position: relative;
+}
+
+.icon_eye {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+
+  stroke: currentColor;
+  fill: transparent;
 }
