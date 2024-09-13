@@ -67,20 +67,16 @@
 
 // export default CalendarItem
 
-
-import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { parseDateTime } from "../CalendarPagination/helpme/parseDateTim.js";
 import css from "./CalendarItem.module.css";
 import { useNavigate } from "react-router-dom";
 import clsx from "clsx";
+
 const isFutureDate = (date) => {
     const dateNow = new Date();
     const currentDate = new Date(date);
-    dateNow.setHours(23);
-    dateNow.setMinutes(59);
-    dateNow.setSeconds(59);
-    dateNow.setMilliseconds(999);
+    dateNow.setHours(23, 59, 59, 999);
     return dateNow.getTime() < currentDate.getTime();
 };
 
@@ -96,17 +92,14 @@ const isDay = (firstDay, secondDay) => {
 };
 
 const CalendarItem = ({ calendarDate }) => {
-    const navig = useNavigate();
-    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const { date: paramsData } = useParams();
     const currentDate = parseDateTime(paramsData);
 
     const handleClick = (calendarDate) => {
-        navig(`/tracker/${calendarDate}`);
-        dispatch(
-            // Здесь вы можете добавить действия Redux, если это необходимо
-            // Пример: someAction(calendarDate)
-        );
+        if (!isFutureDate(calendarDate)) {
+            navigate(`/tracker/${calendarDate}`);
+        }
     };
 
     const date = new Date(calendarDate).getDate();
@@ -115,19 +108,22 @@ const CalendarItem = ({ calendarDate }) => {
 
     return (
         <button
-        className={clsx(css.day, {
-            [css.disabled]: isDisabled,
-          })}
-          disabled={isDisabled}
-          onClick={() => handleClick(calendarDate)}
+            className={clsx(css.day, {
+                [css.disabled]: isDisabled,
+            })}
+            disabled={isDisabled}
+            onClick={() => handleClick(calendarDate)}
         >
             <div
-              className={clsx(css.date, {
-                [css.perc_filled]: isDisabled,
-                [css.active]: isActive,
-              })}
-              >
+                className={clsx(css.date, {
+                    [css.disabledDate]: isDisabled,
+                    [css.active]: isActive,
+                })}
+            >
                 {date}
+            </div>
+            <div className={css.percentage}>
+                0%
             </div>
         </button>
     );
