@@ -44,9 +44,11 @@ const SignInForm = () => {
             Sign In
           </button>
         </form>
-        <p>
+        <p className={styles.auth}>
           Don’t have an account?
-          <NavLink to="/signup">Sign Up</NavLink>
+          <NavLink className={styles.navlink} to="/signup">
+            Sign Up
+          </NavLink>
         </p>
       </div>
     </>
