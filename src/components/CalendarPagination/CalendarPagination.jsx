@@ -154,6 +154,7 @@ const CalendarPagination = ({ onDateChange }) => {
                 <svg className={css.svg_chart}>
                     <use href={`${sprite}#icon-pie-chart-02`} />
                 </svg>
+                
             </div>
         </div>
     );
