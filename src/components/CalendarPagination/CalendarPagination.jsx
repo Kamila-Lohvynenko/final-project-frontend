@@ -86,50 +86,52 @@
 // export default CalendarPagination;
 import { useParams } from "react-router-dom";
 import { parseDateTime } from "./helpme/parseDateTim.js";
-// import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import css from "./CalendarPagination.module.css";
-// import { useDispatch } from "react-redux";
 import sprite from "../../images/sprite.svg";
 import { monthsName } from "../CalendarPagination/helpme/constants.js";
 import { Title } from "../CalendarItem/Title/Title.jsx";
 
-const CalendarPagination = () => {
+const CalendarPagination = ({ onDateChange }) => {
     const { date: dateUrl } = useParams();
     const dateMs = parseDateTime(dateUrl);
-    // const dispatch = useDispatch();
     const [year, setYear] = useState(new Date(dateMs).getFullYear());
     const [month, setMonth] = useState(new Date(dateMs).getMonth());
-    // const isLoading = useSelector();
 
     const increment = () => {
-        if (month === 11) {
-            // dispatch(new Date(year + 1, 4).getTime());
-            setMonth(0);
-            setYear(year + 1);
-            return;
+        let newYear = year;
+        let newMonth = month + 1;
+
+        if (newMonth > 11) {
+            newMonth = 0;
+            newYear += 1;
         }
-        // dispatch(new Date(year, month + 1, 4).getTime());
-        setMonth(month + 1);
+
+        setYear(newYear);
+        setMonth(newMonth);
+        onDateChange(newYear, newMonth);
     };
 
     const decrement = () => {
-        if (month === 0) {
-            // dispatch(new Date(year - 1, 11, 4).getTime());
-            setMonth(11);
-            setYear(year - 1);
-            return;
+        let newYear = year;
+        let newMonth = month - 1;
+
+        if (newMonth < 0) {
+            newMonth = 11;
+            newYear -= 1;
         }
-        // dispatch(new Date(year, month - 1, 4).getTime());
-        setMonth(month - 1);
+
+        setYear(newYear);
+        setMonth(newMonth);
+        onDateChange(newYear, newMonth);
     };
 
     const selectedMonth = monthsName[month];
-    const title = "month";
+    const title = "Month";
 
-    const yearNow = new Date(Date.now()).getFullYear();
-    const monthNow = new Date(Date.now()).getMonth();
+    const yearNow = new Date().getFullYear();
+    const monthNow = new Date().getMonth();
     const incrementDisabled = new Date(yearNow, monthNow) <= new Date(year, month);
 
     return (
@@ -158,3 +160,4 @@ const CalendarPagination = () => {
 };
 
 export default CalendarPagination;
+
