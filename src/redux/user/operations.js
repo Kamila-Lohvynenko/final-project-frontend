@@ -6,9 +6,7 @@ export const register = createAsyncThunk(
   'user/register',
   async (userCredentials, thunkApi) => {
     try {
-      const {
-        data: { data },
-      } = await authService.register(userCredentials);
+      const { data } = await authService.register(userCredentials);
 
       return data;
     } catch (error) {
@@ -21,9 +19,7 @@ export const login = createAsyncThunk(
   'user/login',
   async (userCredentials, thunkApi) => {
     try {
-      const {
-        data: { data },
-      } = await authService.login(userCredentials);
+      const { data } = await authService.login(userCredentials);
 
       return data;
     } catch (error) {
@@ -44,9 +40,7 @@ export const update = createAsyncThunk(
   'user/update',
   async (fieldsToUpdate, thunkApi) => {
     try {
-      const {
-        data: { data },
-      } = await authService.update(fieldsToUpdate);
+      const { data } = await authService.update(fieldsToUpdate);
 
       return data;
     } catch (error) {
@@ -57,9 +51,7 @@ export const update = createAsyncThunk(
 
 export const refresh = createAsyncThunk('user/refresh', async (_, thunkApi) => {
   try {
-    const {
-      data: { data },
-    } = await authService.refresh();
+    const { data } = await authService.refresh();
 
     return data;
   } catch (error) {
