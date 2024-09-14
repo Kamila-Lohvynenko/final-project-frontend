@@ -14,6 +14,10 @@
   padding-left: 16px;
 }
 
+.dailyNorma {
+  margin-top: 78px;
+}
+
 @media (min-device-pixel-ratio: 2),
   (min-resolution: 192dpi),
   (min-resolution: 2dppx) {
@@ -32,6 +36,10 @@
     background-size: 374px 477px;
     padding-top: 32px;
     padding-left: 32px;
+  }
+
+  .dailyNorma {
+    margin-top: 78px;
   }
 
   @media (min-device-pixel-ratio: 2),

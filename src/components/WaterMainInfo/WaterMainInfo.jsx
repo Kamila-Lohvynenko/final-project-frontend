@@ -15,7 +15,7 @@ const WaterMainInfo =({openWaterModal})=>{
     <div>
       <div className={css.waterContainer}>
         <Logo className={css.waterTitle} />             
-        <WaterDailyNorma />
+        <WaterDailyNorma className={css.dailyNorma} />
         <WaterProgressBar />
         <AddWaterBtn onClick={handleAddWaterClick} />
       </div>      
