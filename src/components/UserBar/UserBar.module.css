@@ -1,0 +1,53 @@
+.userBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
+}
+
+.userBarButton {
+  display: flex;
+  align-items: center;
+  background-color: #2f3a44;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.2s ease;
+}
+
+/*.userBarButton:hover {
+  background-color: #f5f5f5;
+}*/
+
+.userAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.userBar span {
+  font-size: 16px;
+  font-weight: 500;
+  color: white;
+}
+
+.arrowDown {
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+  /*transition: transform 0.3s ease;*/
+}
+
+/*.arrowDown {
+  transform: rotate(0deg);
+}
+
+
+.userBarButton.open .arrowDown {
+  transform: rotate(180deg);
+}*/
