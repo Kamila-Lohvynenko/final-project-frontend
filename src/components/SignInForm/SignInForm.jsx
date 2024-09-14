@@ -1,12 +1,13 @@
-import { useId, useState } from "react";
-import { NavLink } from "react-router-dom";
-import * as Yup from "yup";
-import styles from "./SignInForm.module.css";
-import sprite from "../../images/sprite.svg";
+import { useId, useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import * as Yup from 'yup';
+import styles from './SignInForm.module.css';
+import sprite from '../../images/sprite.svg';
+import Logo from '../Logo/Logo';
 
 const validationSchema = Yup.object().shape({
-  email: Yup.string().email("Must be a valid email").required("Required"),
-  password: Yup.string().min(10, "Too short!").required("Required"),
+  email: Yup.string().email('Must be a valid email').required('Required'),
+  password: Yup.string().min(10, 'Too short!').required('Required'),
 });
 
 const SignInForm = () => {
@@ -16,11 +17,12 @@ const SignInForm = () => {
 
   return (
     <>
-      {/* <Logo/> */}
-      <p>Logo</p>
+      <div className={styles.logo}>
+        <Logo />
+      </div>
       <div className={styles.wrapperSignIn}>
         <h2 className={styles.title}>Sign In</h2>
-        <form>
+        <form className={styles.form}>
           <div className={styles.field}>
             <label htmlFor={emailId} className={styles.label}>
               Email
@@ -39,7 +41,7 @@ const SignInForm = () => {
             </label>
             <div className={styles.wrapper_icon}>
               <input
-                type={visiblePassword ? "text" : "password"}
+                type={visiblePassword ? 'text' : 'password'}
                 id={passwordId}
                 placeholder="Enter your password"
                 className={styles.input}
@@ -52,7 +54,7 @@ const SignInForm = () => {
               >
                 <use
                   href={`${sprite}#${
-                    visiblePassword ? "icon-eye" : "icon-eye-off"
+                    visiblePassword ? 'icon-eye' : 'icon-eye-off'
                   }`}
                 />
               </svg>
