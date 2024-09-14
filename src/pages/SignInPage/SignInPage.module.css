@@ -1,15 +1,16 @@
-.form {
-  background-color: var(--grey);
-  border-radius: 30px;
-}
 .wrapper {
-  margin: 0 auto;
-  padding: 16px;
+  width: 100%;
 
   display: flex;
   justify-content: center;
   gap: 32px;
 }
+
+.form {
+  background-color: var(--grey);
+  border-radius: 30px;
+}
+
 .box {
   display: none;
   border-radius: 30px;
