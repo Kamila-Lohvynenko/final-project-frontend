@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Logo from '../Logo/Logo';
 import css from './WelcomeSection.module.css';
 
@@ -13,8 +14,18 @@ const WelcomeSection = () => {
         </div>
 
         <div className={css.buttons_block}>
-          <a className={`${css.button} ${css.button_to_signup}`}>Try tracker</a>
-          <a className={`${css.button} ${css.button_to_signin}`}>Sign In</a>
+          <Link
+            to={'/signup'}
+            className={`${css.button} ${css.button_to_signup}`}
+          >
+            Try tracker
+          </Link>
+          <Link
+            to={'/signin'}
+            className={`${css.button} ${css.button_to_signin}`}
+          >
+            Sign In
+          </Link>
         </div>
       </div>
     </div>
