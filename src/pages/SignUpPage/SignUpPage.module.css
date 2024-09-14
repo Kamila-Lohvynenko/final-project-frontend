@@ -3,12 +3,15 @@
   border-radius: 30px;
   display: flex;
   justify-content: center;
+  margin-top: 16px;
+  margin-bottom: 16px;
 }
 
 @media only screen and (min-width: 768px) {
-  .wrapper {
-    padding: 32px;
-  }
+.wrapper {
+  margin-top: 32px;
+  margin-bottom: 32px;
+}
 }
 
 @media only screen and (min-width: 1440px) {
