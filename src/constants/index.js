@@ -6,6 +6,6 @@ export const MODAL_NAME = {
 };
 
 export const OPERATION_NAME = {
-  ADD: 'add',
-  EDIT: 'edit',
+  ADD_WATER: 'addWater',
+  EDIT_WATER: 'editWater',
 };
