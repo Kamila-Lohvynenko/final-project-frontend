@@ -6,7 +6,7 @@ import { MdOutlineArrowBackIos } from 'react-icons/md';
 const NotFoundPage = () => {
   return (
     <div className={css.page}>
-      <div>
+      <div className={css.backHome}>
         <TbFaceIdError size={80} />
         <div className={css.text}>Page is not found</div>
         <Link to="/" className={css.link}>
