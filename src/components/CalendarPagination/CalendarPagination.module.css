@@ -62,7 +62,7 @@
 .svg_chart {
     width: 24px;
 		height: 24px;
-		opacity: 0.4;
+
 }
 .svg_arrow_left{
     width: 18px;
@@ -95,11 +95,14 @@
 .btn_disabled:hover {
 	transform: scale(1);
 }
+.opacity1 {
+  opacity: 1;
+}
 
-.svg_schedule {
-
-  width: 24px;
-  height: 24px;
+.svg_hart {
+  width: 20px;
+		height: 20px;
+		opacity: 0.4;
 
 }
 
