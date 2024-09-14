@@ -12,7 +12,6 @@ const WaterDetailedInfo = ({
 }) => {
   return (
     <div className={css.wrapper}>
-      WaterDetailedInfo
       <UserPanel
         setSettingsModal={setSettingsModal}
         setLogoutModal={setLogoutModal}

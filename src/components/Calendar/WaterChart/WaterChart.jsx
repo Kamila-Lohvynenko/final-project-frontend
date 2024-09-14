@@ -62,9 +62,9 @@ const WaterIntakeChart = ({ waterData }) => {
 
   const formatYAxisTick = (tick, index) => {
     if (index === 0) {
-      return '0';
+      return '0 L';
     }
-    return `${(tick / 1000).toFixed(2)} L`;
+    return `${(Math.round((tick / 1000) * 2) / 2).toFixed(1)} L`;
   };
 
   return (
