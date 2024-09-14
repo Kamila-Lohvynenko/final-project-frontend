@@ -1,7 +1,7 @@
 import css from '../WaterProgressBar/WaterProgressBar.module.css';
 
 const WaterProgressBar =()=>{
-    const currentWater = 1000;
+    const currentWater = 1500;
     const dailyWaterGoal =2000;
     const waterIntakeProgress = Math.round((currentWater/dailyWaterGoal) * 100);
 
@@ -14,7 +14,12 @@ const WaterProgressBar =()=>{
                 <div className={css.progressBarFill} 
                 style={{width: `${displayedPercentage}%`, 
                 backgroundColor: displayedPercentage >= 100 ? "#7fffd4" : "#9be1a0",
-                }}>                    
+                }}>
+                    {displayedPercentage < 100 && (
+                        <p className={css.percentNumber} style={{ color: "#9be1a0" }}>
+                            {`${displayedPercentage}%`}
+                        </p>
+                    )}                  
                 </div>
                 <div className={css.slider} 
                 style={{

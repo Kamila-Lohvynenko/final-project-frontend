@@ -48,6 +48,16 @@
     transition: ease 1s;
   }
 
+  .percentNumber {
+    font-weight: 400;
+    font-size: 8px;
+    line-height: 100%;
+    position: absolute;
+    bottom: 130%;
+    right: 0;
+    transform: translate(50%, -50%);
+  }
+
   .percentContainer {
     display: flex;
     justify-content: space-between;
@@ -87,6 +97,12 @@
   
      .progressBarFill {
       height: 8px;
+    }
+
+    .percentNumber {
+      font-size: 9px;
+      line-height: 180%;
+      bottom: 20%;
     }
   }
   
