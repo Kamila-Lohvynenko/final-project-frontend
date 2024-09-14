@@ -8,7 +8,6 @@ import { FaCog, FaSignOutAlt } from 'react-icons/fa';
 const UserBarPopover = ({ onClose, buttonRef }) => { 
     const [isSettingsOpen, setSettingsOpen] = useState(false);
     const [isLogOutOpen, setLogOutOpen] = useState(false);
-    
     const popperRef = useRef(null); 
     const { styles, attributes } = usePopper(buttonRef.current, popperRef.current, {
         placement: 'bottom-start',

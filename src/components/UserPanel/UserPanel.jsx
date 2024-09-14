@@ -9,5 +9,4 @@ const UserPanel = ({ user }) => {
     </div>
   );
 };
-
 export default UserPanel;
