@@ -13,7 +13,8 @@
   width: 18px;
   height: 18px;
   margin-right: 8px; /* Отступ между иконкой и текстом */
-  /* fill: #2f2f2f; */
+  fill: transparent;
+  stroke: currentColor;
 }
 
 .hiddenInput {
