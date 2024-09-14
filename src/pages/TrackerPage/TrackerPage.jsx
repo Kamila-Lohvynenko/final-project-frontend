@@ -9,6 +9,7 @@ import WaterDetailedInfo from './../../components/WaterDetailedInfo/WaterDetaile
 import WaterMainInfo from './../../components/WaterMainInfo/WaterMainInfo';
 import WaterModal from './../../components/WaterModal/WaterModal';
 import DeleteWaterModal from './../../components/DeleteWaterModal/DeleteWaterModal';
+import { MODAL_NAME } from '../../constants';
 
 const TrackerPage = () => {
   const [waterModalState, setWaterModalState] = useState({
@@ -22,22 +23,22 @@ const TrackerPage = () => {
 
   const closeModal = (modalName) => {
     switch (modalName) {
-      case 'waterModal':
+      case MODAL_NAME.WATER_MODAL:
         setWaterModalState({
           isOpen: false,
           operation: null,
         });
         break;
 
-      case 'settingsModal':
+      case MODAL_NAME.SETTINGS_MODAL:
         setSettingsModal(false);
         break;
 
-      case 'deleteWaterModal':
+      case MODAL_NAME.DELETE_WATER_MODAL:
         setDeleteWaterModal(false);
         break;
 
-      case 'logoutModal':
+      case MODAL_NAME.LOGOUT_MODAL:
         setLogoutModal(false);
         break;
 
