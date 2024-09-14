@@ -1,7 +1,8 @@
 /* Container */
 /* Mobile */
 .container {
-  max-width: 320px;
+  min-width: 320px;
+  max-width: 375px; /* ?*/
   padding: 40px 20px;
   margin: 80px 16px;
 }
