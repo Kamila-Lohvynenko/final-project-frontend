@@ -30,11 +30,9 @@
   background-color: black; /* Колір фону при наведенні */
   color: white; /* Колір тексту при наведенні */
 }
-
 .userBarPopover button:focus {
   outline: none;
 }
-
 .popoverIcon {
   margin-right: 10px;
   font-size: 18px;
