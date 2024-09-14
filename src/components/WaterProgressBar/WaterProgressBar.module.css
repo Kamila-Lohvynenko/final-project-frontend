@@ -24,27 +24,30 @@
     height: 6px;
     margin-top: 23px;
     background-color: var(--grey);
+    position: relative;
   }
   
   .progressBarFill {
     border-radius: 9px;
     height: 6px;
-    margin-top: 15px;
-    max-width: 100%;
-    position: relative;
-    transition: ease 1s;
-  }  
-
-  .percentNumber {
-    font-weight: 400;
-    font-size: 8px;
-    line-height: 100%;
+    width: 100%;
     position: absolute;
-    bottom: 130%;
-    right: 0;
-    transform: translate(50%, -50%);
+    top: 0;
+    left: 0;
+    transition: ease 1s;
   }
   
+  .slider {
+    height: 12px;
+    width: 12px;
+    border-radius: 100%;
+    background-color: #fff;
+    position: absolute;
+    top: 50%;     
+    transform: translate(50%, -50%);
+    transition: ease 1s;
+  }
+
   .percentContainer {
     display: flex;
     justify-content: space-between;
@@ -82,13 +85,7 @@
       margin-top: 6px;
     }
   
-    .percentNumber {
-      font-size: 9px;
-      line-height: 180%;
-      bottom: 20%;
-    }
-  
-    .progressBarFill {
+     .progressBarFill {
       height: 8px;
     }
   }
@@ -104,3 +101,5 @@
       line-height: 149%;
     }
   }
+
+
