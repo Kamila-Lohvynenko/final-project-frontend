@@ -1,5 +1,4 @@
 .btnAdd {
-
   border-radius: 30px;
   padding: 14px 20px;
   min-width: 140px;
@@ -48,12 +47,11 @@
     display: flex;
     justify-content: center;
   }
-  
+
   .btnAdd:hover .btnText,
   .btnAdd:hover .plus {
     color: var(--lime);
     stroke: var(--lime);
-
   }
 
   .btnText {
@@ -77,28 +75,34 @@
   cursor: pointer;
 }
 
-.detailsAddSign {
+.detailsAddContainer {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   width: 30px;
   height: 30px;
   border-radius: 30px;
   background-color: #9be1a0;
-  font-size: 20px;
-  line-height: 30px;
-  color: #323f47;
-  transition: color 0.3s ease, background-color 0.3s ease;
+  transition: background-color 0.3s ease;
+}
+
+.detailsAddSign {
+  width: 10.71px;
+  height: 10.71px;
+  stroke: #323f47;
+  transition: stroke 0.3s ease;
 }
 
 .detailsBtnAdd:hover .detailsAddSign {
-  color: white;
+  stroke: white;
+}
+
+.detailsBtnAdd:hover .detailsAddContainer {
   background-color: #323f47;
 }
 
-
 .detailsBtnText {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 700;
   font-size: 16px;
   line-height: 24px;
@@ -106,33 +110,32 @@
   color: #323f47;
 }
 
+.plus {
+  width: 13px;
+  height: 13px;
+  margin-right: 10px;
+  margin-top: 2px;
+  stroke: var(--white);
+  transition: stroke 0.3s ease;
+}
+
+@media screen and (min-width: 768px) {
+  .btnAdd {
+    padding: 18px 30px;
+    min-width: 178px;
+    height: 60px;
+    bottom: 64px;
+    right: 32px;
+  }
+
+  .btnText {
+    font-size: 16px;
+    line-height: 150%;
+  }
+
   .plus {
-    width: 13px;
-    height: 13px;
-    margin-right: 10px;
-    margin-top: 2px;
-    stroke: var(--white);
-    transition: stroke 0.3s ease;
+    height: 15px;
+    width: 15px;
+    margin-top: 4px;
   }
-
-  @media screen and (min-width: 768px) {
-    .btnAdd {
-      padding: 18px 30px;
-      min-width: 178px;
-      height: 60px;
-      bottom: 64px;
-      right: 32px;
-    }
-  
-    .btnText {
-      font-size: 16px;
-      line-height: 150%;
-    }
-
-    .plus {
-      height: 15px;
-      width: 15px;
-      margin-top: 4px;
-    }
-  }
-
+}

@@ -1,13 +1,19 @@
 .waterItem {
   display: flex;
-  background-color: #f0eff4;
+  background-color: #ffffff;
   border-radius: 15px;
   padding: 18px 14px;
   gap: 10px;
 }
 
+.waterIcon {
+  width: 44px;
+  height: 45px;
+  fill: #9be1a0;
+}
+
 .volume {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 700;
   font-size: 14px;
   line-height: 14px;
@@ -17,7 +23,7 @@
 }
 
 .time {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 400;
   font-size: 12px;
   line-height: 12px;
@@ -40,12 +46,16 @@
   cursor: pointer;
 }
 
+.waterButton:nth-child(1) {
+  margin-bottom: 8px;
+}
+
 .editBtn {
   fill: white;
   stroke: black;
   width: 16px;
   height: 16px;
-  margin-bottom: 8px;
+  transition: stroke 0.3s ease;
 }
 
 .removeBtn {
@@ -53,6 +63,12 @@
   stroke: black;
   width: 16px;
   height: 16px;
+  transition: stroke 0.3s ease;
+}
+
+.waterButton:hover .editBtn,
+.waterButton:hover .removeBtn {
+  stroke: #9be1a0;
 }
 
 @media screen and (min-width: 768px) {
@@ -68,7 +84,7 @@
   .time {
     line-height: 22.4px;
   }
-  .editBtn {
+  .waterButton:nth-child(1) {
     margin-bottom: 14px;
   }
 }
