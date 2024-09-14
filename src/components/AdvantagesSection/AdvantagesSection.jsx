@@ -4,6 +4,7 @@ const AdvantagesSection = () => {
   return (
     <div className={css.advantages_section}>
       <div className={css.advantages_info__block}>
+        
         <div className={css.customers_block}>
           <ul className={css.customers_icons__list}>
             <li className={css.customers_icons__item} />
