@@ -2,7 +2,14 @@ import { createSlice } from '@reduxjs/toolkit';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
 
-import { login, logout, refresh, update } from './operations';
+import {
+  login,
+  logout,
+  refresh,
+  register,
+  updateUser,
+  updateAvatar,
+} from './operations';
 
 const initialState = {
   user: {
@@ -24,9 +31,14 @@ const authSlice = createSlice({
   reducers: {},
   extraReducers: (builder) =>
     builder
+      .addCase(register.fulfilled, (state, { payload }) => {
+        state.token = payload.accessToken;
+        state.user = payload.user;
+        state.isLoggedIn = true;
+      })
       .addCase(login.fulfilled, (state, { payload }) => {
-        state.token = payload.data.accessToken;
-        state.user = payload.data.user;
+        state.token = payload.accessToken;
+        state.user = payload.user;
         state.isLoggedIn = true;
       })
       .addCase(logout.fulfilled, (state) => {
@@ -35,10 +47,13 @@ const authSlice = createSlice({
         state.user = initialState.user;
       })
       .addCase(refresh.fulfilled, (state, { payload }) => {
-        state.token = payload.data;
+        state.token = payload;
       })
-      .addCase(update.fulfilled, (state, { payload }) => {
+      .addCase(updateUser.fulfilled, (state, { payload }) => {
         state.user = payload.data;
+      })
+      .addCase(updateAvatar.fulfilled, (state, { payload }) => {
+        state.user.avatarUrl = payload;
       }),
 });
 

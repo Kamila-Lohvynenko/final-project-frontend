@@ -5,12 +5,28 @@ const register = (userCredentials) =>
 
 const login = (userCredentials) => authClient.post('/login', userCredentials);
 
-const logout = () => authClient.logout('/logout');
+const logout = () => authClient.post('/logout');
 
-const refresh = () => authClient.get('/refresh-user');
+const refresh = () => authClient.post('/refresh');
 
-// TODO update route name
+const getUser = () => authClient.get('/data');
+
 const update = (fieldsToUpdate) =>
-  authClient.patch('/update-user', fieldsToUpdate);
+  authClient.patch('/updateData', fieldsToUpdate);
 
-export default { register, login, logout, refresh, update };
+const uploadAvatar = (file) =>
+  authClient.patch('/updateAvatar', file, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  });
+
+export default {
+  register,
+  login,
+  logout,
+  refresh,
+  update,
+  getUser,
+  uploadAvatar,
+};
