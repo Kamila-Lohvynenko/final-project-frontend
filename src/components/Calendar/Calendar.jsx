@@ -46,7 +46,7 @@ const Calendar = ({ year, month }) => {
 
     return (
         <div className={css.container}>
-            <p>Calendar UI Test for {month + 1}/{year}</p>
+      
             <ul className={css.calendarList}>
                 {dateArray.map((eachDate, index) => (
                     <li key={index}>
