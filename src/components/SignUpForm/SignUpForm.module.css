@@ -97,6 +97,19 @@ input:focus {
   fill: transparent;
 }
 
+.errorMessage {
+  color: var(--error);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.29;
+  letter-spacing: -0.01em;
+}
+
+.error {
+  color: var(--error);
+  border: 1px solid var(--error);
+}
+
 @media only screen and (min-width: 768px) {
   .wrapper {
     padding: 281px 134px;
