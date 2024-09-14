@@ -10,10 +10,12 @@ import {
 import { configureStore } from '@reduxjs/toolkit';
 
 import authReducer from './user/slice';
+import waterReducer from './water/slice';
 
 export const store = configureStore({
   reducer: {
     auth: authReducer,
+    water: waterReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
@@ -23,4 +25,4 @@ export const store = configureStore({
     }),
 });
 
-export let persistor = persistStore(store);
+export const persistor = persistStore(store);

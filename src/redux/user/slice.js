@@ -25,19 +25,20 @@ const authSlice = createSlice({
   extraReducers: (builder) =>
     builder
       .addCase(login.fulfilled, (state, { payload }) => {
-        state.token = payload.accessToken;
-        state.user = payload.user;
+        state.token = payload.data.accessToken;
+        state.user = payload.data.user;
         state.isLoggedIn = true;
       })
       .addCase(logout.fulfilled, (state) => {
         state.isLoggedIn = false;
         state.token = null;
+        state.user = initialState.user;
       })
       .addCase(refresh.fulfilled, (state, { payload }) => {
-        state.token = payload;
+        state.token = payload.data;
       })
       .addCase(update.fulfilled, (state, { payload }) => {
-        state.user = payload;
+        state.user = payload.data;
       }),
 });
 

@@ -1,8 +1,12 @@
 import css from '../AddWaterBtn/AddWaterBtn.module.css';
+import sprite from '../../images/sprite.svg';
 
-const AddWaterBtn = ({inDetails}) => {
+const AddWaterBtn =({onClick, inDetails})=>{
     return( !inDetails ?
-        <button type="button" className={css.btnAdd}>
+        <button type="button" className={css.btnAdd} onClick={onClick}>
+            <svg className={css.plus}>
+                <use xlinkHref={sprite + "#icon-plus-wide"}/>
+            </svg>
             <h2 className={css.btnText}>
             Add water
             </h2>            
@@ -18,5 +22,3 @@ const AddWaterBtn = ({inDetails}) => {
 };
 
 export default AddWaterBtn;
-
-

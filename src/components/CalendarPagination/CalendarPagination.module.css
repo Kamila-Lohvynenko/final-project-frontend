@@ -39,10 +39,12 @@
 }
 
 .month_year {
-  width: 140px;
+  width: 161px;
+
+  
   text-align: center;
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 700;
 }
 
 .statistic_btn {
@@ -58,19 +60,54 @@
 
 
 .svg_chart {
-    width: 20px;
-		height: 20px;
-		opacity: 0.4;
+    width: 24px;
+		height: 24px;
+
 }
 .svg_arrow_left{
-    width: 7px;
-    height: 14px;
+    width: 18px;
+    height: 18px;
 
 }
 .svg_arrow_right{
   
-    width: 7px;
-		height: 14px;
+    width: 18px;
+		height: 18px;
+}
+
+
+.btn {
+	transition: transform 0.2s ease;
+}
+
+.btn:hover {
+	transform: scale(1.4);
+}
+
+.btn:disabled {
+	cursor: default;
+}
+
+.btn_disabled {
+	opacity: 0.5;
+}
+
+.btn_disabled:hover {
+	transform: scale(1);
+}
+.opacity1 {
+  opacity: 1;
+}
+
+.svg_hart {
+  width: 20px;
+		height: 20px;
+		opacity: 0.4;
+
+}
+
+.isHidden {
+	display: none;
 }
 
 

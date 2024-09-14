@@ -3,7 +3,7 @@ import css from '../WaterProgressBar/WaterProgressBar.module.css';
 const WaterProgressBar =()=>{
     return(
         <div className={css.progressBarContainer}>
-            <h2 className={css.progressBarTitle}>today</h2>
+            <h2 className={css.progressBarTitle}>Today</h2>
             <div className={css.progressBar}>
                 <div className={css.progressBarFill}></div>
                 <p className={css.percentNumber}></p>
