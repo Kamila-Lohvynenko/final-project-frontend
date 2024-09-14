@@ -1,8 +1,14 @@
+.logo {
+  padding: 24px 0 0 16px;
+}
+
 .wrapperSignIn {
-  padding: 116px;
   display: flex;
   flex-direction: column;
   align-items: left;
+  padding: 16px;
+  padding-bottom: 50px;
+  margin: auto 0;
 }
 .title {
   padding-bottom: 32px;
@@ -15,11 +21,16 @@
   color: var(--light-black);
 }
 
+.form {
+  width: 100%;
+}
+
 .field {
   display: flex;
   flex-direction: column;
   gap: 8px;
   margin-bottom: 32px;
+  width: 100%;
 }
 
 .label {
@@ -31,8 +42,9 @@
 
 .input {
   position: relative;
+
   padding: 16px;
-  width: 436px;
+  width: 100%;
 
   font-size: 14px;
   line-height: 1.28;
@@ -51,8 +63,8 @@ input:focus {
 }
 
 .btn {
-  width: 436px;
-  padding: 18px 191px;
+  width: 100%;
+  padding: 18px;
 
   font-size: 14px;
   font-weight: 700;
@@ -93,6 +105,7 @@ input:focus {
 }
 .wrapper_icon {
   position: relative;
+  width: 100%;
 }
 
 .icon_eye {
@@ -116,6 +129,13 @@ input:focus {
   .auth {
     font-size: 16px;
     line-height: 1.5;
+  }
+  .wrapperSignIn {
+    padding-left: 134px;
+    padding-right: 134px;
+  }
+  .field {
+    width: 436px;
   }
 }
 
