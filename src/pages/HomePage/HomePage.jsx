@@ -5,10 +5,8 @@ import css from './HomePage.module.css';
 const HomePage = () => {
   return (
     <section className={css.main_page}>
-      <div className={css.container}>
         <WelcomeSection />
         <AdvantagesSection />
-      </div>
     </section>
   );
 };

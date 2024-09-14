@@ -44,7 +44,7 @@
     width: 26.4px;
     height: 28px;
     flex-shrink: 0;
-    border-radius: 50px;
+    border-radius: 50%;
     border: 2px solid #FFF;
     background-color: #d3d3d3;
     background-position: 50%;
@@ -77,23 +77,22 @@
     display: block;
 }
 
-.customers_info {
-    display: flex;
-
-    color: #323F47;
-    flex-wrap: wrap;
+.customers_info,
+.customers_info__span {
     font-size: 12px;
-    font-style: normal;
     font-weight: 700;
     line-height: 1.16;
 }
 
+.customers_info {
+    display: flex;
+    flex-wrap: wrap;
+
+    color: #323F47;
+}
+
 .customers_info__span {
     color: #9BE1A0;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 1.16;
 }
 
 .benefits_info__wrap {
@@ -153,13 +152,100 @@
 }
 
 
-  
+/*? ================== Media 768px  ==================== */
+
+
+@media screen and (min-width: 768px) {
+    .advantages_section {
+        max-width: 704px;
+        height: 446px;
+        padding: 32px;
+        background-image: url(../../images/main-page-img/tablet-bg.jpg);
+    }
+
+    .customers_block {
+        padding: 10px 20px;
+        max-width: 240px;
+        margin-bottom: -30px;
+    }
+
+    .customers_icons__item {
+        width: 47px;
+        height: 47px;
+        margin-left: -20px;
+    }
+
+    .customers_icons__item:first-child {
+        background-image: url(../../images/main-page-img/girl-1-tablet.jpg);
+    }
+
+    .customers_icons__item:nth-child(2) {
+        background-image: url(../../images/main-page-img/boy-tablet.jpg);
+    }
+
+    .customers_icons__item:nth-child(3) {
+        background-image: url(../../images/main-page-img/girl-2-tablet.jpg);
+    }
+
+    .customers_info,
+    .customers_info__span {
+        font-size: 15px;
+        line-height: 1.49;
+    }
+
+    .benefits_info__wrap {
+        max-width: 704px;
+    }
+
+    .benefits_info__block {
+        max-width: 245px;
+        gap: 10px;
+    }
+
+    .benefits_btn {
+        padding: 11px 16px;
+        font-size: 12px;
+        line-height: 1;
+        letter-spacing: -0.12px;
+    }
+
+}
+
+/*! ================== Media 1440px  ============================= */
+
+@media screen and (min-width: 1440px) {
+    .advantages_section {
+        max-width: 672px;
+        height: 736px;
+        background-image: url(../../images/main-page-img/desktop-bg.jpg);
+    }
+
+    .customers_block {
+        margin-bottom: -10px;
+    }
+
+    .customers_icons__item:first-child {
+        background-image: url(../../images/main-page-img/girl-1-desktop.jpg);
+    }
+
+    .customers_icons__item:nth-child(2) {
+        background-image: url(../../images/main-page-img/boy-desktop.jpg);
+    }
+
+    .customers_icons__item:nth-child(3) {
+        background-image: url(../../images/main-page-img/girl-2-desktop.jpg);
+    }
+}
+
+
+/* MEDIA FOR Screen resolutions */
+
 
 @media screen and (min-device-pixel-ratio: 2),
 (min-resolution: 2dppx),
 (min-resolution: 192dpi) {
     .advantages_section {
-        background-image: url(../../images//main-page-img//mobile-bg@2.jpg)
+        background-image: url(../../images//main-page-img/mobile-bg@2.jpg)
     }
 
     .customers_icons__item:first-child {
@@ -174,8 +260,41 @@
         background-image: url(../../images/main-page-img/girl-2-mobile@2.jpg);
     }
 
+
+    @media screen and (min-width: 768px) {
+        .advantages_section {
+            background-image: url(../../images//main-page-img/tablet-bg@2.jpg)
+        }
+
+        .customers_icons__item:first-child {
+            background-image: url(../../images/main-page-img/girl-1-tablet@2.jpg);
+        }
+
+        .customers_icons__item:nth-child(2) {
+            background-image: url(../../images/main-page-img/boy-tablet@2.jpg);
+        }
+
+        .customers_icons__item:nth-child(3) {
+            background-image: url(../../images/main-page-img/girl-2-tablet@2.jpg);
+        }
+    }
+
+
+    @media screen and (min-width: 1440px) {
+        .advantages_section {
+            background-image: url(../../images//main-page-img/desktop-bg@2.jpg)
+        }
+
+        .customers_icons__item:first-child {
+            background-image: url(../../images/main-page-img/girl-1-desktop@2.jpg);
+        }
+
+        .customers_icons__item:nth-child(2) {
+            background-image: url(../../images/main-page-img/boy-desktop@2.jpg);
+        }
+
+        .customers_icons__item:nth-child(3) {
+            background-image: url(../../images/main-page-img/girl-2-desktop@2.jpg);
+        }
+    }
 }
-
-@media screen and (min-width: 768px) {}
-
-@media screen and (min-width: 1440px) {}
