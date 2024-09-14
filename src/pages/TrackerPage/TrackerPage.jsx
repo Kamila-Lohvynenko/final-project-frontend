@@ -57,7 +57,6 @@ const TrackerPage = () => {
 
   return (
     <div>
-      TrackerPage
       <div className={css.pageWrapper}>
         <WaterMainInfo
           waterModalState={waterModalState}
