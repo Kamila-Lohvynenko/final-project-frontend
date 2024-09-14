@@ -60,7 +60,7 @@ const UserSettingsForm = () => {
       onSubmit={handleSubmit(onSubmit)}
       style={{ maxWidth: '400px', margin: '0 auto' }}
     >
-      <div style={{ height: '400px', overflowY: 'auto', padding: '20px' }}>
+      <div style={{ height: '100vh', overflowY: 'auto' }}>
         {avatarPreview && (
           <img
             className={css.avatar}
@@ -90,6 +90,7 @@ const UserSettingsForm = () => {
             <p className={css.errors}>{errors.avatar.message}</p>
           )}
         </div>
+
         <div>
           <p>Your gender identity</p>
           <div>
@@ -107,6 +108,7 @@ const UserSettingsForm = () => {
             )}
           </div>
         </div>
+
         <div>
           <label htmlFor="name">Your name</label>
           <input type="text" id="name" {...register('name')} />
@@ -115,6 +117,7 @@ const UserSettingsForm = () => {
           <input type="email" id="email" {...register('email')} />
           {errors.email && <p>errors.email.message</p>}
         </div>
+
         <div>
           <p>My daily norma</p>
           <p>For woman:</p>
@@ -128,13 +131,13 @@ const UserSettingsForm = () => {
             you must set 0)
           </p>
           <span>
-            {/* here would be exclamation icon */}
-            <svg width="" height="">
-              <use href=""></use>
+            <svg className={css.iconExclamationMark}>
+              <use href={`${sprite}#icon-exclamation-mark`}></use>
             </svg>
             <p>Active time in hours</p>
           </span>
         </div>
+
         <div>
           <label htmlFor="weight">Your weight in kilograms:</label>
           <input type="number" id="weight" {...register('weight')} />
@@ -145,6 +148,7 @@ const UserSettingsForm = () => {
           <input type="number" id="sportTime" {...register('sportTime')} />
           {errors.sportTime && <p>errors.sportTime.message</p>}
         </div>
+
         <div>
           <p>The required amount of water in liters per day:</p>
           <p>{/* required amount of water */}L</p>
@@ -154,8 +158,10 @@ const UserSettingsForm = () => {
           <input type="number" id="waterIntake" {...register('waterIntake')} />
           {errors.waterIntake && <p>{errors.waterIntake.message}</p>}
         </div>
+        <button type="submit" className={css.button}>
+          Save
+        </button>
       </div>
-      <button type="submit">Save</button>
     </form>
   );
 };
