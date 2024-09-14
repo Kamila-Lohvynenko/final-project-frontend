@@ -1,15 +1,11 @@
 import WaterForm from "../WaterForm/WaterForm.jsx";
+import css from '../WaterModal/WaterModal.module.css';
 
-const WaterModal = ({ onClose }) => {
-  const handleClose = () => {
-    onClose('waterModal');
-  };
+const WaterModal = () => {
   return (
-    <div>      
+    <div className={css.waterModal}>
+      <h1>Add water</h1>      
       <WaterForm/>
-      <button type="button" onClick={handleClose}>
-        Close
-      </button>
     </div>
   );
 };
