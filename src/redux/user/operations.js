@@ -3,7 +3,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import authService from '../../services/auth';
 import { setAuthToken } from '../../services/axios.config';
 
-export const register = createAsyncThunk(
+export const registerUser = createAsyncThunk(
   'user/register',
   async (userCredentials, thunkApi) => {
     try {
@@ -27,7 +27,7 @@ export const register = createAsyncThunk(
   },
 );
 
-export const login = createAsyncThunk(
+export const loginUser = createAsyncThunk(
   'user/login',
   async (userCredentials, thunkApi) => {
     try {
@@ -50,13 +50,16 @@ export const login = createAsyncThunk(
   },
 );
 
-export const logout = createAsyncThunk('user/logout', async (_, thunkApi) => {
-  try {
-    await authService.logout();
-  } catch (error) {
-    return thunkApi.rejectWithValue(error.response.data.message);
-  }
-});
+export const logoutUser = createAsyncThunk(
+  'user/logout',
+  async (_, thunkApi) => {
+    try {
+      await authService.logout();
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.response.data.message);
+    }
+  },
+);
 
 export const updateUser = createAsyncThunk(
   'user/update',
@@ -71,25 +74,28 @@ export const updateUser = createAsyncThunk(
   },
 );
 
-export const refresh = createAsyncThunk('user/refresh', async (_, thunkApi) => {
-  try {
-    const {
-      auth: { token },
-    } = thunkApi.getState();
+export const refreshUser = createAsyncThunk(
+  'user/refresh',
+  async (_, thunkApi) => {
+    try {
+      const {
+        auth: { token },
+      } = thunkApi.getState();
 
-    if (token) setAuthToken(token);
+      if (token) setAuthToken(token);
 
-    const {
-      data: {
-        data: { accessToken },
-      },
-    } = await authService.refresh();
+      const {
+        data: {
+          data: { accessToken },
+        },
+      } = await authService.refresh();
 
-    return accessToken;
-  } catch (error) {
-    return thunkApi.rejectWithValue(error.response.data.message);
-  }
-});
+      return accessToken;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.response.data.message);
+    }
+  },
+);
 
 export const updateAvatar = createAsyncThunk(
   'user/updateAvatar',

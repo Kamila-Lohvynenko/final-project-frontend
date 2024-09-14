@@ -3,10 +3,10 @@ import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
 
 import {
-  login,
-  logout,
-  refresh,
-  register,
+  loginUser,
+  logoutUser,
+  refreshUser,
+  registerUser,
   updateUser,
   updateAvatar,
 } from './operations';
@@ -31,22 +31,22 @@ const authSlice = createSlice({
   reducers: {},
   extraReducers: (builder) =>
     builder
-      .addCase(register.fulfilled, (state, { payload }) => {
+      .addCase(registerUser.fulfilled, (state, { payload }) => {
         state.token = payload.accessToken;
         state.user = payload.user;
         state.isLoggedIn = true;
       })
-      .addCase(login.fulfilled, (state, { payload }) => {
+      .addCase(loginUser.fulfilled, (state, { payload }) => {
         state.token = payload.accessToken;
         state.user = payload.user;
         state.isLoggedIn = true;
       })
-      .addCase(logout.fulfilled, (state) => {
+      .addCase(logoutUser.fulfilled, (state) => {
         state.isLoggedIn = false;
         state.token = null;
         state.user = initialState.user;
       })
-      .addCase(refresh.fulfilled, (state, { payload }) => {
+      .addCase(refreshUser.fulfilled, (state, { payload }) => {
         state.token = payload;
       })
       .addCase(updateUser.fulfilled, (state, { payload }) => {

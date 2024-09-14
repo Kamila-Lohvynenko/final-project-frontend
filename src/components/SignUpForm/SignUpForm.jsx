@@ -6,6 +6,7 @@ import sprite from '../../images/sprite.svg';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch } from 'react-redux';
+import { register as registerUser } from '../../redux/user/operations';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().email('Must be a valid email').required('Required'),
@@ -31,7 +32,7 @@ const SignUpForm = () => {
 
   const onSubmit = (values) => {
     dispatch(
-      register({
+      registerUser({
         email: values.email,
         password: values.password,
       }),
