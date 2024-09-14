@@ -1,0 +1,23 @@
+.waterList {
+  display: flex;
+  gap: 16px;
+  max-width: 608px;
+  padding: 0;
+  overflow-x: auto;
+  padding-bottom: 24px;
+}
+
+.waterList::-webkit-scrollbar {
+  background-color: #f0eff4;
+  height: 8px;
+  border-radius: 9px;
+}
+.waterList::-webkit-scrollbar-thumb {
+  background-color: #323f47;
+  border-radius: 9px;
+}
+
+.waterItem {
+  list-style: none;
+  flex: 0 0 auto;
+}
