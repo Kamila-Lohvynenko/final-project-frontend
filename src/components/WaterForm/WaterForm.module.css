@@ -1,0 +1,267 @@
+.waterForm {
+    margin: 0 auto;
+    width: 303px;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: "Poppins", sans-serif;
+    background-color: var(--white);
+  }
+  
+  .formHeader {
+    display: block;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    text-align: left;
+    color: var(--light-black);
+    margin: 0 0 20px 0;
+    background-color: inherit;
+  }
+  
+  .amountOfWater {
+    display: block;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.29;
+    letter-spacing: -0.01em;
+    color: var(--black);
+    margin: 0 0 8px 0;
+    background-color: inherit;
+  }
+  
+  .addWaterWrapper {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin: 0 0 16px 0;
+    gap: 8px;
+    background-color: inherit;
+    width: 100%;
+    height: 40px;
+  }
+  
+  .addWaterBtn{
+    border-radius: 30px;
+    border: 1.5px solid var(--light-black);
+    background-color: inherit;
+    width: 40px;
+    height: 40px;
+    position: relative;
+    cursor: pointer;
+    font-style: inherit;
+    line-height: 0;
+    color: var(--light-black);
+    fill: var(--light-black);
+    stroke: var(--light-black);
+    font-size: 25px;
+    cursor: pointer;
+  }
+
+    .addWaterWrapper svg {
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    cursor: pointer;
+  }
+  
+  .addWaterWrapper button:hover {
+    border: 1.5px solid var(--lime);
+    fill: var(--lime);
+    stroke: var(--lime);
+  }
+  
+  .addWaterValue {
+    display: block;
+    border-radius: 30px;
+    padding: 11px 20px;
+    height: 40px;
+    min-width: 81px;
+    background: var(--light-black);
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+    text-align: center;
+    color: #fff;
+  }
+  
+  .recordingTimeLabel {
+    margin: 0 0 0 0;
+    display: block;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    color: var(--black);
+    background-color: inherit;
+  }
+  
+  .recordingTime {
+    display: block;
+    border: 1px solid rgba(47, 47, 47, 0.15);
+    outline: transparent;
+    border-radius: 15px;
+    padding: 14px 16px 14px 16px;
+    height: 46px;
+    width: 100%;
+    background-color: var(--white);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    color: var(--black);
+    margin: 8px 0 0 0;
+  }
+  
+  .recordingTime:focus {
+    border: 1px solid rgba(47, 47, 47, 0.35);
+  }
+  
+  .waterValueLabel {
+    display: block;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    color: var(--black);
+    margin-top: 24px;
+  }
+  
+  .waterValue {
+    display: block;
+    border: 1px solid rgba(47, 47, 47, 0.15);
+    outline: transparent;
+    border-radius: 15px;
+    padding: 16px 16px 16px 16px;
+    height: 46px;
+    width: 100%;
+    background-color: var(--white);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    color: var(--black);
+    margin: 8px 0 0;
+  }
+  
+  .waterValue:focus {
+    border: 1px solid rgba(47, 47, 47, 0.35);
+  }
+  
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+  
+  .saveBtn {
+    display: block;
+    border-radius: 30px;
+    padding: 14px 40px;
+    min-width: 116px;
+    width: min-content;
+    height: 46px;
+    background: var(--lime);
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    text-align: center;
+    color: var(--light-black);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 24px;
+  }
+  
+  .saveBtn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background-color: #e6e6e6;
+  }
+  
+  .saveBtn:hover,
+  .saveBtn:active,
+  .saveBtn:focus {
+    background-color: var(--lime);
+    color: var(--light-black);
+  }
+  
+ 
+  @media screen and (min-width: 768px) {
+    .waterForm {
+      width: 438px;
+    }
+  
+    .formHeader {
+      font-size: 18px;
+      line-height: 1.33;
+    }
+  
+    .amountOfWater {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+  
+    .addWaterWrapper {
+      height: 43px;
+    }
+  
+    .addWaterBtn button {
+      width: 43px;
+      height: 43px;
+    }
+  
+    .addWaterValue {
+      height: 43px;
+      min-width: 86px;
+    }
+  
+    .recordingTimeLabel {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+  
+    .recordingTime {
+      padding: 16px 16px 16px 16px;
+      height: 56px;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+  
+    .waterValueLabel {
+      font-size: 18px;
+      line-height: 1.33;
+    }
+  
+    .waterValue {
+      height: 56px;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+  
+    .saveBtn {
+      padding: 18px 50px;
+      min-width: 141px;
+      width: min-content;
+      height: 60px;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+  }
