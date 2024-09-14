@@ -1,0 +1,88 @@
+.userBarPopover {
+  position: absolute; /* Позиціонування відносно кнопки */
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  width: 200px; /* Фіксована ширина поповера */
+  z-index: 1000;
+  transition: transform 0.3s ease-in-out;
+}
+
+.userBarPopover button {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.1); /* Мутний фон */
+  color: black; /* Колір тексту */
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-top: 5px; /* Відступ між кнопками */
+}
+
+.userBarPopover button:hover {
+  background-color: black; /* Колір фону при наведенні */
+  color: white; /* Колір тексту при наведенні */
+}
+
+.userBarPopover button:focus {
+  outline: none;
+}
+
+.popoverIcon {
+  margin-right: 10px;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+}
+.userBarPopover {
+  margin-left: 420px;
+  margin-top: 80px; 
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  width: 200px;
+  z-index: 1000;
+  transition: transform 0.3s ease-in-out;
+   
+  }
+  
+  .userBarPopover button {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    
+  }
+  
+  .userBarPopover button:hover {
+    background-color: #f5f5f5;
+  }
+  
+  .userBarPopover button:focus {
+    outline: none;
+  }
+  .userBarPopover button.muted {
+    background: rgba(0, 0, 0, 0.1); 
+    color: black; 
+  }
+  .popoverIcon {
+    margin-right: 10px; 
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  }
