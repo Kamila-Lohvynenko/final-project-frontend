@@ -91,7 +91,7 @@
     line-height: 1.5;
     letter-spacing: -0.01em;
     text-align: center;
-    color: #fff;
+    color: var(--white);
   }
   
   .recordingTimeLabel {
@@ -199,7 +199,7 @@
   .saveBtn:hover,
   .saveBtn:active,
   .saveBtn:focus {
-    background-color: var(--lime);
+    background-color: #87D28D;
     color: var(--light-black);
   }
   
