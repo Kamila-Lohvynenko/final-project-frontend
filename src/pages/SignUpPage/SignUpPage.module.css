@@ -1,4 +1,5 @@
 .wrapper {
+  position: relative;
   background-color: var(--grey);
   border-radius: 30px;
   display: flex;
@@ -7,10 +8,20 @@
   margin-bottom: 16px;
 }
 
-@media only screen and (min-width: 768px) {
-.wrapper {
-  margin-top: 32px;
-  margin-bottom: 32px;
-}
+.logoWrapper {
+  position: absolute;
+  left: 16px;
+  top: 24px;
 }
 
+@media only screen and (min-width: 768px) {
+  .wrapper {
+    margin-top: 32px;
+    margin-bottom: 32px;
+  }
+
+  .logoWrapper {
+    left: 32px;
+    top: 32px;
+  }
+}
