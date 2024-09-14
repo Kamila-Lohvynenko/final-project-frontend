@@ -14,9 +14,9 @@
   padding-left: 16px;
 }
 
-.dailyNorma {
+/* .dailyNorma {
   margin-top: 78px;
-}
+} */
 
 @media (min-device-pixel-ratio: 2),
   (min-resolution: 192dpi),
@@ -38,9 +38,9 @@
     padding-left: 32px;
   }
 
-  .dailyNorma {
+  /* .dailyNorma {
     margin-top: 78px;
-  }
+  } */
 
   @media (min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
