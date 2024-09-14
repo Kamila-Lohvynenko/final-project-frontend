@@ -1,14 +1,25 @@
-const WaterMainInfo = ({ openWaterModal, waterModalState }) => {
-  return (
+import WaterDailyNorma from '../WaterDailyNorma/WaterDailyNorma.jsx';
+import WaterProgressBar from '../WaterProgressBar/WaterProgressBar.jsx';
+import AddWaterBtn from '../AddWaterBtn/AddWaterBtn.jsx';
+import css from '../WaterMainInfo/WaterMainInfo.module.css';
+
+
+const WaterMainInfo =({openWaterModal})=>{
+ 
+  const handleAddWaterClick =()=>{
+    openWaterModal({isOpen: true, operation: 'addWater'});
+  }
+
+  return(
     <div>
-      WaterMainInfo
-      <button
-        onClick={() => openWaterModal({ isOpen: true, operation: 'add' })}
-      >
-        open
-      </button>
+      <div className={css.waterContainer}>             
+        <WaterDailyNorma />
+        <WaterProgressBar />
+        <AddWaterBtn onClick={handleAddWaterClick} />
+      </div>      
     </div>
   );
 };
+
 
 export default WaterMainInfo;

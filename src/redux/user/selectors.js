@@ -1,0 +1,9 @@
+export const selectName = (state) => state.auth.user.name;
+export const selectEmail = (state) => state.auth.user.email;
+export const selectAvatarUrl = (state) => state.auth.user.avatarUrl;
+export const selectGender = (state) => state.auth.user.gender;
+export const selectWeight = (state) => state.auth.user.weight;
+export const selectTimeForSports = (state) => state.auth.user.timeForSports;
+export const selectDailyIntake = (state) => state.auth.user.dailyIntake;
+export const selectToken = (state) => state.auth.user.token;
+export const selectIsLoggedIn = (state) => state.auth.user.isLoggedIn;

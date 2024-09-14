@@ -1,0 +1,32 @@
+.form {
+  background-color: var(--grey);
+  border-radius: 30px;
+}
+.wrapper {
+  margin: 0 auto;
+  padding: 16px;
+
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+}
+.box {
+  display: none;
+  border-radius: 30px;
+}
+
+@media only screen and (min-width: 768px) {
+  .wrapper {
+    padding: 32px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .box {
+    display: block;
+    background-color: aquamarine;
+    width: 672px;
+    height: 736px;
+    flex-shrink: 0;
+  }
+}

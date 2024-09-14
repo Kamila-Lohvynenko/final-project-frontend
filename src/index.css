@@ -1,7 +1,91 @@
-a {
-  text-decoration: inherit;
+@font-face {
+  font-family: "Poppins";
+  src: url("./fonts/Poppins-Regular.ttf");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("./fonts/Poppins-Bold.ttf");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("./fonts/Gilroy-Regular.ttf");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("./fonts/Gilroy-Bold.ttf");
+  font-weight: 700;
+}
+
+:root {
+  --black: #2f2f2f;
+  --light-black: #323f47;
+  --lime: #9be1a0;
+  --darker-lime: #87d28d;
+  --grey: #f0eff4;
+  --white: #ffffff;
+
+  --error: #ef5050;
 }
 
 body {
+  font-family: "Poppins", system-ui;
+  font-weight: 400;
+  font-size: 16px;
+
+  color: var(--black);
+}
+
+/* reset styles */
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
   margin: 0;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  display: block;
+  color: currentColor;
+  text-decoration: none;
+}
+
+button {
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }

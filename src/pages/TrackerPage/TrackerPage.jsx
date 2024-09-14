@@ -1,14 +1,14 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-import css from "./TrackerPage.module.css";
+import css from './TrackerPage.module.css';
 
-import LogOutModal from "./../../components/LogOutModal/LogOutModal";
-import Modal from "./../../components/Modal/Modal";
-import UserSettingsModal from "./../../components/UserSettingsModal/UserSettingsModal";
-import WaterDetailedInfo from "./../../components/WaterDetailedInfo/WaterDetailedInfo";
-import WaterMainInfo from "./../../components/WaterMainInfo/WaterMainInfo";
-import WaterModal from "./../../components/WaterModal/WaterModal";
-import DeleteWaterModal from "./../../components/DeleteWaterModal/DeleteWaterModal";
+import LogOutModal from './../../components/LogOutModal/LogOutModal';
+import Modal from './../../components/Modal/Modal';
+import UserSettingsModal from './../../components/UserSettingsModal/UserSettingsModal';
+import WaterDetailedInfo from './../../components/WaterDetailedInfo/WaterDetailedInfo';
+import WaterMainInfo from './../../components/WaterMainInfo/WaterMainInfo';
+import WaterModal from './../../components/WaterModal/WaterModal';
+import DeleteWaterModal from './../../components/DeleteWaterModal/DeleteWaterModal';
 
 const TrackerPage = () => {
   const [waterModalState, setWaterModalState] = useState({
@@ -22,22 +22,22 @@ const TrackerPage = () => {
 
   const closeModal = (modalName) => {
     switch (modalName) {
-      case "waterModal":
+      case 'waterModal':
         setWaterModalState({
           isOpen: false,
           operation: null,
         });
         break;
 
-      case "settingsModal":
+      case 'settingsModal':
         setSettingsModal(false);
         break;
 
-      case "deleteWaterModal":
+      case 'deleteWaterModal':
         setDeleteWaterModal(false);
         break;
 
-      case "logoutModal":
+      case 'logoutModal':
         setLogoutModal(false);
         break;
 
@@ -63,7 +63,6 @@ const TrackerPage = () => {
           openWaterModal={openWaterModal}
         />
         <WaterDetailedInfo
-          waterModalState={waterModalState}
           openWaterModal={openWaterModal}
           setSettingsModal={setSettingsModal}
           setLogoutModal={setLogoutModal}
@@ -77,13 +76,13 @@ const TrackerPage = () => {
         />
       </Modal>
       <Modal isOpen={isSettingsModalOpen} setState={setSettingsModal}>
-        <UserSettingsModal />
+        <UserSettingsModal onClose={closeModal} />
       </Modal>
       <Modal isOpen={isDeleteWaterModalOpen} setState={setDeleteWaterModal}>
-        <LogOutModal />
+        <LogOutModal onClose={closeModal} />
       </Modal>
       <Modal isOpen={isLogoutModalOpen} setState={setLogoutModal}>
-        <DeleteWaterModal />
+        <DeleteWaterModal onClose={closeModal} />
       </Modal>
     </div>
   );
