@@ -7,16 +7,15 @@
     position: absolute;
     bottom: 32px;
     right: 16px;
-    background-color: #323f47;
+    background-color: var(--light-black);
     display: flex;
-    align-items: center;
     justify-content: center;
   }
   
   .btnAdd:hover .btnText,
   .btnAdd:hover .plus {
-    color: #9be1a0;
-    stroke: #9be1a0;
+    color: var(--lime);
+    stroke: var(--lime);
   }
   
   .btnText {
@@ -25,8 +24,17 @@
     line-height: 129%;
     letter-spacing: -0.01em;
     text-align: center;
-    color: #fff;
+    color: var(--white);
     transition: color 0.3s ease;
+  }
+
+  .plus {
+    width: 13px;
+    height: 13px;
+    margin-right: 10px;
+    margin-top: 2px;
+    stroke: var(--white);
+    transition: stroke 0.3s ease;
   }
 
   @media screen and (min-width: 768px) {
@@ -41,5 +49,11 @@
     .btnText {
       font-size: 16px;
       line-height: 150%;
+    }
+
+    .plus {
+      height: 15px;
+      width: 15px;
+      margin-top: 4px;
     }
   }
