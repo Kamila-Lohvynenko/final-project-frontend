@@ -9,6 +9,7 @@ import { useForm } from 'react-hook-form';
 import { loginUser } from '../../redux/user/operations';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-hot-toast';
+import Loader from '../Loader/Loader';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().email('Must be a valid email').required('Required'),
@@ -19,8 +20,8 @@ const SignInForm = () => {
   const emailId = useId();
   const passwordId = useId();
   const [visiblePassword, setVisiblePassword] = useState(false);
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const {
     register,
@@ -35,6 +36,7 @@ const SignInForm = () => {
   });
 
   const onSubmit = (values) => {
+    setLoading(true);
     dispatch(
       loginUser({
         email: values.email,
@@ -45,38 +47,23 @@ const SignInForm = () => {
       .then((response) => {
         toast.success('Log in is successful!');
         localStorage.setItem('token', response.token);
-        navigate('/tracker');
         reset();
       })
       .catch((error) => {
         console.error('Error details:', error);
         toast.error(`Error: wrong password or email! Please try again`);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
-  // const onSubmit = async ({ email, password }) => {
-  //   try {
-  //     const response = await dispatch(loginUser({ email, password }));
-
-  //     if (response.error) {
-  //       toast.error(
-  //         response.payload?.response?.data?.message || 'Login failed',
-  //       );
-  //       return;
-  //     }
-  //     toast.success('Log in is successful!');
-  //     localStorage.setItem('token', response.token);
-  //     navigate('/tracker');
-  //     reset();
-  //   } catch (error) {
-  //     toast.error(`Error: ${error.message}`);
-  //   }
-  // };
-
   return (
     <>
+      {/* {loading && <Loader className={'overlay'} />} */}
       <div className={styles.logo}>
         <Logo />
       </div>
+      {loading && <Loader />}
       <div className={styles.wrapperSignIn}>
         <h2 className={styles.title}>Sign In</h2>
         <form
