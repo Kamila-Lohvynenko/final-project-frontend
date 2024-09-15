@@ -45,9 +45,9 @@
   }
   .month {
     width: 109px;
-    color: var(--color-font-main);
 		font-size: 20px;
 		font-weight: bold;
+    color: var(--color-font-main);
   }
   
   
@@ -61,30 +61,26 @@
   }
 }
 .month_ind {
+  width: 194px;
   display: flex;
+  height: 18px;
   align-items: center;
 
-  width: 194px;
-  height: 18px;
+  padding: 3px 0 3px 0;
+  margin-left: auto;
+  font-size: 14px;
   background-color: var(--color-main-bg);
 
-		padding: 3px 0 3px 0;
 
-		font-size: 14px;
-		margin-left: auto;
 }
 .btn {
-  padding: 0;
-
-  width: 18px;
-  height: 18px;
-
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
+  width: 18px;
+  height: 18px;
+  padding: 0;
   background-color: var(--color-main-bg);
-
   border: none;
   cursor: pointer;
   transition: transform 0.2s ease;
@@ -124,7 +120,6 @@
 
 }
 .svg_arrow_right{
-  
     width: 18px;
 		height: 18px;
    
@@ -150,12 +145,12 @@
     font-weight: bold;
   }
   .btn {
-    padding: 0;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
     width: 18px;
     height: 18px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    padding: 0;
     background-color: var(--color-main-bg);
     border: none;
     cursor: pointer;
@@ -163,13 +158,13 @@
   .month_ind{
     display: flex;
     align-items: center;
-    background-color: var(--color-main-bg);
     width: 224px;
     height: 24px;
     padding: 3px 0 3px 0;
-
-    font-size: 14px;
     margin-left: auto;
+    font-size: 14px;
+    background-color: var(--color-main-bg);
+
   }
   .month_year{
     width: 140px;
@@ -227,11 +222,11 @@
     font-weight: bold;
   }
   .btn{
-    padding: 0;
-    width: 18px;
-    height: 18px;
     display: inline-flex;
     align-items: center;
+    width: 18px;
+    height: 18px;
+    padding: 0;
     background-color: #f0eff4;
 
     border: none;
@@ -241,13 +236,13 @@
   .month_ind {
     display: flex;
     align-items: center;
-    background-color: #f0eff4;
     width: 224px;
     height: 24px;
     padding: 3px 0 3px;
-
-    font-size: 14px;
     margin-left: auto;
+    font-size: 14px;
+    background-color: #f0eff4;
+
 
   }
   .month_year {

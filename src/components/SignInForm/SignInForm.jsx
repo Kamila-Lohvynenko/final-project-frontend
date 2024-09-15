@@ -34,43 +34,43 @@ const SignInForm = () => {
     mode: 'onBlur',
   });
 
-  // const onSubmit = (values) => {
-  //   dispatch(
-  //     loginUser({
-  //       email: values.email,
-  //       password: values.password,
-  //     }),
-  //   )
-  //     .unwrap()
-  //     .then((response) => {
-  //       toast.success('Log in is successful!');
-  //       localStorage.setItem('token', response.token);
-  //       navigate('/tracker');
-  //       reset();
-  //     })
-  //     .catch((error) => {
-  //       console.error('Error details:', error);
-  //       toast.error(`Error: ${error.message}`);
-  //     });
-  // };
-  const onSubmit = async ({ email, password }) => {
-    try {
-      const response = await dispatch(loginUser({ email, password }));
-
-      if (response.error) {
-        toast.error(
-          response.payload?.response?.data?.message || 'Login failed',
-        );
-        return;
-      }
-      toast.success('Log in is successful!');
-      localStorage.setItem('token', response.token);
-      navigate('/tracker');
-      reset();
-    } catch (error) {
-      toast.error(`Error: ${error.message}`);
-    }
+  const onSubmit = (values) => {
+    dispatch(
+      loginUser({
+        email: values.email,
+        password: values.password,
+      }),
+    )
+      .unwrap()
+      .then((response) => {
+        toast.success('Log in is successful!');
+        localStorage.setItem('token', response.token);
+        navigate('/tracker');
+        reset();
+      })
+      .catch((error) => {
+        console.error('Error details:', error);
+        toast.error(`Error: wrong password or email! Please try again`);
+      });
   };
+  // const onSubmit = async ({ email, password }) => {
+  //   try {
+  //     const response = await dispatch(loginUser({ email, password }));
+
+  //     if (response.error) {
+  //       toast.error(
+  //         response.payload?.response?.data?.message || 'Login failed',
+  //       );
+  //       return;
+  //     }
+  //     toast.success('Log in is successful!');
+  //     localStorage.setItem('token', response.token);
+  //     navigate('/tracker');
+  //     reset();
+  //   } catch (error) {
+  //     toast.error(`Error: ${error.message}`);
+  //   }
+  // };
 
   return (
     <>
