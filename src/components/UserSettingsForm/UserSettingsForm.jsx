@@ -60,11 +60,8 @@ const UserSettingsForm = () => {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      style={{ maxWidth: '400px', margin: '0 auto' }}
-    >
-      <div style={{ height: '100vh', overflowY: 'auto' }}>
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <div>
         {avatarPreview && (
           <img
             className={css.avatar}
@@ -95,7 +92,7 @@ const UserSettingsForm = () => {
           )}
         </div>
 
-        <div>
+        <div className={css.genderWrapper}>
           <p className={css.boldText}>Your gender identity</p>
           <div className={css.radioContainer}>
             <input
@@ -118,7 +115,7 @@ const UserSettingsForm = () => {
           </div>
         </div>
 
-        <div>
+        <div className={css.userDataWrapper}>
           <label htmlFor="name" className={`${css.boldText} ${css.inputLabel}`}>
             Your name
           </label>
@@ -127,11 +124,15 @@ const UserSettingsForm = () => {
             id="name"
             {...register('name')}
             onBlur={() => trigger('name')}
+            className={css.inputs}
           />
           {errors.name && (
             <p className={css.errorMessage}>{errors.name.message}</p>
           )}
-          <label htmlFor="email" className={css.boldText}>
+          <label
+            htmlFor="email"
+            className={`${css.boldText} ${css.inputLabel}`}
+          >
             Email
           </label>
           <input

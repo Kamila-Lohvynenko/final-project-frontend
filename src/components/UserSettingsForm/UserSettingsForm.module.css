@@ -1,7 +1,6 @@
 .inputWrapper {
   position: relative;
   display: flex;
-  align-items: center;
   justify-content: center;
   margin-bottom: 40px;
 }
@@ -14,16 +13,16 @@
 .uploadPhotoIcon {
   width: 18px;
   height: 18px;
-  margin-right: 8px; /* Отступ между иконкой и текстом */
+  margin-right: 8px;
   fill: transparent;
   stroke: currentColor;
 }
 
 .hiddenInput {
   position: absolute;
-  opacity: 0; /* Скрыть input */
-  width: 100%; /*Занять всю ширину */
-  height: 100%; /* Занять всю высоту */
+  opacity: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .iconExclamationMark {
@@ -55,14 +54,38 @@ input[type='radio']:checked {
   background-color: #9be1a0;
 }
 
+.genderWrapper {
+  margin-bottom: 24px;
+}
+
 .genderLabel {
   margin-left: 10px;
   margin-right: 20px;
 }
 
 .inputLabel {
-  margin-bottom: 8px; /**/
+  margin-bottom: 8px;
 }
+
+.userDataWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputs {
+  display: flex;
+  padding: 14px 16px;
+  align-items: flex-start;
+  gap: 10px;
+  align-self: stretch;
+  border-radius: 15px;
+  border: 1px solid rgba(47, 47, 47, 0.15);
+}
+
+.inputs:focus {
+  border-color: #323f47;
+}
+
 .boldText {
   color: #323f47;
   font-size: 16px;
