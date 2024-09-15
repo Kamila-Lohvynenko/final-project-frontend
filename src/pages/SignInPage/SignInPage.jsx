@@ -1,5 +1,7 @@
-import SignInForm from "../../components/SignInForm/SignInForm";
-import styles from "./SignInPage.module.css";
+import { Toaster } from 'react-hot-toast';
+import AdvantagesSection from '../../components/AdvantagesSection/AdvantagesSection';
+import SignInForm from '../../components/SignInForm/SignInForm';
+import styles from './SignInPage.module.css';
 
 const SignInPage = () => {
   return (
@@ -8,7 +10,10 @@ const SignInPage = () => {
         <div className={styles.form}>
           <SignInForm />
         </div>
-        <p className={styles.box}>AdvantagesSection</p>
+        <div className={styles.box}>
+          <AdvantagesSection />
+        </div>
+        <Toaster position="top-right" />
       </div>
     </>
   );

@@ -79,16 +79,12 @@ export const refreshUser = createAsyncThunk(
   async (_, thunkApi) => {
     try {
       const {
-        auth: { token },
-      } = thunkApi.getState();
-
-      if (token) setAuthToken(token);
-
-      const {
         data: {
           data: { accessToken },
         },
       } = await authService.refresh();
+
+      setAuthToken(accessToken);
 
       return accessToken;
     } catch (error) {
@@ -100,12 +96,6 @@ export const refreshUser = createAsyncThunk(
 export const updateAvatar = createAsyncThunk(
   'user/updateAvatar',
   async (file, thunkApi) => {
-    const {
-      auth: { token },
-    } = thunkApi.getState();
-
-    if (token) setAuthToken(token);
-
     try {
       const {
         data: {
