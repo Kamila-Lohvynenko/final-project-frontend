@@ -79,6 +79,18 @@
         gap: 24px;
     }
 
+    .logout_texts__block h3 {
+        font-size: 28px;
+        line-height: 1.14;
+        letter-spacing: -0.28px;
+    }
+
+    .logout_texts__block p {
+        font-size: 18px;
+        line-height: 1.33;
+        letter-spacing: -0.18px;
+    }
+
     .buttons_block {
         flex-direction: row;
         column-gap: 10px;
@@ -86,6 +98,9 @@
 
     .button {
         padding: 18px 57px;
+        font-size: 16px;
+        line-height: 1.5;
+        letter-spacing: -0.16px;
     }
 }
 
