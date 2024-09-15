@@ -36,6 +36,7 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+   
     max-width: 303px;
     min-width: 196px;
     min-height: 24px;
@@ -45,8 +46,10 @@
   }
   .month {
     width: 109px;
-		font-size: 20px;
+	
+    font-size: 20px;
 		font-weight: bold;
+   
     color: var(--color-font-main);
   }
   
@@ -61,14 +64,16 @@
   }
 }
 .month_ind {
-  width: 194px;
   display: flex;
-  height: 18px;
   align-items: center;
-
+  
+  height: 18px;
+  width: 194px;
   padding: 3px 0 3px 0;
   margin-left: auto;
+  
   font-size: 14px;
+ 
   background-color: var(--color-main-bg);
 
 
@@ -77,18 +82,24 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+ 
   width: 18px;
   height: 18px;
   padding: 0;
+ 
   background-color: var(--color-main-bg);
   border: none;
+ 
   cursor: pointer;
+ 
   transition: transform 0.2s ease;
 }
 
 .month_year {
-  width: 126px;
   text-align: center;
+ 
+  width: 126px;
+ 
   font-size: 14px;
   font-weight: bold;
 }
@@ -97,15 +108,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
+ 
   width: 18px;
   height: 18px;
   margin-left: 16px;
+ 
   cursor: pointer;
 }
 
 .svg_hart {
     width: 20px;
 		height: 20px;
+    
     opacity: 0.4;
 
 }
@@ -135,6 +149,7 @@
   .calendar_title {
     display: flex;
     align-items: center;
+   
     width: 640px;
     height: 32px;
     margin-bottom: 24px;
@@ -148,26 +163,33 @@
     display: inline-flex;
     justify-content: center;
     align-items: center;
+   
     width: 18px;
     height: 18px;
     padding: 0;
+   
     background-color: var(--color-main-bg);
+   
     border: none;
     cursor: pointer;
   }
   .month_ind{
     display: flex;
     align-items: center;
+   
     width: 224px;
     height: 24px;
     padding: 3px 0 3px 0;
     margin-left: auto;
+   
     font-size: 14px;
+    
     background-color: var(--color-main-bg);
 
   }
   .month_year{
     width: 140px;
+   
     text-align: center;
     font-size: 16px;
     font-weight: bold;
@@ -176,14 +198,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    
     width: 24px;
     height: 24px;
     margin-left: 20px;
+   
     cursor: pointer;
   }
   .svg_hart {
     width: 24px;
     height: 24px;
+   
     opacity: 0.4;
 
   }
@@ -212,6 +237,7 @@
   .calendar_title {
     display: flex;
     align-items: center;
+   
     width: 608px;
     height: 32px;
     margin-bottom: 24px;
@@ -224,9 +250,11 @@
   .btn{
     display: inline-flex;
     align-items: center;
+   
     width: 18px;
     height: 18px;
     padding: 0;
+   
     background-color: #f0eff4;
 
     border: none;
@@ -236,17 +264,21 @@
   .month_ind {
     display: flex;
     align-items: center;
+   
     width: 224px;
     height: 24px;
     padding: 3px 0 3px;
     margin-left: auto;
+   
     font-size: 14px;
+    
     background-color: #f0eff4;
 
 
   }
   .month_year {
     width: 140px;
+   
     text-align: center;
     font-size: 16px;
     font-weight: bold;
@@ -255,14 +287,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
+ 
   width: 24px;
   height: 24px;
   margin-left: 24px;
+ 
   cursor: pointer;
 }
 .svg_hart {
   width: 20px;
   height: 20px;
+ 
   opacity: 0.4;
 }
 .svg_chart{

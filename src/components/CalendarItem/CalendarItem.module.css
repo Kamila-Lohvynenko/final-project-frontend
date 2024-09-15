@@ -1,7 +1,9 @@
 .day {
   width: 28px;
   height: 44px;
+  
   padding: 0;
+ 
   border: none;
   background-color: var(--color-main-bg);
   transition: opacity 0.3s ease;
@@ -38,9 +40,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+ 
   width: 28px;
   height: 16px;
+  
   font-size: 10px;
+
   color: #2f2f2f99;
   background-color: var(--color-main-bg);
 }
@@ -59,12 +64,14 @@
   .date {
     height: 38px;
     width: 38px;
+    
     font-size: 16px;
   }
 
   .percentage {
     width: 38px;
     height: 27px;
+   
     font-size: 12px;
   }
 
@@ -89,6 +96,7 @@
   .percentage {
     width: 38px;
     height: 27px;
+   
     font-size: 12px;
   }
 
