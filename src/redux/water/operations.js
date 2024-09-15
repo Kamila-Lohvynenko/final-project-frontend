@@ -16,10 +16,10 @@ export const addWater = createAsyncThunk(
 
 export const updateWater = createAsyncThunk(
   'water/update',
-  async ({ id, portionData }, thunkApi) => {
+  async (portionData, thunkApi) => {
     try {
-      await waterService.updateWater(id, portionData);
-      return id;
+      await waterService.updateWater(portionData);
+      return portionData.id;
     } catch (error) {
       return thunkApi.rejectWithValue(error.response.data.message);
     }
@@ -40,9 +40,25 @@ export const deleteWater = createAsyncThunk(
 
 export const getWaterByMonth = createAsyncThunk(
   'water/getByMonth',
-  async (thunkApi) => {
+  async (params, thunkApi) => {
     try {
-      const { data } = await waterService.getWaterByMonth();
+      const {
+        data: { data },
+      } = await waterService.getWaterByMonth(params);
+      return data;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.response.data.message);
+    }
+  },
+);
+
+export const getWaterByDay = createAsyncThunk(
+  'water/getByDay',
+  async (params, thunkApi) => {
+    try {
+      const {
+        data: { data },
+      } = await waterService.getWaterByDay(params);
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.response.data.message);
