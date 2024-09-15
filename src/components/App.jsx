@@ -1,16 +1,16 @@
-import css from "./App.module.css";
+import css from './App.module.css';
 
-import { lazy, Suspense } from "react";
-import SharedLayout from "./SharedLayout/SharedLayout";
-import { Route, Routes } from "react-router-dom";
-import RestrictedRoute from "./RestrictedRoute";
-import PrivateRoute from "./PrivateRoute";
+import { lazy, Suspense } from 'react';
+import SharedLayout from './SharedLayout/SharedLayout';
+import { Route, Routes } from 'react-router-dom';
+import RestrictedRoute from './RestrictedRoute';
+import PrivateRoute from './PrivateRoute';
 
-const HomePage = lazy(() => import("./../pages/HomePage/HomePage"));
-const SignInPage = lazy(() => import("./../pages/SignInPage/SignInPage"));
-const SignUpPage = lazy(() => import("./../pages/SignUpPage/SignUpPage"));
-const TrackerPage = lazy(() => import("./../pages/TrackerPage/TrackerPage"));
-const NotFoundPage = lazy(() => import("./../pages/NotFoundPage/NotFoundPage"));
+const HomePage = lazy(() => import('./../pages/HomePage/HomePage'));
+const SignInPage = lazy(() => import('./../pages/SignInPage/SignInPage'));
+const SignUpPage = lazy(() => import('./../pages/SignUpPage/SignUpPage'));
+const TrackerPage = lazy(() => import('./../pages/TrackerPage/TrackerPage'));
+const NotFoundPage = lazy(() => import('./../pages/NotFoundPage/NotFoundPage'));
 
 export const App = () => {
   return (
@@ -18,7 +18,15 @@ export const App = () => {
       <SharedLayout>
         <Suspense fallback={null}>
           <Routes>
-            <Route path="/" element={<HomePage />} />
+            <Route
+              path="/"
+              element={
+                <RestrictedRoute
+                  component={<HomePage />}
+                  redirectTo="/tracker"
+                />
+              }
+            />
             <Route
               path="/signin"
               element={
