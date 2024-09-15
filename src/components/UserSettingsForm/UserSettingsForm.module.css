@@ -54,10 +54,6 @@ input[type='radio']:checked {
   background-color: #9be1a0;
 }
 
-.genderWrapper {
-  margin-bottom: 24px;
-}
-
 .genderLabel {
   margin-left: 10px;
   margin-right: 20px;
@@ -82,8 +78,19 @@ input[type='radio']:checked {
   border: 1px solid rgba(47, 47, 47, 0.15);
 }
 
-.inputs:focus {
-  border-color: #323f47;
+.inputs:hover,
+.inputs:focus,
+.inputs:active {
+  outline: none;
+  border: 1px solid #323f47;
+}
+
+.smallGap {
+  margin-bottom: 14px;
+}
+
+.bigGap {
+  margin-bottom: 24px;
 }
 
 .boldText {

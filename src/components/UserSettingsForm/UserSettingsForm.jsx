@@ -92,7 +92,7 @@ const UserSettingsForm = () => {
           )}
         </div>
 
-        <div className={css.genderWrapper}>
+        <div className={css.bigGap}>
           <p className={css.boldText}>Your gender identity</p>
           <div className={css.radioContainer}>
             <input
@@ -115,7 +115,7 @@ const UserSettingsForm = () => {
           </div>
         </div>
 
-        <div className={css.userDataWrapper}>
+        <div className={`${css.userDataWrapper} ${css.bigGap}`}>
           <label htmlFor="name" className={`${css.boldText} ${css.inputLabel}`}>
             Your name
           </label>
@@ -124,7 +124,7 @@ const UserSettingsForm = () => {
             id="name"
             {...register('name')}
             onBlur={() => trigger('name')}
-            className={css.inputs}
+            className={`${css.inputs} ${css.smallGap}`}
           />
           {errors.name && (
             <p className={css.errorMessage}>{errors.name.message}</p>
@@ -140,6 +140,7 @@ const UserSettingsForm = () => {
             id="email"
             {...register('email')}
             onBlur={() => trigger('email')}
+            className={css.inputs}
           />
           {errors.email && (
             <p className={css.errorMessage}>{errors.email.message}</p>
