@@ -68,3 +68,25 @@
     color: rgba(50, 63, 71, 0.30);
     background-color: #F0EFF4;
 }
+
+@media screen and (min-width: 768px) {
+    .logout_wrap {
+        padding: 40px;
+        gap: 24px;
+    }
+
+    .logout_texts__block {
+        gap: 24px;
+    }
+
+    .buttons_block {
+        flex-direction: row;
+        column-gap: 10px;
+    }
+
+    .button {
+        padding: 18px 57px;
+    }
+}
+
+@media screen and (min-width: 1440px) {}
