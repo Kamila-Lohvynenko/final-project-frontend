@@ -16,7 +16,7 @@
   justify-content: center;
   z-index: 1000;
 
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(47, 47, 47, 0.6);
 }
 .modal {
   z-index: 1001;
@@ -31,14 +31,17 @@
 }
 
 .closeButton {
-  position: fixed;
-  top: 40px;
-  right: 40px;
-
-  width: 28px;
-  height: 28px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
 
   display: flex;
   align-items: center;
   justify-content: center;
+
+  z-index: 102;
+}
+.icon {
+  width: 28px;
+  height: 28px;
 }
