@@ -1,9 +1,14 @@
 import { useId, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import styles from './SignInForm.module.css';
 import sprite from '../../images/sprite.svg';
 import Logo from '../Logo/Logo';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useForm } from 'react-hook-form';
+import { loginUser } from '../../redux/user/operations';
+import { useDispatch } from 'react-redux';
+import { toast } from 'react-hot-toast';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().email('Must be a valid email').required('Required'),
@@ -14,6 +19,58 @@ const SignInForm = () => {
   const emailId = useId();
   const passwordId = useId();
   const [visiblePassword, setVisiblePassword] = useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+    trigger,
+  } = useForm({
+    values: { email: '', password: '' },
+    resolver: yupResolver(validationSchema),
+    mode: 'onBlur',
+  });
+
+  // const onSubmit = (values) => {
+  //   dispatch(
+  //     loginUser({
+  //       email: values.email,
+  //       password: values.password,
+  //     }),
+  //   )
+  //     .unwrap()
+  //     .then((response) => {
+  //       toast.success('Log in is successful!');
+  //       localStorage.setItem('token', response.token);
+  //       navigate('/tracker');
+  //       reset();
+  //     })
+  //     .catch((error) => {
+  //       console.error('Error details:', error);
+  //       toast.error(`Error: ${error.message}`);
+  //     });
+  // };
+  const onSubmit = async ({ email, password }) => {
+    try {
+      const response = await dispatch(loginUser({ email, password }));
+
+      if (response.error) {
+        toast.error(
+          response.payload?.response?.data?.message || 'Login failed',
+        );
+        return;
+      }
+      toast.success('Log in is successful!');
+      localStorage.setItem('token', response.token);
+      navigate('/tracker');
+      reset();
+    } catch (error) {
+      toast.error(`Error: ${error.message}`);
+    }
+  };
 
   return (
     <>
@@ -22,17 +79,27 @@ const SignInForm = () => {
       </div>
       <div className={styles.wrapperSignIn}>
         <h2 className={styles.title}>Sign In</h2>
-        <form className={styles.form}>
+        <form
+          noValidate
+          autoComplete="off"
+          onSubmit={handleSubmit(onSubmit)}
+          className={styles.form}
+        >
           <div className={styles.field}>
             <label htmlFor={emailId} className={styles.label}>
               Email
             </label>
             <input
               type="email"
+              {...register('email')}
               id={emailId}
               placeholder="Enter your email"
-              className={styles.input}
+              className={`${styles.input} ${errors.email ? styles.error : ''}`}
+              onBlur={() => trigger('email')}
             />
+            {errors.email && (
+              <p className={styles.errorMessage}>{errors.email.message}</p>
+            )}
           </div>
 
           <div className={styles.field}>
@@ -42,9 +109,13 @@ const SignInForm = () => {
             <div className={styles.wrapper_icon}>
               <input
                 type={visiblePassword ? 'text' : 'password'}
+                {...register('password')}
                 id={passwordId}
                 placeholder="Enter your password"
-                className={styles.input}
+                className={`${styles.input} ${
+                  errors.password ? styles.error : ''
+                }`}
+                onBlur={() => trigger('password')}
               />
               <svg
                 className={styles.icon_eye}
@@ -58,6 +129,9 @@ const SignInForm = () => {
                   }`}
                 />
               </svg>
+              {errors.password && (
+                <p className={styles.errorMessage}>{errors.password.message}</p>
+              )}
             </div>
           </div>
           <button type="submit" className={styles.btn}>

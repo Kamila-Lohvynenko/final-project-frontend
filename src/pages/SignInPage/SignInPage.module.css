@@ -3,7 +3,6 @@
   padding-bottom: 16px;
   display: flex;
   justify-content: center;
-  margin: auto 0;
   gap: 32px;
 }
 
@@ -14,6 +13,7 @@
   height: 100vh;
   background-color: var(--grey);
   border-radius: 30px;
+  width: auto;
 }
 .form:nth-child(2) {
   align-items: center;
@@ -21,21 +21,21 @@
 
 .box {
   display: none;
-  border-radius: 30px;
-  height: 100vh;
 }
 
 @media only screen and (min-width: 768px) {
   .wrapper {
     padding: 32px;
   }
+  .form {
+    height: 736px;
+  }
 }
 
 @media only screen and (min-width: 1440px) {
   .box {
     display: block;
-    background-color: aquamarine;
     width: 672px;
-    flex-shrink: 0;
+    height: 736px;
   }
 }
