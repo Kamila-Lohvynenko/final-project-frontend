@@ -1,16 +1,17 @@
 import { useId, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import css from './SignUpForm.module.css';
 import sprite from '../../images/sprite.svg';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch } from 'react-redux';
-import { register as registerUser } from '../../redux/user/operations';
+import { registerUser } from '../../redux/user/operations';
+import { toast } from 'react-hot-toast';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().email('Must be a valid email').required('Required'),
-  password: Yup.string().min(5, 'Too short!').required('Required'),
+  password: Yup.string().min(8, 'Too short!').required('Required'),
   repeatPassword: Yup.string()
     .oneOf([Yup.ref('password'), null], 'Passwords must match')
     .required('Please confirm your password'),
@@ -18,6 +19,8 @@ const validationSchema = Yup.object().shape({
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -38,11 +41,14 @@ const SignUpForm = () => {
       }),
     )
       .unwrap()
-      .then(() => {
+      .then((response) => {
+        toast.success('Registration is successful!');
+        localStorage.setItem('token', response.token);
+        navigate('/tracker');
         reset();
       })
       .catch((error) => {
-        console.error(error.message);
+        toast.error(`Error: ${error.message}`);
       });
   };
 
@@ -105,6 +111,7 @@ const SignUpForm = () => {
               <p className={css.errorMessage}>{errors.password.message}</p>
             )}
           </div>
+
           <div className={css.field}>
             <label htmlFor={repeatPasswordId} className={css.label}>
               Repeat password
@@ -139,10 +146,12 @@ const SignUpForm = () => {
               </p>
             )}
           </div>
+
           <button type="submit" className={css.btn}>
             Sign Up
           </button>
         </form>
+
         <p className={css.auth}>
           Already have an account?
           <NavLink className={css.navlink} to="/signin">
