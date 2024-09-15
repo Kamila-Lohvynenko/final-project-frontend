@@ -46,7 +46,7 @@ const WaterForm =({operationType = OPERATION_NAME.ADD_WATER, handleClose})=>{
                 Amound of water:            
             </p>
             <div className={css.addWaterWrapper}>
-                <button type="button" className={css.addWaterBtn} 
+                <button type="button" className={css.addWaterBtn}
                     onClick={()=>setWaterValue(prev => Math.max(prev - 50, 0))}>
                     <svg>
                     <use xlinkHref={sprite + "#icon-remove"}></use>
@@ -72,12 +72,13 @@ const WaterForm =({operationType = OPERATION_NAME.ADD_WATER, handleClose})=>{
             </label>
             {/* Ввод количества воды */}
             <label className={css.waterValueLabel}>
-            Enter the value of the water used:
+                Enter the value of the water used:
             <input 
-            type="number" 
-            className={css.waterValue}
-            value={waterValue === 0 ? '' : waterValue}
-            onChange={(e)=> setWaterValue(Number(e.target.value))}>                
+                type="number" 
+                className={css.waterValue}
+                value={waterValue === 0 ? '' : waterValue}
+                pattern="^[ 0-9]+$"
+                onChange={(e)=> setWaterValue(Number(e.target.value))}>                
             </input>
             </label>
             <button type="submit" className={css.saveBtn}>
