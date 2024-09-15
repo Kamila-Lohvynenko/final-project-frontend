@@ -41,7 +41,11 @@ const UserSettingsForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ resolver: yupResolver(VALIDATION_SCHEMA) });
+    trigger,
+  } = useForm({
+    resolver: yupResolver(VALIDATION_SCHEMA),
+    mode: 'onBlur',
+  });
 
   const onSubmit = (data) => {
     console.log(data);
@@ -56,11 +60,8 @@ const UserSettingsForm = () => {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      style={{ maxWidth: '400px', margin: '0 auto' }}
-    >
-      <div style={{ height: '100vh', overflowY: 'auto' }}>
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <div>
         {avatarPreview && (
           <img
             className={css.avatar}
@@ -72,9 +73,6 @@ const UserSettingsForm = () => {
           />
         )}
         <div className={css.inputWrapper}>
-          <label className={css.inputLabel} htmlFor="avatar">
-            Upload a photo
-          </label>
           <svg className={css.uploadPhotoIcon}>
             <use href={`${sprite}#icon-upload`}></use>
           </svg>
@@ -86,40 +84,71 @@ const UserSettingsForm = () => {
             {...register('avatar')}
             onChange={handleAvatarChange}
           />
+          <label className={css.inputLabel} htmlFor="avatar">
+            Upload a photo
+          </label>
           {errors.avatar && (
-            <p className={css.errors}>{errors.avatar.message}</p>
+            <p className={css.errorMessage}>{errors.avatar.message}</p>
           )}
         </div>
 
-        <div>
-          <p>Your gender identity</p>
-          <div>
+        <div className={css.bigGap}>
+          <p className={css.boldText}>Your gender identity</p>
+          <div className={css.radioContainer}>
             <input
               type="radio"
               id="woman"
               value="woman"
               {...register('gender')}
+              defaultChecked
             />
-            <label htmlFor="woman">Woman</label>
+            <label htmlFor="woman" className={css.genderLabel}>
+              Woman
+            </label>
             <input type="radio" id="man" value="man" {...register('gender')} />
-            <label htmlFor="man">Man</label>
+            <label htmlFor="man" className={css.genderLabel}>
+              Man
+            </label>
             {errors.gender && (
-              <p className={css.errors}>{errors.gender.message}</p>
+              <p className={css.errorMessage}>{errors.gender.message}</p>
             )}
           </div>
         </div>
 
-        <div>
-          <label htmlFor="name">Your name</label>
-          <input type="text" id="name" {...register('name')} />
-          {errors.name && <p>errors.name.message</p>}
-          <label htmlFor="email">Email</label>
-          <input type="email" id="email" {...register('email')} />
-          {errors.email && <p>errors.email.message</p>}
+        <div className={`${css.userDataWrapper} ${css.bigGap}`}>
+          <label htmlFor="name" className={`${css.boldText} ${css.inputLabel}`}>
+            Your name
+          </label>
+          <input
+            type="text"
+            id="name"
+            {...register('name')}
+            onBlur={() => trigger('name')}
+            className={`${css.inputs} ${css.smallGap}`}
+          />
+          {errors.name && (
+            <p className={css.errorMessage}>{errors.name.message}</p>
+          )}
+          <label
+            htmlFor="email"
+            className={`${css.boldText} ${css.inputLabel}`}
+          >
+            Email
+          </label>
+          <input
+            type="email"
+            id="email"
+            {...register('email')}
+            onBlur={() => trigger('email')}
+            className={css.inputs}
+          />
+          {errors.email && (
+            <p className={css.errorMessage}>{errors.email.message}</p>
+          )}
         </div>
 
         <div>
-          <p>My daily norma</p>
+          <p className={css.boldText}>My daily norma</p>
           <p>For woman:</p>
           <p>V=(M*0,03) + (T*0,4)</p>
           <p>For man:</p>
@@ -140,23 +169,44 @@ const UserSettingsForm = () => {
 
         <div>
           <label htmlFor="weight">Your weight in kilograms:</label>
-          <input type="number" id="weight" {...register('weight')} />
-          {errors.weight && <p>errors.weight.message</p>}
+          <input
+            type="number"
+            id="weight"
+            {...register('weight')}
+            onBlur={() => trigger('weight')}
+          />
+          {errors.weight && (
+            <p className={css.errorMessage}>{errors.weight.message}</p>
+          )}
           <label htmlFor="sportTime">
             The time of active participation in sports:
           </label>
-          <input type="number" id="sportTime" {...register('sportTime')} />
-          {errors.sportTime && <p>errors.sportTime.message</p>}
+          <input
+            type="number"
+            id="sportTime"
+            {...register('sportTime')}
+            onBlur={() => trigger('sportTime')}
+          />
+          {errors.sportTime && (
+            <p className={css.errorMessage}>{errors.sportTime.message}</p>
+          )}
         </div>
 
         <div>
           <p>The required amount of water in liters per day:</p>
           <p>{/* required amount of water */}L</p>
-          <label htmlFor="waterIntake">
+          <label htmlFor="waterIntake" className={css.boldText}>
             Write down how much water you will drink:
           </label>
-          <input type="number" id="waterIntake" {...register('waterIntake')} />
-          {errors.waterIntake && <p>{errors.waterIntake.message}</p>}
+          <input
+            type="number"
+            id="waterIntake"
+            {...register('waterIntake')}
+            onBlur={() => trigger('waterIntake')}
+          />
+          {errors.waterIntake && (
+            <p className={css.errorMessage}>{errors.waterIntake.message}</p>
+          )}
         </div>
         <button type="submit" className={css.button}>
           Save
