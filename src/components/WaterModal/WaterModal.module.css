@@ -1,4 +1,4 @@
-/* .waterModal {
+.waterModal {
     margin: 0 auto;
     width: 343px;
     height: auto;
@@ -7,7 +7,7 @@
     background-color: var(--white);
     box-shadow: 0 4px 50px 0 rgba(0, 0, 0, 0.1);
     position: relative;
-  } */
+  }
   
   .waterModal h1 {
     font-family: "Poppins", sans-serif;

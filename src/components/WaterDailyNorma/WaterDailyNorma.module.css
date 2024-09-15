@@ -8,6 +8,7 @@
     border-radius: 15px;
     padding: 12px;
     box-shadow: 0 4px 50px 0 rgba(0, 0, 0, 0.1);
+    margin-top: 78px;
   }
 
   .value {
@@ -31,6 +32,7 @@
       width: fit-content;
       height: 78px;
       gap: 4px;
+      margin-top: 101px;
     }
   
     .value {
