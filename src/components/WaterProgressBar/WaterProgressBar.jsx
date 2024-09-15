@@ -1,7 +1,7 @@
 import css from '../WaterProgressBar/WaterProgressBar.module.css';
 
 const WaterProgressBar =()=>{
-    const currentWater = 1500;
+    const currentWater = 400;
     const dailyWaterGoal =2000;
     const waterIntakeProgress = Math.round((currentWater/dailyWaterGoal) * 100);
 

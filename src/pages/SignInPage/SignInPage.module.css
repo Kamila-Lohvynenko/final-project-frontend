@@ -1,18 +1,28 @@
+.wrapper {
+  padding-top: 16px;
+  padding-bottom: 16px;
+  display: flex;
+  justify-content: center;
+  margin: auto 0;
+  gap: 32px;
+}
+
 .form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
   background-color: var(--grey);
   border-radius: 30px;
 }
-.wrapper {
-  margin: 0 auto;
-  padding: 16px;
-
-  display: flex;
-  justify-content: center;
-  gap: 32px;
+.form:nth-child(2) {
+  align-items: center;
 }
+
 .box {
   display: none;
   border-radius: 30px;
+  height: 100vh;
 }
 
 @media only screen and (min-width: 768px) {
@@ -26,7 +36,6 @@
     display: block;
     background-color: aquamarine;
     width: 672px;
-    height: 736px;
     flex-shrink: 0;
   }
 }

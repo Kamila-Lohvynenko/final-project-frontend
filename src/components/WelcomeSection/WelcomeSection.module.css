@@ -29,7 +29,6 @@
 .sub_head {
     color: #2F2F2F;
     font-size: 14px;
-    font-style: normal;
     font-weight: 400;
     line-height: 1.28;
     letter-spacing: 0.84px;
@@ -41,7 +40,6 @@
     color: #323F47;
 
     font-size: 38px;
-    font-style: normal;
     font-weight: 700;
     line-height: 1;
     letter-spacing: -0.38px;
@@ -62,9 +60,7 @@
     border-radius: 30px;
 
     color: #323F47;
-    text-align: center;
     font-size: 14px;
-    font-style: normal;
     font-weight: 700;
     line-height: 1.28;
     letter-spacing: -0.14px;
@@ -81,7 +77,61 @@
 }
 
 
+@media screen and (min-width: 768px) {
+    .welcome_section__wrap {
+        max-width: 704px;
+        height: auto;
+        padding: 32px;
+    }
 
-@media screen and (min-width: 768px) {}
+    .welcome_section {
+        padding-left: 32px;
+        padding-right: 60px;
+    }
 
-@media screen and (min-width: 1440px) {}
+    .hero_section {
+        padding-top: 50px;
+    }
+
+    .sub_head {
+        font-size: 16px;
+        line-height: 1.5;
+        letter-spacing: 0.96px;
+    }
+
+    .main_head {
+        font-size: 64px;
+        line-height: 1.09;
+        letter-spacing: -0.64px;
+    }
+
+    .buttons_block {
+        padding-bottom: 18px;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .welcome_section__wrap {
+        max-width: 672px;
+        height: 736px;
+    }
+
+    .hero_section {
+        padding-top: 132px;
+    }
+
+    .main_head {
+        font-size: 80px;
+        line-height: 0.95;
+        letter-spacing: -0.8px;
+    }
+
+
+    .button {
+        padding: 18px 40px;
+        gap: 10px;
+        font-size: 16px;
+        line-height: 1.5;
+        letter-spacing: -0.16px;
+    }
+}

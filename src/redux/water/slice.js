@@ -20,7 +20,7 @@ const waterSlice = createSlice({
   extraReducers: (builder) =>
     builder
       .addCase(getWaterByMonth.fulfilled, (state, { payload }) => {
-        state.items = payload.data;
+        state.items = payload;
       })
       .addCase(addWater.fulfilled, (state, { payload }) => {
         state.items.push(payload.data);
