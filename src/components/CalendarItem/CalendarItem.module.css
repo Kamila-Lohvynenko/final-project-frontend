@@ -1,9 +1,9 @@
 .day {
   width: 28px;
   height: 44px;
+  padding: 0;
   border: none;
   background-color: var(--color-main-bg);
-  padding: 0;
   transition: opacity 0.3s ease;
 }
 
@@ -13,15 +13,17 @@
 }
 
 .date {
+  width: 28px;
+  height: 28px;
+ 
   display: flex;
   justify-content: center;
   align-items: center;
 
-  width: 28px;
-  height: 28px;
 
   font-size: 14px;
   font-weight: bold;
+  
   color: var(--color-font-main);
   background-color: var(--white);
 
@@ -36,7 +38,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
   width: 28px;
   height: 16px;
   font-size: 10px;
