@@ -6,6 +6,8 @@ import { setAuthToken } from '../../services/axios.config';
 export const registerUser = createAsyncThunk(
   'user/register',
   async (userCredentials, thunkApi) => {
+    console.log(userCredentials);
+
     try {
       await authService.register(userCredentials);
 
