@@ -6,7 +6,7 @@ const WaterItem = ({ volume, time, openWaterModal, setDeleteWaterModal }) => {
     <div className={css.waterItem}>
           <div>
             <svg className={css.waterIcon}>
-                <use xlinkHref={sprite + "#icon-water-glass"}/>
+                <use href={sprite + "#icon-water-glass"}/>
             </svg>
           </div>
           <div className={css.waterInfo}>
@@ -16,12 +16,12 @@ const WaterItem = ({ volume, time, openWaterModal, setDeleteWaterModal }) => {
           <div className={css.waterButtons}>
               <button type="button" className={css.waterButton} onClick={openWaterModal}>
                   <svg className={css.editBtn}>
-                    <use href={`${sprite}#icon-edit-2`} />
+                    <use href={sprite + "#icon-edit-2"} />
                   </svg>
               </button>
               <button type="button" className={css.waterButton} onClick={setDeleteWaterModal}>
                   <svg className={css.removeBtn}>
-                    <use href={`${sprite}#icon-trash-04`} />
+                    <use href={sprite + "#icon-trash-04"} />
                   </svg>
               </button>
           </div>

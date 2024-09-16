@@ -37,16 +37,20 @@
 @media screen and (min-width: 1440px) {
 	.nodata {
 		text-align: center;
+		
 		font-size: 24px;
 		font-weight: bold;
+		
 		color: #989c9d;
 	}
 	.graphContainer {
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		
 		width: 608px;
 		height: 298px;
+		
 		padding: 25px 10px 0 10px;
 
 	}

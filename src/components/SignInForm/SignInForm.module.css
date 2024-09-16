@@ -30,7 +30,7 @@
   flex-direction: column;
   gap: 8px;
   margin-bottom: 32px;
-  width: 100%;
+  width: 311px;
 }
 
 .label {
@@ -150,6 +150,12 @@ input:focus {
 .error {
   color: var(--error);
   border: 1px solid var(--error);
+}
+
+@media only screen and (min-width: 320px) and (max-width: 375px) {
+  .field {
+    width: calc(100vw - 64px);
+  }
 }
 
 @media only screen and (min-width: 768px) {

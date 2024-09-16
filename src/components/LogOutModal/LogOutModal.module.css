@@ -1,107 +1,117 @@
 .logout_wrap {
-    display: flex;
-    padding: 40px 14px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 28px;
-    border-radius: 15px;
-    background: #ffffff;
-    box-shadow: 0px 4px 50px 0px rgba(0, 0, 0, 0.10);
+  display: flex;
+  padding: 40px 14px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 28px;
+  border-radius: 15px;
+  background: #ffffff;
+  box-shadow: 0px 4px 50px 0px rgba(0, 0, 0, 0.1);
 }
 
 .logout_texts__block {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
 }
 
 .logout_texts__block h3 {
-    color: #323F47;
-    text-align: center;
+  color: #323f47;
+  text-align: center;
 
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 1.2;
-    letter-spacing: -0.2px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.2px;
 }
 
 .logout_texts__block p {
-    color: #323F47;
-    text-align: center;
+  color: #323f47;
+  text-align: center;
 
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1.28;
-    letter-spacing: -0.14px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.28;
+  letter-spacing: -0.14px;
 }
 
 .buttons_block {
-    display: flex;
-    flex-direction: column;
-    row-gap: 9px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 9px;
 }
 
 .button {
-    display: flex;
-    padding: 14px 126px;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    border-radius: 30px;
+  display: flex;
+  padding: 14px 126px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 30px;
 
-    text-align: center;
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 1.29;
-    letter-spacing: -0.14px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.29;
+  letter-spacing: -0.14px;
 }
 
 .btn_logout {
-    color: #323F47;
-    background-color: #9BE1A0;
+  color: #323f47;
+  background-color: #9be1a0;
+  transition: background-color 0.3s ease;
+}
+
+.btn_logout:hover {
+  background-color: #87d28d;
 }
 
 .btn_cancel {
-    color: rgba(50, 63, 71, 0.30);
-    background-color: #F0EFF4;
+  color: rgba(50, 63, 71, 0.3);
+  background-color: #f0eff4;
+  transition: color 0.3s ease;
 }
 
+.btn_cancel:hover {
+  color: rgba(50, 63, 71);
+}
 @media screen and (min-width: 768px) {
-    .logout_wrap {
-        padding: 40px;
-        gap: 24px;
-    }
+  .logout_wrap {
+    padding: 40px;
+    gap: 24px;
+  }
 
-    .logout_texts__block {
-        gap: 24px;
-    }
+  .logout_texts__block {
+    gap: 24px;
+  }
 
-    .logout_texts__block h3 {
-        font-size: 28px;
-        line-height: 1.14;
-        letter-spacing: -0.28px;
-    }
+  .logout_texts__block h3 {
+    font-size: 28px;
+    line-height: 1.14;
+    letter-spacing: -0.28px;
+  }
 
-    .logout_texts__block p {
-        font-size: 18px;
-        line-height: 1.33;
-        letter-spacing: -0.18px;
-    }
+  .logout_texts__block p {
+    font-size: 18px;
+    line-height: 1.33;
+    letter-spacing: -0.18px;
+  }
 
-    .buttons_block {
-        flex-direction: row;
-        column-gap: 10px;
-    }
+  .buttons_block {
+    flex-direction: row;
+    column-gap: 10px;
+  }
 
-    .button {
-        padding: 18px 57px;
-        font-size: 16px;
-        line-height: 1.5;
-        letter-spacing: -0.16px;
-    }
+  .button {
+    padding: 18px 57px;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: -0.16px;
+  }
 }
 
-@media screen and (min-width: 1440px) {}
+@media screen and (min-width: 1440px) {
+}
