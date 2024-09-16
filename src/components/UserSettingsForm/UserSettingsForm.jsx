@@ -84,7 +84,7 @@ const UserSettingsForm = () => {
             {...register('avatar')}
             onChange={handleAvatarChange}
           />
-          <label className={`${css.inputLabel} ${css.text}`} htmlFor="avatar">
+          <label className={`${css.uploadLabel} ${css.text}`} htmlFor="avatar">
             Upload a photo
           </label>
           {errors.avatar && (
@@ -163,26 +163,32 @@ const UserSettingsForm = () => {
             of active sports, or another type of activity commensurate in terms
             of loads (in the absence of these, you must set 0)
           </p>
-          <span>
+          <span className={`${css.activeTimeWrapper} ${css.bigGap}`}>
             <svg className={css.iconExclamationMark}>
               <use href={`${sprite}#icon-exclamation-mark`}></use>
             </svg>
-            <p>Active time in hours</p>
+            <p className={css.text}>Active time in hours</p>
           </span>
         </div>
 
-        <div>
-          <label htmlFor="weight">Your weight in kilograms:</label>
+        <div className={css.waterWrapper}>
+          <label htmlFor="weight" className={`${css.inputLabel} ${css.text}`}>
+            Your weight in kilograms:
+          </label>
           <input
             type="number"
             id="weight"
             {...register('weight')}
             onBlur={() => trigger('weight')}
+            className={`${css.inputs} ${css.smallGap}`}
           />
           {errors.weight && (
             <p className={css.errorMessage}>{errors.weight.message}</p>
           )}
-          <label htmlFor="sportTime">
+          <label
+            htmlFor="sportTime"
+            className={`${css.inputLabel} ${css.text}`}
+          >
             The time of active participation in sports:
           </label>
           <input
@@ -190,16 +196,24 @@ const UserSettingsForm = () => {
             id="sportTime"
             {...register('sportTime')}
             onBlur={() => trigger('sportTime')}
+            className={`${css.inputs} ${css.bigGap}`}
           />
           {errors.sportTime && (
             <p className={css.errorMessage}>{errors.sportTime.message}</p>
           )}
         </div>
 
-        <div>
-          <p>The required amount of water in liters per day:</p>
-          <p>{/* required amount of water */}L</p>
-          <label htmlFor="waterIntake" className={css.boldText}>
+        <div className={css.waterWrapper}>
+          <p className={css.text}>
+            The required amount of water in liters per day:
+          </p>
+          <p className={`${css.spanWaterAmount} ${css.text} ${css.smallGap}`}>
+            {/* required amount of water */}L
+          </p>
+          <label
+            htmlFor="waterIntake"
+            className={`${css.boldText} ${css.inputLabel}`}
+          >
             Write down how much water you will drink:
           </label>
           <input
@@ -207,6 +221,7 @@ const UserSettingsForm = () => {
             id="waterIntake"
             {...register('waterIntake')}
             onBlur={() => trigger('waterIntake')}
+            className={css.inputs}
           />
           {errors.waterIntake && (
             <p className={css.errorMessage}>{errors.waterIntake.message}</p>
