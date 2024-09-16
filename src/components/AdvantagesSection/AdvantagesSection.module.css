@@ -55,7 +55,7 @@
 }
 
 .customers_icons__item:first-child {
-    background-image: url(../../images/main-page-img/girl-1-mobile.jpg);
+    background-image: url(../../images/main-page-img/girl-2-mobile.jpg);
     margin-left: 0;
     z-index: 10;
 }
@@ -67,7 +67,7 @@
 }
 
 .customers_icons__item:nth-child(3) {
-    background-image: url(../../images/main-page-img/girl-2-mobile.jpg);
+    background-image: url(../../images/main-page-img/girl-1-mobile.jpg);
     z-index: 1;
 }
 
@@ -176,7 +176,7 @@
     }
 
     .customers_icons__item:first-child {
-        background-image: url(../../images/main-page-img/girl-1-tablet.jpg);
+        background-image: url(../../images/main-page-img/girl-2-tablet.jpg);
     }
 
     .customers_icons__item:nth-child(2) {
@@ -184,7 +184,7 @@
     }
 
     .customers_icons__item:nth-child(3) {
-        background-image: url(../../images/main-page-img/girl-2-tablet.jpg);
+        background-image: url(../../images/main-page-img/girl-1-tablet.jpg);
     }
 
     .customers_info,
@@ -225,7 +225,7 @@
     }
 
     .customers_icons__item:first-child {
-        background-image: url(../../images/main-page-img/girl-1-desktop.jpg);
+        background-image: url(../../images/main-page-img/girl-2-desktop.jpg);
     }
 
     .customers_icons__item:nth-child(2) {
@@ -233,7 +233,7 @@
     }
 
     .customers_icons__item:nth-child(3) {
-        background-image: url(../../images/main-page-img/girl-2-desktop.jpg);
+        background-image: url(../../images/main-page-img/girl-1-desktop.jpg);
     }
 }
 
@@ -249,7 +249,7 @@
     }
 
     .customers_icons__item:first-child {
-        background-image: url(../../images/main-page-img/girl-1-mobile@2.jpg);
+        background-image: url(../../images/main-page-img/girl-2-mobile@2.jpg);
     }
 
     .customers_icons__item:nth-child(2) {
@@ -257,7 +257,7 @@
     }
 
     .customers_icons__item:nth-child(3) {
-        background-image: url(../../images/main-page-img/girl-2-mobile@2.jpg);
+        background-image: url(../../images/main-page-img/girl-1-mobile@2.jpg);
     }
 
 
@@ -267,7 +267,7 @@
         }
 
         .customers_icons__item:first-child {
-            background-image: url(../../images/main-page-img/girl-1-tablet@2.jpg);
+            background-image: url(../../images/main-page-img/girl-2-tablet@2.jpg);
         }
 
         .customers_icons__item:nth-child(2) {
@@ -275,7 +275,7 @@
         }
 
         .customers_icons__item:nth-child(3) {
-            background-image: url(../../images/main-page-img/girl-2-tablet@2.jpg);
+            background-image: url(../../images/main-page-img/girl-1-tablet@2.jpg);
         }
     }
 
@@ -286,7 +286,7 @@
         }
 
         .customers_icons__item:first-child {
-            background-image: url(../../images/main-page-img/girl-1-desktop@2.jpg);
+            background-image: url(../../images/main-page-img/girl-2-desktop@2.jpg);
         }
 
         .customers_icons__item:nth-child(2) {
@@ -294,7 +294,7 @@
         }
 
         .customers_icons__item:nth-child(3) {
-            background-image: url(../../images/main-page-img/girl-2-desktop@2.jpg);
+            background-image: url(../../images/main-page-img/girl-1-desktop@2.jpg);
         }
     }
 }

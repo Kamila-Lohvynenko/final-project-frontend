@@ -1,16 +1,14 @@
 import { useDispatch } from 'react-redux';
 import css from './LogOutModal.module.css';
 import { logoutUser } from '../../redux/user/operations';
-import { useNavigate } from 'react-router-dom';
 
 const LogOutModal = ({ onClose }) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const handleLogout = () => {
     dispatch(logoutUser());
     onClose('logoutModal');
-    navigate('/');
+    localStorage.clear();
   };
 
   const handleCloseModal = () => {
