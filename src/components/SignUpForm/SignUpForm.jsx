@@ -8,6 +8,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch } from 'react-redux';
 import { registerUser } from '../../redux/user/operations';
 import { toast } from 'react-hot-toast';
+import Loader from '../Loader/Loader';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().email('Must be a valid email').required('Required'),
@@ -33,7 +34,9 @@ const SignUpForm = () => {
     mode: 'onBlur',
   });
 
+  const [isLoading, setIsLoading] = useState(false);
   const onSubmit = (values) => {
+    setIsLoading(true);
     dispatch(
       registerUser({
         email: values.email,
@@ -42,13 +45,14 @@ const SignUpForm = () => {
     )
       .unwrap()
       .then((response) => {
-        toast.success('Registration is successful!');
+        setIsLoading(false);
         localStorage.setItem('token', response.token);
         navigate('/tracker');
         reset();
       })
       .catch((error) => {
-        toast.error(`Error: ${error.message}`);
+        setIsLoading(false);
+        toast.error(`Error: ${error || 'Something went wrong'}`);
       });
   };
 
@@ -151,7 +155,7 @@ const SignUpForm = () => {
             Sign Up
           </button>
         </form>
-
+        {isLoading && <Loader/>}
         <p className={css.auth}>
           Already have an account?
           <NavLink className={css.navlink} to="/signin">
