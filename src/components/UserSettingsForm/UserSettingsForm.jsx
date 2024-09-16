@@ -84,7 +84,7 @@ const UserSettingsForm = () => {
             {...register('avatar')}
             onChange={handleAvatarChange}
           />
-          <label className={css.inputLabel} htmlFor="avatar">
+          <label className={`${css.uploadLabel} ${css.text}`} htmlFor="avatar">
             Upload a photo
           </label>
           {errors.avatar && (
@@ -102,11 +102,11 @@ const UserSettingsForm = () => {
               {...register('gender')}
               defaultChecked
             />
-            <label htmlFor="woman" className={css.genderLabel}>
+            <label htmlFor="woman" className={`${css.genderLabel} ${css.text}`}>
               Woman
             </label>
             <input type="radio" id="man" value="man" {...register('gender')} />
-            <label htmlFor="man" className={css.genderLabel}>
+            <label htmlFor="man" className={`${css.genderLabel} ${css.text}`}>
               Man
             </label>
             {errors.gender && (
@@ -148,37 +148,47 @@ const UserSettingsForm = () => {
         </div>
 
         <div>
-          <p className={css.boldText}>My daily norma</p>
-          <p>For woman:</p>
-          <p>V=(M*0,03) + (T*0,4)</p>
-          <p>For man:</p>
-          <p>V=(M*0,04) + (T*0,6)</p>
-          <p>
-            * V is the volume of the water norm in liters per day, M is your
-            body weight, T is the time of active sports, or another type of
-            activity commensurate in terms of loads (in the absence of these,
-            you must set 0)
+          <p className={`${css.boldText} ${css.smallGap}`}>My daily norma</p>
+          <p className={`${css.text} ${css.miniGap}`}>For woman:</p>
+          <p className={`${css.text} ${css.formula}  ${css.formulaGap}`}>
+            V=(M*0,03) + (T*0,4)
           </p>
-          <span>
+          <p className={`${css.text} ${css.miniGap}`}>For man:</p>
+          <p className={`${css.text} ${css.formula} ${css.smallGap}`}>
+            V=(M*0,04) + (T*0,6)
+          </p>
+          <p className={`${css.spanText} ${css.text} ${css.smallGap}`}>
+            <span className={css.specialSign}>*</span> V is the volume of the
+            water norm in liters per day, M is your body weight, T is the time
+            of active sports, or another type of activity commensurate in terms
+            of loads (in the absence of these, you must set 0)
+          </p>
+          <span className={`${css.activeTimeWrapper} ${css.bigGap}`}>
             <svg className={css.iconExclamationMark}>
               <use href={`${sprite}#icon-exclamation-mark`}></use>
             </svg>
-            <p>Active time in hours</p>
+            <p className={css.text}>Active time in hours</p>
           </span>
         </div>
 
-        <div>
-          <label htmlFor="weight">Your weight in kilograms:</label>
+        <div className={css.waterWrapper}>
+          <label htmlFor="weight" className={`${css.inputLabel} ${css.text}`}>
+            Your weight in kilograms:
+          </label>
           <input
             type="number"
             id="weight"
             {...register('weight')}
             onBlur={() => trigger('weight')}
+            className={`${css.inputs} ${css.smallGap}`}
           />
           {errors.weight && (
             <p className={css.errorMessage}>{errors.weight.message}</p>
           )}
-          <label htmlFor="sportTime">
+          <label
+            htmlFor="sportTime"
+            className={`${css.inputLabel} ${css.text}`}
+          >
             The time of active participation in sports:
           </label>
           <input
@@ -186,16 +196,24 @@ const UserSettingsForm = () => {
             id="sportTime"
             {...register('sportTime')}
             onBlur={() => trigger('sportTime')}
+            className={`${css.inputs} ${css.bigGap}`}
           />
           {errors.sportTime && (
             <p className={css.errorMessage}>{errors.sportTime.message}</p>
           )}
         </div>
 
-        <div>
-          <p>The required amount of water in liters per day:</p>
-          <p>{/* required amount of water */}L</p>
-          <label htmlFor="waterIntake" className={css.boldText}>
+        <div className={css.waterWrapper}>
+          <p className={css.text}>
+            The required amount of water in liters per day:
+          </p>
+          <p className={`${css.spanWaterAmount} ${css.text} ${css.smallGap}`}>
+            {/* required amount of water */}L
+          </p>
+          <label
+            htmlFor="waterIntake"
+            className={`${css.boldText} ${css.inputLabel}`}
+          >
             Write down how much water you will drink:
           </label>
           <input
@@ -203,6 +221,7 @@ const UserSettingsForm = () => {
             id="waterIntake"
             {...register('waterIntake')}
             onBlur={() => trigger('waterIntake')}
+            className={css.inputs}
           />
           {errors.waterIntake && (
             <p className={css.errorMessage}>{errors.waterIntake.message}</p>
