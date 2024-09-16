@@ -98,12 +98,6 @@ input[type='radio']:checked {
   margin-bottom: 4px;
 }
 
-.text {
-  font-size: 14px;
-  line-height: 1.3;
-  letter-spacing: -0.01em;
-}
-
 .formula {
   color: #9be1a0;
   font-weight: 700;
@@ -111,6 +105,12 @@ input[type='radio']:checked {
 
 .formulaGap {
   margin-bottom: 12px;
+}
+
+.text {
+  font-size: 14px;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
 }
 
 .boldText {
@@ -123,14 +123,14 @@ input[type='radio']:checked {
 
 .spanText {
   padding: 16px;
-  gap: 10px;
   border-radius: 15px;
   border: 1px solid rgba(47, 47, 47, 0.15);
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 18px;
-  letter-spacing: -0.14px;
-} /* ? continue here */
+  color: rgba(47, 47, 47, 0.6);
+}
+
+.specialSign {
+  color: #9be1a0;
+}
 
 .errorMessage {
   color: red;
