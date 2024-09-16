@@ -155,11 +155,6 @@ input[type='radio']:checked {
   color: red;
 }
 
-/*! .avatar {
-    width: 100px;
-    height: 100px;
-} from 768px */
-
 .button {
   display: flex;
   padding: 14px 40px;
@@ -173,6 +168,13 @@ input[type='radio']:checked {
   font-weight: 700;
   line-height: 1.3;
   letter-spacing: -0.01em;
+}
+
+@media screen and (min-width: 768px) {
+  .avatar {
+    width: 100px;
+    height: 100px;
+  }
 }
 
 /* from 768px .text {

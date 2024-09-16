@@ -22,3 +22,15 @@
   letter-spacing: -0.01em;
   margin-bottom: 20px;
 }
+
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 768px;
+    padding: 40px;
+  }
+
+  .title {
+    font-size: 28px;
+    line-height: 1.1;
+  }
+}
