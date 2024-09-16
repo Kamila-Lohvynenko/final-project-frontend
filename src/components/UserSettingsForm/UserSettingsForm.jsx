@@ -84,7 +84,7 @@ const UserSettingsForm = () => {
             {...register('avatar')}
             onChange={handleAvatarChange}
           />
-          <label className={css.inputLabel} htmlFor="avatar">
+          <label className={`${css.inputLabel} ${css.text}`} htmlFor="avatar">
             Upload a photo
           </label>
           {errors.avatar && (
@@ -102,11 +102,11 @@ const UserSettingsForm = () => {
               {...register('gender')}
               defaultChecked
             />
-            <label htmlFor="woman" className={css.genderLabel}>
+            <label htmlFor="woman" className={`${css.genderLabel} ${css.text}`}>
               Woman
             </label>
             <input type="radio" id="man" value="man" {...register('gender')} />
-            <label htmlFor="man" className={css.genderLabel}>
+            <label htmlFor="man" className={`${css.genderLabel} ${css.text}`}>
               Man
             </label>
             {errors.gender && (
@@ -148,12 +148,16 @@ const UserSettingsForm = () => {
         </div>
 
         <div>
-          <p className={css.boldText}>My daily norma</p>
-          <p>For woman:</p>
-          <p>V=(M*0,03) + (T*0,4)</p>
-          <p>For man:</p>
-          <p>V=(M*0,04) + (T*0,6)</p>
-          <p>
+          <p className={`${css.boldText} ${css.smallGap}`}>My daily norma</p>
+          <p className={`${css.text} ${css.miniGap}`}>For woman:</p>
+          <p className={`${css.text} ${css.formula}  ${css.formulaGap}`}>
+            V=(M*0,03) + (T*0,4)
+          </p>
+          <p className={`${css.text} ${css.miniGap}`}>For man:</p>
+          <p className={`${css.text} ${css.formula} ${css.smallGap}`}>
+            V=(M*0,04) + (T*0,6)
+          </p>
+          <p className={css.spanText}>
             * V is the volume of the water norm in liters per day, M is your
             body weight, T is the time of active sports, or another type of
             activity commensurate in terms of loads (in the absence of these,
