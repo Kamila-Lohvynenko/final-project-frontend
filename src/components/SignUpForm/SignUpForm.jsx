@@ -11,7 +11,7 @@ import { toast } from 'react-hot-toast';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().email('Must be a valid email').required('Required'),
-  password: Yup.string().min(8, 'Too short!').required('Required'),
+  password: Yup.string().min(10, 'Too short!').required('Required'),
   repeatPassword: Yup.string()
     .oneOf([Yup.ref('password'), null], 'Passwords must match')
     .required('Please confirm your password'),
