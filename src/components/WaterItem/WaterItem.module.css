@@ -53,6 +53,7 @@
 .editBtn {
   fill: white;
   stroke: black;
+  color: black;
   width: 16px;
   height: 16px;
   transition: stroke 0.3s ease;
