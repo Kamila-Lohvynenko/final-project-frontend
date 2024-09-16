@@ -15,11 +15,11 @@ const initialState = {
   user: {
     name: null,
     email: null,
-    avatarUrl: null,
+    avatar: null,
     gender: null,
     weight: null,
-    timeForSports: null,
-    dailyIntake: 0,
+    activeSportTime: null,
+    dailyNorma: 0,
   },
   token: null,
   isLoggedIn: false,
@@ -33,12 +33,11 @@ const authSlice = createSlice({
     builder
       .addCase(registerUser.fulfilled, (state, { payload }) => {
         state.token = payload.accessToken;
-        state.user = payload.user;
         state.isLoggedIn = true;
       })
       .addCase(loginUser.fulfilled, (state, { payload }) => {
         state.token = payload.accessToken;
-        state.user = payload.user;
+        state.user = { ...state.user, ...payload.user };
         state.isLoggedIn = true;
       })
       .addCase(logoutUser.fulfilled, (state) => {
@@ -50,7 +49,7 @@ const authSlice = createSlice({
         state.token = payload;
       })
       .addCase(updateUser.fulfilled, (state, { payload }) => {
-        state.user = payload.data;
+        state.user = { ...state.user, ...payload.data };
       })
       .addCase(updateAvatar.fulfilled, (state, { payload }) => {
         state.user.avatarUrl = payload;
