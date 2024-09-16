@@ -53,11 +53,11 @@ const UserBarPopover = ({
         {...attributes.popper}
         className={css.userBarPopover}
       >
-        <button onClick={() => setSettingsModal(true)}>
+        <button onClick={() => setSettingsModal(true)} className={css.settingsButton}>
           <FaCog className={css.popoverIcon} />
           Settings
         </button>
-        <button onClick={() => setLogoutModal(true)}>
+        <button onClick={() => setLogoutModal(true)} className={css.logOutButton}>
           <FaSignOutAlt className={css.popoverIcon} />
           Log out
         </button>
