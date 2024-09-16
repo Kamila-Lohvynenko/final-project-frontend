@@ -5,12 +5,14 @@ import storage from 'redux-persist/lib/storage';
 import {
   addWater,
   deleteWater,
+  getWaterByDay,
   getWaterByMonth,
   updateWater,
 } from './operations';
 
 const initialState = {
-  items: [],
+  monthIntakes: [],
+  dailyIntakes: [],
 };
 
 const waterSlice = createSlice({
@@ -20,20 +22,25 @@ const waterSlice = createSlice({
   extraReducers: (builder) =>
     builder
       .addCase(getWaterByMonth.fulfilled, (state, { payload }) => {
-        state.items = payload;
+        state.monthIntakes = payload;
+      })
+      .addCase(getWaterByDay.fulfilled, (state, { payload }) => {
+        state.dailyIntakes = payload;
       })
       .addCase(addWater.fulfilled, (state, { payload }) => {
-        state.items.push(payload.data);
+        state.monthIntakes.push(payload.data);
       })
       .addCase(updateWater.fulfilled, (state, { payload }) => {
-        const indexToUpdate = state.items.findIndex(
+        const indexToUpdate = state.monthIntakes.findIndex(
           ({ _id }) => _id === payload.data._id,
         );
 
-        state.items[indexToUpdate] = payload.data;
+        state.monthIntakes[indexToUpdate] = payload.data;
       })
       .addCase(deleteWater.fulfilled, (state, { payload }) => {
-        state.items = state.items.filter(({ _id }) => _id === payload.id);
+        state.monthIntakes = state.monthIntakes.filter(
+          ({ _id }) => _id === payload.id,
+        );
       }),
 });
 
