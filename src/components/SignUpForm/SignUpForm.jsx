@@ -44,8 +44,6 @@ const SignUpForm = () => {
       .then((response) => {
         toast.success('Registration is successful!');
         localStorage.setItem('token', response.token);
-        console.log('response.token: ', response, response.token);
-
         navigate('/tracker');
         reset();
       })
