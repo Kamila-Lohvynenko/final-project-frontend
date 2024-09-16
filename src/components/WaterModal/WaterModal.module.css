@@ -19,10 +19,27 @@
     margin: 0 0 24px 0;
   }
 
+  .formHeader {
+    display: block;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    text-align: left;
+    color: var(--light-black);
+    margin: 0 0 20px 0;
+    background-color: inherit;
+  }
+
   @media screen and (min-width: 768px) {
     .waterModal {
      padding: 40px;
      width: 518px;
+    }
+
+    .formHeader {
+      font-size: 18px;
+      line-height: 1.33;
     }
    
     .waterModal h1 {
@@ -30,3 +47,4 @@
      line-height: 1.14;
     }   
  }
+

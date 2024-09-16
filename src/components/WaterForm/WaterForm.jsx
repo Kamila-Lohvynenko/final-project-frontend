@@ -1,13 +1,12 @@
 import css from '../WaterForm/WaterForm.module.css';
 import sprite from '../../images/sprite.svg';
-import {OPERATION_NAME} from '../../constants';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import {addWater} from '../../redux/water/operations.js';
 
 
-const WaterForm =({operationType = OPERATION_NAME.ADD_WATER, handleClose})=>{
+const WaterForm =({handleClose})=>{
      const [waterValue, setWaterValue] = useState(50);
      const [recordingTime, setRecordingTime] = useState('');
      const dispatch = useDispatch();
@@ -37,11 +36,6 @@ const WaterForm =({operationType = OPERATION_NAME.ADD_WATER, handleClose})=>{
 
     return(
         <form className={css.waterForm} onSubmit={handleSubmit}>
-            {/* Заголовок формы */}
-            <p className={css.formHeader}>
-                {operationType === OPERATION_NAME.ADD_WATER ? "Choose a value:" : "Correct entered data:"}
-            </p>
-            {/* Количество воды */}
             <p className={css.amountOfWater}>
                 Amound of water:            
             </p>

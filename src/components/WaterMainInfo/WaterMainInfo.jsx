@@ -6,9 +6,9 @@ import Logo from '../Logo/Logo.jsx';
 import { OPERATION_NAME } from '../../constants/index.js';
 
 const WaterMainInfo =({openWaterModal})=>{ 
-  const handleAddWaterClick =()=>{
-    openWaterModal({isOpen: true, operation: OPERATION_NAME.ADD_WATER});
-  }
+  const handleAddWaterClick = () => {
+    openWaterModal({ isOpen: true, operation: OPERATION_NAME.ADD_WATER });
+  };
 
   return(
     <div>

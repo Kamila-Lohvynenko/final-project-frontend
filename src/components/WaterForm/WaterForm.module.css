@@ -10,18 +10,6 @@
     background-color: var(--white);
   }
   
-  .formHeader {
-    display: block;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 1.25;
-    letter-spacing: -0.01em;
-    text-align: left;
-    color: var(--light-black);
-    margin: 0 0 20px 0;
-    background-color: inherit;
-  }
-  
   .amountOfWater {
     display: block;
     font-weight: 400;
@@ -209,10 +197,10 @@
       width: 438px;
     }
   
-    .formHeader {
+    /* .formHeader {
       font-size: 18px;
       line-height: 1.33;
-    }
+    } */
   
     .amountOfWater {
       font-size: 16px;

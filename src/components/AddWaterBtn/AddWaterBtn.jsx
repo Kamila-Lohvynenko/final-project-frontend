@@ -1,6 +1,7 @@
 import css from '../AddWaterBtn/AddWaterBtn.module.css';
 import sprite from '../../images/sprite.svg';
 
+
 const AddWaterBtn =({onClick, inDetails})=>{
     return( !inDetails ?
         <button type="button" className={css.btnAdd} onClick={onClick}>
