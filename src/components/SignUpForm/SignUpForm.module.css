@@ -55,7 +55,7 @@ input:focus {
   margin-bottom: 16px;
   padding-top: 16px;
   padding-bottom: 16px;
-  width: 100px;
+  width: 150px;
   height: 50px;
 
   font-size: 14px;
@@ -158,7 +158,7 @@ input:focus {
   }
 
   .btn {
-    width: 150px;
+    width: 214px;
     height: 60px;
     padding-top: 18px;
     padding-bottom: 18px;
