@@ -1,13 +1,12 @@
 import css from '../WaterForm/WaterForm.module.css';
 import sprite from '../../images/sprite.svg';
-import {OPERATION_NAME} from '../../constants';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import {addWater} from '../../redux/water/operations.js';
 
 
-const WaterForm =({operationType = OPERATION_NAME.ADD_WATER, handleClose})=>{
+const WaterForm =({handleClose})=>{
      const [waterValue, setWaterValue] = useState(50);
      const [recordingTime, setRecordingTime] = useState('');
      const dispatch = useDispatch();
@@ -29,7 +28,7 @@ const WaterForm =({operationType = OPERATION_NAME.ADD_WATER, handleClose})=>{
         e.preventDefault();
         const formData = {
             time: recordingTime,
-            amound: waterValue
+            amount: waterValue
         };
         dispatch(addWater(formData));
         handleClose();
@@ -37,13 +36,8 @@ const WaterForm =({operationType = OPERATION_NAME.ADD_WATER, handleClose})=>{
 
     return(
         <form className={css.waterForm} onSubmit={handleSubmit}>
-            {/* Заголовок формы */}
-            <p className={css.formHeader}>
-                {operationType === OPERATION_NAME.ADD_WATER ? "Choose a value:" : "Correct entered data:"}
-            </p>
-            {/* Количество воды */}
             <p className={css.amountOfWater}>
-                Amound of water:            
+                Amount of water:            
             </p>
             <div className={css.addWaterWrapper}>
                 <button type="button" className={css.addWaterBtn}
@@ -73,13 +67,15 @@ const WaterForm =({operationType = OPERATION_NAME.ADD_WATER, handleClose})=>{
             {/* Ввод количества воды */}
             <label className={css.waterValueLabel}>
                 Enter the value of the water used:
-            <input 
-                type="number" 
-                className={css.waterValue}
-                value={waterValue === 0 ? '' : waterValue}
-                pattern="^[ 0-9]+$"
-                onChange={(e)=> setWaterValue(Number(e.target.value))}>                
-            </input>
+            <input type="text"
+            className={css.waterValue}
+            value={waterValue === 0 ? '' : waterValue}
+            onChange={(e)=>{
+                const newValue = e.target.value;
+                if(/^[ 0-9]*$/.test(newValue)){
+                    setWaterValue(Number(newValue));
+                }
+            }} />
             </label>
             <button type="submit" className={css.saveBtn}>
                 Save
