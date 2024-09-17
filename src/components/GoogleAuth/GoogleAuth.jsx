@@ -3,7 +3,7 @@ import { FcGoogle } from 'react-icons/fc';
 
 const GoogleAuth = ({ buttonText }) => {
   return (
-    <button className={css.googleBtn}>
+    <button type="button" className={css.googleBtn}>
       <FcGoogle size={24} />
       {buttonText}
     </button>
