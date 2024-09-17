@@ -6,19 +6,15 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import sprite from '../../images/sprite.svg';
 
 const VALIDATION_SCHEMA = Yup.object().shape({
-  avatar: Yup.mixed()
-    .test('fileSize', 'File is too large', (value) => {
-      return value && value[0] && value[0].size <= 6000000; // 6MB
-    })
-    .test('fileType', 'Unsupported file format', (value) => {
-      return (
-        value &&
-        value[0] &&
-        ['image/jpeg', 'image/png', 'image/gif', 'image/webp'].includes(
-          value[0].type,
-        )
-      );
-    }),
+  avatar: Yup.mixed().test('fileType', 'Unsupported file format', (value) => {
+    return (
+      value &&
+      value[0] &&
+      ['image/jpeg', 'image/png', 'image/gif', 'image/webp'].includes(
+        value[0].type,
+      )
+    );
+  }),
   gender: Yup.string().required('Please select gender'),
   name: Yup.string().required('Name is required'),
   email: Yup.string()
@@ -62,31 +58,36 @@ const UserSettingsForm = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div>
-        {avatarPreview && (
-          <img
-            className={css.avatar}
-            src={avatarPreview}
-            alt="Avatar preview"
-            width="75"
-            height="75"
-            loading="lazy"
-          />
-        )}
-        <div className={css.inputWrapper}>
-          <svg className={css.uploadPhotoIcon}>
-            <use href={`${sprite}#icon-upload`}></use>
-          </svg>
-          <input
-            className={css.hiddenInput}
-            type="file"
-            id="avatar"
-            accept="image/*"
-            {...register('avatar')}
-            onChange={handleAvatarChange}
-          />
-          <label className={`${css.uploadLabel} ${css.text}`} htmlFor="avatar">
-            Upload a photo
-          </label>
+        <div className={css.uploadWrapper}>
+          {avatarPreview && (
+            <img
+              className={css.avatar}
+              src={avatarPreview}
+              alt="Avatar preview"
+              width="75"
+              height="75"
+              loading="lazy"
+            />
+          )}
+          <div className={css.inputWrapper}>
+            <svg className={css.uploadPhotoIcon}>
+              <use href={`${sprite}#icon-upload`}></use>
+            </svg>
+            <input
+              className={css.hiddenInput}
+              type="file"
+              id="avatar"
+              accept="image/*"
+              {...register('avatar')}
+              onChange={handleAvatarChange}
+            />
+            <label
+              className={`${css.uploadLabel} ${css.text}`}
+              htmlFor="avatar"
+            >
+              Upload a photo
+            </label>
+          </div>
           {errors.avatar && (
             <p className={css.errorMessage}>{errors.avatar.message}</p>
           )}
@@ -147,16 +148,23 @@ const UserSettingsForm = () => {
           )}
         </div>
 
-        <div>
+        <div className={css.formulaContainer}>
           <p className={`${css.boldText} ${css.smallGap}`}>My daily norma</p>
-          <p className={`${css.text} ${css.miniGap}`}>For woman:</p>
-          <p className={`${css.text} ${css.formula}  ${css.formulaGap}`}>
-            V=(M*0,03) + (T*0,4)
-          </p>
-          <p className={`${css.text} ${css.miniGap}`}>For man:</p>
-          <p className={`${css.text} ${css.formula} ${css.smallGap}`}>
-            V=(M*0,04) + (T*0,6)
-          </p>
+          <div className={`${css.formulaWrapper} ${css.smallGap}`}>
+            <div className={css.formulaBlock}>
+              <p className={`${css.text} ${css.miniGap}`}>For woman:</p>
+              <p className={`${css.text} ${css.formula}`}>
+                V=(M*0,03) + (T*0,4)
+              </p>
+            </div>
+            <div className={css.formulaBlock}>
+              <p className={`${css.text} ${css.miniGap}`}>For man:</p>
+              <p className={`${css.text} ${css.formula}`}>
+                V=(M*0,04) + (T*0,6)
+              </p>
+            </div>
+          </div>
+
           <p className={`${css.spanText} ${css.text} ${css.smallGap}`}>
             <span className={css.specialSign}>*</span> V is the volume of the
             water norm in liters per day, M is your body weight, T is the time
@@ -204,12 +212,14 @@ const UserSettingsForm = () => {
         </div>
 
         <div className={css.waterWrapper}>
-          <p className={css.text}>
-            The required amount of water in liters per day:
-          </p>
-          <p className={`${css.spanWaterAmount} ${css.text} ${css.smallGap}`}>
-            {/* required amount of water */}L
-          </p>
+          <div className={`${css.litersWrapper} ${css.smallGap}`}>
+            <p className={css.text}>
+              The required amount of water in liters per day:
+            </p>
+            <p className={`${css.spanWaterAmount} ${css.text}`}>
+              {/* required amount of water */}L
+            </p>
+          </div>
           <label
             htmlFor="waterIntake"
             className={`${css.boldText} ${css.inputLabel}`}
