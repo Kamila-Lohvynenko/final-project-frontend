@@ -11,7 +11,7 @@ const SignInPage = lazy(() => import('./../pages/SignInPage/SignInPage'));
 const SignUpPage = lazy(() => import('./../pages/SignUpPage/SignUpPage'));
 const TrackerPage = lazy(() => import('./../pages/TrackerPage/TrackerPage'));
 const NotFoundPage = lazy(() => import('./../pages/NotFoundPage/NotFoundPage'));
-
+const ResetPasswordPage = lazy(()=> import ('./../pages/ResetPasswordPage/ResetPasswordPage'));
 export const App = () => {
   return (
     <div className={css.app}>
@@ -53,6 +53,15 @@ export const App = () => {
                   redirectTo="/signin"
                 />
               }
+            />
+            <Route
+            path="/reset-password"
+            element={
+              <PrivateRoute
+              component={<ResetPasswordPage />}
+              redirectTo="/"
+              />
+            }
             />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
