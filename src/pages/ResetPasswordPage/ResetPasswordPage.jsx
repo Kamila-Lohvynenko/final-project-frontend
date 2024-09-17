@@ -1,12 +1,21 @@
-import css from "../ResetPasswordPage/ResetPasswordPage.module.css";
-
+import AdvantagesSection from '../../components/AdvantagesSection/AdvantagesSection';
+import ResetPasswordForm from '../../components/ResetPasswordForm/ResetPasswordForm';
+import styles from '../ResetPasswordPage/ResetPasswordPage.module.css';
 
 const ResetPasswordPage = () => {
-    return (
-      <div className={css.Fon}>
-      <h1 className={css.Kamilla}>Камилла ты прекрасна - хорошего тебе дня и прекрасного настроения</h1>
+  return (
+    <>
+      <div className={styles.wrapper}>
+        <div className={styles.form}>
+          <ResetPasswordForm />
+        </div>
+        <div className={styles.box}>
+          <AdvantagesSection />
+        </div>
+        {/* <Toaster position="top-right" /> */}
       </div>
-    );
-  };
+    </>
+  );
+};
 
-  export default ResetPasswordPage
+export default ResetPasswordPage;
