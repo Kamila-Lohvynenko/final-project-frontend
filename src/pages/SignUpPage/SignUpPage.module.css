@@ -7,9 +7,6 @@
 }
 
 .form {
-  width: 672px;
-  height: 736px;
-
   background-color: var(--grey);
   border-radius: 30px;
 }
@@ -30,6 +27,11 @@
 }
 
 @media only screen and (min-width: 1440px) {
+  .form {
+    width: 672px;
+    height: 736px;
+  }
+
   .box {
     display: block;
     width: 672px;

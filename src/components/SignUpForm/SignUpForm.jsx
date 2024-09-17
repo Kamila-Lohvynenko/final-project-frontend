@@ -152,12 +152,14 @@ const SignUpForm = () => {
             )}
           </div>
 
-          <button type="submit" className={css.btn}>
-            Sign Up
-          </button>
+          <div className={css.buttonWrapper}>
+            <button type="submit" className={css.btn}>
+              Sign Up
+            </button>
+            <GoogleAuth buttonText="Sign up with Google" />
+          </div>
         </form>
 
-        <GoogleAuth buttonText="Sign up with Google" />
         {isLoading && <Loader />}
         <p className={css.auth}>
           Already have an account?
