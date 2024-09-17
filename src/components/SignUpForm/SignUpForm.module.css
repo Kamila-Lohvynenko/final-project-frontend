@@ -55,7 +55,7 @@ input:focus {
   margin-bottom: 16px;
   padding-top: 16px;
   padding-bottom: 16px;
-  width: 100px;
+  width: 150px;
   height: 50px;
 
   font-size: 14px;
@@ -132,6 +132,7 @@ input:focus {
   justify-content: center;
   align-items: center;
   gap: 8px;
+  flex-wrap: wrap;
 }
 
 @media only screen and (min-width: 768px) {
@@ -157,7 +158,7 @@ input:focus {
   }
 
   .btn {
-    width: 150px;
+    width: 214px;
     height: 60px;
     padding-top: 18px;
     padding-bottom: 18px;
@@ -175,9 +176,14 @@ input:focus {
 
 @media screen and (max-width: 374px) and (min-width: 320px) {
   .input,
-  .btn,
   .field,
+  .btn,
   .wrapperIcon {
     width: calc(100vw - 64px);
+  }
+
+  .buttonWrapper {
+    flex-direction: column;
+    gap: 4px;
   }
 }
