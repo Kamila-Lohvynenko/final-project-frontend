@@ -95,6 +95,18 @@ input:focus {
   color: rgba(47, 47, 47, 0.5);
 }
 
+.recover {
+  padding-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 14px;
+  line-height: 1.28;
+  letter-spacing: -0.01em;
+
+  color: rgba(47, 47, 47, 0.5);
+}
 .navlink {
   margin-left: 5px;
 
@@ -126,7 +138,8 @@ input:focus {
   .label,
   .input,
   .btn,
-  .auth {
+  .auth,
+  .recover {
     font-size: 16px;
     line-height: 1.5;
   }

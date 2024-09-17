@@ -131,6 +131,12 @@ const SignInForm = () => {
             Sign Up
           </NavLink>
         </p>
+        <p className={styles.recover}>
+          Forgot your password?
+          <NavLink className={styles.navlink} to="/signup">
+            Recover password
+          </NavLink>
+        </p>
       </div>
     </>
   );
