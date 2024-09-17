@@ -28,7 +28,7 @@ const WaterForm =({handleClose})=>{
         e.preventDefault();
         const formData = {
             time: recordingTime,
-            amound: waterValue
+            amount: waterValue
         };
         dispatch(addWater(formData));
         handleClose();
@@ -37,7 +37,7 @@ const WaterForm =({handleClose})=>{
     return(
         <form className={css.waterForm} onSubmit={handleSubmit}>
             <p className={css.amountOfWater}>
-                Amound of water:            
+                Amount of water:            
             </p>
             <div className={css.addWaterWrapper}>
                 <button type="button" className={css.addWaterBtn}
@@ -67,13 +67,15 @@ const WaterForm =({handleClose})=>{
             {/* Ввод количества воды */}
             <label className={css.waterValueLabel}>
                 Enter the value of the water used:
-            <input 
-                type="number" 
-                className={css.waterValue}
-                value={waterValue === 0 ? '' : waterValue}
-                pattern="^[ 0-9]+$"
-                onChange={(e)=> setWaterValue(Number(e.target.value))}>                
-            </input>
+            <input type="text"
+            className={css.waterValue}
+            value={waterValue === 0 ? '' : waterValue}
+            onChange={(e)=>{
+                const newValue = e.target.value;
+                if(/^[ 0-9]*$/.test(newValue)){
+                    setWaterValue(Number(newValue));
+                }
+            }} />
             </label>
             <button type="submit" className={css.saveBtn}>
                 Save
