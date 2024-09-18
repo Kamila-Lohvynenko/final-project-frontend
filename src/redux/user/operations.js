@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import authService from '../../services/auth';
-import { setAuthToken } from '../../services/axios.config';
+import { clearAuthToken, setAuthToken } from '../../services/axios.config';
 
 export const registerUser = createAsyncThunk(
   'user/register',
@@ -14,6 +14,8 @@ export const registerUser = createAsyncThunk(
           data: { accsessToken },
         },
       } = await authService.login(userCredentials);
+      console.log(accsessToken);
+
       setAuthToken(accsessToken);
 
       const {
@@ -55,6 +57,7 @@ export const logoutUser = createAsyncThunk(
   async (_, thunkApi) => {
     try {
       await authService.logout();
+      clearAuthToken();
     } catch (error) {
       return thunkApi.rejectWithValue(error.response.data.message);
     }
@@ -103,6 +106,25 @@ export const updateAvatar = createAsyncThunk(
         },
       } = await authService.uploadAvatar(file);
       return avatar;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.response.data.message);
+    }
+  },
+);
+
+export const getUserData = createAsyncThunk(
+  'user/getUserData',
+  async (_, thunkApi) => {
+    try {
+      const state = thunkApi.getState();
+      setAuthToken(state.auth.token);
+
+      const response = await authService.getUser();
+
+      const data = response.data.data;
+      console.log(data);
+
+      return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.response.data.message);
     }

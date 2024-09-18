@@ -6,4 +6,4 @@ export const selectWeight = (state) => state.auth.user.weight;
 export const selectTimeForSports = (state) => state.auth.user.activeSportTime;
 export const selectDailyIntake = (state) => state.auth.user.dailyNorma;
 export const selectToken = (state) => state.auth.user.token;
-export const selectIsLoggedIn = (state) => state.auth.user.isLoggedIn;
+export const selectIsLoggedIn = (state) => state.auth.isLoggedIn;
