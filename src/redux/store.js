@@ -9,8 +9,8 @@ import {
 } from 'redux-persist';
 import { configureStore } from '@reduxjs/toolkit';
 
-import authReducer from './user/slice';
 import waterReducer from './water/slice';
+import { authReducer } from './user/slice';
 
 export const store = configureStore({
   reducer: {

@@ -9,6 +9,7 @@ import {
   registerUser,
   updateUser,
   updateAvatar,
+  getUserData,
 } from './operations';
 
 const initialState = {
@@ -28,7 +29,15 @@ const initialState = {
 const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {},
+  reducers: {
+    resetToken: (state, action) => {
+      state.token = action.payload;
+    },
+    refreshError: (state) => {
+      state.isLoggedIn = false;
+      state.token = null;
+    },
+  },
   extraReducers: (builder) =>
     builder
       .addCase(registerUser.fulfilled, (state, { payload }) => {
@@ -37,7 +46,6 @@ const authSlice = createSlice({
       })
       .addCase(loginUser.fulfilled, (state, { payload }) => {
         state.token = payload.accessToken;
-        state.user = { ...state.user, ...payload.user };
         state.isLoggedIn = true;
       })
       .addCase(logoutUser.fulfilled, (state) => {
@@ -53,6 +61,9 @@ const authSlice = createSlice({
       })
       .addCase(updateAvatar.fulfilled, (state, { payload }) => {
         state.user.avatarUrl = payload;
+      })
+      .addCase(getUserData.fulfilled, (state, { payload }) => {
+        state.user = { ...state.user, ...payload.data };
       }),
 });
 
@@ -61,6 +72,6 @@ const persistConfig = {
   storage,
 };
 
-const authReducer = persistReducer(persistConfig, authSlice.reducer);
+export const { refreshError, resetToken } = authSlice.actions;
 
-export default authReducer;
+export const authReducer = persistReducer(persistConfig, authSlice.reducer);

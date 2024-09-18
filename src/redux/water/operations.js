@@ -1,12 +1,13 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import waterService from '../../services/water';
+import { axiosInstance } from '../../services/axios.config';
 
 export const addWater = createAsyncThunk(
   'water/add',
   async (portionData, thunkApi) => {
     try {
-      const { data } = await waterService.addWater(portionData);
+      const { data } = await axiosInstance.post('/water', portionData);
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.response.data.message);
@@ -16,9 +17,9 @@ export const addWater = createAsyncThunk(
 
 export const updateWater = createAsyncThunk(
   'water/update',
-  async (portionData, thunkApi) => {
+  async ({ id, portionData }, thunkApi) => {
     try {
-      await waterService.updateWater(portionData);
+      await axiosInstance.patch(`/water/${id}`, portionData);
       return portionData.id;
     } catch (error) {
       return thunkApi.rejectWithValue(error.response.data.message);
@@ -44,7 +45,7 @@ export const getWaterByMonth = createAsyncThunk(
     try {
       const {
         data: { data },
-      } = await waterService.getWaterByMonth(params);
+      } = await axiosInstance.get('/water/month', params);
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.response.data.message);
@@ -58,7 +59,7 @@ export const getWaterByDay = createAsyncThunk(
     try {
       const {
         data: { data },
-      } = await waterService.getWaterByDay(params);
+      } = await axiosInstance.get('/water/day', params);
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.response.data.message);
