@@ -14,3 +14,8 @@ export const setAuthToken = (token) => {
   authClient.defaults.headers.common['Authorization'] = `Bearer ${token}`;
   waterClient.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 };
+
+export const clearAuthToken = () => {
+  authClient.defaults.headers.common['Authorization'] = ``;
+  waterClient.defaults.headers.common['Authorization'] = ``;
+};
