@@ -1,50 +1,56 @@
 .waterModal {
-    margin: 0 auto;
-    width: 343px;
-    height: auto;
-    padding: 40px 20px;
-    border-radius: 15px;
-    background-color: var(--white);
-    box-shadow: 0 4px 50px 0 rgba(0, 0, 0, 0.1);
-    position: relative;
+  position: relative;
+
+  width: 343px;
+  height: auto;
+
+  margin: 0 auto;
+  padding: 40px 20px;
+
+  background-color: var(--white);
+  border-radius: 15px;
+  box-shadow: 0 4px 50px 0 rgba(0, 0, 0, 0.1);  
   }
+
+.waterModal h1 {
+  margin: 0 0 24px 0;
+
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+
+  color: var(--light-black);
+}
+
+.formHeader {
+  display: block;
+  margin: 0 0 20px 0;
+
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  text-align: left;
+
+  color: var(--light-black);
+  background-color: inherit;
+}
   
-  .waterModal h1 {
-    font-family: "Poppins", sans-serif;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 1.2;
-    letter-spacing: -0.01em;
-    color: var(--light-black);
-    margin: 0 0 24px 0;
+@media screen and (min-width: 768px) {
+  .waterModal {
+   width: 518px;
+   padding: 40px;
   }
 
   .formHeader {
-    display: block;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 1.25;
-    letter-spacing: -0.01em;
-    text-align: left;
-    color: var(--light-black);
-    margin: 0 0 20px 0;
-    background-color: inherit;
+    font-size: 18px;
+    line-height: 1.33;
   }
-
-  @media screen and (min-width: 768px) {
-    .waterModal {
-     padding: 40px;
-     width: 518px;
-    }
-
-    .formHeader {
-      font-size: 18px;
-      line-height: 1.33;
-    }
-   
-    .waterModal h1 {
-     font-size: 28px;
-     line-height: 1.14;
-    }   
- }
-
+ 
+  .waterModal h1 {
+   font-size: 28px;
+   line-height: 1.14;
+  }   
+}
