@@ -35,17 +35,17 @@ export const loginUser = createAsyncThunk(
     try {
       const {
         data: {
-          data: { accsessToken },
+          data: { accessToken },
         },
       } = await authService.login(userCredentials);
 
-      setAuthToken(accsessToken);
+      setAuthToken(accessToken);
 
       const {
         data: { data },
-      } = await authService.getUser(accsessToken);
+      } = await authService.getUser(accessToken);
 
-      return { user: data, accessToken: accsessToken };
+      return { user: data, accessToken: accessToken };
     } catch (error) {
       return thunkApi.rejectWithValue(error.response.data.message);
     }
