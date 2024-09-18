@@ -5,12 +5,10 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import {addWater} from '../../redux/water/operations.js';
 
-
 const WaterForm =({handleClose})=>{
      const [waterValue, setWaterValue] = useState(50);
      const [recordingTime, setRecordingTime] = useState('');
      const dispatch = useDispatch();
-
      
 // Функция для получения текущего времени в формате HH:MM
      const getCurrentTime = () =>{
@@ -84,5 +82,6 @@ const WaterForm =({handleClose})=>{
     );
 };
 
-
 export default WaterForm;
+
+

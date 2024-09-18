@@ -1,20 +1,6 @@
-// import css from '../WaterDailyNorma/WaterDailyNorma.module.css';
-
-// const WaterDailyNorma =()=>{
-//     return(
-//         <div className={css.containerDailyNorma}>
-//             <p className={css.value}>2L</p>
-//             <p className={css.text}>My daily norma</p>
-//         </div>
-//     );
-// };
-
-// export default WaterDailyNorma;
-
 import { useSelector } from 'react-redux';
-import css from '../WaterDailyNorma/WaterDailyNorma.module.css';
 import {selectDailyIntake} from '../../redux/user/selectors.js';
-
+import css from '../WaterDailyNorma/WaterDailyNorma.module.css';
 
 const WaterDailyNorma =()=>{
     const dailyNorma = useSelector(selectDailyIntake);
@@ -28,3 +14,5 @@ const WaterDailyNorma =()=>{
 };
 
 export default WaterDailyNorma;
+
+

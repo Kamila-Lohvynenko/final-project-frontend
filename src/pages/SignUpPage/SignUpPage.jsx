@@ -1,3 +1,4 @@
+import AdvantagesSection from '../../components/AdvantagesSection/AdvantagesSection.jsx';
 import Logo from '../../components/Logo/Logo.jsx';
 import SignUpForm from '../../components/SignUpForm/SignUpForm.jsx';
 import css from './SignUpPage.module.css';
@@ -10,7 +11,12 @@ const SignUpPage = () => {
         <div className={css.logoWrapper}>
           <Logo />
         </div>
-        <SignUpForm />
+        <div className={css.form}>
+          <SignUpForm />
+        </div>
+        <div className={css.box}>
+          <AdvantagesSection />
+        </div>
       </div>
     </>
   );

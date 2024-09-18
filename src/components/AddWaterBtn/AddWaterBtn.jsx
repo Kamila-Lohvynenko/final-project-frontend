@@ -1,6 +1,5 @@
-import css from '../AddWaterBtn/AddWaterBtn.module.css';
 import sprite from '../../images/sprite.svg';
-
+import css from '../AddWaterBtn/AddWaterBtn.module.css';
 
 const AddWaterBtn =({onClick, inDetails})=>{
     return( !inDetails ?

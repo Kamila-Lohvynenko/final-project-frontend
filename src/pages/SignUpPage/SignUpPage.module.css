@@ -1,11 +1,14 @@
 .wrapper {
   position: relative;
-  background-color: var(--grey);
-  border-radius: 30px;
+
   display: flex;
   justify-content: center;
-  margin-top: 16px;
-  margin-bottom: 16px;
+  gap: 32px;
+}
+
+.form {
+  background-color: var(--grey);
+  border-radius: 30px;
 }
 
 .logoWrapper {
@@ -13,15 +16,25 @@
   left: 16px;
   top: 24px;
 }
-
+.box {
+  display: none;
+}
 @media only screen and (min-width: 768px) {
-  .wrapper {
-    margin-top: 32px;
-    margin-bottom: 32px;
-  }
-
   .logoWrapper {
     left: 32px;
     top: 32px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .form {
+    width: 672px;
+    height: 736px;
+  }
+
+  .box {
+    display: block;
+    width: 672px;
+    height: 736px;
   }
 }

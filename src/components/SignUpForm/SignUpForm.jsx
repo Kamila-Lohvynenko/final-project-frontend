@@ -9,6 +9,7 @@ import { useDispatch } from 'react-redux';
 import { registerUser } from '../../redux/user/operations';
 import { toast } from 'react-hot-toast';
 import Loader from '../Loader/Loader';
+import GoogleAuth from '../GoogleAuth/GoogleAuth.jsx';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().email('Must be a valid email').required('Required'),
@@ -151,11 +152,15 @@ const SignUpForm = () => {
             )}
           </div>
 
-          <button type="submit" className={css.btn}>
-            Sign Up
-          </button>
+          <div className={css.buttonWrapper}>
+            <button type="submit" className={css.btn}>
+              Sign Up
+            </button>
+            <GoogleAuth buttonText="Sign up with Google" />
+          </div>
         </form>
-        {isLoading && <Loader/>}
+
+        {isLoading && <Loader />}
         <p className={css.auth}>
           Already have an account?
           <NavLink className={css.navlink} to="/signin">
