@@ -38,4 +38,7 @@
 }
 
 @media screen and (min-width: 1440px) {
+  .container {
+    max-width: 920px;
+  }
 }
