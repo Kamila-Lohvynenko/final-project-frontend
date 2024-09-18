@@ -11,18 +11,18 @@ export const registerUser = createAsyncThunk(
 
       const {
         data: {
-          data: { accsessToken },
+          data: { accessToken },
         },
       } = await authService.login(userCredentials);
-      console.log(accsessToken);
+      console.log(accessToken);
 
-      setAuthToken(accsessToken);
+      setAuthToken(accessToken);
 
       const {
         data: { data: userData },
-      } = await authService.getUser(accsessToken);
+      } = await authService.getUser(accessToken);
 
-      return { user: userData, accessToken: accsessToken };
+      return { user: userData, accessToken: accessToken };
     } catch (error) {
       return thunkApi.rejectWithValue(error.response.data.message);
     }
