@@ -51,6 +51,7 @@
   border-radius: 50%;
   margin-bottom: 10px;
   height: 75px;
+  object-fit: cover;
 }
 
 .iconExclamationMark {
