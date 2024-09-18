@@ -50,7 +50,7 @@
 .avatar {
   border-radius: 50%;
   margin-bottom: 10px;
-  flex-shrink: 0;
+  height: 75px;
 }
 
 .iconExclamationMark {
@@ -245,4 +245,25 @@ input[type='radio']:checked {
 }
 
 @media screen and (min-width: 1440px) {
+  .content {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+  }
+
+  .rightSide {
+    padding-top: 86px;
+  }
+
+  .inputs {
+    width: 400px;
+  }
+
+  .spanText {
+    width: 400px;
+  }
+
+  .activeTimeWrapper {
+    margin-bottom: 0;
+  }
 }
