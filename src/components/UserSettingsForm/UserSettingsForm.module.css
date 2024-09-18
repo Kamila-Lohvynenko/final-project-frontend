@@ -1,8 +1,24 @@
-.inputWrapper {
+.scrollableContent {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding-right: 10px;
+}
+
+.scrollableContent::-webkit-scrollbar {
+  width: 6px;
+}
+
+.uploadWrapper {
   position: relative;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   margin-bottom: 40px;
+}
+
+.inputWrapper {
+  display: flex;
 }
 
 .inputLabel {
@@ -29,6 +45,12 @@
   opacity: 0;
   width: 100%;
   height: 100%;
+}
+
+.avatar {
+  border-radius: 50%;
+  margin-bottom: 10px;
+  flex-shrink: 0;
 }
 
 .iconExclamationMark {
@@ -105,7 +127,7 @@ input[type='radio']:checked {
   font-weight: 700;
 }
 
-.formulaGap {
+.formulaBlock {
   margin-bottom: 12px;
 }
 
@@ -171,14 +193,56 @@ input[type='radio']:checked {
 }
 
 @media screen and (min-width: 768px) {
+  .scrollableContent {
+    padding-right: 20px;
+  }
+
   .avatar {
     width: 100px;
     height: 100px;
   }
+
+  .uploadPhotoIcon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .text {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .boldText {
+    font-size: 18px;
+    line-height: 1.3;
+  }
+
+  .inputs {
+    font-size: 16px;
+    padding: 16px;
+  }
+
+  .formulaBlock {
+    margin-bottom: 0;
+  }
+
+  .formulaWrapper {
+    display: flex;
+    gap: 28px;
+  }
+
+  .litersWrapper {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+  }
+
+  .button {
+    padding: 16px 50px;
+    font-size: 16px;
+    line-height: 1.5;
+  }
 }
 
-/* from 768px .text {
-  font-size: 16px; 
-  line-height: 1.3; ?
-  letter-spacing: -0.01em; ?
-} */
+@media screen and (min-width: 1440px) {
+}
