@@ -1,28 +1,32 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import authService from '../../services/auth';
-import { clearAuthToken, setAuthToken } from '../../services/axios.config';
+import {
+  axiosInstance,
+  clearAuthToken,
+  setAuthToken,
+} from '../../services/axios.config';
 
 export const registerUser = createAsyncThunk(
   'user/register',
   async (userCredentials, thunkApi) => {
     try {
-      await authService.register(userCredentials);
+      const response = await axiosInstance.post(
+        '/users/register',
+        userCredentials,
+      );
+      console.log(response.data);
 
       const {
         data: {
           data: { accessToken },
         },
-      } = await authService.login(userCredentials);
+      } = await axiosInstance.post('users/login', userCredentials);
       console.log(accessToken);
 
       setAuthToken(accessToken);
 
-      const {
-        data: { data: userData },
-      } = await authService.getUser(accessToken);
-
-      return { user: userData, accessToken: accessToken };
+      return { accessToken: accessToken };
     } catch (error) {
       return thunkApi.rejectWithValue(error.response.data.message);
     }
@@ -37,15 +41,16 @@ export const loginUser = createAsyncThunk(
         data: {
           data: { accessToken },
         },
-      } = await authService.login(userCredentials);
+      } = await axiosInstance.post('users/login', userCredentials);
 
       setAuthToken(accessToken);
 
-      const {
-        data: { data },
-      } = await authService.getUser(accessToken);
+      // const {
+      //   data: { data },
+      // } = await authService.getUser(accsessToken);
 
-      return { user: data, accessToken: accessToken };
+      // return { user: data, accessToken: accsessToken };
+      return { accessToken: accessToken };
     } catch (error) {
       return thunkApi.rejectWithValue(error.response.data.message);
     }
@@ -56,7 +61,7 @@ export const logoutUser = createAsyncThunk(
   'user/logout',
   async (_, thunkApi) => {
     try {
-      await authService.logout();
+      await axiosInstance.post('users/logout');
       clearAuthToken();
     } catch (error) {
       return thunkApi.rejectWithValue(error.response.data.message);
@@ -119,7 +124,7 @@ export const getUserData = createAsyncThunk(
       const state = thunkApi.getState();
       setAuthToken(state.auth.token);
 
-      const response = await authService.getUser();
+      const response = await axiosInstance.get('users/data');
 
       const data = response.data.data;
       console.log(data);
