@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import sprite from '../../images/sprite.svg';
+import defaultAvatar from '../../images/default_avatar.webp';
 
 const VALIDATION_SCHEMA = Yup.object().shape({
   avatar: Yup.mixed().test('fileType', 'Unsupported file format', (value) => {
@@ -58,16 +59,14 @@ const UserSettingsForm = () => {
   return (
     <div className={css.scrollableContent}>
       <div className={css.uploadWrapper}>
-        {avatarPreview && (
-          <img
-            className={css.avatar}
-            src={avatarPreview}
-            alt="Avatar preview"
-            width="75"
-            height="75"
-            loading="lazy"
-          />
-        )}
+        <img
+          className={css.avatar}
+          src={avatarPreview || defaultAvatar}
+          alt="Avatar preview"
+          width="75"
+          height="75"
+          loading="lazy"
+        />
         <div className={css.inputWrapper}>
           <svg className={css.uploadPhotoIcon}>
             <use href={`${sprite}#icon-upload`}></use>

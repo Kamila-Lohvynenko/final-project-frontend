@@ -50,7 +50,7 @@
 .avatar {
   border-radius: 50%;
   margin-bottom: 10px;
-  flex-shrink: 0;
+  height: 75px;
 }
 
 .iconExclamationMark {
