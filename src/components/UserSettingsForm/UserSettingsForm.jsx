@@ -8,12 +8,11 @@ import defaultAvatar from '../../images/default_avatar.webp';
 
 const VALIDATION_SCHEMA = Yup.object().shape({
   avatar: Yup.mixed().test('fileType', 'Unsupported file format', (value) => {
-    return (
-      value &&
-      value[0] &&
-      ['image/jpeg', 'image/png', 'image/gif', 'image/webp'].includes(
-        value[0].type,
-      )
+    if (!value || !value[0])
+      return true; /* If file is not selected, it will be considered as a valid file and won't show error */
+
+    return ['image/jpeg', 'image/png', 'image/gif', 'image/webp'].includes(
+      value[0].type,
     );
   }),
   gender: Yup.string().required('Please select gender'),
@@ -39,6 +38,7 @@ const UserSettingsForm = () => {
     handleSubmit,
     formState: { errors },
     trigger,
+    clearErrors,
   } = useForm({
     resolver: yupResolver(VALIDATION_SCHEMA),
     mode: 'onBlur',
@@ -49,10 +49,13 @@ const UserSettingsForm = () => {
     //send data to the server
   };
 
-  const handleAvatarChange = (e) => {
-    if (e.target.files && e.target.files[0]) {
-      const file = e.target.files[0];
-      setAvatarPreview(URL.createObjectURL(file));
+  const handleAvatarChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const objectUrl = URL.createObjectURL(file);
+      setAvatarPreview(objectUrl);
+      clearErrors('avatar');
+      trigger('avatar');
     }
   };
 
@@ -76,8 +79,10 @@ const UserSettingsForm = () => {
             type="file"
             id="avatar"
             accept="image/*"
-            {...register('avatar')}
-            onChange={handleAvatarChange}
+            onChange={(e) => {
+              register('avatar').onChange(e);
+              handleAvatarChange(e);
+            }}
           />
           <label className={`${css.uploadLabel} ${css.text}`} htmlFor="avatar">
             Upload a photo
