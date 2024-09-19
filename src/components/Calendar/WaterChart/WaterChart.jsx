@@ -8,6 +8,8 @@ import {
 } from 'recharts';
 
 import css from './WaterChart.module.css';
+import { selectWaterByMonth } from '../../../redux/water/selectors';
+import { useSelector } from 'react-redux';
 
 const formatDate = (timestamp) => {
   const timestampNum = parseInt(timestamp, 10);
@@ -48,9 +50,19 @@ const CustomTooltip = ({ active, payload, coordinate }) => {
   return null;
 };
 
-const WaterIntakeChart = ({ waterData }) => {
-  // Убедитесь, что waterData передается в компонент
-  const formattedData = waterData.slice(0, 7).map((item) => ({
+const WaterIntakeChart = () => {
+  const waterWeeklyData = useSelector(selectWaterByMonth) || [];
+  console.log('waterWeeklyData:', waterWeeklyData);
+
+  if (!Array.isArray(waterWeeklyData) || waterWeeklyData.length === 0) {
+    return (
+      <div className={css.graphContainer}>
+        <p className={css.nodata}>{'NO DATA FOR WEEKLY STATISTIC CHART'}</p>
+      </div>
+    );
+  }
+
+  const formattedData = waterWeeklyData.slice(0, 7).map((item) => ({
     date: formatDate(item.date),
     originalAmount: item.amount,
   }));

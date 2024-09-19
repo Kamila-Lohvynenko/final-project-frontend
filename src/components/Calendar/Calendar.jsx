@@ -39,14 +39,28 @@ const Calendar = ({ year, month }) => {
     const daysInMonth = getDaysInMonth(year, month);
 
     // Генерация массива с данными для каждого дня месяца
-    const dateArray = Array.from({ length: daysInMonth }, (_, i) => ({
-        date: `${year}-${String(month + 1).padStart(2, '0')}-${String(i + 1).padStart(2, '0')}`,
-        amount: Math.floor(Math.random() * 1000), // Генерация случайного количества для примера
-    }));
-
+    const dateArray = Array.from({ length: daysInMonth }, (_, i) => {
+        const date = `${year}-${String(month + 1).padStart(2, '0')}-${String(i + 1).padStart(2, '0')}`;
+    
+        let amount;
+    
+        // Устанавливаем значения в зависимости от дня
+        if (i < 1) {
+            amount = 0.3; // 30% для первых 4 дней
+        } else if (i < 20) {
+            amount = 1; // 100% для дней с 5 по 14
+        } else {
+            amount = Math.floor(Math.random() * 1000); // Остальные дни случайные значения
+        }
+    
+        return {
+            date,
+            amount,
+        };
+    });
+    
     return (
         <div className={css.container}>
-      
             <ul className={css.calendarList}>
                 {dateArray.map((eachDate, index) => (
                     <li key={index}>
@@ -63,6 +77,7 @@ const Calendar = ({ year, month }) => {
 };
 
 export default Calendar;
+
 
 
 
