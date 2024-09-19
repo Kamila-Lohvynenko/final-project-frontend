@@ -1,6 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import persistReducer from 'redux-persist/es/persistReducer';
-import storage from 'redux-persist/lib/storage';
 
 import {
   addWater,
@@ -44,11 +42,6 @@ const waterSlice = createSlice({
       }),
 });
 
-const persistConfig = {
-  key: 'water',
-  storage,
-};
-
-const waterReducer = persistReducer(persistConfig, waterSlice.reducer);
+const waterReducer = waterSlice.reducer;
 
 export default waterReducer;

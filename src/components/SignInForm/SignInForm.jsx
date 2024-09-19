@@ -22,6 +22,7 @@ const SignInForm = () => {
   const [visiblePassword, setVisiblePassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const {
     register,
@@ -45,9 +46,11 @@ const SignInForm = () => {
     )
       .unwrap()
       .then((response) => {
+        console.log(response);
+
         toast.success('Log in is successful!');
-        localStorage.setItem('token', response.token);
         reset();
+        navigate('/tracker');
       })
       .catch((error) => {
         console.error('Error details:', error);

@@ -1,26 +1,32 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import authService from '../../services/auth';
-import { setAuthToken } from '../../services/axios.config';
+import {
+  axiosInstance,
+  clearAuthToken,
+  setAuthToken,
+} from '../../services/axios.config';
 
 export const registerUser = createAsyncThunk(
   'user/register',
   async (userCredentials, thunkApi) => {
     try {
-      await authService.register(userCredentials);
+      const response = await axiosInstance.post(
+        '/users/register',
+        userCredentials,
+      );
+      console.log(response.data);
 
       const {
         data: {
-          data: { accsessToken },
+          data: { accessToken },
         },
-      } = await authService.login(userCredentials);
-      setAuthToken(accsessToken);
+      } = await axiosInstance.post('users/login', userCredentials);
+      console.log(accessToken);
 
-      const {
-        data: { data: userData },
-      } = await authService.getUser(accsessToken);
+      setAuthToken(accessToken);
 
-      return { user: userData, accessToken: accsessToken };
+      return { accessToken: accessToken };
     } catch (error) {
       return thunkApi.rejectWithValue(error.response.data.message);
     }
@@ -33,17 +39,18 @@ export const loginUser = createAsyncThunk(
     try {
       const {
         data: {
-          data: { accsessToken },
+          data: { accessToken },
         },
-      } = await authService.login(userCredentials);
+      } = await axiosInstance.post('users/login', userCredentials);
 
-      setAuthToken(accsessToken);
+      setAuthToken(accessToken);
 
-      const {
-        data: { data },
-      } = await authService.getUser(accsessToken);
+      // const {
+      //   data: { data },
+      // } = await authService.getUser(accsessToken);
 
-      return { user: data, accessToken: accsessToken };
+      // return { user: data, accessToken: accsessToken };
+      return { accessToken: accessToken };
     } catch (error) {
       return thunkApi.rejectWithValue(error.response.data.message);
     }
@@ -54,7 +61,8 @@ export const logoutUser = createAsyncThunk(
   'user/logout',
   async (_, thunkApi) => {
     try {
-      await authService.logout();
+      await axiosInstance.post('users/logout');
+      clearAuthToken();
     } catch (error) {
       return thunkApi.rejectWithValue(error.response.data.message);
     }
@@ -103,6 +111,25 @@ export const updateAvatar = createAsyncThunk(
         },
       } = await authService.uploadAvatar(file);
       return avatar;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.response.data.message);
+    }
+  },
+);
+
+export const getUserData = createAsyncThunk(
+  'user/getUserData',
+  async (_, thunkApi) => {
+    try {
+      const state = thunkApi.getState();
+      setAuthToken(state.auth.token);
+
+      const response = await axiosInstance.get('users/data');
+
+      const data = response.data.data;
+      console.log(data);
+
+      return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.response.data.message);
     }
