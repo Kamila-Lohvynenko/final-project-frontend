@@ -57,9 +57,10 @@ export const getWaterByDay = createAsyncThunk(
   async (params, thunkApi) => {
     try {
       const {
-        data: { data },
+        data: { resultData },
       } = await axiosInstance.post('/water/day', params);
-      return data;
+
+      return resultData;
     } catch (error) {
       return thunkApi.rejectWithValue(error.response.data.message);
     }

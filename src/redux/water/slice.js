@@ -23,6 +23,8 @@ const waterSlice = createSlice({
         state.monthIntakes = payload;
       })
       .addCase(getWaterByDay.fulfilled, (state, { payload }) => {
+        // console.log(payload);
+
         state.dailyIntakes = payload;
       })
       .addCase(addWater.fulfilled, (state, { payload }) => {

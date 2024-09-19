@@ -12,7 +12,11 @@ import DeleteWaterModal from './../../components/DeleteWaterModal/DeleteWaterMod
 import { MODAL_NAME } from '../../constants';
 import { useDispatch } from 'react-redux';
 import { getUserData } from '../../redux/user/operations';
-import { getWaterByDay, getWaterByMonth } from '../../redux/water/operations';
+import {
+  addWater,
+  getWaterByDay,
+  getWaterByMonth,
+} from '../../redux/water/operations';
 
 const TrackerPage = () => {
   const [waterModalState, setWaterModalState] = useState({
@@ -29,8 +33,6 @@ const TrackerPage = () => {
   const month = (currentDate.getMonth() + 1).toString().padStart(2, '0');
   const day = currentDate.getDate().toString().padStart(2, '0');
 
-  // console.log(typeof year, month, day);
-
   const [chosenDate, setChosenDate] = useState({ year, month, day });
 
   // console.log(chosenDate);
@@ -46,13 +48,13 @@ const TrackerPage = () => {
   // }, [dispatch]);
   useEffect(() => {
     async function name() {
-      // await dispatch(
-      // addWater({
-      //   ...chosenDate,
-      //   amount: 3,
-      //   time: '19:20',
-      // }),
-      // ).unwrap();
+      await dispatch(
+        addWater({
+          ...chosenDate,
+          amount: 100,
+          time: '19:20',
+        }),
+      ).unwrap();
       await dispatch(getUserData()).unwrap();
       await dispatch(getWaterByDay(chosenDate)).unwrap();
       await dispatch(
