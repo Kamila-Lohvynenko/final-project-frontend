@@ -79,8 +79,6 @@ const UserSettingsForm = () => {
             type="file"
             id="avatar"
             accept="image/*"
-            // {...register('avatar')}
-            // onChange={handleAvatarChange}
             onChange={(e) => {
               register('avatar').onChange(e);
               handleAvatarChange(e);
