@@ -47,6 +47,9 @@ export const axiosInstance = axios.create({
 
 export const setAuthToken = (token) => {
   axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+  axiosInstance.defaults.headers.common[
+    'Access-Control-Allow-Credentials'
+  ] = true;
 };
 
 export const clearAuthToken = () => {

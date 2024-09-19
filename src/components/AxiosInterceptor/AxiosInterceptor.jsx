@@ -8,12 +8,16 @@ export function AxiosInterceptor() {
     (response) => response,
     async (error) => {
       const originalRequest = error.config;
-      if (error.response.status === 401 && !originalRequest._retry) {
+      console.log(originalRequest);
+
+      if (
+        error.response.status === 401 &&
+        originalRequest._retry === undefined
+      ) {
         originalRequest._retry = true;
         try {
           const response = await axiosInstance.post('/users/refresh');
           console.log(response);
-
           const { accessToken } = response.data.data;
 
           console.log(accessToken);
@@ -26,7 +30,8 @@ export function AxiosInterceptor() {
           return await axiosInstance(originalRequest);
         } catch (error) {
           console.log('refreshError', error);
-          dispatch(refreshError());
+          // dispatch(refreshError());
+
           return Promise.reject();
         }
       }
