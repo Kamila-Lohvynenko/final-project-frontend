@@ -1,6 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import authService from '../../services/auth';
 import {
   axiosInstance,
   clearAuthToken,
@@ -45,11 +44,6 @@ export const loginUser = createAsyncThunk(
 
       setAuthToken(accessToken);
 
-      // const {
-      //   data: { data },
-      // } = await authService.getUser(accsessToken);
-
-      // return { user: data, accessToken: accsessToken };
       return { accessToken: accessToken };
     } catch (error) {
       return thunkApi.rejectWithValue(error.response.data.message);
@@ -73,7 +67,10 @@ export const updateUser = createAsyncThunk(
   'user/update',
   async (fieldsToUpdate, thunkApi) => {
     try {
-      const { data } = await authService.update(fieldsToUpdate);
+      const { data } = await axiosInstance.patch(
+        '/users/userId',
+        fieldsToUpdate,
+      );
 
       return data;
     } catch (error) {
@@ -90,7 +87,7 @@ export const refreshUser = createAsyncThunk(
         data: {
           data: { accessToken },
         },
-      } = await authService.refresh();
+      } = await axiosInstance.post('/users/refresh');
 
       setAuthToken(accessToken);
 
@@ -109,7 +106,7 @@ export const updateAvatar = createAsyncThunk(
         data: {
           data: { avatar },
         },
-      } = await authService.uploadAvatar(file);
+      } = await axiosInstance('users/avatar', file);
       return avatar;
     } catch (error) {
       return thunkApi.rejectWithValue(error.response.data.message);
@@ -127,7 +124,7 @@ export const getUserData = createAsyncThunk(
       const response = await axiosInstance.get('users/data');
 
       const data = response.data.data;
-      console.log(data);
+      // console.log(data);
 
       return data;
     } catch (error) {

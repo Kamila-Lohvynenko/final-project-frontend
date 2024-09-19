@@ -12,7 +12,7 @@ import DeleteWaterModal from './../../components/DeleteWaterModal/DeleteWaterMod
 import { MODAL_NAME } from '../../constants';
 import { useDispatch } from 'react-redux';
 import { getUserData } from '../../redux/user/operations';
-import { addWater, getWaterByDay } from '../../redux/water/operations';
+import { getWaterByDay, getWaterByMonth } from '../../redux/water/operations';
 
 const TrackerPage = () => {
   const [waterModalState, setWaterModalState] = useState({
@@ -24,21 +24,42 @@ const TrackerPage = () => {
   const [isDeleteWaterModalOpen, setDeleteWaterModal] = useState(false);
   const [isLogoutModalOpen, setLogoutModal] = useState(false);
 
+  const currentDate = new Date();
+  const year = currentDate.getFullYear().toString();
+  const month = (currentDate.getMonth() + 1).toString().padStart(2, '0');
+  const day = currentDate.getDate().toString().padStart(2, '0');
+
+  // console.log(typeof year, month, day);
+
+  const [chosenDate, setChosenDate] = useState({ year, month, day });
+
+  // console.log(chosenDate);
+
   const dispatch = useDispatch();
 
+  // useEffect(() => {
+  //   dispatch(getUserData());
+  //   dispatch(getWaterByDay({ day: '14', month: '09', year: '2024' }));
+  //   dispatch(getWaterByMonth({ month: '09', year: '2024' }));
+  // }, [dispatch]);
   useEffect(() => {
-    dispatch(getUserData());
-    dispatch(
-      addWater({
-        amount: 3,
-        day: '14',
-        month: '09',
-        year: '2024',
-        time: '19:20',
-      }),
-    );
-    dispatch(getWaterByDay({ day: '14', month: '09', year: '2024' }));
-  }, [dispatch]);
+    async function name() {
+      // await dispatch(
+      // addWater({
+      //   ...chosenDate,
+      //   amount: 3,
+      //   time: '19:20',
+      // }),
+      // ).unwrap();
+      await dispatch(getUserData()).unwrap();
+      await dispatch(getWaterByDay(chosenDate)).unwrap();
+      await dispatch(
+        getWaterByMonth({ month: chosenDate.month, year: chosenDate.year }),
+      ).unwrap();
+    }
+
+    name();
+  }, [dispatch, chosenDate]);
 
   const closeModal = (modalName) => {
     switch (modalName) {
@@ -86,6 +107,8 @@ const TrackerPage = () => {
           setSettingsModal={setSettingsModal}
           setLogoutModal={setLogoutModal}
           setDeleteWaterModal={setDeleteWaterModal}
+          setChosenDate={setChosenDate}
+          chosenDate={chosenDate}
         />
       </div>
       <Modal isOpen={waterModalState.isOpen} setState={closeWaterModal}>
