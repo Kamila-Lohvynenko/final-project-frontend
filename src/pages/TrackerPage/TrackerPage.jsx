@@ -26,10 +26,21 @@ const TrackerPage = () => {
 
   const dispatch = useDispatch();
 
+  // useEffect(() => {
+  //   dispatch(getUserData());
+  //   dispatch(getWaterByDay({ day: '14', month: '09', year: '2024' }));
+  //   dispatch(getWaterByMonth({ month: '09', year: '2024' }));
+  // }, [dispatch]);
   useEffect(() => {
-    dispatch(getUserData());
-    dispatch(getWaterByDay({ day: '14', month: '09', year: '2024' }));
-    dispatch(getWaterByMonth({ month: '09', year: '2024' }));
+    async function name() {
+      await dispatch(getUserData()).unwrap();
+      await dispatch(
+        getWaterByDay({ day: '14', month: '09', year: '2024' }),
+      ).unwrap();
+      await dispatch(getWaterByMonth({ month: '09', year: '2024' })).unwrap();
+    }
+
+    name();
   }, [dispatch]);
 
   const closeModal = (modalName) => {
