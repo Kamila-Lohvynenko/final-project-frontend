@@ -24,6 +24,17 @@ const TrackerPage = () => {
   const [isDeleteWaterModalOpen, setDeleteWaterModal] = useState(false);
   const [isLogoutModalOpen, setLogoutModal] = useState(false);
 
+  const currentDate = new Date();
+  const year = currentDate.getFullYear().toString();
+  const month = (currentDate.getMonth() + 1).toString().padStart(2, '0');
+  const day = currentDate.getDate().toString().padStart(2, '0');
+
+  // console.log(typeof year, month, day);
+
+  const [chosenDate, setChosenDate] = useState({ year, month, day });
+
+  // console.log(chosenDate);
+
   const dispatch = useDispatch();
 
   // useEffect(() => {
@@ -33,15 +44,22 @@ const TrackerPage = () => {
   // }, [dispatch]);
   useEffect(() => {
     async function name() {
+      // await dispatch(
+      // addWater({
+      //   ...chosenDate,
+      //   amount: 3,
+      //   time: '19:20',
+      // }),
+      // ).unwrap();
       await dispatch(getUserData()).unwrap();
+      await dispatch(getWaterByDay(chosenDate)).unwrap();
       await dispatch(
-        getWaterByDay({ day: '14', month: '09', year: '2024' }),
+        getWaterByMonth({ month: chosenDate.month, year: chosenDate.year }),
       ).unwrap();
-      await dispatch(getWaterByMonth({ month: '09', year: '2024' })).unwrap();
     }
 
     name();
-  }, [dispatch]);
+  }, [dispatch, chosenDate]);
 
   const closeModal = (modalName) => {
     switch (modalName) {
@@ -89,6 +107,8 @@ const TrackerPage = () => {
           setSettingsModal={setSettingsModal}
           setLogoutModal={setLogoutModal}
           setDeleteWaterModal={setDeleteWaterModal}
+          setChosenDate={setChosenDate}
+          chosenDate={chosenDate}
         />
       </div>
       <Modal isOpen={waterModalState.isOpen} setState={closeWaterModal}>

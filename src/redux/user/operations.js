@@ -124,7 +124,7 @@ export const getUserData = createAsyncThunk(
       const response = await axiosInstance.get('users/data');
 
       const data = response.data.data;
-      console.log(data);
+      // console.log(data);
 
       return data;
     } catch (error) {
