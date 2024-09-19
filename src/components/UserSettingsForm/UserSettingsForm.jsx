@@ -49,21 +49,12 @@ const UserSettingsForm = () => {
     //send data to the server
   };
 
-  // const handleAvatarChange = (e) => {
-  //   if (e.target.files && e.target.files[0]) {
-  //     const file = e.target.files[0];
-  //     setAvatarPreview(URL.createObjectURL(file));
-  //   }
-  // };
-
   const handleAvatarChange = (event) => {
     const file = event.target.files[0];
     if (file) {
       const objectUrl = URL.createObjectURL(file);
       setAvatarPreview(objectUrl);
       clearErrors('avatar');
-
-      // Запускаем валидацию
       trigger('avatar');
     }
   };
@@ -88,10 +79,10 @@ const UserSettingsForm = () => {
             type="file"
             id="avatar"
             accept="image/*"
-            {...register('avatar')}
+            // {...register('avatar')}
             // onChange={handleAvatarChange}
             onChange={(e) => {
-              register('avatar').onChange(e); // Это нужно для react-hook-form
+              register('avatar').onChange(e);
               handleAvatarChange(e);
             }}
           />
