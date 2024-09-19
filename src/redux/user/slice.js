@@ -63,9 +63,9 @@ const authSlice = createSlice({
         state.user.avatarUrl = payload;
       })
       .addCase(getUserData.fulfilled, (state, { payload }) => {
-        // console.log(payload);
+        console.log(payload);
 
-        state.user = { ...state.user, ...payload.data };
+        state.user = { ...state.user, ...payload };
       }),
 });
 

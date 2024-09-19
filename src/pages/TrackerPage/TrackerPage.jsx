@@ -35,6 +35,8 @@ const TrackerPage = () => {
 
   // console.log(chosenDate);
 
+  const [water, setWater] = useState(null);
+
   const dispatch = useDispatch();
 
   // useEffect(() => {
@@ -109,12 +111,15 @@ const TrackerPage = () => {
           setDeleteWaterModal={setDeleteWaterModal}
           setChosenDate={setChosenDate}
           chosenDate={chosenDate}
+          setWater={setWater}
         />
       </div>
       <Modal isOpen={waterModalState.isOpen} setState={closeWaterModal}>
         <WaterModal
           operation={waterModalState.operation}
           onClose={closeModal}
+          water={water}
+          setWater={setWater}
         />
       </Modal>
       <Modal isOpen={isSettingsModalOpen} setState={setSettingsModal}>

@@ -11,6 +11,7 @@ const WaterDetailedInfo = ({
   setDeleteWaterModal,
   setChosenDate,
   chosenDate,
+  setWater,
 }) => {
   return (
     <div className={css.wrapper}>
@@ -22,6 +23,7 @@ const WaterDetailedInfo = ({
         openWaterModal={openWaterModal}
         setDeleteWaterModal={setDeleteWaterModal}
         chosenDate={chosenDate}
+        setWater={setWater}
       />
       <MonthInfo chosenDate={chosenDate} setChosenDate={setChosenDate} />
     </div>
