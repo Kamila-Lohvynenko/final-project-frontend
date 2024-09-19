@@ -11,7 +11,7 @@ import WaterModal from './../../components/WaterModal/WaterModal';
 import DeleteWaterModal from './../../components/DeleteWaterModal/DeleteWaterModal';
 import { MODAL_NAME } from '../../constants';
 import { useDispatch } from 'react-redux';
-import { getUserData } from '../../redux/user/operations';
+import { getUserData, refreshUser } from '../../redux/user/operations';
 import { getWaterByDay, getWaterByMonth } from '../../redux/water/operations';
 
 const TrackerPage = () => {
@@ -27,9 +27,15 @@ const TrackerPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getUserData());
-    dispatch(getWaterByDay({ day: '14', month: '09', year: '2024' }));
-    dispatch(getWaterByMonth({ month: '09', year: '2024' }));
+    async function name() {
+      await dispatch(getUserData()).unwrap();
+      await dispatch(
+        getWaterByDay({ day: '14', month: '09', year: '2024' }),
+      ).unwrap();
+      await dispatch(getWaterByMonth({ month: '09', year: '2024' })).unwrap();
+    }
+
+    name();
   }, [dispatch]);
 
   const closeModal = (modalName) => {
