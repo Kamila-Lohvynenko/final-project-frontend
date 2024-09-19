@@ -67,6 +67,9 @@
     
     font-size: 16px;
   }
+  .perc_filled {
+    background-color: rgba(50, 63, 71, 0.2);
+  }
 
   .percentage {
     width: 38px;
