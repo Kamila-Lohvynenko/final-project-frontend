@@ -1,5 +1,5 @@
 import css from './UserSettingsForm.module.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import {
   selectName,
@@ -74,6 +74,30 @@ const UserSettingsForm = () => {
   });
 
   const [avatarPreview, setAvatarPreview] = useState(avatarUrl);
+  // const [calculatedWaterAmount, setCalculatedWaterAmount] = useState(null); // Состояние для хранения рассчитанной нормы воды
+
+  // const [currentWeight, setCurrentWeight] = useState(weight); // Состояние для отслеживания веса
+  // const [currentSportTime, setCurrentSportTime] = useState(sportTime); // Состояние для отслеживания времени активности
+
+  // // Функция для расчета нормы воды
+  // const calculateWaterNorm = (weight, time, gender) => {
+  //   if (gender === 'woman') {
+  //     return (weight * 0.03 + time * 0.4).toFixed(2);
+  //   } else if (gender === 'man') {
+  //     return (weight * 0.04 + time * 0.6).toFixed(2);
+  //   }
+  //   return null;
+  // };
+
+  // // Обновляем норму воды при изменении веса, времени или пола
+  // useEffect(() => {
+  //   const waterNorm = calculateWaterNorm(
+  //     currentWeight,
+  //     currentSportTime,
+  //     gender,
+  //   );
+  //   setCalculatedWaterAmount(waterNorm);
+  // }, [currentWeight, currentSportTime, gender]);
 
   const onSubmit = (data) => {
     console.log(data);
@@ -251,6 +275,7 @@ const UserSettingsForm = () => {
                   id="weight"
                   {...register('weight')}
                   onBlur={() => trigger('weight')}
+                  // onChange={(e) => setCurrentWeight(e.target.value)} // Обновление веса
                   className={`${css.inputs} ${css.smallGap}`}
                 />
                 {errors.weight && (
@@ -267,6 +292,7 @@ const UserSettingsForm = () => {
                   id="sportTime"
                   {...register('sportTime')}
                   onBlur={() => trigger('sportTime')}
+                  // onChange={(e) => setCurrentSportTime(e.target.value)}
                   className={`${css.inputs} ${css.bigGap}`}
                 />
                 {errors.sportTime && (
@@ -279,7 +305,9 @@ const UserSettingsForm = () => {
                     The required amount of water in liters per day:
                   </p>
                   <p className={`${css.spanWaterAmount} ${css.text}`}>
-                    {/* required amount of water */}L
+                    {/* {calculatedWaterAmount
+                      ? `${calculatedWaterAmount} L`
+                      : '2L'} */}
                   </p>
                 </div>
                 <label
