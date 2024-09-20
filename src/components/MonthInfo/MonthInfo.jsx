@@ -4,7 +4,7 @@ import CalendarPagination from '../CalendarPagination/CalendarPagination.jsx';
 import css from './MonthInfo.module.css';
 import WaterIntakeChart from '../Calendar/WaterChart/WaterChart.jsx';
 
-const MonthInfo = () => {
+const MonthInfo = ({ setChosenDate }) => {
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
   const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth());
   const [isCalendar, setIsCalender] = useState(true);
@@ -14,7 +14,6 @@ const MonthInfo = () => {
     setSelectedMonth(month);
   };
 
-
   return (
     <div className={css.fon}>
       <CalendarPagination
@@ -23,9 +22,13 @@ const MonthInfo = () => {
         isCalendar={isCalendar}
       />
       {isCalendar ? (
-        <Calendar year={selectedYear} month={selectedMonth} />
+        <Calendar
+          year={selectedYear}
+          month={selectedMonth}
+          setChosenDate={setChosenDate}
+        />
       ) : (
-        <WaterIntakeChart/>
+        <WaterIntakeChart />
       )}
       <div>{/* Передаем данные как пропсы */}</div>
     </div>
