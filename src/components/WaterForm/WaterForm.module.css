@@ -216,6 +216,13 @@ input[type="number"] {
   color: var(--light-black);
   background-color: var(--darker-lime);
 }
+
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: 0px;
+  font-weight: 400;
+}  
   
 @media screen and (min-width: 768px) {
   .waterForm {
