@@ -1,5 +1,6 @@
 import css from './UserSettingsForm.module.css';
-// import { useState } from 'react';
+// import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import {
   selectName,
@@ -59,7 +60,7 @@ const UserSettingsForm = () => {
     handleSubmit,
     formState: { errors },
     trigger,
-    // clearErrors,
+    clearErrors,
   } = useForm({
     resolver: yupResolver(VALIDATION_SCHEMA),
     mode: 'onBlur',
@@ -73,7 +74,11 @@ const UserSettingsForm = () => {
     },
   });
 
+  const [avatarPreview, setAvatarPreview] = useState(avatarUrl);
+
   const onSubmit = (data) => {
+    console.log(data);
+
     dispatch(
       updateUser({
         name: data.name,
@@ -88,10 +93,17 @@ const UserSettingsForm = () => {
 
   const handleAvatarChange = (event) => {
     const file = event.target.files[0];
-    const formData = new FormData();
-    formData.append('avatar', file);
-    dispatch(updateAvatar(formData));
+    if (file) {
+      const formData = new FormData();
+      const objectUrl = URL.createObjectURL(file);
+      setAvatarPreview(objectUrl);
+      formData.append('avatar', file);
+      dispatch(updateAvatar(formData));
+      clearErrors('avatar');
+      trigger('avatar');
+    }
   };
+
   // const [calculatedWaterAmount, setCalculatedWaterAmount] = useState(null); // Состояние для хранения рассчитанной нормы воды
 
   // const [currentWeight, setCurrentWeight] = useState(weight); // Состояние для отслеживания веса
@@ -122,7 +134,7 @@ const UserSettingsForm = () => {
       <div className={css.uploadWrapper}>
         <img
           className={css.avatar}
-          src={avatarUrl || defaultAvatar}
+          src={avatarPreview || defaultAvatar}
           alt="Avatar preview"
           width="75"
           height="75"
@@ -267,6 +279,7 @@ const UserSettingsForm = () => {
                   id="weight"
                   {...register('weight')}
                   onBlur={() => trigger('weight')}
+                  // onChange={(e) => setCurrentWeight(e.target.value)} // Обновление веса
                   className={`${css.inputs} ${css.smallGap}`}
                 />
                 {errors.weight && (
@@ -283,6 +296,7 @@ const UserSettingsForm = () => {
                   id="sportTime"
                   {...register('sportTime')}
                   onBlur={() => trigger('sportTime')}
+                  // onChange={(e) => setCurrentSportTime(e.target.value)} //Update time
                   className={`${css.inputs} ${css.bigGap}`}
                 />
                 {errors.sportTime && (
@@ -295,7 +309,9 @@ const UserSettingsForm = () => {
                     The required amount of water in liters per day:
                   </p>
                   <p className={`${css.spanWaterAmount} ${css.text}`}>
-                    {/* required amount of water */}L
+                    {/* {calculatedWaterAmount
+                      ? `${calculatedWaterAmount} L`
+                      : '2L'} */}
                   </p>
                 </div>
                 <label
