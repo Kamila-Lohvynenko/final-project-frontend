@@ -1,5 +1,17 @@
 import css from './UserSettingsForm.module.css';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import {
+  selectName,
+  selectEmail,
+  selectAvatarUrl,
+  selectGender,
+  selectWeight,
+  selectTimeForSports,
+  selectDailyIntake,
+} from '../../redux/user/selectors.js';
+import { useDispatch } from 'react-redux';
+import { updateUser } from '../../redux/user/operations.js';
 import { useForm } from 'react-hook-form';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -32,7 +44,16 @@ const VALIDATION_SCHEMA = Yup.object().shape({
 });
 
 const UserSettingsForm = () => {
-  const [avatarPreview, setAvatarPreview] = useState(null);
+  const dispatch = useDispatch();
+
+  const name = useSelector(selectName);
+  const email = useSelector(selectEmail);
+  const avatarUrl = useSelector(selectAvatarUrl);
+  const gender = useSelector(selectGender);
+  const weight = useSelector(selectWeight);
+  const sportTime = useSelector(selectTimeForSports);
+  const waterIntake = useSelector(selectDailyIntake);
+
   const {
     register,
     handleSubmit,
@@ -42,11 +63,32 @@ const UserSettingsForm = () => {
   } = useForm({
     resolver: yupResolver(VALIDATION_SCHEMA),
     mode: 'onBlur',
+    defaultValues: {
+      name,
+      email,
+      gender,
+      weight,
+      sportTime,
+      waterIntake,
+    },
   });
+
+  const [avatarPreview, setAvatarPreview] = useState(avatarUrl);
 
   const onSubmit = (data) => {
     console.log(data);
-    //send data to the server
+
+    dispatch(
+      updateUser({
+        name: data.name,
+        email: data.email,
+        avatar: avatarPreview,
+        gender: data.gender,
+        weight: data.weight,
+        activeSportTime: data.sportTime,
+        dailyNorma: data.waterIntake,
+      }),
+    );
   };
 
   const handleAvatarChange = (event) => {
@@ -104,7 +146,6 @@ const UserSettingsForm = () => {
                     id="woman"
                     value="woman"
                     {...register('gender')}
-                    defaultChecked
                   />
                   <label
                     htmlFor="woman"
