@@ -1,14 +1,17 @@
 import css from "./WaterList.module.css";
 import WaterItem from "../WaterItem/WaterItem";
+import { useSelector } from "react-redux";
+import { selectWaterDayRecords } from "../../redux/water/selectors";
 
-const WaterList = ({openWaterModal, setDeleteWaterModal}) => {
-  const dummyWaterList = [{id: 1, volume: 100, time: '12:00'}, {id: 2, volume: 250, time: '6:00'}, {id: 3, volume: 250, time: '6:00'}, {id: 4, volume: 250, time: '6:00'}, {id: 5, volume: 250, time: '6:00'}]
+const WaterList = ({ openWaterModal, setDeleteWaterModal, setWater }) => {
+    const waterList = useSelector(selectWaterDayRecords);
+    // console.log('waterList :>> ', waterList);
   return (
       <>
           <ul className={css.waterList}>
-              {dummyWaterList.map((item) => (
-                  <li key={item.id} className={css.waterItem}>
-                      <WaterItem volume={item.volume} time={item.time} openWaterModal={openWaterModal} setDeleteWaterModal={setDeleteWaterModal} />
+              {waterList?.map((item) => (
+                  <li key={item._id} className={css.waterItem}>
+                      <WaterItem id={item._id} amount={item.amount} time={item.time} openWaterModal={openWaterModal} setDeleteWaterModal={setDeleteWaterModal}  setWater={setWater} />
                   </li>
               ))}
           </ul>

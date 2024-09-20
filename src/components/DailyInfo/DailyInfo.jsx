@@ -4,7 +4,7 @@ import AddWaterBtn from "../AddWaterBtn/AddWaterBtn";
 import WaterList from "../WaterList/WaterList";
 import { OPERATION_NAME } from "../../constants";
 
-const DailyInfo = ({ openWaterModal, setDeleteWaterModal }) => {
+const DailyInfo = ({ openWaterModal, setDeleteWaterModal, chosenDate, setWater }) => {
   
   const handleAddWaterClick = () => {
     openWaterModal({isOpen: true, operation: OPERATION_NAME.ADD_WATER});
@@ -17,15 +17,17 @@ const DailyInfo = ({ openWaterModal, setDeleteWaterModal }) => {
   const handleDeleteWaterClick = () => {
     setDeleteWaterModal(true);
   }
+
+   
   
   return (
     <div>
       <div className={css.topContainer}>
-        <ChooseDate/>
-        <AddWaterBtn inDetails={true} onClick={handleAddWaterClick}/>
+        <ChooseDate chosenDate={chosenDate} />
+        <AddWaterBtn inDetails={true} onClick={handleAddWaterClick} />
       </div>
       <div>
-        <WaterList openWaterModal={handleEditWaterClick} setDeleteWaterModal={handleDeleteWaterClick} />
+        <WaterList openWaterModal={handleEditWaterClick} setDeleteWaterModal={handleDeleteWaterClick} setWater={setWater} />
       </div>
 
     </div>

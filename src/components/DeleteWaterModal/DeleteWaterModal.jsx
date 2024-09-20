@@ -1,10 +1,20 @@
+import { useDispatch } from 'react-redux';
 import { MODAL_NAME } from '../../constants';
 import css from './DeleteWaterModal.module.css'
+import { deleteWater } from '../../redux/water/operations';
 
-const DeleteWaterModal = ({ onClose }) => {
+const DeleteWaterModal = ({ onClose, water, setWater }) => {
+
+  const dispatch = useDispatch();
   
   const handleModalClose = () => {
     onClose(MODAL_NAME.DELETE_WATER_MODAL);
+  }
+
+  const handleOnDelete = () => {
+    dispatch(deleteWater(water)).unwrap();
+    onClose(MODAL_NAME.DELETE_WATER_MODAL);
+    setWater(null);
   }
 
   return (
@@ -14,8 +24,8 @@ const DeleteWaterModal = ({ onClose }) => {
         <p>Are you sure you want to delete the entry?</p>
       </div>
       <div className={css.deleteButtons}>
-        <button className={`${css.button} ${css.deleteBtn}`} onClick={handleModalClose}>Delete</button>
-        <button className={`${css.button} ${css.cancelBtn}`}>Cancel</button>
+        <button className={`${css.button} ${css.deleteBtn}`} onClick={handleOnDelete}>Delete</button>
+        <button className={`${css.button} ${css.cancelBtn}`} onClick={handleModalClose}>Cancel</button>
       </div>
     </div>
   );
