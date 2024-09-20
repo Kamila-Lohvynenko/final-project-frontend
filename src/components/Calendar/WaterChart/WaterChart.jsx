@@ -56,7 +56,6 @@ const WaterChart = () => {
  
     const waterData = useSelector(selectWaterByMonth);
 
-    console.log("Water data for the active month:", waterData);
 
   
     const formattedData = waterData
@@ -77,7 +76,7 @@ const WaterChart = () => {
   
     const formatYAxisTick = (tick, index) => {
         if (index === 0) {
-            return '0L';
+            return '0l';
         }
 
         return `${(tick / 1000).toFixed(1)} l`;
