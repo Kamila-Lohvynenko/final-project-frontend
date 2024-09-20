@@ -41,6 +41,9 @@ const waterSlice = createSlice({
         state.monthIntakes = state.monthIntakes.filter(
           ({ _id }) => _id === payload.id,
         );
+        state.dailyIntakes.records = state.dailyIntakes.records.filter(
+          ({ _id }) => _id === payload.id,
+        );
       }),
 });
 
