@@ -118,6 +118,7 @@ const TrackerPage = () => {
           onClose={closeModal}
           water={water}
           setWater={setWater}
+          chosenDate={chosenDate}
         />
       </Modal>
       <Modal isOpen={isSettingsModalOpen} setState={setSettingsModal}>
