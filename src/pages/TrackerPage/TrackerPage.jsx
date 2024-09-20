@@ -124,7 +124,7 @@ const TrackerPage = () => {
         <UserSettingsModal onClose={closeModal} />
       </Modal>
       <Modal isOpen={isDeleteWaterModalOpen} setState={setDeleteWaterModal}>
-        <DeleteWaterModal onClose={closeModal} water={water} />
+        <DeleteWaterModal onClose={closeModal} water={water} setWater={setWater} />
       </Modal>
       <Modal isOpen={isLogoutModalOpen} setState={setLogoutModal}>
         <LogOutModal onClose={closeModal} />
