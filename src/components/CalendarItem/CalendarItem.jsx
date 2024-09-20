@@ -7,6 +7,7 @@ import { getWaterByDay } from "../../redux/water/operations.js";
 import { selectDailyIntake } from "../../redux/user/selectors.js";
 import clsx from "clsx";
 
+
 const isFutureDate = (date) => {
     const dateNow = new Date();
     const currentDate = new Date(date);
@@ -25,24 +26,26 @@ const isDay = (firstDay, secondDay) => {
 };
 
 const CalendarItem = ({ calendarDate, amount }) => {
+    // console.log("Amount from Redux:", amount);
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const goal = useSelector(selectDailyIntake);
+    const goal = useSelector(selectDailyIntake); // Получаем цель
     const { date: paramsData } = useParams();
     const currentDate = parseDateTime(paramsData);
-console.log("провекка",goal);
+    // console.log("Amount:", amount, "Goal:", goal);
 
     const handleClick = (calendarDate) => {
         if (!isFutureDate(calendarDate)) {
             navigate(`/tracker/${calendarDate}`);
-            
             dispatch(getWaterByDay(calendarDate));
         }
     };
 
     const date = new Date(calendarDate).getDate();
     const isDisabled = isFutureDate(calendarDate);
-    const percent = isDisabled ? 0 : (goal > 0 ? Math.round((amount / (goal * 1000)) * 100) : amount);
+    
+    // Рассчитываем процент прямо здесь
+    const percent = goal > 0 ? Math.round((amount / (goal * 1000)) * 100) : 0;
     const percentString = percent >= 100 ? "100%" : `${percent}%`;
     const isActive = isDay(currentDate, calendarDate);
 
@@ -62,13 +65,12 @@ console.log("провекка",goal);
             >
                 {date}
             </div>
-            <div className={css.percentage}>{percentString}</div>
+            <div className={css.percentage}>{percentString}</div> {/* Используем рассчитанный процент */}
         </button>
     );
 };
 
 export default CalendarItem;
-
 
 
 
