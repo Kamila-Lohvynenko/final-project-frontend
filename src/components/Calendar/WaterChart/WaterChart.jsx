@@ -11,15 +11,15 @@ import css from './WaterChart.module.css';
 import { useSelector } from 'react-redux';
 import { selectWaterByMonth } from '../../../redux/water/selectors';
 
-// Функция для форматирования дня и месяца
-const formatDayMonth = (day, month) => {
-    const formattedDay = String(day).padStart(2, '0');   // Форматируем день с ведущим нулём
-    const formattedMonth = String(month).padStart(2, '0'); // Форматируем месяц с ведущим нулём
 
-    return `${formattedDay}.${formattedMonth}`; // Возвращаем формат 'DD.MM'
+const formatDayMonth = (day, month) => {
+    const formattedDay = String(day).padStart(2, '0');  
+    const formattedMonth = String(month).padStart(2, '0'); 
+
+    return `${formattedDay}.${formattedMonth}`; 
 };
 
-// Кастомный тултип для отображения данных
+
 const CustomTooltip = ({ active, payload, coordinate }) => {
     if (active && payload && payload.length) {
         const tooltipStyle = {
@@ -53,28 +53,28 @@ const CustomTooltip = ({ active, payload, coordinate }) => {
 };
 
 const WaterChart = () => {
-    // Получение данных о воде за месяц из селектора
+ 
     const waterData = useSelector(selectWaterByMonth);
 
     console.log("Water data for the active month:", waterData);
 
-    // Маппинг данных с использованием полей day и month, и сортировка по дням
+  
     const formattedData = waterData
-        .filter((item) => item.amount > 0)  // Отфильтровываем только данные, где количество воды больше 0
+        .filter((item) => item.amount > 0)  
         .map((item) => ({
-            date: formatDayMonth(item.day, item.month),  // Отображаем день и месяц
-            day: Number(item.day), // Преобразуем день в число для сортировки
-            originalAmount: item.amount,  // Количество выпитой воды
+            date: formatDayMonth(item.day, item.month),  
+            day: Number(item.day),
+            originalAmount: item.amount,  
         }))
-        .sort((a, b) => a.day - b.day);  // Сортируем по дням
+        .sort((a, b) => a.day - b.day);  
 
-    // Вычисляем общую сумму воды
+ 
     const totalAmount = formattedData.reduce(
         (acc, obj) => acc + obj.originalAmount,
         0
     );
 
-    // Функция для форматирования оси Y (в литрах)
+  
     const formatYAxisTick = (tick, index) => {
         if (index === 0) {
             return '0L';
@@ -117,7 +117,7 @@ const WaterChart = () => {
                             </linearGradient>
                         </defs>
                         <XAxis
-                            dataKey='date'  // Отображаем день и месяц на оси X
+                            dataKey='date'  
                             tickLine={false}
                             tickMargin={21}
                         />
