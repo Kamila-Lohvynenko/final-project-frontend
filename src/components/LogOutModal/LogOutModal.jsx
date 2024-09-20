@@ -1,19 +1,20 @@
 import { useDispatch } from 'react-redux';
 import css from './LogOutModal.module.css';
 import { logoutUser } from '../../redux/user/operations';
+import { MODAL_NAME } from '../../constants';
 
 const LogOutModal = ({ onClose }) => {
   const dispatch = useDispatch();
 
   const handleLogout = () => {
     dispatch(logoutUser());
-    onClose('logoutModal');
+    onClose(MODAL_NAME.LOGOUT_MODAL);
     localStorage.clear();
   };
 
   const handleCloseModal = () => {
-    onClose('logoutModal');
-  };;
+    onClose(MODAL_NAME.LOGOUT_MODAL);
+  };
 
   return (
     <div className={css.logout_wrap}>
