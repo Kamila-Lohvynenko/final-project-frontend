@@ -8,7 +8,9 @@
   background-color: var(--color-main-bg);
   transition: opacity 0.3s ease;
 }
-
+.red {
+  color: red; /* Цвет текста для 0% */
+}
 .day:disabled {
   cursor: default;
   opacity: 0.5;
