@@ -106,7 +106,7 @@ export const updateAvatar = createAsyncThunk(
         data: {
           data: { avatar },
         },
-      } = await axiosInstance('users/avatar', file);
+      } = await axiosInstance.patch('users/avatar', file);
       return avatar;
     } catch (error) {
       return thunkApi.rejectWithValue(error.response.data.message);

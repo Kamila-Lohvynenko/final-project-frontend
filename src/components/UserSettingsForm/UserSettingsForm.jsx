@@ -1,5 +1,5 @@
 import css from './UserSettingsForm.module.css';
-import { useState, useEffect } from 'react';
+// import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import {
   selectName,
@@ -11,7 +11,7 @@ import {
   selectDailyIntake,
 } from '../../redux/user/selectors.js';
 import { useDispatch } from 'react-redux';
-import { updateUser } from '../../redux/user/operations.js';
+import { updateAvatar, updateUser } from '../../redux/user/operations.js';
 import { useForm } from 'react-hook-form';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -59,7 +59,7 @@ const UserSettingsForm = () => {
     handleSubmit,
     formState: { errors },
     trigger,
-    clearErrors,
+    // clearErrors,
   } = useForm({
     resolver: yupResolver(VALIDATION_SCHEMA),
     mode: 'onBlur',
@@ -73,7 +73,25 @@ const UserSettingsForm = () => {
     },
   });
 
-  const [avatarPreview, setAvatarPreview] = useState(avatarUrl);
+  const onSubmit = (data) => {
+    dispatch(
+      updateUser({
+        name: data.name,
+        email: data.email,
+        gender: data.gender,
+        weight: data.weight,
+        activeSportTime: data.sportTime,
+        dailyNorma: data.waterIntake,
+      }),
+    );
+  };
+
+  const handleAvatarChange = (event) => {
+    const file = event.target.files[0];
+    const formData = new FormData();
+    formData.append('avatar', file);
+    dispatch(updateAvatar(formData));
+  };
   // const [calculatedWaterAmount, setCalculatedWaterAmount] = useState(null); // Состояние для хранения рассчитанной нормы воды
 
   // const [currentWeight, setCurrentWeight] = useState(weight); // Состояние для отслеживания веса
@@ -99,38 +117,12 @@ const UserSettingsForm = () => {
   //   setCalculatedWaterAmount(waterNorm);
   // }, [currentWeight, currentSportTime, gender]);
 
-  const onSubmit = (data) => {
-    console.log(data);
-
-    dispatch(
-      updateUser({
-        name: data.name,
-        email: data.email,
-        avatar: avatarPreview,
-        gender: data.gender,
-        weight: data.weight,
-        activeSportTime: data.sportTime,
-        dailyNorma: data.waterIntake,
-      }),
-    );
-  };
-
-  const handleAvatarChange = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      const objectUrl = URL.createObjectURL(file);
-      setAvatarPreview(objectUrl);
-      clearErrors('avatar');
-      trigger('avatar');
-    }
-  };
-
   return (
     <div className={css.scrollableContent}>
       <div className={css.uploadWrapper}>
         <img
           className={css.avatar}
-          src={avatarPreview || defaultAvatar}
+          src={avatarUrl || defaultAvatar}
           alt="Avatar preview"
           width="75"
           height="75"
@@ -275,7 +267,6 @@ const UserSettingsForm = () => {
                   id="weight"
                   {...register('weight')}
                   onBlur={() => trigger('weight')}
-                  // onChange={(e) => setCurrentWeight(e.target.value)} // Обновление веса
                   className={`${css.inputs} ${css.smallGap}`}
                 />
                 {errors.weight && (
@@ -292,7 +283,6 @@ const UserSettingsForm = () => {
                   id="sportTime"
                   {...register('sportTime')}
                   onBlur={() => trigger('sportTime')}
-                  // onChange={(e) => setCurrentSportTime(e.target.value)}
                   className={`${css.inputs} ${css.bigGap}`}
                 />
                 {errors.sportTime && (
@@ -305,9 +295,7 @@ const UserSettingsForm = () => {
                     The required amount of water in liters per day:
                   </p>
                   <p className={`${css.spanWaterAmount} ${css.text}`}>
-                    {/* {calculatedWaterAmount
-                      ? `${calculatedWaterAmount} L`
-                      : '2L'} */}
+                    {/* required amount of water */}L
                   </p>
                 </div>
                 <label
