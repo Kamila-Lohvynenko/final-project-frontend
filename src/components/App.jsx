@@ -14,6 +14,9 @@ const NotFoundPage = lazy(() => import('./../pages/NotFoundPage/NotFoundPage'));
 const ResetPasswordPage = lazy(() =>
   import('./../pages/ResetPasswordPage/ResetPasswordPage'),
 );
+const EmailInputPage = lazy(() =>
+  import('../pages/EmailInputPage/EmailInputPage'),
+);
 export const App = () => {
   return (
     <div className={css.app}>
@@ -61,6 +64,15 @@ export const App = () => {
               element={
                 <RestrictedRoute
                   component={<ResetPasswordPage />}
+                  redirectTo="/"
+                />
+              }
+            />
+            <Route
+              path="/email-input"
+              element={
+                <RestrictedRoute
+                  component={<EmailInputPage />}
                   redirectTo="/"
                 />
               }
