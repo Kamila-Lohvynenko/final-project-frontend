@@ -73,7 +73,6 @@ const TrackerPage = () => {
       case MODAL_NAME.SETTINGS_MODAL:
         setSettingsModal(false);
         break;
-
       case MODAL_NAME.DELETE_WATER_MODAL:
         setDeleteWaterModal(false);
         break;

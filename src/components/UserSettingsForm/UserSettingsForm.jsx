@@ -18,6 +18,7 @@ import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import sprite from '../../images/sprite.svg';
 import defaultAvatar from '../../images/default_avatar.webp';
+import { MODAL_NAME } from '../../constants/index.js';
 
 const VALIDATION_SCHEMA = Yup.object().shape({
   avatar: Yup.mixed().test('fileType', 'Unsupported file format', (value) => {
@@ -44,7 +45,7 @@ const VALIDATION_SCHEMA = Yup.object().shape({
     .required('Please specify water intake'),
 });
 
-const UserSettingsForm = () => {
+const UserSettingsForm = ({ onClose }) => {
   const dispatch = useDispatch();
 
   const name = useSelector(selectName);
@@ -88,6 +89,7 @@ const UserSettingsForm = () => {
         activeSportTime: data.sportTime,
         dailyNorma: data.waterIntake,
       }),
+      onClose(MODAL_NAME.SETTINGS_MODAL),
     );
   };
 
