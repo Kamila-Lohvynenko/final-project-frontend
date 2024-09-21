@@ -28,7 +28,10 @@ const waterSlice = createSlice({
         state.dailyIntakes = payload;
       })
       .addCase(addWater.fulfilled, (state, { payload }) => {
+        console.log(payload.data);
+
         state.monthIntakes.push(payload.data);
+        state.dailyIntakes.records.push(payload.data);
       })
       .addCase(updateWater.fulfilled, (state, { payload }) => {
         const indexToUpdate = state.monthIntakes.findIndex(
