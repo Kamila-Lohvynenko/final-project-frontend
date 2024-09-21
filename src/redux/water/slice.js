@@ -34,11 +34,18 @@ const waterSlice = createSlice({
         state.dailyIntakes.records.push(payload.data);
       })
       .addCase(updateWater.fulfilled, (state, { payload }) => {
-        const indexToUpdate = state.monthIntakes.findIndex(
+        const indexToUpdateMonth = state.monthIntakes.findIndex(
           ({ _id }) => _id === payload.data._id,
         );
-
-        state.monthIntakes[indexToUpdate] = payload.data;
+        if (indexToUpdateMonth !== -1) {
+          state.monthIntakes[indexToUpdateMonth] = payload.data;
+        }
+        const indexToUpdateDate = state.dailyIntakes.records.findIndex(
+          ({ _id }) => _id === payload.data._id,
+        );
+        if (indexToUpdateDate !== -1) {
+          state.dailyIntakes.records[indexToUpdateDate] = payload.data;
+        }
       })
       .addCase(deleteWater.fulfilled, (state, { payload }) => {
         // console.log(payload);
