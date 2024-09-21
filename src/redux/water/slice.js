@@ -39,10 +39,10 @@ const waterSlice = createSlice({
       })
       .addCase(deleteWater.fulfilled, (state, { payload }) => {
         state.monthIntakes = state.monthIntakes.filter(
-          ({ _id }) => _id === payload.id,
+          ({ _id }) => _id !== payload.id,
         );
         state.dailyIntakes.records = state.dailyIntakes.records.filter(
-          ({ _id }) => _id === payload.id,
+          ({ _id }) => _id !== payload.id,
         );
       }),
 });
