@@ -62,6 +62,7 @@ const EmailForm = () => {
       });
       console.log(response);
       toast.success(response.data.message);
+      reset();
     } catch (error) {
       toast.error('Error: user not found!');
     } finally {

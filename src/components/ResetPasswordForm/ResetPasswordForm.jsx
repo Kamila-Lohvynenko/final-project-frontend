@@ -6,7 +6,8 @@ import Logo from '../Logo/Logo';
 import Loader from '../Loader/Loader';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useSearchParams } from 'react-router-dom';
+import { axiosInstance } from '../../services/axios.config';
 
 const ResetPasswordForm = () => {
   const passwordId = useId();
@@ -22,6 +23,9 @@ const ResetPasswordForm = () => {
       .required('Please confirm your password'),
   });
 
+  const [params] = useSearchParams();
+  const tokenParams = params.get('token');
+
   const {
     register,
     handleSubmit,
@@ -29,13 +33,25 @@ const ResetPasswordForm = () => {
     reset,
     trigger,
   } = useForm({
-    values: { email: '', password: '' },
+    values: { password: '', repeatPassword: '' },
     resolver: yupResolver(validationSchema),
     mode: 'onBlur',
   });
 
-  const onSubmit = (values) => {
-    console.log(values);
+  const onSubmit = async (values) => {
+    try {
+      setLoading(true);
+      const response = await axiosInstance.post('/users/reset-pwd', {
+        password: values.password,
+        token: tokenParams,
+      });
+      toast.success(response.data.message);
+      reset();
+    } catch (error) {
+      toast.error('Error: user not found or invalid token!');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -43,7 +59,7 @@ const ResetPasswordForm = () => {
       <div className={styles.logo}>
         <Logo />
       </div>
-      {/* {loading && <Loader />} */}
+      {loading && <Loader />}
       <div className={styles.wrapperSignIn}>
         <h2 className={styles.title}>Change password</h2>
         <form

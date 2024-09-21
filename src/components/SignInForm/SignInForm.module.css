@@ -182,9 +182,9 @@ input:focus {
     line-height: 1.5;
     letter-spacing: -0.01em;
   }
-}
-.recover {
-  flex-direction: row;
+  .recover {
+    flex-direction: row;
+  }
 }
 
 @media only screen and (min-width: 1440px) {
