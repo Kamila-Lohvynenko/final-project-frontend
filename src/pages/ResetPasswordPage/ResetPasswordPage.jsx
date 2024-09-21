@@ -1,3 +1,4 @@
+import { Toaster } from 'react-hot-toast';
 import AdvantagesSection from '../../components/AdvantagesSection/AdvantagesSection';
 import ResetPasswordForm from '../../components/ResetPasswordForm/ResetPasswordForm';
 import styles from '../ResetPasswordPage/ResetPasswordPage.module.css';
