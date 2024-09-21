@@ -20,7 +20,7 @@ const validationSchema = Yup.object().shape({
         .required('Enter a value from 50 ml to 10000 ml'),
 });
 
-const WaterForm = ({ handleClose, water, chosenDate }) => {
+const WaterForm = ({ onClose, water, chosenDate }) => {
     const [waterValue, setWaterValue] = useState(50);
     const dispatch = useDispatch();
     const { register, handleSubmit, setValue, formState: { errors }, trigger } = useForm({
@@ -50,10 +50,13 @@ const WaterForm = ({ handleClose, water, chosenDate }) => {
 
     // Отправка
     const onSubmit = async (formData) => {
+        const { year, month, day } = chosenDate; 
         const portionData = {
-            ...formData,
             amount: waterValue,
-            date: chosenDate,
+            day: String(day).padStart(2, '0'),
+            month: String(month).padStart(2, '0'),
+            year: String(year),
+            time: formData.time,
         };
 
         try {
@@ -64,7 +67,7 @@ const WaterForm = ({ handleClose, water, chosenDate }) => {
                 await dispatch(addWater(portionData)).unwrap();
                 toast.success('Water portion added successfully!');
             }
-            handleClose();
+            onClose();
         } catch (error) {
             toast.error(error.message || 'An error occurred');
         }
