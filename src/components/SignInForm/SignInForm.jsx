@@ -136,7 +136,7 @@ const SignInForm = () => {
         </p>
         <p className={styles.recover}>
           Forgot your password?
-          <NavLink className={styles.navlink} to="/reset-password">
+          <NavLink className={styles.navlink} to="/email-input">
             Recover password
           </NavLink>
         </p>

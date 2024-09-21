@@ -98,8 +98,6 @@ input:focus {
 .recover {
   padding-top: 12px;
   display: flex;
-  flex-direction: column;
-  gap: 4px;
   align-items: center;
   justify-content: center;
 
@@ -152,6 +150,9 @@ input:focus {
   .field {
     width: 436px;
   }
+  .auth {
+    padding-top: 32px;
+  }
 }
 
 .errorMessage {
@@ -181,9 +182,6 @@ input:focus {
     font-size: 16px;
     line-height: 1.5;
     letter-spacing: -0.01em;
-  }
-  .recover {
-    flex-direction: row;
   }
 }
 
