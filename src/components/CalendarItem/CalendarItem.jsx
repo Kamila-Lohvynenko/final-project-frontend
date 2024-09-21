@@ -1,8 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import { parseDateTime } from '../CalendarPagination/helpme/parseDateTim.js';
+import { useMemo } from 'react';
 import css from './CalendarItem.module.css';
-// import { useNavigate } from 'react-router-dom';
 import { getWaterByDay } from '../../redux/water/operations.js';
 import { selectDailyIntake } from '../../redux/user/selectors.js';
 import clsx from 'clsx';
@@ -14,46 +12,37 @@ const isFutureDate = (date) => {
   return dateNow < currentDate;
 };
 
-const isDay = (firstDay, secondDay) => {
-  const first = new Date(firstDay);
-  const second = new Date(secondDay);
-  return (
-    first.getFullYear() === second.getFullYear() &&
-    first.getMonth() === second.getMonth() &&
-    first.getDate() === second.getDate()
-  );
-};
-
-const CalendarItem = ({ calendarDate, amount, setChosenDate }) => {
-  //   const navigate = useNavigate();
+const CalendarItem = ({ calendarDate, amount, setChosenDate, isActive, setActiveDate }) => {
   const dispatch = useDispatch();
   const goal = useSelector(selectDailyIntake);
-  const { date: paramsData } = useParams();
-  const currentDate = parseDateTime(paramsData);
 
-  const handleClick = (calendarDate) => {
+  const handleClick = () => {
     if (!isFutureDate(calendarDate)) {
-      const arrayDate = calendarDate.split('-');
-      const [year, month, day] = arrayDate;
-      dispatch(getWaterByDay({ year, month, day }));
+      const [year, month, day] = calendarDate.split('-');
+      
+      dispatch(getWaterByDay({ year, month, day }))
+        .catch(error => console.error("Ошибка получения данных:", error));
+
       setChosenDate({ year, month, day });
+      setActiveDate(calendarDate);
+      console.log(`Дата: ${calendarDate}, Потребление воды: ${amount} мл, Цель: ${goal} мл`);
     }
   };
 
   const date = new Date(calendarDate).getDate();
   const isDisabled = isFutureDate(calendarDate);
+  
+  const percent = useMemo(() => {
+    return goal > 0 ? Math.round((amount / (goal * 1000)) * 100) : 0;
+  }, [amount, goal]);
 
-  const percent = goal > 0 ? Math.round((amount / (goal * 1000)) * 100) : 0;
   const percentString = percent >= 100 ? '100%' : `${percent}%`;
-  const isActive = isDay(currentDate, calendarDate);
 
   return (
     <button
-      className={clsx(css.day, {
-        [css.disabled]: isDisabled,
-      })}
+      className={clsx(css.day, { [css.disabled]: isDisabled })}
       disabled={isDisabled}
-      onClick={() => handleClick(calendarDate)}
+      onClick={handleClick}
     >
       <div
         className={clsx(css.date, {
