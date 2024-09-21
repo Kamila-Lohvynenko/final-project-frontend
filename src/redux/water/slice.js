@@ -38,6 +38,8 @@ const waterSlice = createSlice({
         state.monthIntakes[indexToUpdate] = payload.data;
       })
       .addCase(deleteWater.fulfilled, (state, { payload }) => {
+        // console.log(payload);
+
         state.monthIntakes = state.monthIntakes.filter(
           ({ _id }) => _id !== payload.id,
         );
