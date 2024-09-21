@@ -13,7 +13,7 @@ const EmailInputPage = () => {
         <div className={styles.box}>
           <AdvantagesSection />
         </div>
-        <Toaster position="top-right" />
+        <Toaster position="top-center" />
       </div>
     </>
   );

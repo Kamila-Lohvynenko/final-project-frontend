@@ -98,6 +98,8 @@ input:focus {
 .recover {
   padding-top: 12px;
   display: flex;
+  flex-direction: column;
+  gap: 4px;
   align-items: center;
   justify-content: center;
 
@@ -180,6 +182,9 @@ input:focus {
     line-height: 1.5;
     letter-spacing: -0.01em;
   }
+}
+.recover {
+  flex-direction: row;
 }
 
 @media only screen and (min-width: 1440px) {

@@ -57,13 +57,13 @@ const EmailForm = () => {
   const onSubmit = async (value) => {
     try {
       setLoading(true);
-      const response = await axiosInstance.post('/users/reset-pwd', {
+      const response = await axiosInstance.post('/users/send-reset-email', {
         email: value.email,
       });
       console.log(response);
-      toast.success('');
+      toast.success(response.data.message);
     } catch (error) {
-      toast.error('');
+      toast.error('Error: user not found!');
     } finally {
       setLoading(false);
     }
