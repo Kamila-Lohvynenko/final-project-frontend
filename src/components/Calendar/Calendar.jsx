@@ -49,7 +49,7 @@ const Calendar = ({ year, month, setChosenDate }) => {
   }, [dailyRecords]);
 
   if (isLoading) {
-    return <Loader />; // Используйте ваш лоадер
+    return <Loader />;
   }
 
   if (!dailyRecords) {

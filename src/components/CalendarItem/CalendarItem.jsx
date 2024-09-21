@@ -21,11 +21,11 @@ const CalendarItem = ({ calendarDate, amount, setChosenDate, isActive, setActive
       const [year, month, day] = calendarDate.split('-');
       
       dispatch(getWaterByDay({ year, month, day }))
-        .catch(error => console.error("Ошибка получения данных:", error));
+        .catch
 
       setChosenDate({ year, month, day });
       setActiveDate(calendarDate);
-      console.log(`Дата: ${calendarDate}, Потребление воды: ${amount} мл, Цель: ${goal} мл`);
+
     }
   };
 
