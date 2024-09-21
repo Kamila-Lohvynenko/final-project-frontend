@@ -8,6 +8,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { NavLink, useSearchParams } from 'react-router-dom';
 import { axiosInstance } from '../../services/axios.config';
+import { toast } from 'react-hot-toast';
 
 const ResetPasswordForm = () => {
   const passwordId = useId();
@@ -15,6 +16,7 @@ const ResetPasswordForm = () => {
 
   const [visiblePassword, setVisiblePassword] = useState(false);
   const [visibleRepeatPassword, setVisibleRepeatPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const validationSchema = Yup.object().shape({
     password: Yup.string().min(10, 'Too short!').required('Required'),
