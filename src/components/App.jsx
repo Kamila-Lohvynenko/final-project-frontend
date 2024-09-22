@@ -17,6 +17,10 @@ const ResetPasswordPage = lazy(() =>
 const EmailInputPage = lazy(() =>
   import('../pages/EmailInputPage/EmailInputPage'),
 );
+const GoogleAuthPage = lazy(() =>
+  import('../pages/GoogleAuthPage/GoogleAuthPage'),
+);
+
 export const App = () => {
   return (
     <div className={css.app}>
@@ -77,6 +81,7 @@ export const App = () => {
                 />
               }
             />
+            <Route path="/users/tracker" element={<GoogleAuthPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Suspense>
