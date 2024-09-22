@@ -30,7 +30,10 @@ const VALIDATION_SCHEMA = Yup.object().shape({
     );
   }),
   gender: Yup.string().required('Please select gender'),
-  name: Yup.string().required('Name is required'),
+  name: Yup.string()
+    .max(20)
+    .matches(/^[A-Za-zA-Яа-яЁё\s]+$/, 'Name can only contain letters')
+    .required('Name is required'),
   email: Yup.string()
     .email('Invalid email format')
     .required('Email is required'),
@@ -294,10 +297,6 @@ const UserSettingsForm = ({ onClose }) => {
                   id="weight"
                   {...register('weight')}
                   onBlur={() => trigger('weight')}
-                  // onChange={(e) => setCurrentWeight(e.target.value)} // Обновление веса
-                  // onChange={(e) => {
-                  //   setValue('weight', e.target.value);
-                  // }} // Обновление значения в форме
                   className={`${css.inputs} ${css.smallGap}`}
                 />
                 {errors.weight && (
@@ -314,11 +313,6 @@ const UserSettingsForm = ({ onClose }) => {
                   id="sportTime"
                   {...register('sportTime')}
                   onBlur={() => trigger('sportTime')}
-                  // onChange={(e) => setCurrentSportTime(e.target.value)} //Update time
-                  // onChange={(e) => {
-                  //   setValue('sportTime', e.target.value);
-                  //   trigger('sportTime');
-                  // }} // Обновление значения в форме
                   className={`${css.inputs} ${css.bigGap}`}
                 />
                 {errors.sportTime && (
