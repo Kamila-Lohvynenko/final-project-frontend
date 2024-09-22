@@ -1,5 +1,5 @@
 .day {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 700;
   font-size: 20px;
   line-height: 24px;
@@ -11,5 +11,19 @@
   .day {
     font-size: 28px;
     line-height: 32px;
+  }
+}
+
+.progressBarTitle {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 100%;
+  color: var(--light-black);
+}
+
+@media screen and (min-width: 1440px) {
+  .progressBarTitle {
+    font-size: 15px;
+    line-height: 149%;
   }
 }
