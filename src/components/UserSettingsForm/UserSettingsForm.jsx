@@ -1,6 +1,5 @@
 import css from './UserSettingsForm.module.css';
-// import { useState, useEffect } from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import {
   selectName,
@@ -37,10 +36,12 @@ const VALIDATION_SCHEMA = Yup.object().shape({
     .required('Email is required'),
   weight: Yup.number()
     .positive('Weight must be positive')
-    .required('Weight is required'),
+    .required('Weight is required')
+    .max(500),
   sportTime: Yup.number()
     .min(0, 'Time cannot be negative')
-    .required('Please specify time'),
+    .required('Please specify time')
+    .max(24),
   waterIntake: Yup.number()
     .positive('Water intake must be positive')
     .required('Please specify water intake'),
@@ -63,6 +64,7 @@ const UserSettingsForm = ({ onClose }) => {
     formState: { errors },
     trigger,
     clearErrors,
+    watch,
   } = useForm({
     resolver: yupResolver(VALIDATION_SCHEMA),
     mode: 'onBlur',
@@ -77,6 +79,29 @@ const UserSettingsForm = ({ onClose }) => {
   });
 
   const [avatarPreview, setAvatarPreview] = useState(avatarUrl);
+  const [calculatedWaterAmount, setCalculatedWaterAmount] = useState(null);
+
+  const calculateWaterNorm = (weight, time, gender) => {
+    if (gender === 'woman') {
+      return (weight * 0.03 + time * 0.4).toFixed(2);
+    } else if (gender === 'man') {
+      return (weight * 0.04 + time * 0.6).toFixed(2);
+    }
+    return null;
+  };
+
+  const watchedWeight = watch('weight');
+  const watchedSportTime = watch('sportTime');
+  const watchedGender = watch('gender');
+
+  useEffect(() => {
+    const waterNorm = calculateWaterNorm(
+      Number(watchedWeight) || 0,
+      Number(watchedSportTime) || 0,
+      watchedGender,
+    );
+    setCalculatedWaterAmount(waterNorm);
+  }, [watchedWeight, watchedSportTime, watchedGender]);
 
   const onSubmit = (data) => {
     console.log(data);
@@ -102,7 +127,7 @@ const UserSettingsForm = ({ onClose }) => {
       })
       .catch((error) => {
         console.log(error);
-        toast.error(`Failed to update user data`);
+        toast.error('Failed to update user data');
       });
   };
 
@@ -118,31 +143,6 @@ const UserSettingsForm = ({ onClose }) => {
       trigger('avatar');
     }
   };
-
-  // const [calculatedWaterAmount, setCalculatedWaterAmount] = useState(null); // Состояние для хранения рассчитанной нормы воды
-
-  // const [currentWeight, setCurrentWeight] = useState(weight); // Состояние для отслеживания веса
-  // const [currentSportTime, setCurrentSportTime] = useState(sportTime); // Состояние для отслеживания времени активности
-
-  // // Функция для расчета нормы воды
-  // const calculateWaterNorm = (weight, time, gender) => {
-  //   if (gender === 'woman') {
-  //     return (weight * 0.03 + time * 0.4).toFixed(2);
-  //   } else if (gender === 'man') {
-  //     return (weight * 0.04 + time * 0.6).toFixed(2);
-  //   }
-  //   return null;
-  // };
-
-  // // Обновляем норму воды при изменении веса, времени или пола
-  // useEffect(() => {
-  //   const waterNorm = calculateWaterNorm(
-  //     currentWeight,
-  //     currentSportTime,
-  //     gender,
-  //   );
-  //   setCalculatedWaterAmount(waterNorm);
-  // }, [currentWeight, currentSportTime, gender]);
 
   return (
     <div className={css.scrollableContent}>
@@ -295,6 +295,9 @@ const UserSettingsForm = ({ onClose }) => {
                   {...register('weight')}
                   onBlur={() => trigger('weight')}
                   // onChange={(e) => setCurrentWeight(e.target.value)} // Обновление веса
+                  // onChange={(e) => {
+                  //   setValue('weight', e.target.value);
+                  // }} // Обновление значения в форме
                   className={`${css.inputs} ${css.smallGap}`}
                 />
                 {errors.weight && (
@@ -312,6 +315,10 @@ const UserSettingsForm = ({ onClose }) => {
                   {...register('sportTime')}
                   onBlur={() => trigger('sportTime')}
                   // onChange={(e) => setCurrentSportTime(e.target.value)} //Update time
+                  // onChange={(e) => {
+                  //   setValue('sportTime', e.target.value);
+                  //   trigger('sportTime');
+                  // }} // Обновление значения в форме
                   className={`${css.inputs} ${css.bigGap}`}
                 />
                 {errors.sportTime && (
@@ -324,9 +331,9 @@ const UserSettingsForm = ({ onClose }) => {
                     The required amount of water in liters per day:
                   </p>
                   <p className={`${css.spanWaterAmount} ${css.text}`}>
-                    {/* {calculatedWaterAmount
+                    {calculatedWaterAmount
                       ? `${calculatedWaterAmount} L`
-                      : '2L'} */}
+                      : '2 L'}
                   </p>
                 </div>
                 <label
