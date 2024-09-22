@@ -14,8 +14,10 @@ import { useDispatch } from 'react-redux';
 import { getUserData } from '../../redux/user/operations';
 import { getWaterByDay, getWaterByMonth } from '../../redux/water/operations';
 import { Toaster } from 'react-hot-toast';
+import Loader from '../../components/Loader/Loader';
 
 const TrackerPage = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const [waterModalState, setWaterModalState] = useState({
     isOpen: false,
     operation: null,
@@ -57,10 +59,11 @@ const TrackerPage = () => {
       await dispatch(
         getWaterByMonth({ month: chosenDate.month, year: chosenDate.year }),
       ).unwrap();
+      setIsLoading(false);
     }
 
     name();
-  }, [dispatch, chosenDate]);
+  }, [dispatch, chosenDate, isLoading]);
 
   const closeModal = (modalName) => {
     switch (modalName) {
@@ -97,22 +100,27 @@ const TrackerPage = () => {
 
   return (
     <div>
-      <div className={css.pageWrapper}>
-        <WaterMainInfo
-          waterModalState={waterModalState}
-          openWaterModal={openWaterModal}
-          chosenDate={chosenDate}
-        />
-        <WaterDetailedInfo
-          openWaterModal={openWaterModal}
-          setSettingsModal={setSettingsModal}
-          setLogoutModal={setLogoutModal}
-          setDeleteWaterModal={setDeleteWaterModal}
-          setChosenDate={setChosenDate}
-          chosenDate={chosenDate}
-          setWater={setWater}
-        />
-      </div>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <div className={css.pageWrapper}>
+          <WaterMainInfo
+            waterModalState={waterModalState}
+            openWaterModal={openWaterModal}
+            chosenDate={chosenDate}
+          />
+          <WaterDetailedInfo
+            openWaterModal={openWaterModal}
+            setSettingsModal={setSettingsModal}
+            setLogoutModal={setLogoutModal}
+            setDeleteWaterModal={setDeleteWaterModal}
+            setChosenDate={setChosenDate}
+            chosenDate={chosenDate}
+            setWater={setWater}
+          />
+        </div>
+      )}
+
       <Toaster position="top-right" />
       <Modal isOpen={waterModalState.isOpen} setState={closeWaterModal}>
         <WaterModal
