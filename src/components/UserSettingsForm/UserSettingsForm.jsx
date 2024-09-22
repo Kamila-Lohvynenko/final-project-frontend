@@ -19,6 +19,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import sprite from '../../images/sprite.svg';
 import defaultAvatar from '../../images/default_avatar.webp';
 import { MODAL_NAME } from '../../constants/index.js';
+import toast from 'react-hot-toast';
 
 const VALIDATION_SCHEMA = Yup.object().shape({
   avatar: Yup.mixed().test('fileType', 'Unsupported file format', (value) => {
@@ -89,8 +90,24 @@ const UserSettingsForm = ({ onClose }) => {
         activeSportTime: data.sportTime,
         dailyNorma: data.waterIntake,
       }),
-      onClose(MODAL_NAME.SETTINGS_MODAL),
-    );
+    )
+      .unwrap()
+      .then((response) => {
+        console.log(response);
+        toast.success(
+          'Your data has been  successfully updated',
+          //   {
+          //   duration: 4000,
+          //   position: 'top-center',
+          // }
+        );
+
+        onClose(MODAL_NAME.SETTINGS_MODAL);
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error(`Failed to update user data : ${error.message}`);
+      });
   };
 
   const handleAvatarChange = (event) => {

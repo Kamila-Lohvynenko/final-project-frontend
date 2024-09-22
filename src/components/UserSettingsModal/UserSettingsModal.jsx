@@ -1,5 +1,6 @@
 import css from './UserSettingsModal.module.css';
 import UserSettingsForm from '../UserSettingsForm/UserSettingsForm.jsx';
+import { Toaster } from 'react-hot-toast';
 
 const UserSettingsModal = ({ onClose }) => {
   return (
@@ -8,6 +9,7 @@ const UserSettingsModal = ({ onClose }) => {
         <h1 className={css.title}>Setting</h1>
         <UserSettingsForm onClose={onClose} />
       </div>
+      <Toaster position="top-right" />
     </>
   );
 };
