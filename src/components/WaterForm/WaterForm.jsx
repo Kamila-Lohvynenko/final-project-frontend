@@ -88,29 +88,43 @@ const WaterForm = ({ onClose, water, chosenDate, operation, setWater }) => {
     <form className={css.waterForm} onSubmit={handleSubmit(onSubmit)}>
       <p className={css.amountOfWater}>Amount of water:</p>
       <div className={css.addWaterWrapper}>
-        <button
-          type="button"
-          className={css.addWaterBtn}
-          onClick={() => setWaterValue((prev) => Math.max(prev - 50, 50))}
-        >
-          <svg>
-            <use xlinkHref={sprite + '#icon-remove'}></use>
-          </svg>
-        </button>
+      <button
+  type="button"
+  className={css.addWaterBtn}
+  onClick={() => {
+    setWaterValue((prev) => {
+      const newValue = Math.max(prev - 50, 50);
+      setValue('amount', newValue);
+      trigger('amount');
+      return newValue;
+    });
+  }}
+>
+  <svg>
+    <use xlinkHref={sprite + '#icon-remove'}></use>
+  </svg>
+</button>
         <p className={css.addWaterValue}>
           {waterValue === '' || waterValue === null
             ? '0 ml'
             : `${waterValue} ml`}
         </p>
         <button
-          type="button"
-          className={css.addWaterBtn}
-          onClick={() => setWaterValue((prev) => prev + 50)}
-        >
-          <svg>
-            <use xlinkHref={sprite + '#icon-add'}></use>
-          </svg>
-        </button>
+  type="button"
+  className={css.addWaterBtn}
+  onClick={() => {
+    setWaterValue((prev) => {
+      const newValue = prev + 50;
+      setValue('amount', newValue);
+      trigger('amount');
+      return newValue;
+    });
+  }}
+>
+  <svg>
+    <use xlinkHref={sprite + '#icon-add'}></use>
+  </svg>
+</button>
       </div>
       {/* Ввод времени записи */}
       <label className={css.recordingTimeLabel}>
