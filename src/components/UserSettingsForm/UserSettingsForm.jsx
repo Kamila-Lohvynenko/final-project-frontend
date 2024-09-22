@@ -92,21 +92,17 @@ const UserSettingsForm = ({ onClose }) => {
       }),
     )
       .unwrap()
-      .then((response) => {
-        console.log(response);
-        toast.success(
-          'Your data has been  successfully updated',
-          //   {
-          //   duration: 4000,
-          //   position: 'top-center',
-          // }
-        );
-
-        onClose(MODAL_NAME.SETTINGS_MODAL);
+      .then(() => {
+        toast.success('Your data has been successfully updated', {
+          duration: 2500,
+        });
+        setTimeout(() => {
+          onClose(MODAL_NAME.SETTINGS_MODAL);
+        }, 2500);
       })
       .catch((error) => {
         console.log(error);
-        toast.error(`Failed to update user data : ${error.message}`);
+        toast.error(`Failed to update user data`);
       });
   };
 
