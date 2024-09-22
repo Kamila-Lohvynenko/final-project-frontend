@@ -10,7 +10,7 @@ import {
 
 const initialState = {
   monthIntakes: [],
-  dailyIntakes: { records: [] }, //Изменено на объект с полем records
+  dailyIntakes: { records: [], percentage: '0', totalWater: '0' }, //Изменено на объект с полем records
 };
 
 const waterSlice = createSlice({
