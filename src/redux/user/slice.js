@@ -30,8 +30,10 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    resetToken: (state, action) => {
-      state.token = action.payload;
+    resetToken: (state, { payload }) => {
+      state.token = payload;
+      if (!payload || !payload.length) state.isLoggedIn = false;
+      else state.isLoggedIn = true;
     },
     refreshError: (state) => {
       state.isLoggedIn = false;
@@ -60,11 +62,9 @@ const authSlice = createSlice({
         state.user = { ...state.user, ...payload.data };
       })
       .addCase(updateAvatar.fulfilled, (state, { payload }) => {
-        state.user.avatarUrl = payload;
+        state.user.avatar = payload;
       })
       .addCase(getUserData.fulfilled, (state, { payload }) => {
-        // console.log(payload);
-
         state.user = { ...state.user, ...payload };
       }),
 });
