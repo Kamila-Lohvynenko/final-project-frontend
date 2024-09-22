@@ -18,8 +18,10 @@ export const updateWater = createAsyncThunk(
   'water/update',
   async ({ id, portionData }, thunkApi) => {
     try {
-      await axiosInstance.patch(`/water/${id}`, portionData);
-      return portionData.id;
+      const {
+        data: { data },
+      } = await axiosInstance.patch(`/water/${id}`, portionData);
+      return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.response.data.message);
     }
