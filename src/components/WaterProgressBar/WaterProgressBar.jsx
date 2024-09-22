@@ -47,8 +47,6 @@ import { selectDailyIntake } from '../../redux/user/selectors.js';
 import ChooseDate from '../ChooseDate/ChooseDate.jsx';
 
 const WaterProgressBar = ({ chosenDate }) => {
-  console.log(chosenDate);
-
   const currentWater = useSelector(selectTotalWaterByDay);
   const dailyWaterGoal = useSelector(selectDailyIntake);
   const waterIntakeProgress = Math.round((currentWater / dailyWaterGoal) * 100);
