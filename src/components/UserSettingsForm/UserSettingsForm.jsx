@@ -325,9 +325,7 @@ const UserSettingsForm = ({ onClose }) => {
                     The required amount of water in liters per day:
                   </p>
                   <p className={`${css.spanWaterAmount} ${css.text}`}>
-                    {calculatedWaterAmount
-                      ? `${calculatedWaterAmount} L`
-                      : '2 L'}
+                    {calculatedWaterAmount ? `${calculatedWaterAmount}L` : '2L'}
                   </p>
                 </div>
                 <label

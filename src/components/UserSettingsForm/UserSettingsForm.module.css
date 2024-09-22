@@ -269,6 +269,12 @@ input[type='radio']:checked {
     width: 400px;
   }
 
+  .spanWaterAmount {
+    max-width: 30px;
+    min-height: 20px;
+    margin-top: 0;
+  }
+
   .activeTimeWrapper {
     margin-bottom: 0;
   }
