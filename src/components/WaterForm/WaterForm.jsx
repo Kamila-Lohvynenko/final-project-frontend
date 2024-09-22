@@ -85,7 +85,7 @@ const WaterForm = ({ onClose, water, chosenDate }) => {
                         <use xlinkHref={sprite + "#icon-remove"}></use>
                     </svg>
                 </button>
-                <p className={css.addWaterValue}>{waterValue === '' ? '0 ml' : `${waterValue} ml`}</p>
+                <p className={css.addWaterValue}>{waterValue === '' || waterValue === null ? '0 ml' : `${waterValue} ml`}</p>
                 <button type="button" className={css.addWaterBtn}
                     onClick={() => setWaterValue((prev) => prev + 50)}>
                     <svg>
@@ -109,16 +109,17 @@ const WaterForm = ({ onClose, water, chosenDate }) => {
                 <input
                     type="number"
                     className={css.waterValue}
-                    value={waterValue === null ? '' : waterValue} 
+                    value={waterValue === null || waterValue === 0 ? '' : waterValue} 
                     {...register('amount')}
                     onChange={(e) => {
                         const newValue = e.target.value;
                         const numericValue = newValue === '' ? null : Number(newValue);
-
-                        if (numericValue === null || numericValue >= 0) {
-                            setWaterValue(numericValue || 0); 
-                            setValue('amount', numericValue || 0);
-                            trigger('amount');
+                
+                        // Разрешаем пустую строку или значение больше нуля
+                        if (newValue === '' || numericValue >= 0) {
+                            setWaterValue(newValue === '' ? null : numericValue); 
+                            setValue('amount', newValue === '' ? null : numericValue); 
+                            trigger('amount');  // Триггерим валидацию на ввод
                         }
                     }}
                 />
@@ -132,5 +133,3 @@ const WaterForm = ({ onClose, water, chosenDate }) => {
 };
 
 export default WaterForm;
-
-
