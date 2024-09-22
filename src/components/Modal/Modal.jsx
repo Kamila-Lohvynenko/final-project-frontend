@@ -2,6 +2,7 @@ import css from './Modal.module.css';
 import ReactModal from 'react-modal';
 
 import sprite from '../../images/sprite.svg';
+import { Toaster } from 'react-hot-toast';
 
 const Modal = ({ children, isOpen, setState }) => {
   return (
@@ -23,6 +24,7 @@ const Modal = ({ children, isOpen, setState }) => {
         </button>
         {children}
       </div>
+      <Toaster position="top-right" />
     </ReactModal>
   );
 };
