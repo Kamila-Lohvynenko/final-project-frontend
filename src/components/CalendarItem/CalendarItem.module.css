@@ -8,14 +8,14 @@
   background-color: var(--color-main-bg);
   transition: opacity 0.3s ease;
 }
-.red {
-  color: red; /* Цвет текста для 0% */
-}
+
 .day:disabled {
   cursor: default;
   opacity: 0.5;
 }
-
+.red {
+  background-color: var(--white)!important;
+}
 .date {
   width: 28px;
   height: 28px;
@@ -29,8 +29,8 @@
   font-weight: bold;
   
   color: var(--color-font-main);
-  background-color: var(--white);
 
+  background-color: var(--lime);
   border-radius: 50%;
 }
 

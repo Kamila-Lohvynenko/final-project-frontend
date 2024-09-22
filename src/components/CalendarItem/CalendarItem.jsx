@@ -45,11 +45,12 @@ const CalendarItem = ({ calendarDate, amount, setChosenDate, isActive, setActive
       onClick={handleClick}
     >
       <div
-        className={clsx(css.date, {
-          [css.perc_filled]: percent < 100 && !isDisabled,
-          [css.active]: isActive,
-        })}
-      >
+       className={clsx(css.date, {
+        [css.perc_filled]: percent < 100 && !isDisabled,
+        [css.active]: isActive,
+        [css.red]: percent === 0 && !isActive,
+      })}
+    >
         {date}
       </div>
       <div className={css.percentage}>{percentString}</div>
