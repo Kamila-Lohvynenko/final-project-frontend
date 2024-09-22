@@ -12,6 +12,8 @@ const AdvantagesSection = () => {
   const { t } = useTranslation();
   const currentLang = localStorage.getItem('i18nextLng');
 
+  const isEngLanguage = currentLang === 'en';
+
   useEffect(() => {
     const getUsersCount = async () => {
       try {
@@ -32,7 +34,11 @@ const AdvantagesSection = () => {
   return (
     <div className={css.advantages_section}>
       <div className={css.advantages_info__block}>
-        <div className={css.customers_block}>
+        <div
+          className={`${css.customers_block} ${
+            isEngLanguage ? css.customers_block_en : css.customers_block_ua
+          }`}
+        >
           <ul className={css.customers_icons__list}>
             <li className={css.customers_icons__item} />
             <li className={css.customers_icons__item} />
@@ -57,7 +63,13 @@ const AdvantagesSection = () => {
         </div>
 
         <div className={css.benefits_info__wrap}>
-          <div className={css.benefits_info__block}>
+          <div
+            className={`${css.benefits_info__block} ${
+              isEngLanguage
+                ? css.benefits_info__block_eng
+                : css.benefits_info__block_ua
+            }`}
+          >
             <p className={`${css.benefits_btn} ${css.benefits_habits}`}>
               <span className={css.habits_roll} />
               {t('Habit drive')}
@@ -66,7 +78,7 @@ const AdvantagesSection = () => {
               {t('View statistics')}
             </p>
             <p className={`${css.benefits_btn} ${css.benefits_personal__rate}`}>
-              {t('View statistics')}
+              {t('Personal rate setting')}
             </p>
           </div>
         </div>
