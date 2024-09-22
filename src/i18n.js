@@ -9,8 +9,10 @@ const resources = {
   ua: { translation: UA },
 };
 
+const savedLang = localStorage.getItem('i18nextLng');
 const userLang = navigator.language.slice(0, 2);
-let lang = resources[userLang] ? userLang : 'en';
+// let lang = resources[userLang] ? userLang : 'en';
+let lang = savedLang || (resources[userLang] ? userLang : 'en');
 
 i18n.use(initReactI18next).use(LanguageDetector).init({
   resources,

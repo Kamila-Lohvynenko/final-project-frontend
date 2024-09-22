@@ -2,32 +2,16 @@ import { Link } from 'react-router-dom';
 import Logo from '../Logo/Logo';
 import css from './WelcomeSection.module.css';
 import { useTranslation } from 'react-i18next';
-
-const lngs = {
-  en: { nativeName: 'EN' },
-  ua: { nativeName: 'UA' },
-};
+import ChangeLanguageBtn from '../ChangeLanguageBtn/ChangeLanguageBtn';
 
 const WelcomeSection = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   return (
     <div className={css.welcome_section__wrap}>
-      <Logo />
-      <div>
-        {Object.keys(lngs).map((lng) => {
-          return (
-            <button
-              type="submit"
-              key={lng}
-              onClick={() => i18n.changeLanguage(lng)}
-              disabled={i18n.resolvedLanguage === lng}
-            >
-              {lngs[lng].nativeName}
-            </button>
-          );
-        })}
+      <div className={css.logo_language__block}>
+        <Logo />
+        <ChangeLanguageBtn />
       </div>
-
       <div className={css.welcome_section}>
         <div className={css.hero_section}>
           <p className={css.sub_head}>
