@@ -2,7 +2,7 @@ import { useState, useRef } from 'react';
 import UserBarPopover from '../UserBarPopover/UserBarPopover';
 import css from './UserBar.module.css';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
-
+import defaultAvatar from '../../images/default_avatar.webp';
 const UserBar = ({ user, setSettingsModal, setLogoutModal }) => {
   const [isPopoverOpen, setPopoverOpen] = useState(false);
   const buttonRef = useRef(null);
@@ -20,7 +20,7 @@ const UserBar = ({ user, setSettingsModal, setLogoutModal }) => {
       >
         <span>{user?.name || 'Guest'} </span>
         <img
-          src={user?.avatar || 'default-avatar.png'}
+          src={user?.avatar || 'defaultAvatar'}
           alt="User Avatar"
           className={css.userAvatar}
         />
