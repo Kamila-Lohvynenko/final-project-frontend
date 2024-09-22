@@ -59,6 +59,11 @@ const waterSlice = createSlice({
         if (indexToUpdateDate !== -1) {
           state.dailyIntakes.records[indexToUpdateDate] = payload;
         }
+
+        state.dailyIntakes.totalWater = state.dailyIntakes.records.reduce(
+          (sum, record) => sum + record.amount,
+          0,
+        );
       })
       .addCase(deleteWater.fulfilled, (state, { payload }) => {
         // console.log(payload);
