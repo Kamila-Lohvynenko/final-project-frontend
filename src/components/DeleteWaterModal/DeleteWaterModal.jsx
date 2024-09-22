@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux';
 import { MODAL_NAME } from '../../constants';
 import css from './DeleteWaterModal.module.css'
 import { deleteWater } from '../../redux/water/operations';
+import toast from 'react-hot-toast';
 
 const DeleteWaterModal = ({ onClose, water, setWater }) => {
 
@@ -12,9 +13,17 @@ const DeleteWaterModal = ({ onClose, water, setWater }) => {
   }
 
   const handleOnDelete = () => {
-    dispatch(deleteWater(water)).unwrap();
-    onClose(MODAL_NAME.DELETE_WATER_MODAL);
-    setWater(null);
+    dispatch(deleteWater(water))
+      .unwrap()
+      .then(() => {
+        setWater(null);
+        toast.success("Entry successfully deleted!")
+      })
+      .catch(() => {
+        toast.error("Something went wrong. Please, try again")
+        console.log("in catch")
+      })
+      .finally(()=> {onClose(MODAL_NAME.DELETE_WATER_MODAL)});
   }
 
   return (
