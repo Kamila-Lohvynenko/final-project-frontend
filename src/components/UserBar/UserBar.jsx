@@ -24,7 +24,7 @@ const UserBar = ({ setSettingsModal, setLogoutModal }) => {
         className={`${css.userBarButton} ${isPopoverOpen ? css.open : ''}`}
         ref={buttonRef}
       >
-        <span>{userName || 'Guest'} </span>
+        <span className={css.userName}>{userName || 'Guest'} </span>
         <img
           src={userAvatar || defaultAvatar}
           alt="User Avatar"
