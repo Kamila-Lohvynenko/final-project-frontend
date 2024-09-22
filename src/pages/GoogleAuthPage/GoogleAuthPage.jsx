@@ -11,15 +11,19 @@ const GoogleAuthPage = () => {
 
   useEffect(() => {
     async function fetch() {
-      const {
-        data: { data },
-      } = await axiosInstance.post('users/confirm-oauth', {
-        code: searchParams.get('code'),
-      });
+      try {
+        const {
+          data: { data },
+        } = await axiosInstance.post('users/confirm-oauth', {
+          code: searchParams.get('code'),
+        });
 
-      dispatch(resetToken(data.accessToken));
+        dispatch(resetToken(data.accessToken));
 
-      navigate('/tracker');
+        navigate('/tracker');
+      } catch {
+        navigate('/signup');
+      }
     }
     fetch();
   }, [searchParams, dispatch, navigate]);
