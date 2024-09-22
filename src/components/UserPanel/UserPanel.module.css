@@ -1,7 +1,7 @@
 .userPanel {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+ justify-content: space-between;
   gap: 25px;
   padding: 0 0 40px 0;
   position: relative;
@@ -20,14 +20,31 @@
   letter-spacing: -0.02em;
   color: #333;
 }
+.userPanel h2 strong {
+ 
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%; 
 
+}
 @media screen and (min-width: 768px) {
   .userPanel {
+    
     flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
   }
 
   .userPanel h2 {
+ 
     font-size: 36px;
     line-height: 106%;
+  }
+  .userPanel h2 strong {
+    overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 300px;
   }
 }

@@ -10,14 +10,13 @@
 .userBarButton {
   display: flex;
   align-items: center;
-  width: 140px;
-  height: 49px;
+  justify-content: space-between;
   padding: 6px 12px;
   background-color: #2f3a44;
   color: white;
   border: none;
   border-radius: 30px;
-  gap: 5px;
+  gap: 8px;
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.2s ease;
@@ -25,17 +24,21 @@
 
 .userAvatar {
   width: 38px;
-  height: 39px;
+  height: 38px;
   border-radius: 100%;
   object-fit: cover;
+  flex-shrink: 0;
 }
 
-.userBar span {
+.userName {
+  max-width: 60px; 
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   font-size: 14px;
   font-weight: 700;
-  letter-spacing: -0.01em;
-  text-align: center;
   color: white;
+  text-align: center;
 }
 
 .arrowBar {
@@ -50,11 +53,13 @@
 @media screen and (min-width: 768px) {
   .userBar {
     flex-direction: row-reverse;
+    
   }
 
   .userBarButton {
     width: 157px;
     height: 56px;
+    gap: 10px;
   }
 
   .userAvatar {
@@ -62,9 +67,8 @@
     height: 44px;
   }
 
-  .userBar span {
+  .userName {
     font-size: 16px;
-    line-height: 150%;
   }
 
   .arrowBar {
