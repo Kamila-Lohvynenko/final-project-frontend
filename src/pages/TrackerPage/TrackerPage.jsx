@@ -13,6 +13,7 @@ import { MODAL_NAME } from '../../constants';
 import { useDispatch } from 'react-redux';
 import { getUserData } from '../../redux/user/operations';
 import { getWaterByDay, getWaterByMonth } from '../../redux/water/operations';
+import { Toaster } from 'react-hot-toast';
 
 const TrackerPage = () => {
   const [waterModalState, setWaterModalState] = useState({
@@ -112,6 +113,7 @@ const TrackerPage = () => {
           setWater={setWater}
         />
       </div>
+      <Toaster position="top-right" />
       <Modal isOpen={waterModalState.isOpen} setState={closeWaterModal}>
         <WaterModal
           operation={waterModalState.operation}
