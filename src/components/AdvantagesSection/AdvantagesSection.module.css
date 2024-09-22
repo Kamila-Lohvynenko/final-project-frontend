@@ -2,7 +2,7 @@
     display: flex;
     align-items: end;
     flex-shrink: 0;
-    
+
     max-width: 343px;
     width: 100%;
     height: 353px;
@@ -25,8 +25,7 @@
     display: flex;
     display: inline-flex;
     align-items: center;
-    
-    max-width: 160px;
+
     width: 100%;
     padding: 10px 14px;
     column-gap: 5px;
@@ -36,6 +35,14 @@
     box-shadow: 0px 4px 50px 0px rgba(0, 0, 0, 0.10);
 }
 
+.customers_block_en {
+    max-width: 180px;
+}
+
+.customers_block_ua {
+    max-width: 205px;
+}
+
 .customers_icons__list {
     display: flex;
     align-items: center;
@@ -43,7 +50,7 @@
 
 .customers_icons__item {
     position: relative;
-    
+
     flex-shrink: 0;
     width: 26.4px;
     height: 28px;
@@ -60,7 +67,7 @@
 .customers_icons__item:first-child {
     z-index: 10;
     margin-left: 0;
-    
+
     background-image: url(../../images/main-page-img/girl-2-mobile.jpg);
 }
 
@@ -111,9 +118,16 @@
 .benefits_info__block {
     display: flex;
     flex-wrap: wrap;
-    max-width: 168px;
     width: 100%;
     gap: 4px;
+}
+
+.benefits_info__block_eng {
+    max-width: 168px;
+}
+
+.benefits_info__block_ua {
+    max-width: 210px;
 }
 
 .benefits_btn {
@@ -127,7 +141,7 @@
     text-align: center;
     line-height: 1;
     letter-spacing: -0.08px;
-    
+
     border-radius: 30px;
 }
 
@@ -173,9 +187,17 @@
 
     .customers_block {
         padding: 10px 20px;
-        max-width: 240px;
         margin-bottom: -30px;
     }
+
+    .customers_block_en {
+        max-width: 250px;
+    }
+    
+    .customers_block_ua {
+        max-width: 285px;
+    }
+    
 
     .customers_icons__item {
         width: 47px;
@@ -206,13 +228,20 @@
     }
 
     .benefits_info__block {
-        max-width: 245px;
         gap: 10px;
+    }
+
+    .benefits_info__block_eng {
+        max-width: 245px;
+    }
+    
+    .benefits_info__block_ua {
+        max-width: 305px;
     }
 
     .benefits_btn {
         padding: 11px 16px;
-        
+
         font-size: 12px;
         line-height: 1;
         letter-spacing: -0.12px;
@@ -226,7 +255,7 @@
     .advantages_section {
         max-width: 672px;
         height: 736px;
-        
+
         background-image: url(../../images/main-page-img/desktop-bg.jpg);
     }
 

@@ -1,0 +1,10 @@
+.buttons {
+    display: flex;
+    justify-content: space-around;
+    max-width: 50px;
+    width: 100%;
+}
+
+.active_language {
+    color: var(--lime)
+}
