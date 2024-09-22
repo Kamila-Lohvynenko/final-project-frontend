@@ -100,6 +100,7 @@ const TrackerPage = () => {
         <WaterMainInfo
           waterModalState={waterModalState}
           openWaterModal={openWaterModal}
+          chosenDate={chosenDate}
         />
         <WaterDetailedInfo
           openWaterModal={openWaterModal}

@@ -5,19 +5,19 @@ import Logo from '../Logo/Logo.jsx';
 import { OPERATION_NAME } from '../../constants/index.js';
 import css from '../WaterMainInfo/WaterMainInfo.module.css';
 
-const WaterMainInfo =({openWaterModal})=>{ 
+const WaterMainInfo = ({ openWaterModal, chosenDate }) => {
   const handleAddWaterClick = () => {
     openWaterModal({ isOpen: true, operation: OPERATION_NAME.ADD_WATER });
   };
 
-  return(
+  return (
     <div>
       <div className={css.waterContainer}>
-        <Logo className={css.waterTitle} />             
+        <Logo className={css.waterTitle} />
         <WaterDailyNorma />
-        <WaterProgressBar />
+        <WaterProgressBar chosenDate={chosenDate} />
         <AddWaterBtn onClick={handleAddWaterClick} />
-      </div>      
+      </div>
     </div>
   );
 };
