@@ -51,7 +51,7 @@ const WaterForm = ({ onClose, water, chosenDate, operation, setWater }) => {
 
   useEffect(() => {
 
-    if (operation === OPERATION_NAME.EDIT_WATER) {
+    if (operation === OPERATION_NAME.EDIT_WATER && water) {
       setWaterValue(water.amount);
       setValue('time', water.time);
       setValue('amount', water.amount);
@@ -79,7 +79,7 @@ const WaterForm = ({ onClose, water, chosenDate, operation, setWater }) => {
 
     try {
 
-      if (operation === OPERATION_NAME.EDIT_WATER) {
+      if (operation === OPERATION_NAME.EDIT_WATER && water) {
         await dispatch(updateWater({ id: water.id, portionData })).unwrap();
         setWater(null);
         toast.success('Water portion updated successfully!', {duration: 2500});
