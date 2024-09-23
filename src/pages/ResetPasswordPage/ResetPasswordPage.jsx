@@ -13,7 +13,7 @@ const ResetPasswordPage = () => {
         <div className={styles.box}>
           <AdvantagesSection />
         </div>
-        <Toaster position="top-center" />
+        <Toaster position="top-right" />
       </div>
     </>
   );
