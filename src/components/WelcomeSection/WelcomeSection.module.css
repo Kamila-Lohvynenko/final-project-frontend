@@ -8,7 +8,7 @@
     padding: 24px 16px;
 
     border-radius: 30px;
-    background-color:var(--grey);
+    background-color: var(--grey);
     box-sizing: border-box;
 }
 
@@ -46,7 +46,7 @@
 .main_head {
     align-self: stretch;
     margin: 0;
-    
+
     font-size: 38px;
     font-weight: 700;
     line-height: 1;
@@ -66,12 +66,12 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    
+
     font-size: 14px;
     font-weight: 700;
     line-height: 1.28;
     letter-spacing: -0.14px;
-    
+
     color: var(--light-black);
     border-radius: 30px;
 }
@@ -79,11 +79,23 @@
 .button_to_signup {
     padding: 14px 19px;
     background-color: var(--lime);
+    transition: background-color 0.3s ease;
+}
+
+.button_to_signup:hover {
+    background-color: var(--darker-lime);
 }
 
 .button_to_signin {
     padding: 14px 28px;
     border: 1px solid var(--light-black);
+    transition: border-color 0.3s ease, color 0.3s ease, border-radius 0.3s ease;
+}
+
+.button_to_signin:hover {
+    border-radius: 30px;
+    border: 1px solid var(--darker-lime);
+    color: var(--darker-lime);
 }
 
 
