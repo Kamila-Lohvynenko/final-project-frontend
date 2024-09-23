@@ -189,9 +189,6 @@
   "loader": {
     "loading": "Is loading..."
   },
-  "logo": {
-    "title": "AquaTrack"
-  },
   "logout": {
     "title": "Log out",
     "message": "Do you really want to leave?",
