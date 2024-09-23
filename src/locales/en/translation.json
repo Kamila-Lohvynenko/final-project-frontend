@@ -1,17 +1,19 @@
 {
   "specialSign": "V is the volume of the water norm in liters per day, M is your body weight, T is the time of active sports, or another type of activity commensurate in terms of loads (in the absence of these, you must set 0)",
-  "happy_customers": "{{count}} happy",
-  "happy_customers_few": "{{count}} happy",
-  "happy_customers_plural": "{{count}} happy",
+  "happy": "{{count}} happy",
+  "happy_few": "{{count}} happy",
+  "happy_plural": "{{count}} happy",
+  "happy_many": "{{count}} happy",
+  "customers": "customers",
   "customers_singular": "customer",
   "customers_few": "customers",
   "customers_plural": "customers",
+  "customers_many": "customers",
+  "our": "Our",
   "our_singular": "Our",
   "our_few": "Our",
   "our_plural": "Our",
-  "Our": "Our",
-  "happy": "happy",
-  "customers": "customers",
+  "our_many": "Our",
   "Record daily water intake and track": "Record daily water intake and track",
   "Water consumption tracker": "Water consumption tracker",
   "Try tracker": "Try tracker",
@@ -130,6 +132,36 @@
   "water_intake": "Write down how much water you will drink:",
   "save": "Save",
   "liters": "L",
+
+  "validation": {
+    "fileType": "Invalid file type. Please upload an image.",
+    "gender": "Gender is required.",
+    "name": {
+      "max": "Name cannot exceed 20 characters.",
+      "letters": "Name can only contain letters.",
+      "required": "Name is required."
+    },
+    "email": {
+      "invalid": "Invalid email address.",
+      "required": "Email is required."
+    },
+    "sportTime": {
+      "negative": "Active participation cannot be negative.",
+      "required": "Active participation is required.",
+      "max": "Active participation cannot exceed 24 hours."
+    },
+    "waterIntake": {
+      "positive": "Water intake must be a positive number.",
+      "required": "Water intake is required."
+    },
+    "weight": {
+      "required": "Weight is required.",
+      "positive": "Weight must be a positive number.",
+      "min": "Weight must be at least {{min}} kg.",
+      "max": "Weight cannot exceed {{max}} kg."
+    }
+  },
+
   "settings": {
     "title": "Settings"
   },
@@ -187,15 +219,13 @@
   "loader": {
     "loading": "Is loading..."
   },
-  "logo": {
-    "title": "AquaTrack"
-  },
   "logout": {
     "title": "Log out",
     "message": "Do you really want to leave?",
     "buttonLogout": "Log out",
     "buttonCancel": "Cancel"
   },
+
   "resetPassword": {
     "title": "Change password",
     "password": "Password",
@@ -211,6 +241,13 @@
     "errorConfirmRequired": "Please confirm your password"
   },
 
+  "validation": {
+    "email_required": "Email is required.",
+    "email_invalid": "Must be a valid email.",
+    "password_required": "Password is required.",
+    "password_min": "Too short! It must be at least 10 characters long."
+  },
+
   "signIn": {
     "title": "Sign In",
     "email": "Email",
@@ -222,14 +259,8 @@
     "signUp": "Sign Up",
     "recoverPrompt": "Forgot your password?",
     "recoverPassword": "Recover password",
-    "googleAuth": "Sign ip with Google"
-  },
-
-  "validation": {
-    "email_required": "Email is required.",
-    "email_invalid": "Must be a valid email.",
-    "password_required": "Password is required.",
-    "password_min": "Too short! It must be at least 10 characters long."
+    "googleAuth": "Sign in with Google",
+    "errorMessage": "Wrong email or password, please try again"
   },
 
   "signUp": {
@@ -247,7 +278,6 @@
   "userBar": {
     "guest": "Guest"
   },
-
   "userBarPopover": {
     "settings": "Settings",
     "logOut": "Log out"
@@ -273,7 +303,18 @@
     "successAdd": "Water portion added successfully!",
     "successUpdate": "Water portion updated successfully!",
     "error": "Failed to update water data",
-    "amountValue": "{{value}} ml"
+    "amountValue": "{{value}} ml",
+    "validation": {
+      "time": {
+        "format": "The time should be in the format HH:MM",
+        "required": "The time of recording is required"
+      },
+      "amount": {
+        "min": "The amount should be at least 50 ml",
+        "max": "The amount cannot exceed 10 liters (10,000 ml)",
+        "required": "Enter a value from 50 ml to 10000 ml"
+      }
+    }
   },
   "waterItem": {
     "amount": "{{amount}} ml",

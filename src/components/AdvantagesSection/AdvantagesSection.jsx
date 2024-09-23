@@ -20,7 +20,6 @@ const AdvantagesSection = () => {
         const response = await axiosInstance.get('users/count');
 
         const data = response.data.data;
-        console.log('data:', data, typeof data);
 
         setUserCount(data);
       } catch (error) {
@@ -54,7 +53,7 @@ const AdvantagesSection = () => {
             <p className={css.customers_info}>
               {capitalizeFirstLetter(t('our', { count: userCount }))}&nbsp;
               <span className={css.customers_info__span}>
-                {t('happy_customers', { count: userCount })}
+                {t('happy', { count: userCount })}
               </span>
               &nbsp;
               {t('customers', { count: userCount })}

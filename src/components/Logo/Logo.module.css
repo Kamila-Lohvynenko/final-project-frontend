@@ -16,6 +16,34 @@
 }
 
 
+.languageSwitcher {
+  cursor: pointer;
+  background-color: #9be1a0 ;/* Цвет фона */
+  border: none; /* Без границы */
+  border-radius: 20px; /* Полукруглая форма */
+  padding: 5px 10px; /* Отступы */
+  display: flex; /* Используем flex для горизонтального расположения текста и стрелочки */
+  align-items: center; /* Центрируем по вертикали */
+  position: absolute; /* Абсолютное позиционирование */
+  right: 10px; /* Отступ от правого края */
+  top: 36px; /* Отступ от верхнего края */
+  transition: background-color 0.3s; /* Плавный переход цвета фона */
+}
+
+.languageSwitcher:hover {
+  background-color: #f0eff4; /* Цвет фона при наведении */
+}
+
+.text {
+  font-size: 16px; /* Размер текста */
+  margin-right: 5px; /* Отступ от текста к стрелочке */
+}
+
+.arrow {
+  font-size: 16px; /* Размер стрелочки */
+}
+
+
 @media screen and (min-width: 768px) {
     .logo {
         font-size: 24px;

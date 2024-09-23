@@ -1,17 +1,19 @@
 {
   "specialSign": "V - обсяг норми води в літрах на день, M - ваша вага, T - час активних занять спортом або іншої діяльності (у разі відсутності встановіть 0)",
-  "happy_customers": "{{count}} щасливий",
-  "happy_customers_few": "{{count}} щасливих",
-  "happy_customers_plural": "{{count}} щасливих",
-  "customers_singular": "користувач",
-  "customers_few": "користувачі",
-  "customers_plural": "користувачів",
+  "happy": "{{count}} щасливий",
+  "happy_few": "{{count}} щасливих",
+  "happy_plural": "{{count}} щасливих",
+  "happy_many": "{{count}} щасливих",
+  "customers": "клієнт",
+  "customers_singular": "клієнт",
+  "customers_few": "клієнти",
+  "customers_plural": "клієнтів",
+  "customers_many": "клієнтів",
+  "our": "Наш",
   "our_singular": "Наш",
   "our_few": "Наші",
   "our_plural": "Наших",
-  "Our": "Наші",
-  "happy": "щасливі",
-  "customers": "клієнти",
+  "our_many": "Наші",
   "Record daily water intake and track": "Записуйте щоденне споживання води та відстежуйте",
   "Water consumption tracker": "Трекер споживання води",
   "Try tracker": "Спробуйте трекер",
@@ -216,10 +218,6 @@
   "loader": {
     "loading": "Завантаження..."
   },
-
-  "logo": {
-    "title": "АкваТрек"
-  },
   "logout": {
     "title": "Вийти",
     "message": "Ви дійсно хочете вийти?",
@@ -260,8 +258,10 @@
     "signUp": "Зареєструватися",
     "recoverPrompt": "Забули пароль?",
     "recoverPassword": "Відновити пароль",
-    "googleAuth": "Увійдіть за допомогою Google"
+    "googleAuth": "Увійдіть за допомогою Google",
+    "errorMessage": "Неправильна адреса електронної пошти або пароль, спробуйте ще раз"
   },
+  
   "signUp": {
     "title": "Реєстрація",
     "email": "Введіть вашу електронну пошту",

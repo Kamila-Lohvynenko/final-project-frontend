@@ -53,13 +53,13 @@ const SignInForm = () => {
       }),
     )
       .unwrap()
-      .then((response) => {
+      .then(() => {
         toast.success(t('signIn.successMessage'));
         reset();
         navigate('/tracker');
       })
-      .catch((error) => {
-        console.error('Error details:', error);
+      .catch(() => {
+        // console.error('Error details:', error);
         toast.error(t('signIn.errorMessage'));
       })
       .finally(() => {
