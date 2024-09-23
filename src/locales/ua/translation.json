@@ -91,7 +91,7 @@
   "Delete": "Видалити",
   "Cancel": "Скасувати",
   "Do you really want to leave?": "Ви дійсно хочете піти?",
-  
+
     "unsupported_file_format": "Непідтримуваний формат файлу",
     "select_gender": "Будь ласка, виберіть стать",
     "name_max_length": "Ім’я не може перевищувати 20 символів",
@@ -286,15 +286,16 @@
           "unit": "мл"
       },
       
-        "waterForm": {
-          "amountOfWater": "Кількість води:",
-          "recordingTime": "Час запису:",
-          "enterWaterValue": "Введіть кількість використаної води:",
-          "saveButton": "Зберегти",
-          "successAdd": "Порція води успішно додана!",
-          "successUpdate": "Порція води успішно оновлена!",
-          "error": "Не вдалося оновити дані води",
-              "amountValue": "{{value}} мл",
+      "placeholder_time": "ГГ:ХХ",
+      "waterForm": {
+        "amountOfWater": "Кількість води:",
+        "recordingTime": "Час запису:",
+        "enterWaterValue": "Введіть кількість використаної води:",
+        "saveButton": "Зберегти",
+        "successAdd": "Порція води успішно додана!",
+        "successUpdate": "Порція води успішно оновлена!",
+        "error": "Не вдалося оновити дані води",
+        "amountValue": "{{value}} мл",
               "validation": {
                 "time": {
                   "format": "Час повинен бути у форматі ГГ:ХХ",
