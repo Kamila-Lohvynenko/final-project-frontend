@@ -46,7 +46,11 @@ const WaterForm = ({ onClose, water, chosenDate, operation, setWater }) => {
 
   const getCurrentTime = () => {
     const now = new Date();
-    return now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    return now.toLocaleTimeString([], {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false,
+    });
   };
 
   useEffect(() => {
