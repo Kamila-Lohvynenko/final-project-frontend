@@ -57,6 +57,7 @@
   border-radius: 30px;
 
   cursor: pointer;
+  transition: stroke 0.3s ease, fill 0.3s ease, border 0.3s ease;
 }
 
 .addWaterWrapper svg {
@@ -201,6 +202,7 @@ input[type="number"] {
 
   border: none;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
   
 .saveBtn:disabled {
