@@ -26,6 +26,7 @@ const WaterList = ({ openWaterModal, setDeleteWaterModal, setWater }) => {
                     ))
                 ) : (
                     <p className={css.noWater}>{t('waterList.noEntries')}</p>
+
                 )}
             </ul>
         </>
