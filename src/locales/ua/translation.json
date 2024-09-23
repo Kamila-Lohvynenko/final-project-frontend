@@ -90,5 +90,145 @@
   "Are you sure you want to delete the entry?": "Ви впевнені, що хочете видалити запис?",
   "Delete": "Видалити",
   "Cancel": "Скасувати",
-  "Do you really want to leave?": "Ви дійсно хочете піти?"
-}
+  "Do you really want to leave?": "Ви дійсно хочете піти?",
+  
+    "avatar_preview": "Попередній перегляд аватара",
+    "upload_photo": "Завантажити фото",
+    "gender_identity": "Ваша гендерна ідентичність",
+    "woman": "Жінка",
+    "man": "Чоловік",
+    "your_name": "Ваше ім'я",
+    "email": "Електронна пошта",
+    "my_daily_norm": "Моя добова норма",
+    "for_woman": "Для жінок",
+    "for_man": "Для чоловіків",
+    "volume_description": "V — це об'єм норми води в літрах на день, M — ваша вага, T — час активних тренувань або іншого виду активності, що відповідає навантаженням (при відсутності цих даних встановіть 0)",
+    "active_time": "Активний час в годинах",
+    "your_weight": "Ваша вага в кілограмах:",
+    "active_participation": "Час активної участі в спорті:",
+    "required_water_amount": "Необхідна кількість води в літрах на день:",
+    "water_intake": "Запишіть, скільки води ви будете пити:",
+    "save": "Зберегти",
+    "liters": "л",
+    "settings": {
+      "title": "Налаштування"
+    },
+    "today": "Сьогодні",
+      "title": "Місяць",
+      "months": {
+        "January": "Січень",
+        "February": "Лютий",
+        "March": "Березень",
+        "April": "Квітень",
+        "May": "Травень",
+        "June": "Червень",
+        "July": "Липень",
+        "August": "Серпень",
+        "September": "Вересень",
+        "October": "Жовтень",
+        "November": "Листопад",
+        "December": "Грудень"
+      },
+      "month": {
+    "january": "Січень",
+    "february": "Лютий",
+    "march": "Березень",
+    "april": "Квітень",
+    "may": "Травень",
+    "june": "Червень",
+    "july": "Липень",
+    "august": "Серпень",
+    "september": "Вересень",
+    "october": "Жовтень",
+    "november": "Листопад",
+    "december": "Грудень"
+  },
+  "modal": {
+    "delete_entry": "Видалити запис",
+    "delete_confirmation": "Ви впевнені, що хочете видалити запис?",
+    "delete": "Видалити",
+    "cancel": "Скасувати",
+    "success": "Запис успішно видалено!",
+    "error": "Щось пішло не так. Будь ласка, спробуйте ще раз"
+  },
+  "email_form": {
+    "title": "Змінити пароль",
+    "email": "Електронна пошта",
+    "enter_email": "Введіть свою електронну пошту",
+    "send": "Надіслати",
+    "back_to_main": "Повернутися на головну сторінку",
+    "home_page": "Головна сторінка",
+    "error_user_not_found": "Помилка: користувача не знайдено!"
+  },
+  "loader": {
+    "loading": "Завантаження..."
+  },
+
+  "logo": {
+    "title": "АкваТрек"
+  },
+  "logout": {
+    "title": "Вийти",
+    "message": "Ви дійсно хочете вийти?",
+    "buttonLogout": "Вийти",
+    "buttonCancel": "Скасувати"
+  },
+  
+    "resetPassword": {
+      "title": "Змінити пароль",
+      "password": "Пароль",
+      "placeholderPassword": "Введіть новий пароль",
+      "repeatPassword": "Повторіть пароль",
+      "placeholderRepeatPassword": "Повторіть ваш пароль",
+      "buttonSend": "Відправити",
+      "accountPrompt": "Вже маєте обліковий запис?",
+      "signIn": "Увійти",
+      "errorPasswordShort": "Занадто короткий!",
+      "errorPasswordRequired": "Обов'язково",
+      "errorPasswordMatch": "Паролі повинні збігатися",
+      "errorConfirmRequired": "Будь ласка, підтверджте свій пароль"
+    },
+    
+      "signIn": {
+        "title": "Увійти",
+        "email": "Електронна пошта",
+        "placeholderEmail": "Введіть вашу електронну пошту",
+        "password": "Пароль",
+        "placeholderPassword": "Введіть ваш пароль",
+        "buttonSignIn": "Увійти",
+        "accountPrompt": "Ще не маєте облікового запису?",
+        "signUp": "Зареєструватися",
+        "recoverPrompt": "Забули пароль?",
+        "recoverPassword": "Відновити пароль"
+      },
+      "signUp": {
+        "title": "Реєстрація",
+        "email": "Введіть вашу електронну пошту",
+        "password": "Введіть ваш пароль",
+        "repeatPassword": "Повторіть пароль",
+    
+        "alreadyHaveAccount": "Вже маєте обліковий запис?",
+        "signIn": "Увійти",
+        "googleAuth": "Зареєструйтеся за допомогою Google",
+        "loading": "Завантаження..."
+      },
+      "userBar": {
+        "guest": "Гість"
+      },
+      "userBarPopover": {
+        "settings": "Налаштування",
+        "logOut": "Вийти"
+      },
+      "userPanel": {
+        "greeting": "Привіт, {{name}}!",
+        "guest": "Гість"
+      },
+      "waterChart": {
+        "noData": "Немає даних про воду за вибраний місяць.",
+        "tooltip": "{{amount}} мл"
+      }
+  
+  
+
+  }
+    

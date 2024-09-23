@@ -1,3 +1,71 @@
+.languageSwitcherContainer {
+  display: flex; 
+  justify-content: flex-end; 
+  align-items: center; 
+}
+.languageSwitchMessage {
+  margin-top: 8px;
+  color: #555; 
+  font-size: 14px; }
+
+.languageSwitcher {
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  background: none; 
+  border: none;  
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s; 
+  padding: 8px; 
+  border-radius: 5px; 
+  perspective: 1000px; 
+}
+.dropdown {
+  position: absolute;
+  right: 0;
+
+  background: #9be1a0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  z-index: 1000;
+  padding: 8px;
+}
+
+.dropdownItem {
+  padding: 4px 8px; 
+  cursor: pointer; }
+
+.dropdownItem:hover {
+  background: #f0f0f0; 
+}
+
+.languageSwitchHint {
+  margin-bottom: 4px; 
+  font-size: 14px; 
+  color: #555; 
+}
+
+.arrow {
+  margin-left: 8px; 
+  font-size: 12px; 
+}
+
+
+.flag {
+  width: 24px;
+  height: 16px;
+  margin-right: 8px;
+  transition: transform 0.2s; 
+}
+
+.languageSwitcher:hover .flag {
+  transform: scale(1.1); 
+}
+
+
+
+
+
 .waterContainer {
   position: relative;
 

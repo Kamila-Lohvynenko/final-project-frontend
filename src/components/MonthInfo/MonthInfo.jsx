@@ -30,7 +30,7 @@ const MonthInfo = ({ setChosenDate }) => {
       ) : (
         <WaterIntakeChart />
       )}
-      <div>{/* Передаем данные как пропсы */}</div>
+   
     </div>
   );
 };

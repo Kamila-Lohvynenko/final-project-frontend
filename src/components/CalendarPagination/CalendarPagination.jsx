@@ -8,11 +8,14 @@ import sprite from "../../images/sprite.svg";
 import { monthsName } from "../CalendarPagination/helpme/constants.js";
 import { Title } from "../CalendarItem/Title/Title.jsx";
 import { getWaterByMonth } from "../../redux/water/operations.js";
+import { useTranslation } from 'react-i18next'; // Импортируем useTranslation
 
 const CalendarPagination = ({ setIsCalender, isCalendar, onDateChange }) => {
     const { date: dateUrl } = useParams();
     const dateMs = parseDateTime(dateUrl);
     const dispatch = useDispatch();
+    const { t } = useTranslation(); // Используем хук
+
     const [year, setYear] = useState(new Date(dateMs).getFullYear().toString());
     const [month, setMonth] = useState(new Date(dateMs).getMonth());
 
@@ -24,7 +27,7 @@ const CalendarPagination = ({ setIsCalender, isCalendar, onDateChange }) => {
         setYear(newYear);
         onDateChange(newYear, newMonth);
         const monthForApi = String(newMonth + 1).padStart(2, '0');
-    dispatch(getWaterByMonth({ year: newYear, month: monthForApi }));
+        dispatch(getWaterByMonth({ year: newYear, month: monthForApi }));
     };
 
     const decrement = () => {
@@ -35,11 +38,11 @@ const CalendarPagination = ({ setIsCalender, isCalendar, onDateChange }) => {
         setYear(newYear);
         onDateChange(newYear, newMonth);
         const monthForApi = String(newMonth + 1).padStart(2, '0');
-    dispatch(getWaterByMonth({ year: newYear, month: monthForApi }));
-};
+        dispatch(getWaterByMonth({ year: newYear, month: monthForApi }));
+    };
 
-    const selectedMonth = monthsName[month];
-    const title = "Month";
+    const selectedMonth = t(`months.${monthsName[month]}`); // Получаем переведенное название месяца
+    const title = t("title"); // Получаем переведенный заголовок
 
     const yearNow = new Date().getFullYear();
     const monthNow = new Date().getMonth();

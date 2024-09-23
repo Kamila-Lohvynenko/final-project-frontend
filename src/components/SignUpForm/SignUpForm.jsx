@@ -10,6 +10,7 @@ import { registerUser } from '../../redux/user/operations';
 import { toast } from 'react-hot-toast';
 import Loader from '../Loader/Loader';
 import GoogleAuth from '../GoogleAuth/GoogleAuth.jsx';
+import { useTranslation } from 'react-i18next';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().email('Must be a valid email').required('Required'),
@@ -22,7 +23,7 @@ const validationSchema = Yup.object().shape({
 const SignUpForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const { t } = useTranslation();
   const {
     register,
     handleSubmit,
@@ -64,38 +65,39 @@ const SignUpForm = () => {
   const [visiblePassword, setVisiblePassword] = useState(false);
   const [visibleRepeatPassword, setVisibleRepeatPassword] = useState(false);
 
+ 
   return (
     <>
       <div className={css.wrapper}>
-        <h2 className={css.title}>Sign Up</h2>
+        <h2 className={css.title}>{t('signUp.title')}</h2>
         <form noValidate autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
           <div className={css.field}>
             <label htmlFor={emailId} className={css.label}>
-              Email
+              {t('signUp.email')}
             </label>
             <input
               type="email"
               {...register('email')}
               id={emailId}
-              placeholder="Enter your email"
+              placeholder={t('signUp.email')}
               className={`${css.input} ${errors.email ? css.error : ''}`}
               onBlur={() => trigger('email')}
             />
             {errors.email && (
-              <p className={css.errorMessage}>{errors.email.message}</p>
+              <p className={css.errorMessage}>{t(errors.email.message)}</p>
             )}
           </div>
 
           <div className={css.field}>
             <label htmlFor={passwordId} className={css.label}>
-              Password
+              {t('signUp.password')}
             </label>
             <div className={css.wrapperIcon}>
               <input
                 type={visiblePassword ? 'text' : 'password'}
                 {...register('password')}
                 id={passwordId}
-                placeholder="Enter your password"
+                placeholder={t('signUp.password')}
                 className={`${css.input} ${errors.password ? css.error : ''}`}
                 onBlur={() => trigger('password')}
               />
@@ -113,23 +115,21 @@ const SignUpForm = () => {
               </svg>
             </div>
             {errors.password && (
-              <p className={css.errorMessage}>{errors.password.message}</p>
+              <p className={css.errorMessage}>{t(errors.password.message)}</p>
             )}
           </div>
 
           <div className={css.field}>
             <label htmlFor={repeatPasswordId} className={css.label}>
-              Repeat password
+              {t('signUp.repeatPassword')}
             </label>
             <div className={css.wrapperIcon}>
               <input
                 type={visibleRepeatPassword ? 'text' : 'password'}
                 {...register('repeatPassword')}
                 id={repeatPasswordId}
-                placeholder="Repeat password"
-                className={`${css.input} ${
-                  errors.repeatPassword ? css.error : ''
-                }`}
+                placeholder={t('signUp.repeatPassword')}
+                className={`${css.input} ${errors.repeatPassword ? css.error : ''}`}
                 onBlur={() => trigger('repeatPassword')}
               />
               <svg
@@ -147,24 +147,24 @@ const SignUpForm = () => {
             </div>
             {errors.repeatPassword && (
               <p className={css.errorMessage}>
-                {errors.repeatPassword.message}
+                {t(errors.repeatPassword.message)}
               </p>
             )}
           </div>
 
           <div className={css.buttonWrapper}>
             <button type="submit" className={css.btn}>
-              Sign Up
+              {t('signUp.title')}
             </button>
-            <GoogleAuth buttonText="Sign up with Google" />
+            <GoogleAuth buttonText={t('signUp.googleAuth')} />
           </div>
         </form>
 
         {isLoading && <Loader />}
         <p className={css.auth}>
-          Already have an account?
+          {t('signUp.alreadyHaveAccount')}
           <NavLink className={css.navlink} to="/signin">
-            Sign In
+            {t('signUp.signIn')}
           </NavLink>
         </p>
       </div>

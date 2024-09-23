@@ -9,6 +9,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { NavLink, useSearchParams } from 'react-router-dom';
 import { axiosInstance } from '../../services/axios.config';
 import { toast } from 'react-hot-toast';
+import { useTranslation } from 'react-i18next';
 
 const ResetPasswordForm = () => {
   const passwordId = useId();
@@ -39,7 +40,7 @@ const ResetPasswordForm = () => {
     resolver: yupResolver(validationSchema),
     mode: 'onBlur',
   });
-
+  const { t } = useTranslation();
   const onSubmit = async (values) => {
     try {
       setLoading(true);
@@ -56,6 +57,7 @@ const ResetPasswordForm = () => {
     }
   };
 
+ 
   return (
     <>
       <div className={styles.logo}>
@@ -63,7 +65,7 @@ const ResetPasswordForm = () => {
       </div>
       {loading && <Loader />}
       <div className={styles.wrapperSignIn}>
-        <h2 className={styles.title}>Change password</h2>
+        <h2 className={styles.title}>{t('resetPassword.title')}</h2>
         <form
           noValidate
           autoComplete="off"
@@ -72,17 +74,15 @@ const ResetPasswordForm = () => {
         >
           <div className={styles.field}>
             <label htmlFor={passwordId} className={styles.label}>
-              Password
+              {t('resetPassword.password')}
             </label>
             <div className={styles.wrapper_icon}>
               <input
                 type={visiblePassword ? 'text' : 'password'}
                 {...register('password')}
                 id={passwordId}
-                placeholder="Enter new password"
-                className={`${styles.input} ${
-                  errors.password ? styles.error : ''
-                }`}
+                placeholder={t('resetPassword.placeholderPassword')}
+                className={`${styles.input} ${errors.password ? styles.error : ''}`}
                 onBlur={() => trigger('password')}
               />
               <svg
@@ -91,31 +91,25 @@ const ResetPasswordForm = () => {
                 height={20}
                 onClick={() => setVisiblePassword(!visiblePassword)}
               >
-                <use
-                  href={`${sprite}#${
-                    visiblePassword ? 'icon-eye' : 'icon-eye-off'
-                  }`}
-                />
+                <use href={`${sprite}#${visiblePassword ? 'icon-eye' : 'icon-eye-off'}`} />
               </svg>
+              {errors.password && (
+                <p className={styles.errorMessage}>{t(errors.password.message)}</p>
+              )}
             </div>
-            {errors.password && (
-              <p className={styles.errorMessage}>{errors.password.message}</p>
-            )}
           </div>
 
           <div className={styles.field}>
             <label htmlFor={repeatPasswordId} className={styles.label}>
-              Repeat password
+              {t('resetPassword.repeatPassword')}
             </label>
             <div className={styles.wrapper_icon}>
               <input
                 type={visibleRepeatPassword ? 'text' : 'password'}
                 {...register('repeatPassword')}
                 id={repeatPasswordId}
-                placeholder="Repeat your password"
-                className={`${styles.input} ${
-                  errors.repeatPassword ? styles.error : ''
-                }`}
+                placeholder={t('resetPassword.placeholderRepeatPassword')}
+                className={`${styles.input} ${errors.repeatPassword ? styles.error : ''}`}
                 onBlur={() => trigger('repeatPassword')}
               />
               <svg
@@ -124,27 +118,21 @@ const ResetPasswordForm = () => {
                 height={20}
                 onClick={() => setVisibleRepeatPassword(!visibleRepeatPassword)}
               >
-                <use
-                  href={`${sprite}#${
-                    visibleRepeatPassword ? 'icon-eye' : 'icon-eye-off'
-                  }`}
-                />
+                <use href={`${sprite}#${visibleRepeatPassword ? 'icon-eye' : 'icon-eye-off'}`} />
               </svg>
               {errors.repeatPassword && (
-                <p className={styles.errorMessage}>
-                  {errors.repeatPassword.message}
-                </p>
+                <p className={styles.errorMessage}>{t(errors.repeatPassword.message)}</p>
               )}
             </div>
           </div>
           <button type="submit" className={styles.btn}>
-            Send
+            {t('resetPassword.buttonSend')}
           </button>
         </form>
         <p className={styles.auth}>
-          Already have an account?
+          {t('resetPassword.accountPrompt')}
           <NavLink className={styles.navlink} to="/signin">
-            Sign In
+            {t('resetPassword.signIn')}
           </NavLink>
         </p>
       </div>
