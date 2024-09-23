@@ -4,9 +4,11 @@ import css from './DeleteWaterModal.module.css'
 import { deleteWater } from '../../redux/water/operations';
 import toast from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
+import { useState } from 'react';
 
 const DeleteWaterModal = ({ onClose, water, setWater }) => {
   const { t } = useTranslation();
+  const [isDisabled, setIsDisabled] = useState(false);
   const dispatch = useDispatch();
   
   const handleModalClose = () => {
@@ -14,18 +16,25 @@ const DeleteWaterModal = ({ onClose, water, setWater }) => {
   }
 
   const handleOnDelete = () => {
+    setIsDisabled(true);
     dispatch(deleteWater(water))
       .unwrap()
       .then(() => {
+        toast.success(t('modal.success'), {duration: 2500});
+        setTimeout(() => {
+          onClose(MODAL_NAME.DELETE_WATER_MODAL);
+        }, 2500);
         setWater(null);
-        toast.success(t('modal.success'));
       })
       .catch(() => {
-        toast.error(t('modal.error'));
-       
+        toast.error(t('modal.error'), {
+          duration: 2000,
+        });       
       })
-      .finally(() => { onClose(MODAL_NAME.DELETE_WATER_MODAL); });
-  }
+    .finally(() => {
+      setIsDisabled(false);
+    })
+  };
 
   return (
     <div className={css.deleteContainer}>
@@ -34,7 +43,7 @@ const DeleteWaterModal = ({ onClose, water, setWater }) => {
         <p>{t('modal.delete_confirmation')}</p>
       </div>
       <div className={css.deleteButtons}>
-        <button className={`${css.button} ${css.deleteBtn}`} onClick={handleOnDelete}>{t('modal.delete')}</button>
+        <button className={`${css.button} ${css.deleteBtn}`} onClick={handleOnDelete} disabled={isDisabled}>{t('modal.delete')}</button>
         <button className={`${css.button} ${css.cancelBtn}`} onClick={handleModalClose}>{t('modal.cancel')}</button>
       </div>
     </div>
