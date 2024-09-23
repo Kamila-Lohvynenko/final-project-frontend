@@ -68,6 +68,12 @@
 .deleteBtn:hover {
   background-color: #87d28d;
 }
+.deleteBtn:disabled {
+  background-color: #e6e6e6;
+
+  opacity: 0.6;
+  cursor: not-allowed;
+}
 
 .cancelBtn {
   color: rgba(50, 63, 71, 0.3);
