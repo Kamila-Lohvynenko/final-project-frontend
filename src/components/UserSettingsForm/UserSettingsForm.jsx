@@ -20,35 +20,6 @@ import defaultAvatar from '../../images/default_avatar.webp';
 import { MODAL_NAME } from '../../constants/index.js';
 import toast from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
-const VALIDATION_SCHEMA = Yup.object().shape({
-  avatar: Yup.mixed().test('fileType', 'Unsupported file format', (value) => {
-    if (!value || !value[0])
-      return true; /* If file is not selected, it will be considered as a valid file and won't show error */
-
-    return ['image/jpeg', 'image/png', 'image/gif', 'image/webp'].includes(
-      value[0].type,
-    );
-  }),
-  gender: Yup.string().required('Please select gender'),
-  name: Yup.string()
-    .max(20)
-    .matches(/^[A-Za-zA-Яа-яЁё\s]+$/, 'Name can only contain letters')
-    .required('Name is required'),
-  email: Yup.string()
-    .email('Invalid email format')
-    .required('Email is required'),
-  weight: Yup.number()
-    .positive('Weight must be positive')
-    .required('Weight is required')
-    .max(500),
-  sportTime: Yup.number()
-    .min(0, 'Time cannot be negative')
-    .required('Please specify time')
-    .max(24),
-  waterIntake: Yup.number()
-    .positive('Water intake must be positive')
-    .required('Please specify water intake'),
-});
 
 const UserSettingsForm = ({ onClose }) => {
   const dispatch = useDispatch();
@@ -60,7 +31,41 @@ const UserSettingsForm = ({ onClose }) => {
   const weight = useSelector(selectWeight);
   const sportTime = useSelector(selectTimeForSports);
   const waterIntake = useSelector(selectDailyIntake);
-
+  const VALIDATION_SCHEMA = Yup.object().shape({
+   
+      avatar: Yup.mixed().test('fileType', t('unsupported_file_format'), (value) => {
+        if (!value || !value[0])
+          return true; /* Если файл не выбран, он считается действительным и не показывает ошибку */
+        
+        return ['image/jpeg', 'image/png', 'image/gif', 'image/webp'].includes(
+          value[0].type,
+        );
+      }),
+      gender: Yup.string().required(t('select_gender')),
+      name: Yup.string()
+        .max(20, t('name_max_length'))
+        .matches(/^[A-Za-zA-Яа-яЁё\s]+$/, t('name_letters_only'))
+        .required(t('name_required')),
+      email: Yup.string()
+        .email(t('invalid_email_format'))
+        .required(t('email_required')),
+      weight: Yup.number()
+        .typeError(t('weight_type_error')) // Сообщение об ошибке, если тип неверный
+        .positive(t('weight_positive')) // Проверка на положительность
+        .required(t('weight_required')) // Обязательное поле
+        .min(1, t('weight_min')) // Минимальное значение
+        .max(500, t('weight_max')), 
+        sportTime: Yup.number()
+        .typeError(t('sport_time_number')) // Добавлено для обработки неверного типа
+        .min(0, t('sport_time_negative'))
+        .required(t('sport_time_required'))
+        .max(24, t('sport_time_max')),
+      waterIntake: Yup.number()
+        .typeError(t('water_intake_number')) // Добавлено для обработки неверного типа
+        .positive(t('water_intake_positive'))
+        .required(t('water_intake_required')),
+    });
+    
   const {
     register,
     handleSubmit,
@@ -281,69 +286,84 @@ const UserSettingsForm = ({ onClose }) => {
             </div>
 
             <div className={css.rightSide}>
-              <div className={css.waterWrapper}>
-                <label
-                  htmlFor="weight"
-                  className={`${css.inputLabel} ${css.text}`}
-                >
-                  {t('your_weight')}
-                </label>
-                <input
-                  type="number"
-                  id="weight"
-                  {...register('weight')}
-                  onBlur={() => trigger('weight')}
-                  className={`${css.inputs} ${css.smallGap}`}
-                />
-                {errors.weight && (
-                  <p className={css.errorMessage}>{errors.weight.message}</p>
-                )}
-                <label
-                  htmlFor="sportTime"
-                  className={`${css.inputLabel} ${css.text}`}
-                >
-                  {t('active_participation')}
-                </label>
-                <input
-                  type="number"
-                  id="sportTime"
-                  {...register('sportTime')}
-                  onBlur={() => trigger('sportTime')}
-                  className={`${css.inputs} ${css.bigGap}`}
-                />
-                {errors.sportTime && (
-                  <p className={css.errorMessage}>{errors.sportTime.message}</p>
-                )}
-              </div>
-              <div className={css.waterWrapper}>
-                <div className={`${css.litersWrapper} ${css.smallGap}`}>
-                  <p className={css.text}>
-                    {t('required_water_amount')}
-                  </p>
-                  <p className={`${css.spanWaterAmount} ${css.text}`}>
-                  {calculatedWaterAmount ? `${calculatedWaterAmount}${t('liters')}` : `2${t('liters')}`}
-                  </p>
-                </div>
-                <label
-                  htmlFor="waterIntake"
-                  className={`${css.boldText} ${css.inputLabel}`}
-                >
-                  {t('water_intake')}
-                </label>
-                <input
-                  type="number"
-                  id="waterIntake"
-                  {...register('waterIntake')}
-                  onBlur={() => trigger('waterIntake')}
-                  className={`${css.inputs}`}
-                />
-                {errors.waterIntake && (
-                  <p className={css.errorMessage}>
-                    {errors.waterIntake.message}
-                  </p>
-                )}
-              </div>
-            </div>
+  <div className={css.waterWrapper}>
+    <label
+      htmlFor="weight"
+      className={`${css.inputLabel} ${css.text}`}
+    >
+      {t('your_weight')}
+    </label>
+    <input
+      type="number"
+      id="weight"
+      {...register('weight', {
+        valueAsNumber: true,
+        required: true,
+        min: 1,
+      })}
+      onBlur={() => trigger('weight')}
+      className={`${css.inputs} ${css.smallGap}`}
+    />        
+    {errors.weight && (
+      <p className={css.errorMessage}>{errors.weight.message}</p>
+    )}
+    
+    <label
+      htmlFor="sportTime"
+      className={`${css.inputLabel} ${css.text}`}
+    >
+      {t('active_participation')}
+    </label>
+    <input
+      type="number"
+      id="sportTime"
+      {...register('sportTime', {
+        valueAsNumber: true, // Преобразует значение в число
+        min: 0, // Минимальное значение
+        required: t('sport_time_required'), // Обязательное поле
+      })}
+      onBlur={() => trigger('sportTime')}
+      className={`${css.inputs} ${css.bigGap}`}
+    />
+    {errors.sportTime && (
+      <p className={css.errorMessage}>{errors.sportTime.message}</p>
+    )}
+  </div>
+  
+  <div className={css.waterWrapper}>
+    <div className={`${css.litersWrapper} ${css.smallGap}`}>
+      <p className={css.text}>
+        {t('required_water_amount')}
+      </p>
+      <p className={`${css.spanWaterAmount} ${css.text}`}>
+        {calculatedWaterAmount ? `${calculatedWaterAmount}${t('liters')}` : `2${t('liters')}`}
+      </p>
+    </div>
+    <label
+      htmlFor="waterIntake"
+      className={`${css.boldText} ${css.inputLabel}`}
+    >
+      {t('water_intake')}
+    </label>
+    <input
+      type="number"
+      id="waterIntake"
+      {...register('waterIntake', {
+        valueAsNumber: true, // Преобразует значение в число
+        min: 0, // Минимальное значение
+        required: t('water_intake_required'), // Обязательное поле
+      })}
+      onBlur={() => trigger('waterIntake')}
+      className={`${css.inputs}`}
+    />
+    {errors.waterIntake && (
+      <p className={css.errorMessage}>
+        {errors.waterIntake.message}
+      </p>
+    )}
+  </div>
+</div>
+
           </div>
           <button type="submit" className={css.button}>
             {t('save')}
