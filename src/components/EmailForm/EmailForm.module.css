@@ -168,6 +168,10 @@ input:focus {
   border: 1px solid var(--error);
 }
 
+/* .email_send {
+  d
+} */
+
 @media only screen and (min-width: 320px) and (max-width: 375px) {
   .field {
     width: calc(100vw - 64px);
