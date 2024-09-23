@@ -91,7 +91,7 @@
   "Delete": "Delete",
   "Cancel": "Cancel",
   "Do you really want to leave?": "Do you really want to leave?",
-  
+
   "unsupported_file_format": "Unsupported file format",
   "select_gender": "Please select gender",
   "name_max_length": "Name cannot exceed 20 characters",
@@ -111,203 +111,183 @@
   "water_intake_number": "Water intake must be a number",
   "water_intake_positive": "Water intake must be positive",
   "water_intake_required": "Please specify how much water you will drink",
-  
+
   "avatar_preview": "Avatar Preview",
-    "upload_photo": "Upload Photo",
-    "gender_identity": "Your Gender Identity",
-    "woman": "Woman",
-    "man": "Man",
-    "your_name": "Your Name",
+  "upload_photo": "Upload Photo",
+  "gender_identity": "Your Gender Identity",
+  "woman": "Woman",
+  "man": "Man",
+  "your_name": "Your Name",
+  "email": "Email",
+  "my_daily_norm": "My Daily Norm",
+  "for_woman": "For Women",
+  "for_man": "For Men",
+  "volume_description": "V is the volume of the water norm in liters per day, M is your weight, T is the time of active training or another type of activity comparable in loads (if these data are not available, set it to 0)",
+  "active_time": "Active Time in Hours",
+  "your_weight": "Your Weight in Kilograms:",
+  "active_participation": "Time of Active Participation in Sports:",
+  "required_water_amount": "Required Amount of Water in Liters per Day:",
+  "water_intake": "Write down how much water you will drink:",
+  "save": "Save",
+  "liters": "L",
+  "settings": {
+    "title": "Settings"
+  },
+
+  "today": "Today",
+  "title": "Month",
+  "months": {
+    "January": "January",
+    "February": "February",
+    "March": "March",
+    "April": "April",
+    "May": "May",
+    "June": "June",
+    "July": "July",
+    "August": "August",
+    "September": "September",
+    "October": "October",
+    "November": "November",
+    "December": "December"
+  },
+  "month": {
+    "january": "January",
+    "february": "February",
+    "march": "March",
+    "april": "April",
+    "may": "May",
+    "june": "June",
+    "july": "July",
+    "august": "August",
+    "september": "September",
+    "october": "October",
+    "november": "November",
+    "december": "December"
+  },
+  "modal": {
+    "delete_entry": "Delete entry",
+    "delete_confirmation": "Are you sure you want to delete the entry?",
+    "delete": "Delete",
+    "cancel": "Cancel",
+    "success": "Entry successfully deleted!",
+    "error": "Something went wrong. Please, try again"
+  },
+  "email_form": {
+    "title": "Change password",
     "email": "Email",
-    "my_daily_norm": "My Daily Norm",
-    "for_woman": "For Women",
-    "for_man": "For Men",
-    "volume_description": "V is the volume of the water norm in liters per day, M is your weight, T is the time of active training or another type of activity comparable in loads (if these data are not available, set it to 0)",
-    "active_time": "Active Time in Hours",
-    "your_weight": "Your Weight in Kilograms:",
-    "active_participation": "Time of Active Participation in Sports:",
-    "required_water_amount": "Required Amount of Water in Liters per Day:",
-    "water_intake": "Write down how much water you will drink:",
-    "save": "Save",
-    "liters": "L",
-    "settings": {
-      "title": "Settings"
-    },
-    
-    "today": "Today",
-      "title": "Month",
-      "months": {
-        "January": "January",
-        "February": "February",
-        "March": "March",
-        "April": "April",
-        "May": "May",
-        "June": "June",
-        "July": "July",
-        "August": "August",
-        "September": "September",
-        "October": "October",
-        "November": "November",
-        "December": "December"
-      },
-      "month": {
-        "january": "January",
-        "february": "February",
-        "march": "March",
-        "april": "April",
-        "may": "May",
-        "june": "June",
-        "july": "July",
-        "august": "August",
-        "september": "September",
-        "october": "October",
-        "november": "November",
-        "december": "December"
-      },
-      "modal": {
-        "delete_entry": "Delete entry",
-        "delete_confirmation": "Are you sure you want to delete the entry?",
-        "delete": "Delete",
-        "cancel": "Cancel",
-        "success": "Entry successfully deleted!",
-        "error": "Something went wrong. Please, try again"
-      },
-      "email_form": {
-        "title": "Change password",
-        "email": "Email",
-        "enter_email": "Enter your email",
-        "send": "Send",
-        "back_to_main": "Back to the main page",
-        "home_page": "Home page",
-        "error_user_not_found": "Error: user not found!",
-        "follow_link":"Follow the link, that was sent on your email",
-          "email_required": "Email is required.",
+    "enter_email": "Enter your email",
+    "send": "Send",
+    "back_to_main": "Back to the main page",
+    "home_page": "Home page",
+    "error_user_not_found": "Error: user not found!",
+    "follow_link": "Follow the link, that was sent on your email",
+    "email_required": "Email is required.",
     "email_invalid": "Must be a valid email."
-      },
-      "loader": {
-        "loading": "Is loading..."
-      },
-      "logo": {
-        "title": "AquaTrack"
-      
-        },
-        "logout": {
-          "title": "Log out",
-          "message": "Do you really want to leave?",
-          "buttonLogout": "Log out",
-          "buttonCancel": "Cancel"
-        },
-          "resetPassword": {
-            "title": "Change password",
-            "password": "Password",
-            "placeholderPassword": "Enter new password",
-            "repeatPassword": "Repeat password",
-            "placeholderRepeatPassword": "Repeat your password",
-            "buttonSend": "Send",
-            "accountPrompt": "Already have an account?",
-            "signIn": "Sign In",
-            "errorPasswordShort": "Too short!",
-            "errorPasswordRequired": "Required",
-            "errorPasswordMatch": "Passwords must match",
-            "errorConfirmRequired": "Please confirm your password"
-          },
-          
-            "signIn": {
-              "title": "Sign In",
-              "email": "Email",
-              "placeholderEmail": "Enter your email",
-              "password": "Password",
-              "placeholderPassword": "Enter your password",
-              "buttonSignIn": "Sign In",
-              "accountPrompt": "Don’t have an account?",
-              "signUp": "Sign Up",
-              "recoverPrompt": "Forgot your password?",
-              "recoverPassword": "Recover password"
-            },
+  },
+  "loader": {
+    "loading": "Is loading..."
+  },
+  "logo": {
+    "title": "AquaTrack"
+  },
+  "logout": {
+    "title": "Log out",
+    "message": "Do you really want to leave?",
+    "buttonLogout": "Log out",
+    "buttonCancel": "Cancel"
+  },
+  "resetPassword": {
+    "title": "Change password",
+    "password": "Password",
+    "placeholderPassword": "Enter new password",
+    "repeatPassword": "Repeat password",
+    "placeholderRepeatPassword": "Repeat your password",
+    "buttonSend": "Send",
+    "accountPrompt": "Already have an account?",
+    "signIn": "Sign In",
+    "errorPasswordShort": "Too short!",
+    "errorPasswordRequired": "Required",
+    "errorPasswordMatch": "Passwords must match",
+    "errorConfirmRequired": "Please confirm your password"
+  },
 
-            "validation": {
-              "email_required": "Email is required.",
-              "email_invalid": "Must be a valid email.",
-              "password_required": "Password is required.",
-              "password_min": "Too short! It must be at least 10 characters long."
-            },
+  "signIn": {
+    "title": "Sign In",
+    "email": "Email",
+    "placeholderEmail": "Enter your email",
+    "password": "Password",
+    "placeholderPassword": "Enter your password",
+    "buttonSignIn": "Sign In",
+    "accountPrompt": "Don’t have an account?",
+    "signUp": "Sign Up",
+    "recoverPrompt": "Forgot your password?",
+    "recoverPassword": "Recover password"
+  },
 
-             "signUp": {
-                "title": "Sign Up",
-                "email": "Enter your email",
-                "password": "Enter your password",
-                "repeatPassword": "Repeat password",
-            
-                "alreadyHaveAccount": "Already have an account?",
-                "signIn": "Sign In",
-                "googleAuth": "Sign up with Google",
-                "loading": "Loading..."
-              },
-              
-              "userBar": {
-                "guest": "Guest"
-              },
-                
-            
-            "userBarPopover": {
-              "settings": "Settings",
-              "logOut": "Log out"
-            },
-            "userPanel": {
-              "greeting": "Hello, {{name}}!",
-              "guest": "Guest"
-            },
-            "waterChart": {
-              "noData": "No water data available for the selected month.",
-              "tooltip": "{{amount}} ml"
-            },
-            "waterDailyNorma": {
-              "text": "My daily norma",
-               "unit": "ml"
-            },
-            
-              "waterForm": {
-                "amountOfWater": "Amount of water:",
-                "recordingTime": "Recording time:",
-                "enterWaterValue": "Enter the value of the water used:",
-                "saveButton": "Save",
-                "successAdd": "Water portion added successfully!",
-                "successUpdate": "Water portion updated successfully!",
-                "error": "Failed to update water data",
-                    "amountValue": "{{value}} ml"
-              },
-              "waterItem": {
-                "amount": "{{amount}} ml",
-                "time": "{{time}} "
-              },
-              "waterList": {
-                "noEntries": "No entries for this day"
-              },
-              "waterModal": {
-                "addWater": "Add water",
-                "editWater": "Edit the entered amount of water",
-                "chooseValue": "Choose a value:",
-                "correctData": "Correct entered data:"
-              },
-              "addWaterBtn": {
-                "addWater": "Add water"
-              }
-            
-           
-          }
-          
-            
-            
-          
-          
-        
-        
-    
+  "validation": {
+    "email_required": "Email is required.",
+    "email_invalid": "Must be a valid email.",
+    "password_required": "Password is required.",
+    "password_min": "Too short! It must be at least 10 characters long."
+  },
 
-    
-    
-    
-  
-  
+  "signUp": {
+    "title": "Sign Up",
+    "email": "Enter your email",
+    "password": "Enter your password",
+    "repeatPassword": "Repeat password",
 
+    "alreadyHaveAccount": "Already have an account?",
+    "signIn": "Sign In",
+    "googleAuth": "Sign up with Google",
+    "loading": "Loading..."
+  },
 
+  "userBar": {
+    "guest": "Guest"
+  },
+
+  "userBarPopover": {
+    "settings": "Settings",
+    "logOut": "Log out"
+  },
+  "userPanel": {
+    "greeting": "Hello, {{name}}!",
+    "guest": "Guest"
+  },
+  "waterChart": {
+    "noData": "No water data available for the selected month.",
+    "tooltip": "{{amount}} ml"
+  },
+  "waterDailyNorma": {
+    "text": "My daily norma",
+    "unit": "ml"
+  },
+
+  "waterForm": {
+    "amountOfWater": "Amount of water:",
+    "recordingTime": "Recording time:",
+    "enterWaterValue": "Enter the value of the water used:",
+    "saveButton": "Save",
+    "successAdd": "Water portion added successfully!",
+    "successUpdate": "Water portion updated successfully!",
+    "error": "Failed to update water data",
+    "amountValue": "{{value}} ml"
+  },
+  "waterItem": {
+    "amount": "{{amount}} ml",
+    "time": "{{time}} "
+  },
+  "waterList": {
+    "noEntries": "No entries for this day"
+  },
+  "waterModal": {
+    "addWater": "Add water",
+    "editWater": "Edit the entered amount of water",
+    "chooseValue": "Choose a value:",
+    "correctData": "Correct entered data:"
+  },
+  "addWaterBtn": {
+    "addWater": "Add water"
+  }
+}
