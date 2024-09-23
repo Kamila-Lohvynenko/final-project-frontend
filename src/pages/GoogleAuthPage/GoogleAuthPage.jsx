@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { axiosInstance } from '../../services/axios.config';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { resetToken } from '../../redux/user/slice';
+import Loader from '../../components/Loader/Loader';
 
 const GoogleAuthPage = () => {
   const [searchParams] = useSearchParams();
@@ -27,7 +28,11 @@ const GoogleAuthPage = () => {
     }
     fetch();
   }, [searchParams, dispatch, navigate]);
-  return <div>GoogleAuthPage</div>;
+  return (
+    <div>
+      <Loader />
+    </div>
+  );
 };
 
 export default GoogleAuthPage;
