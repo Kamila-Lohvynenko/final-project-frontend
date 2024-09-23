@@ -9,7 +9,7 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { OPERATION_NAME } from '../../constants/index.js';
 import Loader from '../Loader/Loader.jsx';
-
+import { useTranslation } from 'react-i18next';  // Импортируем хук для локализации
 
 const validationSchema = Yup.object().shape({
   time: Yup.string()
@@ -25,12 +25,12 @@ const validationSchema = Yup.object().shape({
     .required('Enter a value from 50 ml to 10000 ml'),
 });
 
-
 const WaterForm = ({ onClose, water, chosenDate, operation, setWater }) => {
   const [waterValue, setWaterValue] = useState(50);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const dispatch = useDispatch();
+  const { t } = useTranslation();  // Используем хук перевода
 
-  const dispatch = useDispatch();  
   const {
     register,
     handleSubmit,
@@ -43,19 +43,16 @@ const WaterForm = ({ onClose, water, chosenDate, operation, setWater }) => {
     reValidateMode: 'onChange',
   });
 
-
   const getCurrentTime = () => {
     const now = new Date();
     return now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
   };
 
   useEffect(() => {
-
     if (operation === OPERATION_NAME.EDIT_WATER && water) {
       setWaterValue(water.amount);
       setValue('time', water.time);
       setValue('amount', water.amount);
-
     } else {
       setWaterValue(50);
       setValue('time', getCurrentTime());
@@ -63,12 +60,9 @@ const WaterForm = ({ onClose, water, chosenDate, operation, setWater }) => {
     }
   }, [water, setValue, operation]);
 
-
   const onSubmit = async (formData) => {
     setIsSubmitting(true);
-
     const { year, month, day } = chosenDate;
-
     const portionData = {
       amount: waterValue,
       day: String(day).padStart(2, '0'),
@@ -78,45 +72,40 @@ const WaterForm = ({ onClose, water, chosenDate, operation, setWater }) => {
     };
 
     try {
-
       if (operation === OPERATION_NAME.EDIT_WATER && water) {
         await dispatch(updateWater({ id: water.id, portionData })).unwrap();
         setWater(null);
-        toast.success('Water portion updated successfully!', {duration: 2500});
-        setTimeout(()=>{
+        toast.success(t('waterForm.successUpdate'), { duration: 2500 });  // Локализуем сообщение
+        setTimeout(() => {
           onClose();
         }, 2500);
-
       } else {
         await dispatch(addWater(portionData)).unwrap();
-        toast.success('Water portion added successfully!', {duration: 2500});
-        setTimeout(()=>{
+        toast.success(t('waterForm.successAdd'), { duration: 2500 });  // Локализуем сообщение
+        setTimeout(() => {
           onClose();
         }, 2500);
       }
-
-    } catch  {
-      toast.error('Failed to update water data');
-
-    }finally{
+    } catch {
+      toast.error(t('waterForm.error'));  // Локализуем сообщение
+    } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
     <form className={css.waterForm} onSubmit={handleSubmit(onSubmit)}>
-      <p className={css.amountOfWater}>Amount of water:</p>
+      <p className={css.amountOfWater}>{t('waterForm.amountOfWater')}</p> {/* Локализуем текст */}
       <div className={css.addWaterWrapper}>
-
         <button
           type="button"
           className={css.addWaterBtn}
           onClick={() => {
-          setWaterValue((prev) => {
-          const newValue = Math.max(prev - 50, 50);
-          setValue('amount', newValue);
-          trigger('amount');
-          return newValue;
+            setWaterValue((prev) => {
+              const newValue = Math.max(prev - 50, 50);
+              setValue('amount', newValue);
+              trigger('amount');
+              return newValue;
             });
           }}
         >
@@ -124,20 +113,23 @@ const WaterForm = ({ onClose, water, chosenDate, operation, setWater }) => {
             <use xlinkHref={sprite + '#icon-remove'}></use>
           </svg>
         </button>
-        
+
         <p className={css.addWaterValue}>
-          {waterValue === '' || waterValue === null ? '0 ml' : `${waterValue} ml`}
-        </p>
+      {waterValue === '' || waterValue === null 
+        ? t('waterForm.amountValue', { value: 0 }) 
+        : t('waterForm.amountValue', { value: waterValue })
+      }
+    </p>
 
         <button
           type="button"
           className={css.addWaterBtn}
           onClick={() => {
-          setWaterValue((prev) => {
-          const newValue = prev + 50;
-          setValue('amount', newValue);
-          trigger('amount');
-          return newValue;
+            setWaterValue((prev) => {
+              const newValue = prev + 50;
+              setValue('amount', newValue);
+              trigger('amount');
+              return newValue;
             });
           }}
         >
@@ -148,7 +140,7 @@ const WaterForm = ({ onClose, water, chosenDate, operation, setWater }) => {
       </div>
 
       <label className={css.recordingTimeLabel}>
-        Recording time:
+        {t('waterForm.recordingTime')}  {/* Локализуем текст */}
         <input
           type="text"
           className={css.recordingTime}
@@ -159,7 +151,7 @@ const WaterForm = ({ onClose, water, chosenDate, operation, setWater }) => {
       </label>
 
       <label className={css.waterValueLabel}>
-        Enter the value of the water used:
+        {t('waterForm.enterWaterValue')} 
         <input
           type="number"
           className={css.waterValue}
@@ -172,7 +164,7 @@ const WaterForm = ({ onClose, water, chosenDate, operation, setWater }) => {
             if (newValue === '' || numericValue >= 0) {
               setWaterValue(newValue === '' ? null : numericValue);
               setValue('amount', newValue === '' ? null : numericValue);
-              trigger('amount'); 
+              trigger('amount');
             }
           }}
         />
@@ -181,7 +173,7 @@ const WaterForm = ({ onClose, water, chosenDate, operation, setWater }) => {
 
       <div className={css.loaderWrapper}>{isSubmitting && <Loader />}</div>
       <button type="submit" className={css.saveBtn} disabled={isSubmitting}>
-        Save
+        {t('waterForm.saveButton')} 
       </button>
     </form>
   );
