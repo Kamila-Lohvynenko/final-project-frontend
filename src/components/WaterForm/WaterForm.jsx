@@ -149,11 +149,11 @@ const WaterForm = ({ onClose, water, chosenDate, operation, setWater }) => {
       <label className={css.recordingTimeLabel}>
         {t('waterForm.recordingTime')} {/* Локализуем текст */}
         <input
-          type="text"
-          className={css.recordingTime}
-          placeholder="HH:MM"
-          {...register('time')}
-        />
+  type="text"
+  className={css.recordingTime}
+  placeholder={t('placeholder_time')}
+  {...register('time')}
+/>
         {errors.time && <p className={css.error}>{errors.time.message}</p>}
       </label>
       <label className={css.waterValueLabel}>
