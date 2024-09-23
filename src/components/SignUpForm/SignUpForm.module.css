@@ -12,7 +12,8 @@
 .wrapper {
   display: flex;
   flex-direction: column;
-  padding: 170px 16px;
+  position: relative;
+  padding: 171px 16px;
 }
 .title {
   margin-bottom: 32px;
@@ -146,6 +147,14 @@ input:focus {
   flex-wrap: wrap;
 }
 
+.loaderContainer {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+
 @media only screen and (min-width: 768px) {
   .logo {
     padding: 32px 0 0 32px;
@@ -189,8 +198,14 @@ input:focus {
 
 @media only screen and (min-width: 1440px) {
   .wrapper {
-    padding: 130px 118px;
+    padding: 74px 118px;
   }
+
+  .loaderContainer {
+    position: relative;
+    height: 60px;
+  }
+
 }
 
 @media screen and (max-width: 374px) and (min-width: 320px) {
