@@ -63,7 +63,7 @@ const TrackerPage = () => {
     }
 
     name();
-  }, [dispatch, chosenDate, isLoading]);
+  }, [dispatch, chosenDate]);
 
   const closeModal = (modalName) => {
     switch (modalName) {
