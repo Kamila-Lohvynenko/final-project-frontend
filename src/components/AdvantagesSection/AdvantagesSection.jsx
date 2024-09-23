@@ -20,7 +20,6 @@ const AdvantagesSection = () => {
         const response = await axiosInstance.get('users/count');
 
         const data = response.data.data;
-        console.log('data:', data, typeof data);
 
         setUserCount(data);
       } catch (error) {
