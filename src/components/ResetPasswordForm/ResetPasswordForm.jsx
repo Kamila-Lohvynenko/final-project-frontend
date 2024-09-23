@@ -10,6 +10,7 @@ import { NavLink, useNavigate, useSearchParams } from 'react-router-dom';
 import { axiosInstance } from '../../services/axios.config';
 import { toast } from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
+import ChangeLanguageBtn from '../ChangeLanguageBtn/ChangeLanguageBtn';
 
 const ResetPasswordForm = () => {
   const passwordId = useId();
@@ -61,10 +62,13 @@ const ResetPasswordForm = () => {
 
   return (
     <>
-      <div className={styles.logo}>
-        <Logo />
+      <div className={styles.wrapper_logo}>
+        <div className={styles.logo}>
+          <Logo />
+        </div>
+        {loading && <Loader />}
+        <ChangeLanguageBtn />
       </div>
-      {loading && <Loader />}
       <div className={styles.wrapperSignIn}>
         <h2 className={styles.title}>{t('resetPassword.title')}</h2>
         <form

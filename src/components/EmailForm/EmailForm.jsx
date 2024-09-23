@@ -9,6 +9,7 @@ import { toast } from 'react-hot-toast';
 import Loader from '../Loader/Loader';
 import { axiosInstance } from '../../services/axios.config';
 import { useTranslation } from 'react-i18next';
+import ChangeLanguageBtn from '../ChangeLanguageBtn/ChangeLanguageBtn';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().email('Must be a valid email').required('Required'),
@@ -51,55 +52,58 @@ const EmailForm = () => {
 
   return (
     <>
-      {!sendEmail && (
-        <>
-          <div className={styles.logo}>
-            <Logo />
-          </div>
-          {loading && <Loader />}
-          <div className={styles.wrapperSignIn}>
-            <h2 className={styles.title}>{t('email_form.title')}</h2>
-            <form
-              noValidate
-              autoComplete="off"
-              onSubmit={handleSubmit(onSubmit)}
-              className={styles.form}
-            >
-              <div className={styles.field}>
-                <label htmlFor={emailId} className={styles.label}>
-                  {t('email_form.email')}
-                </label>
-                <input
-                  type="email"
-                  {...register('email')}
-                  id={emailId}
-                  placeholder={t('email_form.enter_email')}
-                  className={`${styles.input} ${
-                    errors.email ? styles.error : ''
-                  }`}
-                  onBlur={() => trigger('email')}
-                />
-                {errors.email && (
-                  <p className={styles.errorMessage}>{errors.email.message}</p>
-                )}
-              </div>
+      <div className={styles.wrapper_logo}>
+        <div className={styles.logo}>
+          <Logo />
+        </div>
+        <ChangeLanguageBtn />
+      </div>
+      {loading && <Loader />}
 
-              <button type="submit" className={styles.btn}>
-                {t('email_form.send')}
-              </button>
-            </form>
-            <p className={styles.auth}>
-              {t('email_form.back_to_main')}
-              <NavLink className={styles.navlink} to="/">
-                {t('email_form.home_page')}
-              </NavLink>
-            </p>
-          </div>
-        </>
-      )}
-      {sendEmail && (
-        <div className={styles.email_send}>{t('email_form.follow_link')}</div>
-      )}
+      <div className={styles.wrapperSignIn}>
+        <h2 className={styles.title}>{t('email_form.title')}</h2>
+
+        {sendEmail ? (
+          <div className={styles.email_send}>{t('email_form.follow_link')}</div>
+        ) : (
+          <form
+            noValidate
+            autoComplete="off"
+            onSubmit={handleSubmit(onSubmit)}
+            className={styles.form}
+          >
+            <div className={styles.field}>
+              <label htmlFor={emailId} className={styles.label}>
+                {t('email_form.email')}
+              </label>
+              <input
+                type="email"
+                {...register('email')}
+                id={emailId}
+                placeholder={t('email_form.enter_email')}
+                className={`${styles.input} ${
+                  errors.email ? styles.error : ''
+                }`}
+                onBlur={() => trigger('email')}
+              />
+              {errors.email && (
+                <p className={styles.errorMessage}>{errors.email.message}</p>
+              )}
+            </div>
+
+            <button type="submit" className={styles.btn}>
+              {t('email_form.send')}
+            </button>
+          </form>
+        )}
+
+        <p className={styles.auth}>
+          {t('email_form.back_to_main')}
+          <NavLink className={styles.navlink} to="/">
+            {t('email_form.home_page')}
+          </NavLink>
+        </p>
+      </div>
     </>
   );
 };
