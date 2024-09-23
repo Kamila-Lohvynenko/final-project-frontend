@@ -198,6 +198,13 @@ input[type='radio']:checked {
   background: #87d28d;
 }
 
+.button:disabled {
+  background-color: #e6e6e6;
+
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 @media screen and (min-width: 768px) {
   .scrollableContent {
     padding-right: 20px;
