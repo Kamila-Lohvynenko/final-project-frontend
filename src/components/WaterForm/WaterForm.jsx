@@ -9,27 +9,27 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { OPERATION_NAME } from '../../constants/index.js';
 import Loader from '../Loader/Loader.jsx';
-import { useTranslation } from 'react-i18next';  // Импортируем хук для локализации
+import { useTranslation } from 'react-i18next'; 
 
-const validationSchema = Yup.object().shape({
-  time: Yup.string()
-    .matches(
-      /^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/,
-      'Time must be in the format HH:MM',
-    )
-    .required('Recording time is required'),
-  amount: Yup.number()
-    .transform((value) => (isNaN(value) ? undefined : value))
-    .min(50, 'Amount must be at least 50 ml')
-    .max(10000, 'Amount cannot exceed 10 liters (10000 ml)')
-    .required('Enter a value from 50 ml to 10000 ml'),
-});
 
 const WaterForm = ({ onClose, water, chosenDate, operation, setWater }) => {
+  const { t } = useTranslation();  
+  const validationSchema = Yup.object().shape({
+    time: Yup.string()
+      .matches(
+        /^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/,
+        t('waterForm.validation.time.format')  // Локализуем сообщение
+      )
+      .required(t('waterForm.validation.time.required')),  // Локализуем сообщение
+    amount: Yup.number()
+      .transform((value) => (isNaN(value) ? undefined : value))
+      .min(50, t('waterForm.validation.amount.min'))  // Локализуем сообщение
+      .max(10000, t('waterForm.validation.amount.max'))  // Локализуем сообщение
+      .required(t('waterForm.validation.amount.required'))  // Локализуем сообщение
+  });
   const [waterValue, setWaterValue] = useState(50);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const dispatch = useDispatch();
-  const { t } = useTranslation();  // Используем хук перевода
 
   const {
     register,

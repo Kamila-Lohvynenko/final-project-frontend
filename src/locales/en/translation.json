@@ -258,6 +258,9 @@
                 "editWater": "Edit the entered amount of water",
                 "chooseValue": "Choose a value:",
                 "correctData": "Correct entered data:"
+              },
+              "addWaterBtn": {
+                "addWater": "Add water"
               }
             
            
