@@ -158,7 +158,8 @@
         "send": "Send",
         "back_to_main": "Back to the main page",
         "home_page": "Home page",
-        "error_user_not_found": "Error: user not found!"
+        "error_user_not_found": "Error: user not found!",
+        "follow_link":"Follow the link, that was sent on your email"
       },
       "loader": {
         "loading": "Is loading..."
