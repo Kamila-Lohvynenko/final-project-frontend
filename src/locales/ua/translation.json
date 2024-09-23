@@ -259,7 +259,8 @@
     "accountPrompt": "Ще не маєте облікового запису?",
     "signUp": "Зареєструватися",
     "recoverPrompt": "Забули пароль?",
-    "recoverPassword": "Відновити пароль"
+    "recoverPassword": "Відновити пароль",
+    "googleAuth": "Увійдіть за допомогою Google"
   },
   "signUp": {
     "title": "Реєстрація",
