@@ -10,17 +10,16 @@ import {
 import css from './WaterChart.module.css';
 import { useSelector } from 'react-redux';
 import { selectWaterByMonth } from '../../../redux/water/selectors';
-
+import { useTranslation } from 'react-i18next';
 
 const formatDayMonth = (day, month) => {
     const formattedDay = String(day).padStart(2, '0');  
     const formattedMonth = String(month).padStart(2, '0'); 
-
     return `${formattedDay}.${formattedMonth}`; 
 };
 
-
 const CustomTooltip = ({ active, payload, coordinate }) => {
+    const { t } = useTranslation();
     if (active && payload && payload.length) {
         const tooltipStyle = {
             backgroundColor: 'white',
@@ -41,53 +40,45 @@ const CustomTooltip = ({ active, payload, coordinate }) => {
         };
 
         return (
-            <div
-                className='custom-tooltip'
-                style={tooltipStyle}>
-                <p style={labelStyle}>{`${payload[0].value} ml`}</p>
+            <div className='custom-tooltip' style={tooltipStyle}>
+           <p style={labelStyle}>
+                    {t('waterChart.tooltip', { amount: payload[0].value })} 
+                </p>
             </div>
         );
     }
-
     return null;
 };
 
 const WaterChart = () => {
- 
+    const { t } = useTranslation();
     const waterData = useSelector(selectWaterByMonth);
-
-
   
     const formattedData = waterData
-        .filter((item) => item.amount > 0)  
+        .filter((item) => item.amount > 0)
         .map((item) => ({
-            date: formatDayMonth(item.day, item.month),  
+            date: formatDayMonth(item.day, item.month),
             day: Number(item.day),
-            originalAmount: item.amount,  
+            originalAmount: item.amount,
         }))
         .sort((a, b) => a.day - b.day);  
 
- 
     const totalAmount = formattedData.reduce(
         (acc, obj) => acc + obj.originalAmount,
         0
     );
 
-  
     const formatYAxisTick = (tick, index) => {
         if (index === 0) {
             return '0l';
         }
-
         return `${(tick / 1000).toFixed(1)} l`;
     };
 
     return (
         <div className={css.graphContainer}>
             {totalAmount > 0 ? (
-                <ResponsiveContainer
-                    width='100%'
-                    height='100%'>
+                <ResponsiveContainer width='100%' height='100%'>
                     <AreaChart
                         data={formattedData}
                         margin={{
@@ -97,29 +88,12 @@ const WaterChart = () => {
                             bottom: 10,
                         }}>
                         <defs>
-                            <linearGradient
-                                id='colorUv'
-                                x1='0'
-                                y1='0'
-                                x2='0'
-                                y2='1'>
-                                <stop
-                                    offset='0%'
-                                    stopColor='#9BE1A0'
-                                    stopOpacity={1}
-                                />
-                                <stop
-                                    offset='100%'
-                                    stopColor='#9BE1A0'
-                                    stopOpacity={0}
-                                />
+                            <linearGradient id='colorUv' x1='0' y1='0' x2='0' y2='1'>
+                                <stop offset='0%' stopColor='#9BE1A0' stopOpacity={1} />
+                                <stop offset='100%' stopColor='#9BE1A0' stopOpacity={0} />
                             </linearGradient>
                         </defs>
-                        <XAxis
-                            dataKey='date'  
-                            tickLine={false}
-                            tickMargin={21}
-                        />
+                        <XAxis dataKey='date' tickLine={false} tickMargin={21} />
                         <YAxis
                             domain={[0, 'auto']}
                             tickCount={6}
@@ -129,11 +103,7 @@ const WaterChart = () => {
                             tickMargin={53}
                             tick={{ textAnchor: 'start' }}
                         />
-                        <Tooltip
-                            cursor={false}
-                            position={{ y: -30 }}
-                            content={<CustomTooltip />}
-                        />
+                        <Tooltip cursor={false} position={{ y: -30 }} content={<CustomTooltip />} />
                         <Area
                             type='monotone'
                             dataKey='originalAmount'
@@ -151,7 +121,7 @@ const WaterChart = () => {
                 </ResponsiveContainer>
             ) : (
                 <p className={css.nodata}>
-                    {'No water data available for the selected month.'}
+                    {t('waterChart.noData')}
                 </p>
             )}
         </div>

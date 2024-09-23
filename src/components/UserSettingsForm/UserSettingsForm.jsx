@@ -19,7 +19,7 @@ import sprite from '../../images/sprite.svg';
 import defaultAvatar from '../../images/default_avatar.webp';
 import { MODAL_NAME } from '../../constants/index.js';
 import toast from 'react-hot-toast';
-
+import { useTranslation } from 'react-i18next';
 const VALIDATION_SCHEMA = Yup.object().shape({
   avatar: Yup.mixed().test('fileType', 'Unsupported file format', (value) => {
     if (!value || !value[0])
@@ -52,7 +52,7 @@ const VALIDATION_SCHEMA = Yup.object().shape({
 
 const UserSettingsForm = ({ onClose }) => {
   const dispatch = useDispatch();
-
+  const { t } = useTranslation();
   const name = useSelector(selectName);
   const email = useSelector(selectEmail);
   const avatarUrl = useSelector(selectAvatarUrl);
@@ -153,7 +153,7 @@ const UserSettingsForm = ({ onClose }) => {
         <img
           className={css.avatar}
           src={avatarPreview || defaultAvatar}
-          alt="Avatar preview"
+          alt={t('avatar_preview')}
           width="75"
           height="75"
           loading="lazy"
@@ -173,7 +173,7 @@ const UserSettingsForm = ({ onClose }) => {
             }}
           />
           <label className={`${css.uploadLabel} ${css.text}`} htmlFor="avatar">
-            Upload a photo
+            {t('upload_photo')}
           </label>
           {errors.avatar && (
             <p className={css.errorMessage}>{errors.avatar.message}</p>
@@ -185,7 +185,7 @@ const UserSettingsForm = ({ onClose }) => {
           <div className={css.content}>
             <div className={css.leftSide}>
               <div className={css.bigGap}>
-                <p className={css.boldText}>Your gender identity</p>
+                <p className={css.boldText}>{t('gender_identity')}</p>
                 <div className={css.radioContainer}>
                   <input
                     type="radio"
@@ -197,7 +197,7 @@ const UserSettingsForm = ({ onClose }) => {
                     htmlFor="woman"
                     className={`${css.genderLabel} ${css.text}`}
                   >
-                    Woman
+                    {t('woman')}
                   </label>
                   <input
                     type="radio"
@@ -209,7 +209,7 @@ const UserSettingsForm = ({ onClose }) => {
                     htmlFor="man"
                     className={`${css.genderLabel} ${css.text}`}
                   >
-                    Man
+                    {t('man')}
                   </label>
                   {errors.gender && (
                     <p className={css.errorMessage}>{errors.gender.message}</p>
@@ -221,7 +221,7 @@ const UserSettingsForm = ({ onClose }) => {
                   htmlFor="name"
                   className={`${css.boldText} ${css.inputLabel}`}
                 >
-                  Your name
+                  {t('your_name')}
                 </label>
                 <input
                   type="text"
@@ -237,14 +237,14 @@ const UserSettingsForm = ({ onClose }) => {
                   htmlFor="email"
                   className={`${css.boldText} ${css.inputLabel}`}
                 >
-                  Email
+                  {t('email')}
                 </label>
                 <input
                   type="email"
                   id="email"
                   {...register('email')}
                   onBlur={() => trigger('email')}
-                  className={css.inputs}
+                  className={`${css.inputs}`}
                 />
                 {errors.email && (
                   <p className={css.errorMessage}>{errors.email.message}</p>
@@ -252,34 +252,30 @@ const UserSettingsForm = ({ onClose }) => {
               </div>
               <div className={css.formulaContainer}>
                 <p className={`${css.boldText} ${css.smallGap}`}>
-                  My daily norma
+                  {t('my_daily_norm')}
                 </p>
                 <div className={`${css.formulaWrapper} ${css.smallGap}`}>
                   <div className={css.formulaBlock}>
-                    <p className={`${css.text} ${css.miniGap}`}>For woman:</p>
+                    <p className={`${css.text} ${css.miniGap}`}>{t('for_woman')}:</p>
                     <p className={`${css.text} ${css.formula}`}>
                       V=(M*0,03) + (T*0,4)
                     </p>
                   </div>
                   <div className={css.formulaBlock}>
-                    <p className={`${css.text} ${css.miniGap}`}>For man:</p>
+                    <p className={`${css.text} ${css.miniGap}`}>{t('for_man')}:</p>
                     <p className={`${css.text} ${css.formula}`}>
                       V=(M*0,04) + (T*0,6)
                     </p>
                   </div>
                 </div>
                 <p className={`${css.spanText} ${css.text} ${css.smallGap}`}>
-                  <span className={css.specialSign}>*</span> V is the volume of
-                  the water norm in liters per day, M is your body weight, T is
-                  the time of active sports, or another type of activity
-                  commensurate in terms of loads (in the absence of these, you
-                  must set 0)
+                  <span className={css.specialSign}>*</span> {t('volume_description')}
                 </p>
                 <span className={`${css.activeTimeWrapper} ${css.bigGap}`}>
                   <svg className={css.iconExclamationMark}>
                     <use href={`${sprite}#icon-exclamation-mark`}></use>
                   </svg>
-                  <p className={css.text}>Active time in hours</p>
+                  <p className={css.text}>{t('active_time')}</p>
                 </span>
               </div>
             </div>
@@ -290,7 +286,7 @@ const UserSettingsForm = ({ onClose }) => {
                   htmlFor="weight"
                   className={`${css.inputLabel} ${css.text}`}
                 >
-                  Your weight in kilograms:
+                  {t('your_weight')}
                 </label>
                 <input
                   type="number"
@@ -306,7 +302,7 @@ const UserSettingsForm = ({ onClose }) => {
                   htmlFor="sportTime"
                   className={`${css.inputLabel} ${css.text}`}
                 >
-                  The time of active participation in sports:
+                  {t('active_participation')}
                 </label>
                 <input
                   type="number"
@@ -322,24 +318,24 @@ const UserSettingsForm = ({ onClose }) => {
               <div className={css.waterWrapper}>
                 <div className={`${css.litersWrapper} ${css.smallGap}`}>
                   <p className={css.text}>
-                    The required amount of water in liters per day:
+                    {t('required_water_amount')}
                   </p>
                   <p className={`${css.spanWaterAmount} ${css.text}`}>
-                    {calculatedWaterAmount ? `${calculatedWaterAmount}L` : '2L'}
+                  {calculatedWaterAmount ? `${calculatedWaterAmount}${t('liters')}` : `2${t('liters')}`}
                   </p>
                 </div>
                 <label
                   htmlFor="waterIntake"
                   className={`${css.boldText} ${css.inputLabel}`}
                 >
-                  Write down how much water you will drink:
+                  {t('water_intake')}
                 </label>
                 <input
                   type="number"
                   id="waterIntake"
                   {...register('waterIntake')}
                   onBlur={() => trigger('waterIntake')}
-                  className={css.inputs}
+                  className={`${css.inputs}`}
                 />
                 {errors.waterIntake && (
                   <p className={css.errorMessage}>
@@ -350,7 +346,7 @@ const UserSettingsForm = ({ onClose }) => {
             </div>
           </div>
           <button type="submit" className={css.button}>
-            Save
+            {t('save')}
           </button>
         </form>
       </div>

@@ -6,6 +6,9 @@
 
 .btn:hover {
 	transform: scale(1.4);
+  
+    opacity: 0.7; 
+  
 }
 
 .btn:disabled {
@@ -23,6 +26,7 @@
 .svg_chart {
   width: 20px;
 		height: 20px;
+    margin-left: 10px;
 
 
 }
@@ -83,7 +87,7 @@
   align-items: center;
   justify-content: center;
  
-  width: 18px;
+  width: 13px;
   height: 18px;
   padding: 0;
  
@@ -98,7 +102,7 @@
 .month_year {
   text-align: center;
  
-  width: 126px;
+  width: 149px;
  
   font-size: 14px;
   font-weight: bold;
@@ -188,7 +192,7 @@
 
   }
   .month_year{
-    width: 140px;
+    width: 170px;
    
     text-align: center;
     font-size: 16px;
@@ -220,12 +224,12 @@
   opacity: 1;
 }
 .svg_arrow_left{
-  width: 7px;
+  width: 14px;
   height: 14px;
 }
 
 .svg_arrow_right {
-  width: 7px;
+  width: 14px;
   height: 14px;
 }
 .isHidden {
@@ -277,7 +281,7 @@
 
   }
   .month_year {
-    width: 140px;
+    width: 156px;
    
     text-align: center;
     font-size: 16px;

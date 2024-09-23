@@ -2,6 +2,7 @@ import { useRef, useEffect } from 'react';
 import { usePopper } from 'react-popper';
 import css from './UserBarPopover.module.css';
 import { FaCog, FaSignOutAlt } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 
 const UserBarPopover = ({
   onClose,
@@ -9,6 +10,7 @@ const UserBarPopover = ({
   setSettingsModal,
   setLogoutModal,
 }) => {
+  const { t } = useTranslation();
   const popperRef = useRef(null);
   const { styles, attributes } = usePopper(
     buttonRef.current,
@@ -46,23 +48,21 @@ const UserBarPopover = ({
   }, []);
 
   return (
-    <>
-      <div
-        ref={popperRef}
-        style={styles.popper}
-        {...attributes.popper}
-        className={css.userBarPopover}
-      >
-        <button onClick={() => setSettingsModal(true)} className={css.settingsButton}>
-          <FaCog className={css.popoverIcon} />
-          Settings
-        </button>
-        <button onClick={() => setLogoutModal(true)} className={css.logOutButton}>
-          <FaSignOutAlt className={css.popoverIcon} />
-          Log out
-        </button>
-      </div>
-    </>
+    <div
+      ref={popperRef}
+      style={styles.popper}
+      {...attributes.popper}
+      className={css.userBarPopover}
+    >
+      <button onClick={() => setSettingsModal(true)} className={css.settingsButton}>
+        <FaCog className={css.popoverIcon} />
+        {t('userBarPopover.settings')}
+      </button>
+      <button onClick={() => setLogoutModal(true)} className={css.logOutButton}>
+        <FaSignOutAlt className={css.popoverIcon} />
+        {t('userBarPopover.logOut')}
+      </button>
+    </div>
   );
 };
 
