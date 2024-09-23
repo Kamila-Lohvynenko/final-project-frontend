@@ -10,6 +10,7 @@ import { loginUser } from '../../redux/user/operations';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-hot-toast';
 import Loader from '../Loader/Loader';
+import { useTranslation } from 'react-i18next';  
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().email('Must be a valid email').required('Required'),
@@ -17,6 +18,7 @@ const validationSchema = Yup.object().shape({
 });
 
 const SignInForm = () => {
+  const { t } = useTranslation(); 
   const emailId = useId();
   const passwordId = useId();
   const [visiblePassword, setVisiblePassword] = useState(false);
@@ -46,29 +48,27 @@ const SignInForm = () => {
     )
       .unwrap()
       .then((response) => {
-        console.log(response);
-
-        toast.success('Log in is successful!');
+        toast.success(t('signIn.successMessage'));  
         reset();
         navigate('/tracker');
       })
       .catch((error) => {
         console.error('Error details:', error);
-        toast.error(`Error: wrong password or email! Please try again`);
+        toast.error(t('signIn.errorMessage'));  
       })
       .finally(() => {
         setLoading(false);
       });
   };
+
   return (
     <>
-      {/* {loading && <Loader className={'overlay'} />} */}
       <div className={styles.logo}>
         <Logo />
       </div>
       {loading && <Loader />}
       <div className={styles.wrapperSignIn}>
-        <h2 className={styles.title}>Sign In</h2>
+        <h2 className={styles.title}>{t('signIn.title')}</h2> {/* Заголовок */}
         <form
           noValidate
           autoComplete="off"
@@ -77,13 +77,13 @@ const SignInForm = () => {
         >
           <div className={styles.field}>
             <label htmlFor={emailId} className={styles.label}>
-              Email
+              {t('signIn.email')} {/* Лейбл для поля email */}
             </label>
             <input
               type="email"
               {...register('email')}
               id={emailId}
-              placeholder="Enter your email"
+              placeholder={t('signIn.placeholderEmail')} 
               className={`${styles.input} ${errors.email ? styles.error : ''}`}
               onBlur={() => trigger('email')}
             />
@@ -94,17 +94,15 @@ const SignInForm = () => {
 
           <div className={styles.field}>
             <label htmlFor={passwordId} className={styles.label}>
-              Password
+              {t('signIn.password')} {/* Лейбл для поля password */}
             </label>
             <div className={styles.wrapper_icon}>
               <input
                 type={visiblePassword ? 'text' : 'password'}
                 {...register('password')}
                 id={passwordId}
-                placeholder="Enter your password"
-                className={`${styles.input} ${
-                  errors.password ? styles.error : ''
-                }`}
+                placeholder={t('signIn.placeholderPassword')}
+                className={`${styles.input} ${errors.password ? styles.error : ''}`}
                 onBlur={() => trigger('password')}
               />
               <svg
@@ -114,9 +112,7 @@ const SignInForm = () => {
                 onClick={() => setVisiblePassword(!visiblePassword)}
               >
                 <use
-                  href={`${sprite}#${
-                    visiblePassword ? 'icon-eye' : 'icon-eye-off'
-                  }`}
+                  href={`${sprite}#${visiblePassword ? 'icon-eye' : 'icon-eye-off'}`}
                 />
               </svg>
               {errors.password && (
@@ -125,19 +121,19 @@ const SignInForm = () => {
             </div>
           </div>
           <button type="submit" className={styles.btn}>
-            Sign In
+            {t('signIn.buttonSignIn')} {/* Кнопка для входа */}
           </button>
         </form>
         <p className={styles.auth}>
-          Don’t have an account?
+          {t('signIn.accountPrompt')} {/* Текст для вопроса о регистрации */}
           <NavLink className={styles.navlink} to="/signup">
-            Sign Up
+            {t('signIn.signUp')} {/* Ссылка на регистрацию */}
           </NavLink>
         </p>
         <p className={styles.recover}>
-          Forgot your password?
+          {t('signIn.recoverPrompt')} {/* Текст для восстановления пароля */}
           <NavLink className={styles.navlink} to="/email-input">
-            Recover password
+            {t('signIn.recoverPassword')} {/* Ссылка на восстановление пароля */}
           </NavLink>
         </p>
       </div>
