@@ -6,7 +6,7 @@ const lngs = {
   ua: { nativeName: 'UA' },
 };
 
-const ChangeLanguageBtn = () => {
+const ChangeLanguageBtn = ({ className = '', activeClassName = '' }) => {
   const { i18n } = useTranslation();
 
   return (
@@ -18,9 +18,11 @@ const ChangeLanguageBtn = () => {
             key={lng}
             onClick={() => i18n.changeLanguage(lng)}
             disabled={i18n.resolvedLanguage === lng}
-            className={
-              i18n.resolvedLanguage === lng ? css.active_language : ''
-            }
+            className={`${
+              i18n.resolvedLanguage === lng
+                ? (activeClassName || css.active_language)
+                : ''
+            } ${className}`}
           >
             {lngs[lng].nativeName}
           </button>
