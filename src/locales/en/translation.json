@@ -180,7 +180,9 @@
         "back_to_main": "Back to the main page",
         "home_page": "Home page",
         "error_user_not_found": "Error: user not found!",
-        "follow_link":"Follow the link, that was sent on your email"
+        "follow_link":"Follow the link, that was sent on your email",
+          "email_required": "Email is required.",
+    "email_invalid": "Must be a valid email."
       },
       "loader": {
         "loading": "Is loading..."
@@ -229,7 +231,7 @@
               "password_required": "Password is required.",
               "password_min": "Too short! It must be at least 10 characters long."
             },
-            
+
              "signUp": {
                 "title": "Sign Up",
                 "email": "Enter your email",

@@ -11,15 +11,16 @@ import { axiosInstance } from '../../services/axios.config';
 import { useTranslation } from 'react-i18next';
 import ChangeLanguageBtn from '../ChangeLanguageBtn/ChangeLanguageBtn';
 
-const validationSchema = Yup.object().shape({
-  email: Yup.string().email('Must be a valid email').required('Required'),
-});
-
 const EmailForm = () => {
   const { t } = useTranslation();
   const emailId = useId();
   const [loading, setLoading] = useState(false);
   const [sendEmail, setSendEmail] = useState(false);
+  const validationSchema = Yup.object().shape({
+    email: Yup.string()
+      .email(t('validation.email_invalid'))
+      .required(t('validation.email_required')),
+  });
 
   const {
     register,

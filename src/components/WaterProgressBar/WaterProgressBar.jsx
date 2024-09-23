@@ -14,8 +14,9 @@ const WaterProgressBar = ({ chosenDate }) => {
 
   return (
     <div className={css.progressBarContainer}>
-  
+      <div className={css.dataFix}>
       <ChooseDate chosenDate={chosenDate} classCss="progressBarTitle" />
+      </div>
   
       <div className={css.progressBar}>
         <div
