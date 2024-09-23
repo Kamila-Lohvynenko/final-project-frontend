@@ -14,7 +14,6 @@ import { useTranslation } from 'react-i18next';
 import GoogleAuth from '../GoogleAuth/GoogleAuth';
 import ChangeLanguageBtn from '../ChangeLanguageBtn/ChangeLanguageBtn';
 
-
 const SignInForm = () => {
   const { t } = useTranslation();
   const emailId = useId();
@@ -23,7 +22,7 @@ const SignInForm = () => {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  
+
   const validationSchema = Yup.object().shape({
     email: Yup.string()
       .email(t('validation.email_invalid')) // Используйте перевод
@@ -32,7 +31,7 @@ const SignInForm = () => {
       .min(10, t('validation.password_min')) // Используйте перевод
       .required(t('validation.password_required')), // Используйте перевод
   });
-  
+
   const {
     register,
     handleSubmit,
@@ -138,7 +137,7 @@ const SignInForm = () => {
             <button type="submit" className={styles.btn}>
               {t('signIn.buttonSignIn')}
             </button>
-            <GoogleAuth buttonText={t('signUp.googleAuth')} />
+            <GoogleAuth buttonText={t('signIn.googleAuth')} />
           </div>
         </form>
         <p className={styles.auth}>
