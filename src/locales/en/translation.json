@@ -222,6 +222,13 @@
               "recoverPrompt": "Forgot your password?",
               "recoverPassword": "Recover password"
             },
+
+            "validation": {
+              "email_required": "Email is required.",
+              "email_invalid": "Must be a valid email.",
+              "password_required": "Password is required.",
+              "password_min": "Too short! It must be at least 10 characters long."
+            },
             
              "signUp": {
                 "title": "Sign Up",

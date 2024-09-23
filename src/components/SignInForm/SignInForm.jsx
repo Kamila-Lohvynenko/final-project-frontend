@@ -14,12 +14,6 @@ import { useTranslation } from 'react-i18next';
 import GoogleAuth from '../GoogleAuth/GoogleAuth';
 import ChangeLanguageBtn from '../ChangeLanguageBtn/ChangeLanguageBtn';
 
-const validationSchema = Yup.object().shape({
-  email: Yup.string().email('Must be a valid email').required('Required'),
-  password: Yup.string()
-    .min(10, 'Too short!. It must be at least 10 characters long.')
-    .required('Required'),
-});
 
 const SignInForm = () => {
   const { t } = useTranslation();
@@ -29,7 +23,16 @@ const SignInForm = () => {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  
+  const validationSchema = Yup.object().shape({
+    email: Yup.string()
+      .email(t('validation.email_invalid')) // Используйте перевод
+      .required(t('validation.email_required')), // Используйте перевод
+    password: Yup.string()
+      .min(10, t('validation.password_min')) // Используйте перевод
+      .required(t('validation.password_required')), // Используйте перевод
+  });
+  
   const {
     register,
     handleSubmit,
