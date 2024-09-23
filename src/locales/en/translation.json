@@ -221,7 +221,8 @@
     "signUp": "Sign Up",
     "recoverPrompt": "Forgot your password?",
     "recoverPassword": "Recover password",
-    "googleAuth": "Sign in with Google"
+    "googleAuth": "Sign in with Google",
+    "errorMessage": "Wrong email or password, please try again"
   },
 
   "validation": {
