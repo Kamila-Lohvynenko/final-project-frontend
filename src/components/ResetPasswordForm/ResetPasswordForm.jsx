@@ -6,10 +6,11 @@ import Logo from '../Logo/Logo';
 import Loader from '../Loader/Loader';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { NavLink, useSearchParams } from 'react-router-dom';
+import { NavLink, useNavigate, useSearchParams } from 'react-router-dom';
 import { axiosInstance } from '../../services/axios.config';
 import { toast } from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
+import ChangeLanguageBtn from '../ChangeLanguageBtn/ChangeLanguageBtn';
 
 const ResetPasswordForm = () => {
   const passwordId = useId();
@@ -28,6 +29,7 @@ const ResetPasswordForm = () => {
 
   const [params] = useSearchParams();
   const tokenParams = params.get('token');
+  const navigate = useNavigate();
 
   const {
     register,
@@ -50,6 +52,7 @@ const ResetPasswordForm = () => {
       });
       toast.success(response.data.message);
       reset();
+      navigate('/signin');
     } catch (error) {
       toast.error('Error: user not found or invalid token!');
     } finally {
@@ -57,13 +60,15 @@ const ResetPasswordForm = () => {
     }
   };
 
- 
   return (
     <>
-      <div className={styles.logo}>
-        <Logo />
+      <div className={styles.wrapper_logo}>
+        <div className={styles.logo}>
+          <Logo />
+        </div>
+        {loading && <Loader />}
+        <ChangeLanguageBtn />
       </div>
-      {loading && <Loader />}
       <div className={styles.wrapperSignIn}>
         <h2 className={styles.title}>{t('resetPassword.title')}</h2>
         <form
@@ -82,7 +87,9 @@ const ResetPasswordForm = () => {
                 {...register('password')}
                 id={passwordId}
                 placeholder={t('resetPassword.placeholderPassword')}
-                className={`${styles.input} ${errors.password ? styles.error : ''}`}
+                className={`${styles.input} ${
+                  errors.password ? styles.error : ''
+                }`}
                 onBlur={() => trigger('password')}
               />
               <svg
@@ -91,10 +98,16 @@ const ResetPasswordForm = () => {
                 height={20}
                 onClick={() => setVisiblePassword(!visiblePassword)}
               >
-                <use href={`${sprite}#${visiblePassword ? 'icon-eye' : 'icon-eye-off'}`} />
+                <use
+                  href={`${sprite}#${
+                    visiblePassword ? 'icon-eye' : 'icon-eye-off'
+                  }`}
+                />
               </svg>
               {errors.password && (
-                <p className={styles.errorMessage}>{t(errors.password.message)}</p>
+                <p className={styles.errorMessage}>
+                  {t(errors.password.message)}
+                </p>
               )}
             </div>
           </div>
@@ -109,7 +122,9 @@ const ResetPasswordForm = () => {
                 {...register('repeatPassword')}
                 id={repeatPasswordId}
                 placeholder={t('resetPassword.placeholderRepeatPassword')}
-                className={`${styles.input} ${errors.repeatPassword ? styles.error : ''}`}
+                className={`${styles.input} ${
+                  errors.repeatPassword ? styles.error : ''
+                }`}
                 onBlur={() => trigger('repeatPassword')}
               />
               <svg
@@ -118,10 +133,16 @@ const ResetPasswordForm = () => {
                 height={20}
                 onClick={() => setVisibleRepeatPassword(!visibleRepeatPassword)}
               >
-                <use href={`${sprite}#${visibleRepeatPassword ? 'icon-eye' : 'icon-eye-off'}`} />
+                <use
+                  href={`${sprite}#${
+                    visibleRepeatPassword ? 'icon-eye' : 'icon-eye-off'
+                  }`}
+                />
               </svg>
               {errors.repeatPassword && (
-                <p className={styles.errorMessage}>{t(errors.repeatPassword.message)}</p>
+                <p className={styles.errorMessage}>
+                  {t(errors.repeatPassword.message)}
+                </p>
               )}
             </div>
           </div>

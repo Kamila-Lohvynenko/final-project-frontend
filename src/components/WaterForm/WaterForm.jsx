@@ -9,26 +9,27 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { OPERATION_NAME } from '../../constants/index.js';
 import Loader from '../Loader/Loader.jsx';
-import { useTranslation } from 'react-i18next'; 
-
+import { useTranslation } from 'react-i18next';
 
 const WaterForm = ({ onClose, water, chosenDate, operation, setWater }) => {
-  const { t } = useTranslation();  
+  const { t } = useTranslation();
   const validationSchema = Yup.object().shape({
     time: Yup.string()
       .matches(
         /^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/,
-        t('waterForm.validation.time.format')  // Локализуем сообщение
+        t('waterForm.validation.time.format'), // Локализуем сообщение
       )
-      .required(t('waterForm.validation.time.required')),  // Локализуем сообщение
+      .required(t('waterForm.validation.time.required')), // Локализуем сообщение
     amount: Yup.number()
       .transform((value) => (isNaN(value) ? undefined : value))
-      .min(50, t('waterForm.validation.amount.min'))  // Локализуем сообщение
-      .max(10000, t('waterForm.validation.amount.max'))  // Локализуем сообщение
-      .required(t('waterForm.validation.amount.required'))  // Локализуем сообщение
+      .min(50, t('waterForm.validation.amount.min')) // Локализуем сообщение
+      .max(10000, t('waterForm.validation.amount.max')) // Локализуем сообщение
+      .required(t('waterForm.validation.amount.required')), // Локализуем сообщение
   });
   const [waterValue, setWaterValue] = useState(50);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isDisable, setIsDisable] = useState(false);
+
   const dispatch = useDispatch();
 
   const {
@@ -45,7 +46,11 @@ const WaterForm = ({ onClose, water, chosenDate, operation, setWater }) => {
 
   const getCurrentTime = () => {
     const now = new Date();
-    return now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    return now.toLocaleTimeString([], {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false,
+    });
   };
 
   useEffect(() => {
@@ -62,6 +67,7 @@ const WaterForm = ({ onClose, water, chosenDate, operation, setWater }) => {
 
   const onSubmit = async (formData) => {
     setIsSubmitting(true);
+    setIsDisable(true);
     const { year, month, day } = chosenDate;
     const portionData = {
       amount: waterValue,
@@ -75,19 +81,21 @@ const WaterForm = ({ onClose, water, chosenDate, operation, setWater }) => {
       if (operation === OPERATION_NAME.EDIT_WATER && water) {
         await dispatch(updateWater({ id: water.id, portionData })).unwrap();
         setWater(null);
-        toast.success(t('waterForm.successUpdate'), { duration: 2500 });  // Локализуем сообщение
+        toast.success(t('waterForm.successUpdate'), { duration: 1000 }); // Локализуем сообщение
         setTimeout(() => {
           onClose();
-        }, 2500);
+          setIsDisable(false);
+        }, 1000);
       } else {
         await dispatch(addWater(portionData)).unwrap();
-        toast.success(t('waterForm.successAdd'), { duration: 2500 });  // Локализуем сообщение
+        toast.success(t('waterForm.successAdd'), { duration: 1000 }); // Локализуем сообщение
         setTimeout(() => {
           onClose();
-        }, 2500);
+          setIsDisable(false);
+        }, 1000);
       }
     } catch {
-      toast.error(t('waterForm.error'));  // Локализуем сообщение
+      toast.error(t('waterForm.error')); // Локализуем сообщение
     } finally {
       setIsSubmitting(false);
     }
@@ -95,7 +103,8 @@ const WaterForm = ({ onClose, water, chosenDate, operation, setWater }) => {
 
   return (
     <form className={css.waterForm} onSubmit={handleSubmit(onSubmit)}>
-      <p className={css.amountOfWater}>{t('waterForm.amountOfWater')}</p> {/* Локализуем текст */}
+      <p className={css.amountOfWater}>{t('waterForm.amountOfWater')}</p>{' '}
+      {/* Локализуем текст */}
       <div className={css.addWaterWrapper}>
         <button
           type="button"
@@ -115,11 +124,10 @@ const WaterForm = ({ onClose, water, chosenDate, operation, setWater }) => {
         </button>
 
         <p className={css.addWaterValue}>
-      {waterValue === '' || waterValue === null 
-        ? t('waterForm.amountValue', { value: 0 }) 
-        : t('waterForm.amountValue', { value: waterValue })
-      }
-    </p>
+          {waterValue === '' || waterValue === null
+            ? t('waterForm.amountValue', { value: 0 })
+            : t('waterForm.amountValue', { value: waterValue })}
+        </p>
 
         <button
           type="button"
@@ -138,9 +146,8 @@ const WaterForm = ({ onClose, water, chosenDate, operation, setWater }) => {
           </svg>
         </button>
       </div>
-
       <label className={css.recordingTimeLabel}>
-        {t('waterForm.recordingTime')}  {/* Локализуем текст */}
+        {t('waterForm.recordingTime')} {/* Локализуем текст */}
         <input
   type="text"
   className={css.recordingTime}
@@ -149,9 +156,8 @@ const WaterForm = ({ onClose, water, chosenDate, operation, setWater }) => {
 />
         {errors.time && <p className={css.error}>{errors.time.message}</p>}
       </label>
-
       <label className={css.waterValueLabel}>
-        {t('waterForm.enterWaterValue')} 
+        {t('waterForm.enterWaterValue')}
         <input
           type="number"
           className={css.waterValue}
@@ -170,10 +176,9 @@ const WaterForm = ({ onClose, water, chosenDate, operation, setWater }) => {
         />
         {errors.amount && <p className={css.error}>{errors.amount.message}</p>}
       </label>
-
       <div className={css.loaderWrapper}>{isSubmitting && <Loader />}</div>
-      <button type="submit" className={css.saveBtn} disabled={isSubmitting}>
-        {t('waterForm.saveButton')} 
+      <button type="submit" className={css.saveBtn} disabled={isDisable}>
+        {t('waterForm.saveButton')}
       </button>
     </form>
   );

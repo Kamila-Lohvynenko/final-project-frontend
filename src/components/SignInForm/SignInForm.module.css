@@ -2,6 +2,14 @@
   padding: 24px 0 0 16px;
 }
 
+.wrapper_logo {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  width: 100%;
+  padding-right: 16px;
+}
+
 .wrapperSignIn {
   display: flex;
   flex-direction: column;
@@ -85,6 +93,7 @@ input:focus {
   padding-top: 16px;
 
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 
@@ -132,6 +141,12 @@ input:focus {
   fill: transparent;
 }
 
+.btn_wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
 @media only screen and (min-width: 768px) {
   .title {
     font-size: 36px;
@@ -152,21 +167,32 @@ input:focus {
   .field {
     width: 436px;
   }
-}
+  .btn_wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+  }
 
-.errorMessage {
-  color: var(--error);
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.29;
-  letter-spacing: -0.01em;
-}
+  .btn {
+    width: 50%;
+  }
 
-.error {
-  color: var(--error);
-  border: 1px solid var(--error);
-}
+  .auth {
+    flex-direction: row;
+  }
+  .errorMessage {
+    color: var(--error);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.29;
+    letter-spacing: -0.01em;
+  }
 
+  .error {
+    color: var(--error);
+    border: 1px solid var(--error);
+  }
+}
 @media only screen and (min-width: 320px) and (max-width: 375px) {
   .field {
     width: calc(100vw - 64px);
@@ -184,6 +210,10 @@ input:focus {
   }
   .recover {
     flex-direction: row;
+  }
+
+  .wrapper_logo {
+    padding-right: 32px;
   }
 }
 
