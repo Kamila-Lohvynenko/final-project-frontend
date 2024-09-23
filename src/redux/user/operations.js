@@ -14,8 +14,11 @@ export const registerUser = createAsyncThunk(
         '/users/register',
         userCredentials,
       );
-      console.log(response.data);
+      // console.log(response);
 
+      if (response === undefined) {
+        throw new Error('Email in use');
+      }
       const {
         data: {
           data: { accessToken },
@@ -27,9 +30,9 @@ export const registerUser = createAsyncThunk(
 
       return { accessToken: accessToken };
     } catch (error) {
-      console.log(error);
+      // console.log(error);
 
-      return thunkApi.rejectWithValue(error.data.message);
+      return thunkApi.rejectWithValue(error.message);
     }
   },
 );

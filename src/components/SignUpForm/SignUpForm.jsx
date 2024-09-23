@@ -5,12 +5,13 @@ import css from './SignUpForm.module.css';
 import sprite from '../../images/sprite.svg';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { registerUser } from '../../redux/user/operations';
 import { toast } from 'react-hot-toast';
 import Loader from '../Loader/Loader';
 import GoogleAuth from '../GoogleAuth/GoogleAuth.jsx';
 import { useTranslation } from 'react-i18next';
+import { selectUserError } from '../../redux/user/selectors.js';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().email('Must be a valid email').required('Required'),
@@ -37,6 +38,8 @@ const SignUpForm = () => {
   });
 
   const [isLoading, setIsLoading] = useState(false);
+  const error = useSelector(selectUserError);
+
   const onSubmit = (values) => {
     setIsLoading(true);
     dispatch(
@@ -52,9 +55,12 @@ const SignUpForm = () => {
         navigate('/tracker');
         reset();
       })
-      .catch((error) => {
+      .catch(() => {
+        // console.log(error);
+
         setIsLoading(false);
-        toast.error(`Error: ${error || 'Something went wrong'}`);
+        // toast.error(`Error: ${error || 'Something went wrong'}`);
+        toast.error(`Error: ${error}`);
       });
   };
 
@@ -65,7 +71,6 @@ const SignUpForm = () => {
   const [visiblePassword, setVisiblePassword] = useState(false);
   const [visibleRepeatPassword, setVisibleRepeatPassword] = useState(false);
 
- 
   return (
     <>
       <div className={css.wrapper}>
@@ -129,7 +134,9 @@ const SignUpForm = () => {
                 {...register('repeatPassword')}
                 id={repeatPasswordId}
                 placeholder={t('signUp.repeatPassword')}
-                className={`${css.input} ${errors.repeatPassword ? css.error : ''}`}
+                className={`${css.input} ${
+                  errors.repeatPassword ? css.error : ''
+                }`}
                 onBlur={() => trigger('repeatPassword')}
               />
               <svg
