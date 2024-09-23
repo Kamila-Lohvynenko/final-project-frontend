@@ -27,7 +27,9 @@ export const registerUser = createAsyncThunk(
 
       return { accessToken: accessToken };
     } catch (error) {
-      return thunkApi.rejectWithValue(error.response.data.message);
+      console.log(error);
+
+      return thunkApi.rejectWithValue(error.data.message);
     }
   },
 );
