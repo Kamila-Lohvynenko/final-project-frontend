@@ -1,25 +1,10 @@
 import WaterForm from '../WaterForm/WaterForm.jsx';
 import css from '../WaterModal/WaterModal.module.css';
 import { OPERATION_NAME } from '../../constants';
-// import { useEffect, useState } from 'react';
 import { MODAL_NAME } from '../../constants/index.js';
 
 const WaterModal = ({ operation, onClose, water, setWater, chosenDate }) => {
-  // const [chosenDate, setChosenDate] = useState({
-  //   year: new Date().getFullYear(),
-  //   month: new Date().getMonth() + 1,
-  //   day: new Date().getDate(),
-  // });
-
-  // useEffect(() => {
-  //   const now = new Date();
-  //   setChosenDate({
-  //     year: now.getFullYear(),
-  //     month: now.getMonth() + 1,
-  //     day: now.getDate(),
-  //   });
-  // }, []);
-
+ 
   return (
     <div className={css.waterModal}>
       <h1>
