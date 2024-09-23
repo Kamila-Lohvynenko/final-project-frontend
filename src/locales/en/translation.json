@@ -230,7 +230,37 @@
             "waterChart": {
               "noData": "No water data available for the selected month.",
               "tooltip": "{{amount}} ml"
-            }
+            },
+            "waterDailyNorma": {
+              "text": "My daily norma",
+               "unit": "ml"
+            },
+            
+              "waterForm": {
+                "amountOfWater": "Amount of water:",
+                "recordingTime": "Recording time:",
+                "enterWaterValue": "Enter the value of the water used:",
+                "saveButton": "Save",
+                "successAdd": "Water portion added successfully!",
+                "successUpdate": "Water portion updated successfully!",
+                "error": "Failed to update water data",
+                    "amountValue": "{{value}} ml"
+              },
+              "waterItem": {
+                "amount": "{{amount}} ml",
+                "time": "{{time}} "
+              },
+              "waterList": {
+                "noEntries": "No entries for this day"
+              },
+              "waterModal": {
+                "addWater": "Add water",
+                "editWater": "Edit the entered amount of water",
+                "chooseValue": "Choose a value:",
+                "correctData": "Correct entered data:"
+              }
+            
+           
           }
           
             

@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'; 
 import css from './WaterItem.module.css';
 import sprite from '../../images/sprite.svg';
 
@@ -9,6 +10,8 @@ const WaterItem = ({
   setDeleteWaterModal,
   setWater,
 }) => {
+  const { t } = useTranslation(); 
+
   return (
     <div className={css.waterItem}>
       <div>
@@ -17,8 +20,8 @@ const WaterItem = ({
         </svg>
       </div>
       <div className={css.waterInfo}>
-        <p className={css.volume}>{amount} ml</p>
-        <p className={css.time}>{time} AM</p>
+        <p className={css.volume}>{t('waterItem.amount', { amount })}</p>
+        <p className={css.time}>{t('waterItem.time', { time })}</p>
       </div>
       <div className={css.waterButtons}>
         <button

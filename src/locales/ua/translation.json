@@ -227,7 +227,37 @@
       "waterChart": {
         "noData": "Немає даних про воду за вибраний місяць.",
         "tooltip": "{{amount}} мл"
+      },
+      "waterDailyNorma": {
+        "text": "Моя щоденна норма",
+          "unit": "мл"
+      },
+      
+        "waterForm": {
+          "amountOfWater": "Кількість води:",
+          "recordingTime": "Час запису:",
+          "enterWaterValue": "Введіть кількість використаної води:",
+          "saveButton": "Зберегти",
+          "successAdd": "Порція води успішно додана!",
+          "successUpdate": "Порція води успішно оновлена!",
+          "error": "Не вдалося оновити дані води",
+              "amountValue": "{{value}} мл"
+      },
+      "waterItem": {
+        "amount": "{{amount}} мл",
+        "time": "{{time}} "
+      },
+      "waterList": {
+        "noEntries": "Немає записів за цей день"
+      },
+      "waterModal": {
+        "addWater": "Додати воду",
+        "editWater": "Редагувати введену кількість води",
+        "chooseValue": "Оберіть значення:",
+        "correctData": "Виправити введені дані:"
       }
+      
+    
   
   
 
