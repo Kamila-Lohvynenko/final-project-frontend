@@ -1,3 +1,14 @@
+.logo {
+  padding: 24px 0 0 16px;
+}
+
+.wrapper_logo {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  width: 100%;
+  padding-right: 16px;
+}
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -136,6 +147,14 @@ input:focus {
 }
 
 @media only screen and (min-width: 768px) {
+  .logo {
+    padding: 32px 0 0 32px;
+  }
+
+  .wrapper_logo {
+    padding-right: 32px;
+  }
+
   .wrapper {
     padding: 281px 134px;
   }
