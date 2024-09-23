@@ -1,28 +1,31 @@
 import sprite from '../../images/sprite.svg';
 import css from '../AddWaterBtn/AddWaterBtn.module.css';
+import { useTranslation } from 'react-i18next'; 
 
-const AddWaterBtn =({onClick, inDetails})=>{
-    return( !inDetails ?
+const AddWaterBtn = ({ onClick, inDetails }) => {
+    const { t } = useTranslation(); 
+
+    return (!inDetails ? (
         <button type="button" className={css.btnAdd} onClick={onClick}>
             <svg className={css.plus}>
-                <use xlinkHref={sprite + "#icon-plus-wide"}/>
+                <use xlinkHref={sprite + "#icon-plus-wide"} />
             </svg>
             <h2 className={css.btnText}>
-            Add water
+                {t('addWaterBtn.addWater')}
             </h2>            
         </button>
-        : 
+    ) : (
         <button type="button" className={css.detailsBtnAdd} onClick={onClick}>
             <div className={css.detailsAddContainer}>
                 <svg className={css.detailsAddSign}>
-                    <use href={sprite + "#icon-plus-wide"}/>
+                    <use href={sprite + "#icon-plus-wide"} />
                 </svg>
             </div>
             <h2 className={css.detailsBtnText}>
-            Add water
+                {t('addWaterBtn.addWater')}
             </h2>            
         </button>
-    );
+    ));
 };
 
 export default AddWaterBtn;
