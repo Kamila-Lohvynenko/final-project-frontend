@@ -11,6 +11,8 @@ import { toast } from 'react-hot-toast';
 import Loader from '../Loader/Loader';
 import GoogleAuth from '../GoogleAuth/GoogleAuth.jsx';
 import { useTranslation } from 'react-i18next';
+import Logo from '../Logo/Logo';
+import ChangeLanguageBtn from '../ChangeLanguageBtn/ChangeLanguageBtn';
 import { selectUserError } from '../../redux/user/selectors.js';
 
 const validationSchema = Yup.object().shape({
@@ -73,6 +75,13 @@ const SignUpForm = () => {
 
   return (
     <>
+      <div className={css.wrapper_logo}>
+        <div className={css.logo}>
+          <Logo />
+        </div>
+        <ChangeLanguageBtn />
+      </div>
+      {isLoading && <Loader />}
       <div className={css.wrapper}>
         <h2 className={css.title}>{t('signUp.title')}</h2>
         <form noValidate autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
@@ -166,8 +175,6 @@ const SignUpForm = () => {
             <GoogleAuth buttonText={t('signUp.googleAuth')} />
           </div>
         </form>
-
-        {isLoading && <Loader />}
         <p className={css.auth}>
           {t('signUp.alreadyHaveAccount')}
           <NavLink className={css.navlink} to="/signin">
