@@ -1,17 +1,19 @@
 {
   "specialSign": "V is the volume of the water norm in liters per day, M is your body weight, T is the time of active sports, or another type of activity commensurate in terms of loads (in the absence of these, you must set 0)",
-  "happy_customers": "{{count}} happy",
-  "happy_customers_few": "{{count}} happy",
-  "happy_customers_plural": "{{count}} happy",
+  "happy": "{{count}} happy",
+  "happy_few": "{{count}} happy",
+  "happy_plural": "{{count}} happy",
+  "happy_many": "{{count}} happy",
+  "customers": "customers",
   "customers_singular": "customer",
   "customers_few": "customers",
   "customers_plural": "customers",
+  "customers_many": "customers",
+  "our": "Our",
   "our_singular": "Our",
   "our_few": "Our",
   "our_plural": "Our",
-  "Our": "Our",
-  "happy": "happy",
-  "customers": "customers",
+  "our_many": "Our",
   "Record daily water intake and track": "Record daily water intake and track",
   "Water consumption tracker": "Water consumption tracker",
   "Try tracker": "Try tracker",
@@ -222,7 +224,7 @@
     "signUp": "Sign Up",
     "recoverPrompt": "Forgot your password?",
     "recoverPassword": "Recover password",
-    "googleAuth": "Sign ip with Google"
+    "googleAuth": "Sign in with Google"
   },
 
   "validation": {

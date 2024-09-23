@@ -54,7 +54,7 @@ const AdvantagesSection = () => {
             <p className={css.customers_info}>
               {capitalizeFirstLetter(t('our', { count: userCount }))}&nbsp;
               <span className={css.customers_info__span}>
-                {t('happy_customers', { count: userCount })}
+                {t('happy', { count: userCount })}
               </span>
               &nbsp;
               {t('customers', { count: userCount })}
