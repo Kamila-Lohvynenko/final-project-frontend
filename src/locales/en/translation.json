@@ -292,7 +292,7 @@
   },
   "waterDailyNorma": {
     "text": "My daily norma",
-    "unit": "ml"
+    "unit": "L"
   },
 
   "waterForm": {
@@ -331,5 +331,9 @@
   },
   "addWaterBtn": {
     "addWater": "Add water"
-  }
+  },
+
+  "data_update_success": "Your data has been successfully updated",
+  "data_update_failure": "Failed to update user data"
+
 }

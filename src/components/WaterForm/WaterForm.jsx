@@ -17,14 +17,14 @@ const WaterForm = ({ onClose, water, chosenDate, operation, setWater }) => {
     time: Yup.string()
       .matches(
         /^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/,
-        t('waterForm.validation.time.format'), // Локализуем сообщение
+        t('waterForm.validation.time.format'), 
       )
-      .required(t('waterForm.validation.time.required')), // Локализуем сообщение
+      .required(t('waterForm.validation.time.required')), 
     amount: Yup.number()
       .transform((value) => (isNaN(value) ? undefined : value))
-      .min(50, t('waterForm.validation.amount.min')) // Локализуем сообщение
-      .max(10000, t('waterForm.validation.amount.max')) // Локализуем сообщение
-      .required(t('waterForm.validation.amount.required')), // Локализуем сообщение
+      .min(50, t('waterForm.validation.amount.min')) 
+      .max(10000, t('waterForm.validation.amount.max')) 
+      .required(t('waterForm.validation.amount.required')), 
   });
   const [waterValue, setWaterValue] = useState(50);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -81,21 +81,21 @@ const WaterForm = ({ onClose, water, chosenDate, operation, setWater }) => {
       if (operation === OPERATION_NAME.EDIT_WATER && water) {
         await dispatch(updateWater({ id: water.id, portionData })).unwrap();
         setWater(null);
-        toast.success(t('waterForm.successUpdate'), { duration: 1000 }); // Локализуем сообщение
+        toast.success(t('waterForm.successUpdate'), { duration: 1000 }); 
         setTimeout(() => {
           onClose();
           setIsDisable(false);
         }, 1000);
       } else {
         await dispatch(addWater(portionData)).unwrap();
-        toast.success(t('waterForm.successAdd'), { duration: 1000 }); // Локализуем сообщение
+        toast.success(t('waterForm.successAdd'), { duration: 1000 }); 
         setTimeout(() => {
           onClose();
           setIsDisable(false);
         }, 1000);
       }
     } catch {
-      toast.error(t('waterForm.error')); // Локализуем сообщение
+      toast.error(t('waterForm.error')); 
     } finally {
       setIsSubmitting(false);
     }
@@ -104,7 +104,7 @@ const WaterForm = ({ onClose, water, chosenDate, operation, setWater }) => {
   return (
     <form className={css.waterForm} onSubmit={handleSubmit(onSubmit)}>
       <p className={css.amountOfWater}>{t('waterForm.amountOfWater')}</p>{' '}
-      {/* Локализуем текст */}
+    
       <div className={css.addWaterWrapper}>
         <button
           type="button"
@@ -147,7 +147,7 @@ const WaterForm = ({ onClose, water, chosenDate, operation, setWater }) => {
         </button>
       </div>
       <label className={css.recordingTimeLabel}>
-        {t('waterForm.recordingTime')} {/* Локализуем текст */}
+        {t('waterForm.recordingTime')} 
         <input
   type="text"
   className={css.recordingTime}
