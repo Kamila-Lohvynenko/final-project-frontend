@@ -387,7 +387,7 @@ const UserSettingsForm = ({ onClose }) => {
                       e.preventDefault();
                     }
                   }}
-                  value={watch('waterIntake') ? (watch('waterIntake') / 1000).toFixed(1) : ''} 
+             
                 />
                 {errors.waterIntake && (
                   <p className={css.errorMessage}>
