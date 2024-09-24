@@ -25,11 +25,11 @@ const SignInForm = () => {
 
   const validationSchema = Yup.object().shape({
     email: Yup.string()
-      .email(t('validation.email_invalid')) // Используйте перевод
-      .required(t('validation.email_required')), // Используйте перевод
+      .email(t('validation.email_invalid'))
+      .required(t('validation.email_required')),
     password: Yup.string()
-      .min(10, t('validation.password_min')) // Используйте перевод
-      .required(t('validation.password_required')), // Используйте перевод
+      .min(10, t('validation.password_min'))
+      .required(t('validation.password_required')),
   });
 
   const {
@@ -54,13 +54,16 @@ const SignInForm = () => {
     )
       .unwrap()
       .then(() => {
-        toast.success(t('signIn.successMessage'));
+        toast.success(t('signIn.successMessage'), {
+          duration: 2500,
+        });
         reset();
         navigate('/tracker');
       })
       .catch(() => {
-        // console.error('Error details:', error);
-        toast.error(t('signIn.errorMessage'));
+        toast.error(t('signIn.errorMessage'), {
+          duration: 2500,
+        });
       })
       .finally(() => {
         setLoading(false);

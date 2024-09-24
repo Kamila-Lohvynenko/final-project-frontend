@@ -50,11 +50,15 @@ const ResetPasswordForm = () => {
         password: values.password,
         token: tokenParams,
       });
-      toast.success(response.data.message);
+      toast.success(response.data.message, {
+        duration: 2500,
+      });
       reset();
       navigate('/signin');
     } catch (error) {
-      toast.error('Error: user not found or invalid token!');
+      toast.error('Error: user not found or invalid token!', {
+        duration: 2500,
+      });
     } finally {
       setLoading(false);
     }

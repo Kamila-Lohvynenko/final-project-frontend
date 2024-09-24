@@ -34,7 +34,8 @@
 
 @media only screen and (min-width: 1440px) {
   .box {
-    display: block;
+    display: flex;
+    flex-shrink: 0;
     width: 672px;
     height: 736px;
   }
