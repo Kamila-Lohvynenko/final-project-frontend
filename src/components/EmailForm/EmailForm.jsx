@@ -41,11 +41,15 @@ const EmailForm = () => {
         email: value.email,
       });
       console.log(response);
-      toast.success(response.data.message);
+      toast.success(response.data.message, {
+        duration: 2500,
+      });
       reset();
       setSendEmail(true);
     } catch (error) {
-      toast.error(t('email_form.error_user_not_found'));
+      toast.error(t('email_form.error_user_not_found'), {
+        duration: 2500,
+      });
     } finally {
       setLoading(false);
     }
