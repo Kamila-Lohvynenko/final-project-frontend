@@ -24,7 +24,6 @@ const initialState = {
   },
   token: null,
   isLoggedIn: false,
-  error: null,
 };
 
 const authSlice = createSlice({
@@ -46,11 +45,7 @@ const authSlice = createSlice({
       .addCase(registerUser.fulfilled, (state, { payload }) => {
         state.token = payload.accessToken;
         state.isLoggedIn = true;
-      })
-      .addCase(registerUser.rejected, (state, { payload }) => {
-        // console.log(payload);
-
-        state.error = payload;
+        state.error = null;
       })
       .addCase(loginUser.fulfilled, (state, { payload }) => {
         state.token = payload.accessToken;

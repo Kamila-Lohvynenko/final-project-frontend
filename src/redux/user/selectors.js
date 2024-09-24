@@ -7,4 +7,3 @@ export const selectTimeForSports = (state) => state.auth.user.activeSportTime;
 export const selectDailyIntake = (state) => state.auth.user.dailyNorma;
 export const selectToken = (state) => state.auth.user.token;
 export const selectIsLoggedIn = (state) => state.auth.isLoggedIn;
-export const selectUserError = (state) => state.auth.error;

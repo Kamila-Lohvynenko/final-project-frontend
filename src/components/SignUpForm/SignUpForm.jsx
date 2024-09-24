@@ -5,7 +5,7 @@ import css from './SignUpForm.module.css';
 import sprite from '../../images/sprite.svg';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { registerUser } from '../../redux/user/operations';
 import { toast } from 'react-hot-toast';
 import Loader from '../Loader/Loader';
@@ -13,7 +13,6 @@ import GoogleAuth from '../GoogleAuth/GoogleAuth.jsx';
 import { useTranslation } from 'react-i18next';
 import Logo from '../Logo/Logo';
 import ChangeLanguageBtn from '../ChangeLanguageBtn/ChangeLanguageBtn';
-import { selectUserError } from '../../redux/user/selectors.js';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().email('Must be a valid email').required('Required'),
@@ -40,8 +39,6 @@ const SignUpForm = () => {
   });
 
   const [isLoading, setIsLoading] = useState(false);
-  const error = useSelector(selectUserError);
-
   const onSubmit = (values) => {
     setIsLoading(true);
     dispatch(
@@ -57,12 +54,10 @@ const SignUpForm = () => {
         navigate('/tracker');
         reset();
       })
-      .catch(() => {
-        // console.log(error);
-
+      .catch((error) => {
         setIsLoading(false);
-        // toast.error(`Error: ${error || 'Something went wrong'}`);
-        toast.error(`Error: ${error}`);
+        toast.error(`Error: ${error || 'Something went wrong'}`);
+        // toast.error(`Error: ${error}`);
       });
   };
 

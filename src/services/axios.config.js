@@ -59,6 +59,14 @@ axiosInstance.interceptors.response.use(
         store.dispatch(refreshError());
       }
     }
+    if (
+      error.response.status == 409 ||
+      error.response.status == 404 ||
+      error.response.status == 400 ||
+      error.response.status == 500
+    ) {
+      return Promise.reject(error);
+    }
   },
 );
 

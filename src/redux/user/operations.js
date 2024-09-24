@@ -10,15 +10,8 @@ export const registerUser = createAsyncThunk(
   'user/register',
   async (userCredentials, thunkApi) => {
     try {
-      const response = await axiosInstance.post(
-        '/users/register',
-        userCredentials,
-      );
-      // console.log(response);
+      await axiosInstance.post('/users/register', userCredentials);
 
-      if (response === undefined) {
-        throw new Error('Email in use');
-      }
       const {
         data: {
           data: { accessToken },
@@ -30,9 +23,7 @@ export const registerUser = createAsyncThunk(
 
       return { accessToken: accessToken };
     } catch (error) {
-      // console.log(error);
-
-      return thunkApi.rejectWithValue(error.message);
+      return thunkApi.rejectWithValue(error.response.data.message);
     }
   },
 );
@@ -51,6 +42,8 @@ export const loginUser = createAsyncThunk(
 
       return { accessToken: accessToken };
     } catch (error) {
+      console.log(error);
+
       return thunkApi.rejectWithValue(error.response.data.message);
     }
   },
