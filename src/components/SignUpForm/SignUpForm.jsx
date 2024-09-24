@@ -81,8 +81,13 @@ const SignUpForm = () => {
         </div>
         <ChangeLanguageBtn />
       </div>
-      {isLoading && <Loader />}
+
       <div className={css.wrapper}>
+        {isLoading && (
+          <div className={css.loaderContainer}>
+            <Loader />
+          </div>
+        )}
         <h2 className={css.title}>{t('signUp.title')}</h2>
         <form noValidate autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
           <div className={css.field}>
