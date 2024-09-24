@@ -290,7 +290,7 @@
   },
   "waterDailyNorma": {
     "text": "Моя щоденна норма",
-    "unit": "мл"
+    "unit": "Л"
   },
 
   "placeholder_time": "ГГ:ХХ",
@@ -331,5 +331,8 @@
 
   "addWaterBtn": {
     "addWater": "Додати воду"
-  }
+  },
+  "data_update_success": "Ваші дані було успішно оновлено",
+  "data_update_failure": "Не вдалося оновити дані користувача"
+
 }

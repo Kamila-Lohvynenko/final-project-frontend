@@ -37,7 +37,7 @@ const UserSettingsForm = ({ onClose }) => {
       t('unsupported_file_format'),
       (value) => {
         if (!value || !value[0])
-          return true; /* Если файл не выбран, он считается действительным и не показывает ошибку */
+          return true; 
 
         return ['image/jpeg', 'image/png', 'image/gif', 'image/webp'].includes(
           value[0].type,
@@ -53,18 +53,18 @@ const UserSettingsForm = ({ onClose }) => {
       .email(t('invalid_email_format'))
       .required(t('email_required')),
     weight: Yup.number()
-      .typeError(t('weight_type_error')) // Сообщение об ошибке, если тип неверный
-      .positive(t('weight_positive')) // Проверка на положительность
-      .required(t('weight_required')) // Обязательное поле
-      .min(1, t('weight_min')) // Минимальное значение
+      .typeError(t('weight_type_error')) 
+      .positive(t('weight_positive')) 
+      .required(t('weight_required')) 
+      .min(1, t('weight_min')) 
       .max(500, t('weight_max')),
     sportTime: Yup.number()
-      .typeError(t('sport_time_number')) // Добавлено для обработки неверного типа
+      .typeError(t('sport_time_number')) 
       .min(0, t('sport_time_negative'))
       .required(t('sport_time_required'))
       .max(24, t('sport_time_max')),
     waterIntake: Yup.number()
-      .typeError(t('water_intake_number')) // Добавлено для обработки неверного типа
+      .typeError(t('water_intake_number')) 
       .positive(t('water_intake_positive'))
       .required(t('water_intake_required')),
   });
@@ -132,19 +132,19 @@ const UserSettingsForm = ({ onClose }) => {
     )
       .unwrap()
       .then(() => {
-        toast.success('Your data has been successfully updated', {
-          duration: 1000,
+        toast.success(t('data_update_success'), {
+          duration: 2000,
         });
         setTimeout(() => {
           setIsDisabled(false);
           onClose(MODAL_NAME.SETTINGS_MODAL);
-        }, 1000);
+        }, 2000);
       })
       .catch((error) => {
         setIsDisabled(false);
 
         console.log(error);
-        toast.error('Failed to update user data');
+        toast.error(t('data_update_failure'));
       });
   };
 
@@ -332,9 +332,9 @@ const UserSettingsForm = ({ onClose }) => {
                   type="number"
                   id="sportTime"
                   {...register('sportTime', {
-                    valueAsNumber: true, // Преобразует значение в число
-                    min: 0, // Минимальное значение
-                    required: t('sport_time_required'), // Обязательное поле
+                    valueAsNumber: true, 
+                    min: 0,
+                    required: t('sport_time_required'), 
                   })}
                   onBlur={() => trigger('sportTime')}
                   className={`${css.inputs} ${css.bigGap}`}
@@ -363,9 +363,9 @@ const UserSettingsForm = ({ onClose }) => {
                   type="number"
                   id="waterIntake"
                   {...register('waterIntake', {
-                    valueAsNumber: true, // Преобразует значение в число
-                    min: 0, // Минимальное значение
-                    required: t('water_intake_required'), // Обязательное поле
+                    valueAsNumber: true,
+                    min: 0, 
+                    required: t('water_intake_required'), 
                   })}
                   onBlur={() => trigger('waterIntake')}
                   className={`${css.inputs}`}
