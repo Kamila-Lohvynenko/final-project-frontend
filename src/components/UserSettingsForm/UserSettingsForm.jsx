@@ -55,7 +55,7 @@ const UserSettingsForm = ({ onClose }) => {
     weight: Yup.number()
       .typeError(t('weight_type_error')) 
       .positive(t('weight_positive')) 
-      .required(t('weight_required')) 
+      .required(t('weight_required'))
       .min(1, t('weight_min')) 
       .max(500, t('weight_max')),
     sportTime: Yup.number()
@@ -66,7 +66,8 @@ const UserSettingsForm = ({ onClose }) => {
     waterIntake: Yup.number()
       .typeError(t('water_intake_number')) 
       .positive(t('water_intake_positive'))
-      .required(t('water_intake_required')),
+      .required(t('water_intake_required'))
+      .min(0, t('water_intake_min'))
   });
 
   const {
@@ -127,7 +128,7 @@ const UserSettingsForm = ({ onClose }) => {
         gender: data.gender,
         weight: data.weight,
         activeSportTime: data.sportTime,
-        dailyNorma: data.waterIntake,
+        dailyNorma: data.waterIntake * 1000,
       }),
     )
       .unwrap()
@@ -298,7 +299,7 @@ const UserSettingsForm = ({ onClose }) => {
                 </span>
               </div>
             </div>
-
+  
             <div className={css.rightSide}>
               <div className={css.waterWrapper}>
                 <label
@@ -317,11 +318,17 @@ const UserSettingsForm = ({ onClose }) => {
                   })}
                   onBlur={() => trigger('weight')}
                   className={`${css.inputs} ${css.smallGap}`}
+                  step="0.01"
+                  onKeyDown={(e) => {
+                    if (!/[0-9.]/.test(e.key) && e.key !== 'Backspace') {
+                      e.preventDefault();
+                    }
+                  }}
                 />
                 {errors.weight && (
                   <p className={css.errorMessage}>{errors.weight.message}</p>
                 )}
-
+  
                 <label
                   htmlFor="sportTime"
                   className={`${css.inputLabel} ${css.text}`}
@@ -332,18 +339,23 @@ const UserSettingsForm = ({ onClose }) => {
                   type="number"
                   id="sportTime"
                   {...register('sportTime', {
-                    valueAsNumber: true, 
+                    valueAsNumber: true,
                     min: 0,
-                    required: t('sport_time_required'), 
+                    required: t('sport_time_required'),
                   })}
                   onBlur={() => trigger('sportTime')}
                   className={`${css.inputs} ${css.bigGap}`}
+                  onKeyDown={(e) => {
+                    if (!/[0-9.]/.test(e.key) && e.key !== 'Backspace') {
+                      e.preventDefault();
+                    }
+                  }}
                 />
                 {errors.sportTime && (
                   <p className={css.errorMessage}>{errors.sportTime.message}</p>
                 )}
               </div>
-
+  
               <div className={css.waterWrapper}>
                 <div className={`${css.litersWrapper} ${css.smallGap}`}>
                   <p className={css.text}>{t('required_water_amount')}</p>
@@ -364,11 +376,18 @@ const UserSettingsForm = ({ onClose }) => {
                   id="waterIntake"
                   {...register('waterIntake', {
                     valueAsNumber: true,
-                    min: 0, 
-                    required: t('water_intake_required'), 
+                    min: 0,
+                    required: t('water_intake_required'),
                   })}
                   onBlur={() => trigger('waterIntake')}
                   className={`${css.inputs}`}
+                  step="0.01"
+                  onKeyDown={(e) => {
+                    if (!/[0-9.]/.test(e.key) && e.key !== 'Backspace') {
+                      e.preventDefault();
+                    }
+                  }}
+                  value={watch('waterIntake') ? (watch('waterIntake') / 1000).toFixed(1) : ''} 
                 />
                 {errors.waterIntake && (
                   <p className={css.errorMessage}>
@@ -385,6 +404,5 @@ const UserSettingsForm = ({ onClose }) => {
       </div>
     </div>
   );
-};
-
-export default UserSettingsForm;
+}
+   export default   UserSettingsForm
