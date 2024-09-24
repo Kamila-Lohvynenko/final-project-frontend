@@ -147,7 +147,6 @@ input:focus {
 .btn_wrapper {
   display: flex;
   justify-content: center;
-  align-items: center;
   gap: 8px;
   flex-wrap: wrap;
 }
