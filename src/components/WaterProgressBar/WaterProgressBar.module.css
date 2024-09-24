@@ -1,7 +1,7 @@
 .progressBarContainer {
   position: absolute;
   left: 50%;
-bottom: 118px;
+  bottom: 120px;
   width: 198px;
   height: 70px;
  
@@ -98,7 +98,7 @@ bottom: 118px;
     height: 106px;
   
     padding: 20px;
-    bottom: 169px;
+    bottom: 150px;
   }
 
   .progressBar {
@@ -129,11 +129,14 @@ bottom: 118px;
   }
 }
 
-@media screen and (min-width: 1440px) {
- 
+@media screen and (min-width: 1440px) { 
 
   .progressBarTitle {
     font-size: 15px;
     line-height: 149%;
+  }
+
+  .progressBarContainer {
+    bottom: 180px;
   }
 }
