@@ -86,7 +86,7 @@ const UserSettingsForm = ({ onClose }) => {
       gender,
       weight,
       sportTime,
-      waterIntake,
+      waterIntake: waterIntake ? waterIntake / 1000 : 0,
     },
   });
 
@@ -387,7 +387,7 @@ const UserSettingsForm = ({ onClose }) => {
                       e.preventDefault();
                     }
                   }}
-             
+                  value={watch('waterIntake') ? watch('waterIntake') : ''} 
                 />
                 {errors.waterIntake && (
                   <p className={css.errorMessage}>
