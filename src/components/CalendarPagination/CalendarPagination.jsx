@@ -8,13 +8,13 @@ import sprite from "../../images/sprite.svg";
 import { monthsName } from "../CalendarPagination/helpme/constants.js";
 import { Title } from "../CalendarItem/Title/Title.jsx";
 import { getWaterByMonth } from "../../redux/water/operations.js";
-import { useTranslation } from 'react-i18next'; // Импортируем useTranslation
+import { useTranslation } from 'react-i18next'; 
 
 const CalendarPagination = ({ setIsCalender, isCalendar, onDateChange }) => {
     const { date: dateUrl } = useParams();
     const dateMs = parseDateTime(dateUrl);
     const dispatch = useDispatch();
-    const { t } = useTranslation(); // Используем хук
+    const { t } = useTranslation(); 
 
     const [year, setYear] = useState(new Date(dateMs).getFullYear().toString());
     const [month, setMonth] = useState(new Date(dateMs).getMonth());
@@ -41,9 +41,8 @@ const CalendarPagination = ({ setIsCalender, isCalendar, onDateChange }) => {
         dispatch(getWaterByMonth({ year: newYear, month: monthForApi }));
     };
 
-    const selectedMonth = t(`months.${monthsName[month]}`); // Получаем переведенное название месяца
-    const title = t("title"); // Получаем переведенный заголовок
-
+    const selectedMonth = t(`months.${monthsName[month]}`); 
+    const title = t("title"); 
     const yearNow = new Date().getFullYear();
     const monthNow = new Date().getMonth();
     const incrementDisabled = new Date(yearNow, monthNow) <= new Date(parseInt(year), month);

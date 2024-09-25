@@ -47,7 +47,7 @@ const UserSettingsForm = ({ onClose }) => {
     gender: Yup.string().required(t('select_gender')),
     name: Yup.string()
       .max(20, t('name_max_length'))
-      .matches(/^[A-Za-zA-Яа-яЁё\s]+$/, t('name_letters_only'))
+      .matches(/^[а-яА-ЯёЁЇїІіЄєҐґa-zA-Z\s]+$/, t('name_letters_only'))
       .required(t('name_required')),
     email: Yup.string()
       .email(t('invalid_email_format'))
