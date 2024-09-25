@@ -16,6 +16,7 @@ const initialState = {
     totalWater: '0',
     dailyNorma: '1500',
   }, //Изменено на объект с полем records
+  loading: false,
 };
 
 const waterSlice = createSlice({
@@ -26,15 +27,19 @@ const waterSlice = createSlice({
     builder
       .addCase(getWaterByMonth.fulfilled, (state, { payload }) => {
         state.monthIntakes = payload;
+        state.loading = false;
+      })
+
+      .addCase(getWaterByMonth.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(getWaterByMonth.rejected, (state) => {
+        state.loading = false;
       })
       .addCase(getWaterByDay.fulfilled, (state, { payload }) => {
-        // console.log(payload);
-
         state.dailyIntakes = payload;
       })
       .addCase(addWater.fulfilled, (state, { payload }) => {
-        // console.log(payload.data);
-
         state.monthIntakes.push(payload.data);
         state.dailyIntakes.records.push(payload.data);
 

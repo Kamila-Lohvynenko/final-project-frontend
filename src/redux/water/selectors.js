@@ -5,3 +5,4 @@ export const selectDayPercentage = (state) =>
   state.water.dailyIntakes.percentage;
 export const selectTotalWaterByDay = (state) =>
   state.water.dailyIntakes.totalWater;
+export const selectLoading = (state) => state.water.loading;

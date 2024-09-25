@@ -5,6 +5,10 @@
   justify-content: center;
 }
 
+.dailyInfo {
+  height: 153px;
+}
+
 .loader {
   width: 32px;
   height: 72px;
@@ -25,5 +29,12 @@
   }
   100% {
     box-shadow: 0 -70px inset;
+  }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 375px) {
+  .loader {
+    height: 54px;
+    width: 24px;
   }
 }
