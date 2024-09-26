@@ -19,7 +19,11 @@ const EmailForm = () => {
   const validationSchema = Yup.object().shape({
     email: Yup.string()
       .email(t('validation.email_invalid'))
-      .required(t('validation.email_required')),
+      .required(t('validation.email_required'))
+      .matches(
+        /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
+        'Please enter valid email',
+      ),
   });
 
   const {
