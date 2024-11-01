@@ -40,8 +40,11 @@ const TrackerPage = () => {
   useEffect(() => {
     async function fetchData() {
       await dispatch(getUserData()).unwrap();
+      await dispatch(
+        getWaterByMonth({ month: chosenDate.month, year: chosenDate.year }),
+      ).unwrap();
       await dispatch(getWaterByDay(chosenDate)).unwrap();
-      await dispatch(getWaterByMonth({ month: chosenDate.month, year: chosenDate.year })).unwrap();
+
       setIsLoading(false);
     }
 

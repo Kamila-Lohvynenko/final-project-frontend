@@ -108,12 +108,12 @@ const ResetPasswordForm = () => {
                   }`}
                 />
               </svg>
-              {errors.password && (
-                <p className={styles.errorMessage}>
-                  {t(errors.password.message)}
-                </p>
-              )}
             </div>
+            {errors.password && (
+              <p className={styles.errorMessage}>
+                {t(errors.password.message)}
+              </p>
+            )}
           </div>
 
           <div className={styles.field}>

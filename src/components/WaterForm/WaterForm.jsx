@@ -29,6 +29,8 @@ const WaterForm = ({ onClose, water, chosenDate, operation, setWater }) => {
   const [waterValue, setWaterValue] = useState(50);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isDisable, setIsDisable] = useState(false);
+  const [isAddDisabled, setIsAddDisable] = useState(false);
+  const [isRemoveDisabled, setIsRemoveDisabled] = useState(true);
 
   const dispatch = useDispatch();
 
@@ -64,6 +66,11 @@ const WaterForm = ({ onClose, water, chosenDate, operation, setWater }) => {
       setValue('amount', 50);
     }
   }, [water, setValue, operation]);
+
+  useEffect(()=>{
+    setIsAddDisable(waterValue >= 10000);
+    setIsRemoveDisabled(waterValue <= 50);
+  }, [waterValue]);
 
   const onSubmit = async (formData) => {
     setIsSubmitting(true);
@@ -117,6 +124,7 @@ const WaterForm = ({ onClose, water, chosenDate, operation, setWater }) => {
               return newValue;
             });
           }}
+          disabled={isRemoveDisabled}
         >
           <svg>
             <use xlinkHref={sprite + '#icon-remove'}></use>
@@ -140,6 +148,7 @@ const WaterForm = ({ onClose, water, chosenDate, operation, setWater }) => {
               return newValue;
             });
           }}
+          disabled={isAddDisabled}
         >
           <svg>
             <use xlinkHref={sprite + '#icon-add'}></use>
