@@ -15,7 +15,7 @@ const AddWaterBtn = ({ onClick, inDetails }) => {
             </h2>            
         </button>
     ) : (
-        <button type="button" className={css.detailsBtnAdd} onClick={onClick}>
+        <button type="button" className={`${css.detailsBtnAdd} third-step`} onClick={onClick}>
             <div className={css.detailsAddContainer}>
                 <svg className={css.detailsAddSign}>
                     <use href={sprite + "#icon-plus-wide"} />

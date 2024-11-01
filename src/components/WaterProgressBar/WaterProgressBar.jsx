@@ -13,7 +13,7 @@ const WaterProgressBar = ({ chosenDate }) => {
     waterIntakeProgress >= 100 ? 100 : waterIntakeProgress;
 
   return (
-    <div className={css.progressBarContainer}>
+    <div className={`${css.progressBarContainer} second-step`}>
       <div className={css.dataFix}>
       <ChooseDate chosenDate={chosenDate} classCss="progressBarTitle" />
       </div>

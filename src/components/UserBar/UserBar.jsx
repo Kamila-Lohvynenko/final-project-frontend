@@ -21,7 +21,7 @@ const UserBar = ({ setSettingsModal, setLogoutModal }) => {
   const userAvatar = useSelector(selectAvatarUrl);
 
   return (
-    <div className={css.userBar}>
+    <div className={`${css.userBar} four-step`}>
       <button
         onClick={togglePopover}
         className={`${css.userBarButton} ${isPopoverOpen ? css.open : ''}`}
