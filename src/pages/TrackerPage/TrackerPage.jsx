@@ -1,20 +1,20 @@
+
 import { useEffect, useState } from 'react';
-
-import css from './TrackerPage.module.css';
-
-import LogOutModal from './../../components/LogOutModal/LogOutModal';
-import Modal from './../../components/Modal/Modal';
-import UserSettingsModal from './../../components/UserSettingsModal/UserSettingsModal';
-import WaterDetailedInfo from './../../components/WaterDetailedInfo/WaterDetailedInfo';
-import WaterMainInfo from './../../components/WaterMainInfo/WaterMainInfo';
-import WaterModal from './../../components/WaterModal/WaterModal';
-import DeleteWaterModal from './../../components/DeleteWaterModal/DeleteWaterModal';
-import { MODAL_NAME } from '../../constants';
 import { useDispatch } from 'react-redux';
 import { getUserData } from '../../redux/user/operations';
 import { getWaterByDay, getWaterByMonth } from '../../redux/water/operations';
 import { Toaster } from 'react-hot-toast';
 import Loader from '../../components/Loader/Loader';
+import WaterMainInfo from './../../components/WaterMainInfo/WaterMainInfo';
+import WaterDetailedInfo from './../../components/WaterDetailedInfo/WaterDetailedInfo';
+import Modal from './../../components/Modal/Modal';
+import WaterModal from './../../components/WaterModal/WaterModal';
+import DeleteWaterModal from './../../components/DeleteWaterModal/DeleteWaterModal';
+import UserSettingsModal from './../../components/UserSettingsModal/UserSettingsModal';
+import LogOutModal from './../../components/LogOutModal/LogOutModal';
+import { MODAL_NAME } from '../../constants';
+import css from './TrackerPage.module.css';
+import TourSteps from './../../onboarding/onbordingStep'; 
 
 const TrackerPage = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -33,58 +33,38 @@ const TrackerPage = () => {
   const day = currentDate.getDate().toString().padStart(2, '0');
 
   const [chosenDate, setChosenDate] = useState({ year, month, day });
-
-  // console.log(chosenDate);
-
   const [water, setWater] = useState(null);
-
+  
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(getUserData());
-  //   dispatch(getWaterByDay({ day: '14', month: '09', year: '2024' }));
-  //   dispatch(getWaterByMonth({ month: '09', year: '2024' }));
-  // }, [dispatch]);
   useEffect(() => {
-    async function name() {
-      // await dispatch(
-      //   addWater({
-      //     ...chosenDate,
-      //     amount: 100,
-      //     time: '19:20',
-      //   }),
-      // ).unwrap();
+    async function fetchData() {
       await dispatch(getUserData()).unwrap();
       await dispatch(
         getWaterByMonth({ month: chosenDate.month, year: chosenDate.year }),
       ).unwrap();
       await dispatch(getWaterByDay(chosenDate)).unwrap();
+
       setIsLoading(false);
     }
 
-    name();
+    fetchData();
   }, [dispatch, chosenDate]);
 
   const closeModal = (modalName) => {
     switch (modalName) {
       case MODAL_NAME.WATER_MODAL:
-        setWaterModalState({
-          isOpen: false,
-          operation: null,
-        });
+        setWaterModalState({ isOpen: false, operation: null });
         break;
-
       case MODAL_NAME.SETTINGS_MODAL:
         setSettingsModal(false);
         break;
       case MODAL_NAME.DELETE_WATER_MODAL:
         setDeleteWaterModal(false);
         break;
-
       case MODAL_NAME.LOGOUT_MODAL:
         setLogoutModal(false);
         break;
-
       default:
         break;
     }
@@ -98,26 +78,58 @@ const TrackerPage = () => {
     setWaterModalState({ isOpen, operation });
   };
 
-  return (
+  // Логика для онбординга
+  const onboardingCompleted = localStorage.getItem("onboardingCompleted");
+  const [showTour, setShowTour] = useState(!onboardingCompleted);
+
+  const completeOnboarding = () => {
+    localStorage.setItem("onboardingCompleted", "true");
+    setShowTour(false);
+  };
+
+
+return (
     <div>
       {isLoading ? (
         <Loader />
       ) : (
         <div className={css.pageWrapper}>
-          <WaterMainInfo
-            waterModalState={waterModalState}
-            openWaterModal={openWaterModal}
-            chosenDate={chosenDate}
-          />
-          <WaterDetailedInfo
-            openWaterModal={openWaterModal}
-            setSettingsModal={setSettingsModal}
-            setLogoutModal={setLogoutModal}
-            setDeleteWaterModal={setDeleteWaterModal}
-            setChosenDate={setChosenDate}
-            chosenDate={chosenDate}
-            setWater={setWater}
-          />
+          {/* Если showTour true, показываем TourSteps */}
+          {showTour ? (
+            <TourSteps onComplete={completeOnboarding}>
+              <WaterMainInfo
+                waterModalState={waterModalState}
+                openWaterModal={openWaterModal}
+                chosenDate={chosenDate}
+              />
+              <WaterDetailedInfo
+                openWaterModal={openWaterModal}
+                setSettingsModal={setSettingsModal}
+                setLogoutModal={setLogoutModal}
+                setDeleteWaterModal={setDeleteWaterModal}
+                setChosenDate={setChosenDate}
+                chosenDate={chosenDate}
+                setWater={setWater}
+              />
+            </TourSteps>
+          ) : (
+            <>
+              <WaterMainInfo
+                waterModalState={waterModalState}
+                openWaterModal={openWaterModal}
+                chosenDate={chosenDate}
+              />
+              <WaterDetailedInfo
+                openWaterModal={openWaterModal}
+                setSettingsModal={setSettingsModal}
+                setLogoutModal={setLogoutModal}
+                setDeleteWaterModal={setDeleteWaterModal}
+                setChosenDate={setChosenDate}
+                chosenDate={chosenDate}
+                setWater={setWater}
+              />
+            </>
+          )}
         </div>
       )}
 

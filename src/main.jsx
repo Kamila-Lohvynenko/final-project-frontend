@@ -10,6 +10,8 @@ import './i18n.js';
 
 import { persistor, store } from './redux/store.js';
 import { App } from './components/App.jsx';
+import TourSteps from './onboarding/onbordingStep.jsx';
+
 // import { AxiosInterceptor } from './components/AxiosInterceptor/AxiosInterceptor.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -18,7 +20,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         {/* <AxiosInterceptor /> */}
+        <TourSteps>
         <App />
+        </TourSteps>
       </PersistGate>
     </Provider>
   </BrowserRouter>,

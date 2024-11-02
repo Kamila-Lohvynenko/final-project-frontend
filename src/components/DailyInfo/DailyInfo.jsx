@@ -29,7 +29,7 @@ const DailyInfo = ({
 
   return (
     <div>
-      <div className={css.topContainer}>
+      <div className={`${css.topContainer} five-step`}>
         <ChooseDate chosenDate={chosenDate} />
         <AddWaterBtn inDetails={true} onClick={handleAddWaterClick} />
       </div>

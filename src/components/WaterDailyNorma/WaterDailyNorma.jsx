@@ -11,7 +11,7 @@ const WaterDailyNorma = () => {
   const dailyNormaInLiters = (dailyNorma / 1000).toFixed(1);
 
   return (
-    <div className={css.containerDailyNorma}>
+    <div className={`${css.containerDailyNorma} first-step`}>
       <p className={css.value}>{`${dailyNormaInLiters} ${t('waterDailyNorma.unit')}`}</p>
       <p className={css.text}>{t('waterDailyNorma.text')}</p> 
     </div>
