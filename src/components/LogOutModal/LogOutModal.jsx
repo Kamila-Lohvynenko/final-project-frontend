@@ -9,10 +9,13 @@ const LogOutModal = ({ onClose }) => {
   const { t } = useTranslation();
 
   const handleLogout = () => {
+    const onboardingCompleted = localStorage.getItem("onboardingCompleted");
+    localStorage.clear();
+    localStorage.setItem("onboardingCompleted", onboardingCompleted);
     dispatch(logoutUser());
     onClose(MODAL_NAME.LOGOUT_MODAL);
-    localStorage.clear();
   };
+  
 
   const handleCloseModal = () => {
     onClose(MODAL_NAME.LOGOUT_MODAL);

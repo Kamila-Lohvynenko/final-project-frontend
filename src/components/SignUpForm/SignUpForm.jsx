@@ -51,13 +51,13 @@ const SignUpForm = () => {
       .then((response) => {
         setIsLoading(false);
         localStorage.setItem('token', response.token);
+        localStorage.setItem('onboardingCompleted', 'false'); // Добавлено
         navigate('/tracker');
         reset();
       })
       .catch((error) => {
         setIsLoading(false);
         toast.error(`Error: ${error || 'Something went wrong'}`);
-        // toast.error(`Error: ${error}`);
       });
   };
 

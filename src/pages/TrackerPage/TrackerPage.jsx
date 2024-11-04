@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { getUserData } from '../../redux/user/operations';
@@ -79,22 +78,26 @@ const TrackerPage = () => {
   };
 
   // Логика для онбординга
-  const onboardingCompleted = localStorage.getItem("onboardingCompleted");
-  const [showTour, setShowTour] = useState(!onboardingCompleted);
+  const [showTour, setShowTour] = useState(false);
+
+  useEffect(() => {
+    const onboardingCompleted = localStorage.getItem("onboardingCompleted");
+    if (!onboardingCompleted || onboardingCompleted === "false") {
+      setShowTour(true);
+    }
+  }, []);
 
   const completeOnboarding = () => {
     localStorage.setItem("onboardingCompleted", "true");
     setShowTour(false);
   };
 
-
-return (
+  return (
     <div>
       {isLoading ? (
         <Loader />
       ) : (
         <div className={css.pageWrapper}>
-          {/* Если showTour true, показываем TourSteps */}
           {showTour ? (
             <TourSteps onComplete={completeOnboarding}>
               <WaterMainInfo
