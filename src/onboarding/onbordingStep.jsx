@@ -3,14 +3,11 @@ import { TourProvider } from "@reactour/tour";
 import { disableBody, enableBody, styles } from "./onbordingStyl";
 import { useLocation } from "react-router-dom"; 
 
-const TourSteps = ({ children }) => {
+const TourSteps = ({ children, onComplete }) => {
   const { t } = useTranslation();
   const location = useLocation(); 
 
-
   const onboardingCompleted = localStorage.getItem("onboardingCompleted");
-
-
   const isTrackerPage = location.pathname === "/tracker";
 
   const steps = [
@@ -59,6 +56,7 @@ const TourSteps = ({ children }) => {
 
   const handleTourClose = () => {
     localStorage.setItem("onboardingCompleted", "true");
+    if (onComplete) onComplete(); // Проверка на существование onComplete
     enableBody();
   };
 
@@ -74,7 +72,7 @@ const TourSteps = ({ children }) => {
       badgeContent={({ totalSteps, currentStep }) =>
         `${currentStep + 1}/${totalSteps}`
       }
-      defaultOpen={!onboardingCompleted && isTrackerPage} 
+      defaultOpen={onboardingCompleted !== "true" && isTrackerPage}
     >
       {children}
     </TourProvider>
